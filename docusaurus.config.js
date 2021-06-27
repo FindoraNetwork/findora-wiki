@@ -22,9 +22,9 @@ module.exports = {
       items: [
         {
           type: 'doc',
-          docId: 'intro',
+          docId: 'general/intro',
           position: 'left',
-          label: 'Getting Started',
+          label: 'Get Started',
         },
         {
           href: 'https://github.com/findoraNetwork',
