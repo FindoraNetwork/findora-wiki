@@ -1,0 +1,29 @@
+name: Master
+on:
+  push:
+    branches:
+      - main
+      - ci
+  pull_request:
+    branches:
+      - main
+      - ci
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  build:
+    strategy:
+      matrix:
+        platform: [aws]
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Test
+      shell: bash
+      run: |
+        docker build -t findora-wiki -f .github/workflows/Dockerfile .
+        docker rm -f findora-wiki
+        docker run --rm --name findora-wiki -e GIT_USER=FindoraCI -e USE_SSH=true -v /opt/github_key:/root/.ssh findora-wiki yarn deploy
+        docker rm $(docker ps -a | awk '{print $1}') || true
+        docker rmi -f $(docker images -f "dangling=true" -q) || true
+        docker rmi findora-wiki || true
