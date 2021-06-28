@@ -83,7 +83,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/FindoraNetwork/findora-wiki/',
+            'https://github.com/FindoraNetwork/findora-wiki/edit/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
