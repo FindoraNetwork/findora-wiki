@@ -98,7 +98,7 @@ source ~/.zshrc
 # init tendermint
 tendermint init
 ```
-after init successfully,run
+after init successfully, run
 
 ```shell
 ls  ~/.tendermint/config 
