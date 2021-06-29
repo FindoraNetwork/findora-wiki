@@ -94,9 +94,9 @@ after init successfully,run
 ls  ~/.tendermint/config 
 ```
 Three files are displayed：
-
->config.toml  genesis.json  node_key.json  priv_validator_key.json
-
+```shell
+config.toml  genesis.json  node_key.json  priv_validator_key.json
+```
 ### request network params and write  node config
 
 #### write genesis config
