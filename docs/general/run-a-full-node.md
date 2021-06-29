@@ -202,24 +202,24 @@ fns show
 ### append staking amount
 
 ```shell
-fns stake -a -n 10000000
+fns stake -a -n $((1000000 * 1000000))
 
 ```
 
 ### unstake
 ```shell
-fns unstake 
+fns unstake -n $((1000000 * 1000000))
 ```
 
 ###claim reward 
 ```shell
-fns claim -n 1000
+fns claim -n $((1000000 * 1000000))
 ```
 
 
 ### send transfer
 ```shell
-fns transfer -n 100000 -t "fra***********************"
+fns transfer -n $((1000000 * 1000000)) -t "fra***********************"
 ```
 
 
