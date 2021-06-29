@@ -195,7 +195,7 @@ abci_validator_node >/tmp/log 2>&1 &
 #### check server port
 linux
 ```shell
-netsat -ltpn
+netstat -ltpn
 ```
 macos
 ```shell
