@@ -46,15 +46,18 @@ wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_valid
 
 wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.linux
 
+wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/stt.linux
+
 ### remove suffix
 
 mv tendermint.linux tendermint
 mv abci_validator_node.linux abci_validator_node
 mv fns.linux fns
-
+mv stt.linux stt
 chmod a+rwx  tendermint
 chmod a+rwx  abci_validator_node
 chmod a+rwx  fns
+chmod a+rwx  stt
 ```
 
 #### macos
@@ -65,9 +68,12 @@ curl -o abci_validator_node https://github.com/FindoraNetwork/iii/releases/downl
 
 curl -o fns https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
 
+curl -o stt https://github.com/FindoraNetwork/iii/releases/download/fnstest/stt.macos
+
 chmod a+rwx  tendermint
 chmod a+rwx  abci_validator_node
 chmod a+rwx  fns
+chmod a+rwx  stt
 ```
 
 The three applications above are:
@@ -167,8 +173,27 @@ If any port is missing, the application did not start successfully, please start
 nohup tendermint node>/tmp/td.log 2>&1 &
 ```
 
-<h2> test tools</h2>
+<h2> test tools(only test network)</h2>
 
+### query all account
+```shell
+stt show -U
+```
+
+### query all validator
+```shell
+ stt show -v
+```
+### u1  delegate  1000000 to validator v1
+```shell
+ stt delegate  -n 1000000 -u u1 -v v1
+
+```
+
+### undelegate  u1 undelegate
+```shell
+stt undelegate -u u1
+```
 
 <h2>use fns tool</h2>
 ### fns is official offer staking terminal tools
