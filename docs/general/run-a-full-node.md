@@ -30,7 +30,7 @@ The node should open the port 8667, 8668, 8669 and 26657 to puclib with Security
 
 |  Project   | Testnet  | Mainnet  |
 |  ----  | ----  | ----  |
-| Block time   | 6s | 16s |
+| import block interval   | 6s | 16s |
 | Unlock period | 5 * 5s | 3600 * 24 * 21s |
 
 # test network 
