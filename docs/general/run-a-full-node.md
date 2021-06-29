@@ -82,7 +82,7 @@ fns staking terminal tool
 
 ```shell
 echo "export PATH=$PATH:$(pwd)" >> ~/.bashrc
-
+source ~/.bashrc
 ```
 
 ### create config and set config 
@@ -177,7 +177,7 @@ fns staking terminal tool
 
 ```shell
 echo "export PATH=$PATH:$(pwd)" >> ~/.bashrc
-
+source ~/.bashrc
 ```
 
 ### create config and set config
