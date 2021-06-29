@@ -26,7 +26,7 @@ The node should open the port 8667, 8668, 8669 and 26657 26656 to puclib with Se
 
 ### Comparison of network parameters in different environments
 
->For the convenience of the test network, some parameters are different from the main network
+> For the convenience of the test network, some parameters are different from the main network
 
 |  Project   | Testnet  | Mainnet  |
 |  ----  | ----  | ----  |
@@ -35,8 +35,8 @@ The node should open the port 8667, 8668, 8669 and 26657 26656 to puclib with Se
 
 # test network 
 
-### application install
-## linux
+> application install
+#### linux
 ```shell
 wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
 
@@ -55,7 +55,7 @@ chmod a+rwx  abci_validator_node
 chmod a+rwx  fns
 ```
 
-## macos
+#### macos
 ```shell
 curl -o tendermint https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
 
@@ -74,14 +74,20 @@ tendermint application
 findora application
 fns staking terminal tool
 ```
-### config bin to env
 
+> ### config bin to env
+#### linux
 ```shell
 echo "export PATH=$PATH:$(pwd)" >> ~/.bashrc
 source ~/.bashrc
 ```
+#### macos
+```shell
+echo "export PATH=$PATH:$(pwd)" >> ~/.zshrc
+source ~/.zshrc
+```
 
-### create config and set config 
+> ### create config and set config 
 ```shell
 # clear old data
  rm -rf /tmp/findora ~/.tendermint
@@ -128,8 +134,8 @@ perl -pi -e 's#(persistent_peers = )".*"#$1"b87304454c0a0a0c5ed6c483ac5adc487f3b
 
 
 # mainnet network
-### application install
-## linux
+> ### application install
+#### linux
 ```shell
 wget   https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
 
@@ -148,7 +154,7 @@ chmod a+rwx  abci_validator_node
 chmod a+rwx  fns
 ```
 
-## macos
+#### macos
 ```shell
 curl -o tendermint https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
 
@@ -170,14 +176,14 @@ fns staking terminal tool
 ```
 
 
-### config bin to env
+> ### config bin to env
 
 ```shell
 echo "export PATH=$PATH:$(pwd)" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-### create config and set config
+> ### create config and set config
 ```shell
 # clear old data
  rm -rf /tmp/findora ~/.tendermint
