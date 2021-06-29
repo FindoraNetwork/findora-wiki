@@ -232,7 +232,7 @@ show list:
 If any port is missing, the application did not start successfully, please start from the first step
 #### start tendermint application
 ```shell
-nohup tendermint node>/tmp/td.log 2 > &1 &
+nohup tendermint node>/tmp/td.log 2>&1 &
 ```
 # use fns tool
 ### fns is official offer staking terminal tools
