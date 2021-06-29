@@ -194,6 +194,11 @@ stt show -U
 ```shell
 stt undelegate -u u1
 ```
+### Each additional issuance doubles the FRA supply
+
+```shell
+stt issue
+```
 
 <h2>use fns tool</h2>
 ### fns is official offer staking terminal tools
