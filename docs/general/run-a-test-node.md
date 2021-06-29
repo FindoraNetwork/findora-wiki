@@ -184,7 +184,7 @@ stt show -U
 ```shell
  stt show -v
 ```
-### u1  delegate  1000000 to validator v1
+### account u1  delegate  1000000 to validator v1
 ```shell
  stt delegate  -n $((1000000 * 1000000)) -u u1 -v v1
 
