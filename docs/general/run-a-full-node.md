@@ -38,20 +38,20 @@ The node should open the port 8667, 8668, 8669 and 26657 to puclib with Security
 ### application install
 #### linux
 ```shell
-curl  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
+curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
 
-curl https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.linux
+curl -O https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.linux
 
-curl https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.linux
+curl -O https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.linux
 
 ```
 macos
 ```shell
-curl  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
+curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
 
-curl https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.macos
+curl -O https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.macos
 
-curl https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
+curl-O https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
 
 ```
 
@@ -112,20 +112,20 @@ perl -pi -e 's#(persistent_peers = )".*"#$1"b87304454c0a0a0c5ed6c483ac5adc487f3b
 ### application install
 #### linux
 ```shell
-curl  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
+curl -O   https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
 
-curl https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.linux
+curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.linux
 
-curl https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.linux
+curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.linux
 
 ```
 macos
 ```shell
-curl  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
+curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
 
-curl https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.macos
+curl -O https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.macos
 
-curl https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
+curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
 
 ```
 
