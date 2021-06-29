@@ -136,9 +136,8 @@ wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_valid
 
 wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.linux
 
-```
 ### remove suffix
-```shell
+
 mv tendermint.linux tendermint
 mv abci_validator_node.linux abci_validator_node
 mv fns.linux fns
