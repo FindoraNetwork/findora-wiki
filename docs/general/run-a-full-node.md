@@ -57,15 +57,11 @@ chmod a+rwx  fns
 
 ## macos
 ```shell
-curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
+curl -o tendermint https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
 
-curl -O https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.macos
+curl -o abci_validator_node https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.macos
 
-curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
-### remove suffix
-mv tendermint.macos tendermint
-mv abci_validator_node.macos abci_validator_node
-mv fns.macos fns
+curl -o fns https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
 
 chmod a+rwx  tendermint
 chmod a+rwx  abci_validator_node
@@ -148,16 +144,11 @@ chmod a+rwx  fns
 
 ## macos
 ```shell
-curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
+curl -o tendermint https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
 
-curl -O https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.macos
+curl -o abci_validator_node https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.macos
 
-curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
-
-### remove suffix
-mv tendermint.macos tendermint
-mv abci_validator_node.macos abci_validator_node
-mv fns.macos fns
+curl -o fns https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
 
 chmod a+rwx  tendermint
 chmod a+rwx  abci_validator_node
