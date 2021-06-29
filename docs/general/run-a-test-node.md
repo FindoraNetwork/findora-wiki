@@ -173,7 +173,7 @@ If any port is missing, the application did not start successfully, please start
 nohup tendermint node>/tmp/td.log 2>&1 &
 ```
 
-<h2> test tools(only test network)</h2>
+<h2> stt tools(only test network)</h2>
 
 ### query all account
 ```shell
