@@ -40,7 +40,7 @@ The node should open the port 8667, 8668, 8669 and 26657 26656 to puclib with Se
 #### linux
 
 ```shell
-wget   https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
+wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
 
 wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.linux
 
