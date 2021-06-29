@@ -21,7 +21,7 @@ Currently window support is still under development
 Follow the instructions that follow and the script will automatically create a full node and connect to the Findora Network.
 
 ### Network port
-The node should open the port 8667, 8668, 8669 and 26657 to puclib with Security Group in AWS or fire work in GCP
+The node should open the port 8667, 8668, 8669 and 26657 26656 to puclib with Security Group in AWS or fire work in GCP
 
 
 ### Comparison of network parameters in different environments
