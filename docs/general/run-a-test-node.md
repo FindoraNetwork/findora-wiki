@@ -186,13 +186,13 @@ stt show -U
 ```
 ### u1  delegate  1000000 to validator v1
 ```shell
- stt delegate  -n 1000000 -u u1 -v v1
+ stt delegate  -n $((1000000 * 1000000)) -u u1 -v v1
 
 ```
 
 ### undelegate  u1 undelegate
 ```shell
-stt undelegate -u u1
+stt undelegate -u u1 -n $((1000000 * 1000000)) -v v1
 ```
 ### Each additional issuance doubles the FRA supply
 
@@ -239,24 +239,24 @@ fns show
 ### append staking amount
 
 ```shell
-fns stake -a -n 10000000
+fns stake -a -n $((1000000 * 1000000))
 
 ```
 
 ### unstake
 ```shell
-fns unstake 
+fns unstake -n $((1000000 * 1000000))
 ```
 
 ###claim reward 
 ```shell
-fns claim -n 1000
+fns claim -n $((1000000 * 1000000))
 ```
 
 
 ### send transfer
 ```shell
-fns transfer -n 100000 -t "fra***********************"
+fns transfer -n $((1000000 * 1000000)) -t "fra***********************"
 ```
 
 
