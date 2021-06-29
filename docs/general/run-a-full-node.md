@@ -134,7 +134,7 @@ perl -pi -e 's#(persistent_peers = )".*"#$1"b87304454c0a0a0c5ed6c483ac5adc487f3b
 
 
 <h2> mainnet network</h2>
-> ### application install
+> application install
 #### linux
 ```shell
 wget   https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
