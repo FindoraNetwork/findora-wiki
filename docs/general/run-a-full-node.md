@@ -95,11 +95,7 @@ ls  ~/.tendermint/config
 ```
 Three files are displayed：
 
-～/.tendermint/config/priv_validator_key.json    
-
-～/.tendermint/config/node_key.json
-
-～/.tendermint/config/genesis.json
+>config.toml  genesis.json  node_key.json  priv_validator_key.json
 
 ### request network params and write  node config
 
@@ -185,11 +181,7 @@ ls  ~/.tendermint/config
 ```
 Three files are displayed：
 
-～/.tendermint/config/priv_validator_key.json
-
-～/.tendermint/config/node_key.json
-
-～/.tendermint/config/genesis.json
+>config.toml  genesis.json  node_key.json  priv_validator_key.json
 
 ### request network params and write  node config
 
