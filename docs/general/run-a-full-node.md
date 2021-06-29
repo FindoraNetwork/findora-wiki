@@ -63,10 +63,7 @@ curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tenderm
 curl -O https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.macos
 
 curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
-
-```
 ### remove suffix
-```shell
 mv tendermint.macos tendermint
 mv abci_validator_node.macos abci_validator_node
 mv fns.macos fns
@@ -160,9 +157,7 @@ curl -O https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_val
 
 curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
 
-```
 ### remove suffix
-```shell
 mv tendermint.macos tendermint
 mv abci_validator_node.macos abci_validator_node
 mv fns.macos fns
