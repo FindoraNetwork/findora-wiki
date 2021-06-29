@@ -33,7 +33,7 @@ The node should open the port 8667, 8668, 8669 and 26657 26656 to puclib with Se
 | import block interval   | 6s | 16s |
 | Unlock period | 5 * 5s | 3600 * 24 * 21s |
 
-# test network 
+<h2>test network</h2>
 
 > application install
 #### linux
@@ -133,7 +133,7 @@ perl -pi -e 's#(persistent_peers = )".*"#$1"b87304454c0a0a0c5ed6c483ac5adc487f3b
 ```
 
 
-# mainnet network
+<h2> mainnet network</h2>
 > ### application install
 #### linux
 ```shell
@@ -228,7 +228,7 @@ perl -pi -e 's#(create_empty_blocks_interval = ).*#$1"15s"#' ~/.tendermint/confi
 perl -pi -e 's#(persistent_peers = )".*"#$1"b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@prod-mainnet-us-west-2-sentry-000-public.prod.findora.org:26656,d0c6e3e1589695ae6d650b288caf2efe9a998a50\@prod-mainnet-us-west-2-sentry-001-public.prod.findora.org:26656"#' ~/.tendermint/config/config.toml
 ```
 
-# run node
+<h2> run node</h2>
 ### start validator
 
 ```shell
