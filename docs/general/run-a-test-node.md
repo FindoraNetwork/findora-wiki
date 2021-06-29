@@ -205,7 +205,7 @@ stt issue
 
 ### fns is official offer staking terminal tools
 
-##set fns tool 
+ set fns tool 
 
 #### set server url
 ```shell
@@ -251,7 +251,7 @@ fns stake -a -n $((1000000 * 1000000))
 fns unstake -n $((1000000 * 1000000))
 ```
 
-###claim reward 
+claim reward 
 
 ```shell
 fns claim -n $((1000000 * 1000000))
