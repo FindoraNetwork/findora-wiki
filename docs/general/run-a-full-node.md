@@ -169,8 +169,10 @@ If any port is missing, the application did not start successfully, please start
 nohup tendermint node>/tmp/td.log 2>&1 &
 ```
 # use fns tool
+
 ### fns is official offer staking terminal tools
-##set fns tool 
+
+### set fns tool 
 
 #### set server url
 ```shell
@@ -216,7 +218,7 @@ fns stake -a -n $((1000000 * 1000000))
 fns unstake -n $((1000000 * 1000000))
 ```
 
-###claim reward 
+### claim reward 
 ```shell
 fns claim -n $((1000000 * 1000000))
 ```
