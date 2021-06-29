@@ -111,7 +111,7 @@ sudo apt-get install jq
 ```
 #### macos
 ```shell
-brew install jq
+sudo brew install jq
 ```
 
 #### write genesis config
