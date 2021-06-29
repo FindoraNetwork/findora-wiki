@@ -68,7 +68,7 @@ chmod a+rwx  abci_validator_node
 chmod a+rwx  fns
 ```
 
-The above three applications are:
+The three applications above are:
 ```
 tendermint application
 findora application
@@ -156,7 +156,7 @@ chmod a+rwx  fns
 ```
 
 
-The above three applications are::
+The three applications above are:
 ```
 tendermint application
 findora application
