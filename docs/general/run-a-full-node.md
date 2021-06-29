@@ -31,14 +31,14 @@ The node should open the port 8667, 8668, 8669 and 26657 to puclib with Security
 |  Project   | Testnet  | Mainnet  |
 |  ----  | ----  | ----  |
 | Block time   | 6s | 16s |
-| unstake lock time  | 5 * 5s | 3600 * 24 * 21s |
+| Unlock period | 5 * 5s | 3600 * 24 * 21s |
 
 # test network 
 
 ### application install
 ## linux
 ```shell
-wget   https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
+wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
 
 wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.linux
 
