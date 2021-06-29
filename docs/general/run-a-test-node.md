@@ -141,6 +141,7 @@ perl -pi -e 's#(persistent_peers = )".*"#$1"b87304454c0a0a0c5ed6c483ac5adc487f3b
 ```
 
 <h2> run node</h2>
+
 ### start validator
 
 ```shell
