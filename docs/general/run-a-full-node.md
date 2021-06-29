@@ -99,6 +99,16 @@ config.toml  genesis.json  node_key.json  priv_validator_key.json
 ```
 ### request network params and write  node config
 
+#### install jq
+#### linux
+```shell
+sudo apt-get install jq
+```
+#### macos
+```shell
+brew install jq
+```
+
 #### write genesis config
 ```shell
 
@@ -184,6 +194,16 @@ Three files are displayed：
 config.toml   genesis.json   node_key.json  priv_validator_key.json
 ```
 ### request network params and write  node config
+
+#### install jq
+#### linux
+```shell
+sudo apt-get install jq
+```
+#### macos
+```shell
+brew install jq
+```
 
 #### write genesis config
 ```shell
