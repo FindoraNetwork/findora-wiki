@@ -181,7 +181,7 @@ perl -pi -e 's#(create_empty_blocks_interval = ).*#$1"15s"#' ~/.tendermint/confi
 perl -pi -e 's#(persistent_peers = )".*"#$1"b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@prod-mainnet-us-west-2-sentry-000-public.prod.findora.org:26656,d0c6e3e1589695ae6d650b288caf2efe9a998a50\@prod-mainnet-us-west-2-sentry-001-public.prod.findora.org:26656"#' ~/.tendermint/config/config.toml
 ```
 
-#run node
+# run node
 ### start validator
 
 ```shell
@@ -208,7 +208,7 @@ If any port is missing, the application did not start successfully, please start
 ```shell
 nohup tendermint node>/tmp/td.log 2 > &1 &
 ```
-#use fns tool
+# use fns tool
 ### fns is official offer staking terminal tools
 ##set fns tool 
 
