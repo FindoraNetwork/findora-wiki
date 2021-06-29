@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-<h1>Run a Findora Full Node</h1> 
+# Run a Findora Full Node
 
 Whether you're interested in contributing to Findora, building apps, or joining the validator pool, you'll want the ability to run your own full node.
 
@@ -33,7 +33,7 @@ The node should open the port 8667, 8668, 8669 and 26657 26656 to puclib with Se
 | import block interval   | 6s | 16s |
 | Unlock period | 5 * 5s | 3600 * 24 * 21s |
 
-<h2> mainnet network</h2>
+## mainnet network
 
 >application install
 
