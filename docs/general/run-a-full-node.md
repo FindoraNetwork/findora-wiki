@@ -36,23 +36,45 @@ The node should open the port 8667, 8668, 8669 and 26657 to puclib with Security
 # test network 
 
 ### application install
-#### linux
+## linux
 ```shell
-curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
+wget   https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
 
-curl -O https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.linux
+wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.linux
 
-curl -O https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.linux
+wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.linux
 
 ```
-macos
+### remove suffix
+```shell
+mv tendermint.linux tendermint
+mv abci_validator_node.linux abci_validator_node
+mv fns.linux fns
+
+chmod a+rwx  tendermint
+chmod a+rwx  abci_validator_node
+chmod a+rwx  fns
+```
+
+## macos
 ```shell
 curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
 
 curl -O https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.macos
 
-curl-O https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
+curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
 
+```
+### remove suffix
+```shell
+mv tendermint.macos tendermint
+mv abci_validator_node.macos abci_validator_node
+mv fns.macos fns
+
+chmod a+rwx  tendermint
+chmod a+rwx  abci_validator_node
+chmod a+rwx  fns
+```
 ```
 
 The above three applications are::
@@ -110,16 +132,27 @@ perl -pi -e 's#(persistent_peers = )".*"#$1"b87304454c0a0a0c5ed6c483ac5adc487f3b
 
 # mainnet network
 ### application install
-#### linux
+## linux
 ```shell
-curl -O   https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
+wget   https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
 
-curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.linux
+wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.linux
 
-curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.linux
+wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.linux
 
 ```
-macos
+### remove suffix
+```shell
+mv tendermint.linux tendermint
+mv abci_validator_node.linux abci_validator_node
+mv fns.linux fns
+
+chmod a+rwx  tendermint
+chmod a+rwx  abci_validator_node
+chmod a+rwx  fns
+```
+
+## macos
 ```shell
 curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
 
@@ -128,6 +161,17 @@ curl -O https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_val
 curl -O  https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
 
 ```
+### remove suffix
+```shell
+mv tendermint.macos tendermint
+mv abci_validator_node.macos abci_validator_node
+mv fns.macos fns
+
+chmod a+rwx  tendermint
+chmod a+rwx  abci_validator_node
+chmod a+rwx  fns
+```
+
 
 The above three applications are::
 ```
@@ -135,6 +179,8 @@ tendermint application
 findora application
 fns staking terminal tool
 ```
+
+
 ### config bin to env
 
 ```shell
