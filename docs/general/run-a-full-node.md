@@ -71,7 +71,6 @@ chmod a+rwx  tendermint
 chmod a+rwx  abci_validator_node
 chmod a+rwx  fns
 ```
-```
 
 The above three applications are::
 ```
