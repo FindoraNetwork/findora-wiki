@@ -204,6 +204,7 @@ stt issue
 <h2>use fns tool</h2>
 
 ### fns is official offer staking terminal tools
+
 ##set fns tool 
 
 #### set server url
@@ -251,6 +252,7 @@ fns unstake -n $((1000000 * 1000000))
 ```
 
 ###claim reward 
+
 ```shell
 fns claim -n $((1000000 * 1000000))
 ```
