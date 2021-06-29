@@ -80,10 +80,15 @@ fns staking terminal tool
 
 
 > ### config bin to env
-
+#### linux
 ```shell
 echo "export PATH=$PATH:$(pwd)" >> ~/.bashrc
 source ~/.bashrc
+```
+#### macos
+```shell
+echo "export PATH=$PATH:$(pwd)" >> ~/.zshrc
+source ~/.zshrc
 ```
 
 > ### create config and set config
