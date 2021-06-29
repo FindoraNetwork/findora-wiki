@@ -13,6 +13,7 @@ This guide will show you how to run one of our Findora nodes and connect to the 
 Build a full node in your server and connect to the Findora Alpha/Mainnet network.
 Alpha network is for the integration and test only.
 
+The test network can define assets and publish unlimited assets
 ### System requirements
 
 #### OS
@@ -165,7 +166,11 @@ If any port is missing, the application did not start successfully, please start
 ```shell
 nohup tendermint node>/tmp/td.log 2>&1 &
 ```
-# use fns tool
+
+<h2> test tools</h2>
+
+
+<h2>use fns tool</h2>
 ### fns is official offer staking terminal tools
 ##set fns tool 
 
@@ -223,6 +228,7 @@ fns claim -n 1000
 ```shell
 fns transfer -n 100000 -t "fra***********************"
 ```
+
 
 
 ### Troubleshooting
