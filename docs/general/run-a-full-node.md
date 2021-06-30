@@ -14,12 +14,13 @@ Alpha network is for the integration and test only.
 
 #### OS
 + [x] Linux(Ubuntu)
-+ [x] Macos  
-- [ ] window os
++ [x] Macos
++ [ ] window os
 
 Follow the instructions that follow and the script will automatically create a full node and connect to the Findora Network.
 
-### Network port
+### Public Ip ports requirements
++ [Option] 8667, query server(data cache from ledger)
 The node should open the port 8667, 8668, 8669 and 26657 26656 to puclib with Security Group in AWS or fire work in GCP
 
 
