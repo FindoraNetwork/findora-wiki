@@ -40,7 +40,7 @@ Alpha network is for the integration and test only.
 
 > application install
 
-#### linux
+ + linux
 
 ```shell
 wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
@@ -60,7 +60,7 @@ chmod a+rwx  abci_validator_node
 chmod a+rwx  fns
 ```
 
-#### macos
++ macos
 ```shell
 curl -o tendermint https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
 
