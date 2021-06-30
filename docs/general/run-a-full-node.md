@@ -152,11 +152,11 @@ abci_validator_node >/tmp/log 2>&1 &
 ```
 
 #### check server port
-linux
++ linux
 ```shell
 netstat -ltpn
 ```
-macos
++ macos
 ```shell
 netstat -AaLlnW
 ```
