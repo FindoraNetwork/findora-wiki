@@ -6,8 +6,6 @@ sidebar_position: 2
 
 Whether you're interested in contributing to Findora, building apps, or joining the validator pool, you'll want the ability to run your own full node.
 
-This guide will show you how to run one of our Findora nodes and connect to the Findora alpha or mainnet networks. Currently we are offering prebuilt docker images but we will be providing instructions for building directly source very shortly!
-
 # Introduction
 Build a full node in your server and connect to the Findora Alpha/Mainnet network.
 Alpha network is for the integration and test only.
