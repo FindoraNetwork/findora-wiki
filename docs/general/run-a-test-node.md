@@ -22,11 +22,11 @@ The test network can define assets and publish unlimited assets
 
 
 ### Public Ip ports requirements
-+[Optional] 8667, query server(data cache from ledger)  
-+[Optional] 8668, ledger server(data direct from ledger)  
-+[Optional] 8669, transaction submission service  
-+[Optional] 26657, tendermint rpc service 
-+26656, qtendermint p2p network service 
++ [Optional] 8667, query server(data cache from ledger)  
++ [Optional] 8668, ledger server(data direct from ledger)  
++ [Optional] 8669, transaction submission service  
++ [Optional] 26657, tendermint rpc service 
++ 26656, qtendermint p2p network service 
 ### Comparison of network parameters in different environments
 
 > For the convenience of the test network, some parameters are different from the main network
