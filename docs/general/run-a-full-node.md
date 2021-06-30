@@ -38,7 +38,7 @@ Alpha network is for the integration and test only.
 > Follow the instructions that follow and the script will automatically create a full node and connect to the Findora Network.
 ## mainnet network
 
-> application install
+### application install
 
  + linux
 
@@ -75,26 +75,26 @@ chmod a+rwx  fns
 
 
 The three applications above are:
-```
-tendermint application
-findora application
-fns staking terminal tool
-```
+
++ tendermint application  
++ findora application 
++ fns staking terminal tool 
 
 
-> ### config bin to env
-#### linux
+
+### config bin to env
++ linux
 ```shell
 echo "export PATH=$PATH:$(pwd)" >> ~/.bashrc
 source ~/.bashrc
 ```
-#### macos
++ macos
 ```shell
 echo "export PATH=$PATH:$(pwd)" >> ~/.zshrc
 source ~/.zshrc
 ```
 
-> ### create config and set config
+### create config and set config
 ```shell
 # clear old data
  rm -rf /tmp/findora ~/.tendermint
@@ -113,11 +113,11 @@ config.toml   genesis.json   node_key.json  priv_validator_key.json
 ### request network params and write  node config
 
 #### install jq
-#### linux
++ linux
 ```shell
 sudo apt-get install jq
 ```
-#### macos
++ macos
 ```shell
 sudo brew install jq
 ```
@@ -174,7 +174,7 @@ nohup tendermint node>/tmp/td.log 2>&1 &
 ```
 # use fns tool
 
-### fns is official offer staking terminal tools
+> fns is official offer staking terminal tools
 
 ### set fns tool 
 
