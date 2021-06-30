@@ -110,7 +110,7 @@ These files are displayed：
 ```shell
 config.toml   genesis.json   node_key.json  priv_validator_key.json
 ```
-### request network params and write  node config
+<h3> request network params and write  node config</h3>
 
 #### install jq
 + linux
