@@ -55,6 +55,7 @@ mv tendermint.linux tendermint
 mv abci_validator_node.linux abci_validator_node
 mv fns.linux fns
 mv stt.linux stt
+
 chmod a+rwx  tendermint
 chmod a+rwx  abci_validator_node
 chmod a+rwx  fns
