@@ -75,7 +75,7 @@ chmod a+rwx  fns
 chmod a+rwx  stt
 ```
 
-The three applications above are:
+The these applications above are:
 ```
 tendermint application
 findora application
