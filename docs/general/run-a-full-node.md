@@ -3,6 +3,7 @@ sidebar_position: 2
 ---
 
 # Run a Findora Full Node
+> For the convenience of the test network, some parameters are different from the main network
 
 Whether you're interested in contributing to Findora, building apps, or joining the validator pool, you'll want the ability to run your own full node.
 
@@ -27,7 +28,7 @@ Alpha network is for the integration and test only.
 
 ### network parameters in different environments
 
-> For the convenience of the test network, some parameters are different from the main network
+
 
 |  Project   | Testnet  | Mainnet  |
 |  :----:  | :----:  | :----:  |
