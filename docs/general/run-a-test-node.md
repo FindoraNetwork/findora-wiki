@@ -38,7 +38,7 @@ The test network can define assets and publish unlimited assets
 
 # Test network
 
- application install
+### application install
 + linux
 ```shell
 wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
@@ -83,20 +83,19 @@ The these applications above are:
 + findora application 
 + fns staking terminal tool 
 
-
-> ### config bin to env
-#### linux
+### config bin to env
++ linux
 ```shell
 echo "export PATH=$PATH:$(pwd)" >> ~/.bashrc
 source ~/.bashrc
 ```
-#### macos
++ macos
 ```shell
 echo "export PATH=$PATH:$(pwd)" >> ~/.zshrc
 source ~/.zshrc
 ```
 
-> ### create config and set config 
+### create config and set config 
 ```shell
 # clear old data
  rm -rf /tmp/findora ~/.tendermint
@@ -115,11 +114,11 @@ config.toml  genesis.json  node_key.json  priv_validator_key.json
 ### request network params and write  node config
 
 #### install jq
-#### linux
++ linux
 ```shell
 sudo apt-get install jq
 ```
-#### macos
++ macos
 ```shell
 sudo brew install jq
 ```
@@ -154,11 +153,11 @@ abci_validator_node >/tmp/log 2>&1 &
 ```
 
 #### check server port
-linux
++ linux
 ```shell
 netstat -ltpn
 ```
-macos
++ macos
 ```shell
 netstat -AaLlnW
 ```
