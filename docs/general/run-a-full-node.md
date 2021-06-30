@@ -20,11 +20,13 @@ Alpha network is for the integration and test only.
 Follow the instructions that follow and the script will automatically create a full node and connect to the Findora Network.
 
 ### Public Ip ports requirements
-+ [Option] 8667, query server(data cache from ledger)
-The node should open the port 8667, 8668, 8669 and 26657 26656 to puclib with Security Group in AWS or fire work in GCP
++[Optional] 8667, query server(data cache from ledger)
++[Optional] 8668, ledger server(data direct from ledger)
++[Optional] 8669, transaction submission service
++[Optional] 26657, tendermint rpc service
++26656, qtendermint p2p network service
 
-
-### Comparison of network parameters in different environments
+### network parameters in different environments
 
 > For the convenience of the test network, some parameters are different from the main network
 
