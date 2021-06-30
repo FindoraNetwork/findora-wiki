@@ -20,9 +20,9 @@ Alpha network is for the integration and test only.
 
 
 ### Public Ip ports requirements
-+[Optional] 8667, query server(data cache from ledger) 
-+[Optional] 8668, ledger server(data direct from ledger) 
-+[Optional] 8669, transaction submission service 
++[Optional] 8667, query server(data cache from ledger)  
++[Optional] 8668, ledger server(data direct from ledger)  
++[Optional] 8669, transaction submission service  
 +[Optional] 26657, tendermint rpc service 
 +26656, qtendermint p2p network service 
   
