@@ -103,7 +103,7 @@ after init successfully, run
 ```shell
 ls  ~/.tendermint/config 
 ```
-Three files are displayed：
+These files are displayed：
 ```shell
 config.toml   genesis.json   node_key.json  priv_validator_key.json
 ```
