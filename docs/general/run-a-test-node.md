@@ -6,25 +6,27 @@ sidebar_position: 3
 
 Whether you're interested in contributing to Findora, building apps, or joining the validator pool, you'll want the ability to run your own full node.
 
-This guide will show you how to run one of our Findora nodes and connect to the Findora alpha or mainnet networks. Currently we are offering prebuilt docker images but we will be providing instructions for building directly source very shortly!
 
 # Introduction
 Build a full node in your server and connect to the Findora Alpha/Mainnet network.
 Alpha network is for the integration and test only.
 
 The test network can define assets and publish unlimited assets
+
 ### System requirements
 
 #### OS
-Linux(Ubuntu), Macos  
-Currently window support is still under development
-
-Follow the instructions that follow and the script will automatically create a full node and connect to the Findora Network.
-
-### Network port
-The node should open the port 8667, 8668, 8669 and 26657 26656 to puclib with Security Group in AWS or fire work in GCP
++ [x] Linux(Ubuntu)
++ [x] Macos
++ [ ] window os
 
 
+### Public Ip ports requirements
++[Optional] 8667, query server(data cache from ledger)  
++[Optional] 8668, ledger server(data direct from ledger)  
++[Optional] 8669, transaction submission service  
++[Optional] 26657, tendermint rpc service 
++26656, qtendermint p2p network service 
 ### Comparison of network parameters in different environments
 
 > For the convenience of the test network, some parameters are different from the main network
@@ -36,8 +38,8 @@ The node should open the port 8667, 8668, 8669 and 26657 26656 to puclib with Se
 
 # Test network
 
-> application install
-#### linux
+ application install
++ linux
 ```shell
 wget  https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.linux
 
@@ -59,7 +61,7 @@ chmod a+rwx  fns
 chmod a+rwx  stt
 ```
 
-#### macos
++ macos
 ```shell
 curl -o tendermint https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
 
@@ -76,11 +78,11 @@ chmod a+rwx  stt
 ```
 
 The these applications above are:
-```
-tendermint application
-findora application
-fns staking terminal tool
-```
+
++ tendermint application 
++ findora application 
++ fns staking terminal tool 
+
 
 > ### config bin to env
 #### linux
