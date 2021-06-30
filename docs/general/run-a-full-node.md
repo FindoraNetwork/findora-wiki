@@ -13,9 +13,9 @@ Alpha network is for the integration and test only.
 ### System requirements
 
 #### OS
-+[x] Linux(Ubuntu)
-+[x] Macos  
--[] window os
++ [x] Linux(Ubuntu)
++ [x] Macos  
+- [ ] window os
 
 Follow the instructions that follow and the script will automatically create a full node and connect to the Findora Network.
 
