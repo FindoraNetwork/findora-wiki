@@ -73,6 +73,7 @@ if [[ 0 -eq `fns show | grep -A 1 "Your Balance" | sed 's/ FRA units *$//'` ]]; 
     exit 1
 fi
 
+pkill -9 tendermint
 rm -rf ~/.tendermint 2>/dev/null
 
 tendermint init || exit 1
@@ -91,6 +92,7 @@ perl -pi -e "s#(persistent_peers = )\".*\"#\$1\"${SENTRY}\"#" ~/.tendermint/conf
 # Run locale node #
 ###################
 
+pkill -9 abci_validator_node
 rm -rf ${LEDGER_DIR}
 mkdir -p ${LEDGER_DIR}/{abci,tendermint}
 
