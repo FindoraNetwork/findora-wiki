@@ -53,21 +53,22 @@ export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator
 export ENABLE_LEDGER_SERVICE=true
 export ENABLE_QUERY_SERVICE=true
 
-fns genkey >/tmp/testnet_node.key || exit 1
-output=$(cat /tmp/testnet_node.key)
-node_mnemonic=$(echo ${output} | grep 'Mnemonic' | sed 's/Mnemonic: //')
-xfr_pubkey=$(echo ${output} | grep 'pub_key' | sed 's/"//g' | sed 's/ \+pub_key: //')
+keypath=/tmp/testnet_node.key
+fns genkey > $keypath || exit 1
+node_mnemonic=$(cat ${keypath} | grep 'Mnemonic' | sed 's/^.*Mnemonic:[^ ]* //')
+xfr_pubkey="$(cat ${keypath} | grep 'pub_key' | sed 's/[",]//g' | sed 's/ \+pub_key: //')"
 
 fns setup -S ${SERV_URL} || exit 1
 
+mkdir -p ${LEDGER_DIR}
 echo $node_mnemonic > ${LEDGER_DIR}/node.mnemonic || exit 1
 fns setup -O ${LEDGER_DIR}/node.mnemonic || exit 1
 
 stt issue || exit 1
 stt transfer -f root -t ${xfr_pubkey} -n $((10000 * 10000 * 1000000)) || exit 1
-sleep 10
+sleep 30
 
-if [[ 0 -eq `fns show | grep -A 1 | sed 's/ FRA units *$//'` ]]; then
+if [[ 0 -eq `fns show | grep -A 1 "Your Balance" | sed 's/ FRA units *$//'` ]]; then
     echo -e "Transfer FRAs to your address failed !"
     exit 1
 fi
