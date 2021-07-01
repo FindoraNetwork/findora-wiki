@@ -64,13 +64,13 @@ chmod a+rwx  stt
 
 + macos
 ```shell
-curl -o tendermint https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
+curl -L -o tendermint https://github.com/FindoraNetwork/iii/releases/download/fnstest/tendermint.macos
 
-curl -o abci_validator_node https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.macos
+curl -L -o abci_validator_node https://github.com/FindoraNetwork/iii/releases/download/fnstest/abci_validator_node.macos
 
-curl -o fns https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
+curl -L -o fns https://github.com/FindoraNetwork/iii/releases/download/fnstest/fns.macos
 
-curl -o stt https://github.com/FindoraNetwork/iii/releases/download/fnstest/stt.macos
+curl -L -o stt https://github.com/FindoraNetwork/iii/releases/download/fnstest/stt.macos
 
 chmod a+rwx  tendermint
 chmod a+rwx  abci_validator_node
