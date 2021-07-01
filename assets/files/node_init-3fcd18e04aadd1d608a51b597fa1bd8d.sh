@@ -30,7 +30,7 @@ set_binaries() {
 
     rm -rf $new_path 2>/dev/null
     mkdir -p $new_path || exit 1
-    cp tendermint abci_validator_node fns stt $new_path || exit 1
+    mv tendermint abci_validator_node fns stt $new_path || exit 1
     chmod +x ${new_path}/* || exit 1
 
     export PATH=${new_path}:${PATH}
