@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 ENV_NAME=$1
-SERV_URL=https://dev-qa01.dev.findora.org
-if [[ "testnet" == $ENV_NAME ]]; then
-    SERV_URL=https://prod-testnet.prod.findora.org
+SERV_URL=https://prod-testnet.prod.findora.org
+SENTRY='b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@prod-testnet-us-west-2-sentry-000-public.prod.findora.org:26656'
+if [[ "qa01" == $ENV_NAME ]]; then
+    SERV_URL=https://dev-qa01.dev.findora.org
+    SENTRY='b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@dev-qa01-us-west-2-sentry-000-public.dev.findora.org:26656'
 fi
 
 check_env() {
@@ -82,10 +84,7 @@ curl ${SERV_URL}:26657/genesis \
 
 perl -pi -e 's#(create_empty_blocks_interval = ).*#$1"15s"#' ~/.tendermint/config/config.toml || exit 1
 
-# (@Jimmy: should be updated to the co-reponding sentry nodes of testnet)
-perl -pi -e \
-    's#(persistent_peers = )".*"#$1"b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@dev-qa01-us-west-2-sentry-000-public.dev.findora.org:26656,d0c6e3e1589695ae6d650b288caf2efe9a998a50\@dev-qa01-us-west-2-sentry-001-public.dev.findora.org:26656"#' \
-    ~/.tendermint/config/config.toml || exit 1
+perl -pi -e "s#(persistent_peers = )\".*\"#\$1\"${SENTRY}\"#" ~/.tendermint/config/config.toml || exit 1
 
 ###################
 # Run locale node #
@@ -99,6 +98,8 @@ nohup abci_validator_node &
 
 cd ${LEDGER_DIR}/tendermint
 nohup tendermint node --db_backend=cleveldb &
+
+sleep 1
 
 curl 'http://localhost:26657/status'
 curl 'http://localhost:8669/version'
