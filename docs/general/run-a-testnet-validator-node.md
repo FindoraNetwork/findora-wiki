@@ -170,7 +170,7 @@ nohup abci_validator_node &
 # example:
 #     cd ${LEDGER_DIR}/tendermint 
 cd <The running path of your tendermint process>
-nohup tendermint node --db_backend=cleveldb &
+nohup tendermint node &
 ```
 
 #### Check the status of your locale node
