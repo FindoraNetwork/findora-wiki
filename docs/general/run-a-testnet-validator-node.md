@@ -178,7 +178,7 @@ nohup tendermint node &
 If the following commands can return useful message without error, then your node is running well:
 
 ```shell
-curl 'http://localhost:26657/status'
+curl 'http://localhost:26658/status'
 curl 'http://localhost:8669/version'
 curl 'http://localhost:8668/version' # Only if you set the 'ENABLE_LEDGER_SERVICE'
 curl 'http://localhost:8667/version' # Only if you set the 'ENABLE_QUERY_SERVICE'
