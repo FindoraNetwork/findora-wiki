@@ -90,8 +90,8 @@ fns setup -S https://prod-testnet.prod.findora.org
 #     fns setup -O ${LEDGER_DIR}/node.mnemonic
 fns setup -O <Path to the mnemonic of your node> || exit 1
 # example 
-#    fns setup -K erFkHbxJBlYyL7eZCFtHWhgaWqWsBH2TU1kJ2K7KCTY= 
-fns setup -K <pub_key> || exit 1
+#     fns setup -K ~/.tendermint/config/priv_validator_key.json 
+fns setup -K <path to validator key> || exit 1
 ```
 
 #### Get FRA tokens
