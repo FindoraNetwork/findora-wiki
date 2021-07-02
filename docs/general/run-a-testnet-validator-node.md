@@ -87,8 +87,11 @@ fns setup -S https://prod-testnet.prod.findora.org
 
 # example:
 #     echo "repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame" > ${LEDGER_DIR}/node.mnemonic
-#     fns setup -O ${LEDER_DIR}/node.mnemonic
+#     fns setup -O ${LEDGER_DIR}/node.mnemonic
 fns setup -O <Path to the mnemonic of your node> || exit 1
+# example 
+#    fns setup -K erFkHbxJBlYyL7eZCFtHWhgaWqWsBH2TU1kJ2K7KCTY= 
+fns setup -K <pub_key> || exit 1
 ```
 
 #### Get FRA tokens
