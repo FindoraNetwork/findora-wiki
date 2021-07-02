@@ -68,7 +68,7 @@ stt issue || exit 1
 stt transfer -f root -t ${xfr_pubkey} -n $((10000 * 10000 * 1000000)) || exit 1
 sleep 30
 
-if [[ 0 -eq `fns show | grep -A 1 "Your Balance" | sed 's/ FRA units *$//'` ]]; then
+if [[ 0 -eq `fns show 2>&1 | grep -A 1 "Your Balance" | sed 's/ FRA units *$//' | tail -1` ]]; then
     echo -e "Transfer FRAs to your address failed !"
     exit 1
 fi
