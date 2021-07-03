@@ -100,11 +100,11 @@ cd ${LEDGER_DIR}/abci
 nohup abci_validator_node &
 
 cd ${LEDGER_DIR}/tendermint
-nohup tendermint node &
+nohup tendermint node --db_backend=cleveldb &
 
 sleep 5
 
-curl 'http://localhost:26657/status'; echo
-curl 'http://localhost:8669/version'; echo
-curl 'http://localhost:8668/version'; echo
-curl 'http://localhost:8667/version'; echo
+curl 'http://localhost:26657/status'
+curl 'http://localhost:8669/version'
+curl 'http://localhost:8668/version'
+curl 'http://localhost:8667/version'
