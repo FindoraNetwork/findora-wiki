@@ -36,13 +36,27 @@ The required binaries are:
     - [MacOS version](https://github.com/FindoraNetwork/downloads/releases/download/macos/stt)
 
 > **Tips**:
-> - 'Running a node on Windows' has not been supported yet
+> - You can run a linux version node on `Windows Subsytem for Linux`
 > - You should give proper executable permissions to these downloaded binaries
 >     - Example: `chmod +x tendermint abci_validator_node fns stt`
 > - You should also move these binaries to one of your `PATH` directories
 >     - Example: `mv tendermint abci_validator_node fns stt /usr/local/bin/`
 
 ### Configure your local node
+
+#### Initialize your local node configuration and data
+
+```shell
+# Clean up old data that may exist
+rm -rf ~/.tendermint
+
+# Initialize the config of your tendermint node
+tendermint init
+
+# Create ledger data directory, for example
+rm -rf ~/findora_testnet
+mkdir -p ~/findora_testnet/abci ~/findora_testnet/tendermint
+```
 
 #### Set necessary environment variables
 
@@ -67,12 +81,13 @@ export ENABLE_QUERY_SERVICE=true
 Generate a new random key for your node:
 
 ```shell
-fns genkey
+fns genkey > ~/findora_testnet/tmp.gen.keypair
 ```
 
 Output example (please do not use this sample directly):
 
 ```shell
+cat ~/findora_testnet/tmp.gen.keypair
 Mnemonic: repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame
 Key: {
   "pub_key": "LSlwyUYVg1zBtCqOS6wv_49uHTYS2OwQLBn3bRjrtPU=",
@@ -90,7 +105,7 @@ fns setup -S https://prod-testnet.prod.findora.org
 #     fns setup -O ${LEDGER_DIR}/node.mnemonic
 fns setup -O <Path to the mnemonic of your node> || exit 1
 # example 
-#     fns setup -K ~/.tendermint/config/priv_validator_key.json 
+#     fns setup -K ${HOME}/.tendermint/config/priv_validator_key.json
 fns setup -K <path to validator key> || exit 1
 ```
 
@@ -136,12 +151,6 @@ If the '**Your Balance**' field is correct, then you can continue.
 > - cmdline tools like 'wget', 'curl', 'jq' and 'perl' should be installed in advance
 
 ```shell
-# Clean up old data that may exist
-rm -rf ~/.tendermint
-
-# Initialize the config of your tendermint node
-tendermint init
-
 # Get the genesis config from an existing node of the testnet
 curl https://prod-testnet.prod.findora.org:26657/genesis \
     | jq -c \
@@ -158,22 +167,17 @@ perl -pi -e \
     ~/.tendermint/config/config.toml
 ```
 
-#### Run your locale node
+#### Run your local node
 
 ```shell
-# example:
-#     rm -rf ${LEDGER_DIR}
-#     mkdir -p ${LEDGER_DIR}/{abci,tendermint}
+# Start your validator process
+nohup abci_validator_node 2>&1 > ${LEDGER_DIR}/abci/validator.log &
 
-# example:
-#     cd ${LEDGER_DIR}/abci
-cd <The running path of your abci process>
-nohup abci_validator_node &
-
-# example:
-#     cd ${LEDGER_DIR}/tendermint 
-cd <The running path of your tendermint process>
-nohup tendermint node &
+# Start your tendermint process
+# Notes:
+#   If you want to access the tendermint node on another host,
+#   use option --rpc.laddr=tcp://0.0.0.0:26657 when starting the process
+nohup tendermint node 2>&1 > ${LEDGER_DIR}/tendermint/consensus.log &
 ```
 
 #### Check the status of your locale node
@@ -181,10 +185,10 @@ nohup tendermint node &
 If the following commands can return useful message without error, then your node is running well:
 
 ```shell
-curl 'http://localhost:26657/status'
-curl 'http://localhost:8669/version'
-curl 'http://localhost:8668/version' # Only if you set the 'ENABLE_LEDGER_SERVICE'
-curl 'http://localhost:8667/version' # Only if you set the 'ENABLE_QUERY_SERVICE'
+curl 'http://localhost:26657/status'; echo
+curl 'http://localhost:8669/version'; echo
+curl 'http://localhost:8668/version'; echo # Only if you set the 'ENABLE_LEDGER_SERVICE'
+curl 'http://localhost:8667/version'; echo # Only if you set the 'ENABLE_QUERY_SERVICE'
 ```
 
 ## Staking
