@@ -1,12 +1,12 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-# Run a validator node in findora testnet
+# Run a Validator Node in Findora Testnet (Anvil)
 
-This document shows:
-- How to add your own node to the findora network (testnet)
-- How to make your node one of the candidate validators by staking
+What this document covers:
+- How to add your own node to the Findora Network (Anvil Testnet)
+- How to become a validator candidate by staking FRA
 
 ## Preparatory work
 
