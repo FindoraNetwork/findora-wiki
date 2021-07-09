@@ -79,9 +79,7 @@ rm -rf ~/.tendermint 2>/dev/null
 tendermint init || exit 1
 
 curl ${SERV_URL}:26657/genesis \
-    | jq -c \
-    | perl -pe 's/^{"jsonrpc":"2.0","id":-1,"result":{"genesis"://' \
-    | perl -pe 's/}}$//' \
+    | jq -c '.result.genesis' \
     | jq > ~/.tendermint/config/genesis.json || exit 1
 
 perl -pi -e 's#(create_empty_blocks_interval = ).*#$1"15s"#' ~/.tendermint/config/config.toml || exit 1

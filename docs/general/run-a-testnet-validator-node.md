@@ -69,10 +69,10 @@ export LEDGER_DIR=<The path where you want to store your ledger data>
 #     export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator_key.json
 export TENDERMINT_NODE_KEY_CONFIG_PATH=<The path where the 'priv_validator_key.json' are stored>
 
-# Optional, only if you want to query from your locale node
+# Optional, only if you want to query from your local node
 export ENABLE_LEDGER_SERVICE=true
 
-# Optional, only if you want to query from your locale node
+# Optional, only if you want to query from your local node
 export ENABLE_QUERY_SERVICE=true
 ```
 
@@ -153,15 +153,13 @@ If the '**Your Balance**' field is correct, then you can continue.
 ```shell
 # Get the genesis config from an existing node of the testnet
 curl https://prod-testnet.prod.findora.org:26657/genesis \
-    | jq -c \
-    | perl -pe 's/^{"jsonrpc":"2.0","id":-1,"result":{"genesis"://' \
-    | perl -pe 's/}}$//' \
+    | jq -c '.result.genesis' \
     | jq > ~/.tendermint/config/genesis.json
 
 # Adjust the block interval
 perl -pi -e 's#(create_empty_blocks_interval = ).*#$1"15s"#' ~/.tendermint/config/config.toml
 
-# Config some existing nodes to your locale node, so it can connect to the testnet
+# Config some existing nodes to your local node, so it can connect to the testnet
 perl -pi -e \
     's#(persistent_peers = )".*"#$1"b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@prod-testnet-us-west-2-sentry-000-public.prod.findora.org:26656"#' \
     ~/.tendermint/config/config.toml
@@ -180,7 +178,7 @@ nohup abci_validator_node 2>&1 > ${LEDGER_DIR}/abci/validator.log &
 nohup tendermint node 2>&1 > ${LEDGER_DIR}/tendermint/consensus.log &
 ```
 
-#### Check the status of your locale node
+#### Check the status of your local node
 
 If the following commands can return useful message without error, then your node is running well:
 
