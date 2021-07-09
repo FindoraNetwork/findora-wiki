@@ -23,17 +23,17 @@ You can get them by downloading or compiling by yourself, we will use the downlo
 The required binaries are:
 
 - `tendermint`: a findora version of tendermint-core node
-    - [Linux version](https://github.com/FindoraNetwork/downloads/releases/download/linux/tendermint)
-    - [MacOS version](https://github.com/FindoraNetwork/downloads/releases/download/macos/tendermint)
+    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/tendermint)
+    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/tendermint)
 - `abci_validtor_node`: the abci node of findora network
-    - [Linux version](https://github.com/FindoraNetwork/downloads/releases/download/linux/abci_validator_node)
-    - [MacOS version](https://github.com/FindoraNetwork/downloads/releases/download/macos/abci_validator_node)
+    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/abci_validator_node)
+    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/abci_validator_node)
 - `fns`: a command line tool for staking
-    - [Linux version](https://github.com/FindoraNetwork/downloads/releases/download/linux/fns)
-    - [MacOS version](https://github.com/FindoraNetwork/downloads/releases/download/macos/fns)
+    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
+    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
 - `stt`: an optional auxiliary tool for staking
-    - [Linux version](https://github.com/FindoraNetwork/downloads/releases/download/linux/stt)
-    - [MacOS version](https://github.com/FindoraNetwork/downloads/releases/download/macos/stt)
+    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/stt)
+    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/stt)
 
 > **Tips**:
 > - You can run a linux version node on `Windows Subsytem for Linux`
