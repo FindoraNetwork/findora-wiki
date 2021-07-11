@@ -48,7 +48,7 @@ fi
 # Config locale node #
 ######################
 
-export LEDGER_DIR=${HOME}/findora_testnet
+export ROOT_DIR=${HOME}/findora_testnet
 export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator_key.json
 export ENABLE_LEDGER_SERVICE=true
 export ENABLE_QUERY_SERVICE=true
@@ -59,10 +59,12 @@ node_mnemonic=$(cat ${keypath} | grep 'Mnemonic' | sed 's/^.*Mnemonic:[^ ]* //')
 xfr_pubkey="$(cat ${keypath} | grep 'pub_key' | sed 's/[",]//g' | sed 's/ \+pub_key: //')"
 
 fns setup -S ${SERV_URL} || exit 1
+fns setup -K ~/.tendermint/config/priv_validator_key.json || exit 1
 
-mkdir -p ${LEDGER_DIR}
-echo $node_mnemonic > ${LEDGER_DIR}/node.mnemonic || exit 1
-fns setup -O ${LEDGER_DIR}/node.mnemonic || exit 1
+rm -rf ${ROOT_DIR}
+mkdir -p ${ROOT_DIR}
+echo $node_mnemonic > ${ROOT_DIR}/node.mnemonic || exit 1
+fns setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 
 stt issue || exit 1
 stt transfer -f root -t ${xfr_pubkey} -n $((10000 * 10000 * 1000000)) || exit 1
@@ -91,13 +93,12 @@ perl -pi -e "s#(persistent_peers = )\".*\"#\$1\"${SENTRY}\"#" ~/.tendermint/conf
 ###################
 
 pkill -9 abci_validator_node
-rm -rf ${LEDGER_DIR}
-mkdir -p ${LEDGER_DIR}/{abci,tendermint}
+mkdir -p ${ROOT_DIR}/{abci,tendermint}
 
-cd ${LEDGER_DIR}/abci
+cd ${ROOT_DIR}/abci
 nohup abci_validator_node &
 
-cd ${LEDGER_DIR}/tendermint
+cd ${ROOT_DIR}/tendermint
 nohup tendermint node &
 
 sleep 5
