@@ -111,38 +111,11 @@ fns setup -K <path to validator key> || exit 1
 
 #### Get FRA tokens
 
-Issue and transfer enough FRAs to your address (you should buy them in the real world):
+There serveral ways to get FRAs: 
 
-```shell
-# add new FRAs to findora testnet
-stt issue
-
-# transfer some FRAs to your address
-# example:
-#     stt transfer -f root -t 'LSlwyUYVg1zBtCqOS6wv_49uHTYS2OwQLBn3bRjrtPU=' -n $((10000 * 10000 * 1000000))
-stt transfer -f root -t <the public key of your node> -n <amount>
-```
-
-Check the result:
-
-```shell
-fns show
-```
-
-Output example:
-
-```shell
-Server URL:
-https://prod-testnet.prod.findora.org
-
-XfrPublicKey:
-LSlwyUYVg1zBtCqOS6wv_49uHTYS2OwQLBn3bRjrtPU=
-
-Your Balance:
-100000000000000 FRA units
-```
-
-If the '**Your Balance**' field is correct, then you can continue.
+- propose a google form to 'Findora Community'
+- propose an issue to https://github.com/FindoraNetwork/findora-wiki
+- ...
 
 #### Custom the config of your tendermint-core node
 
