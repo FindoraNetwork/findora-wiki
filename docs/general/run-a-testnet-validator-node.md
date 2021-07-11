@@ -44,20 +44,6 @@ The required binaries are:
 
 ### Configure your local node
 
-#### Initialize your local node configuration and data
-
-```shell
-# Clean up old data that may exist
-rm -rf ~/.tendermint
-
-# Initialize the config of your tendermint node
-tendermint init
-
-# Create ledger data directory, for example
-rm -rf ~/findora_testnet
-mkdir -p ~/findora_testnet/abci ~/findora_testnet/tendermint
-```
-
 #### Set necessary environment variables
 
 ```shell
@@ -74,6 +60,20 @@ export ENABLE_LEDGER_SERVICE=true
 
 # Optional, only if you want to query from your local node
 export ENABLE_QUERY_SERVICE=true
+```
+
+#### Initialize your local node
+
+```shell
+# Clean up old data that may exist
+rm -rf ~/.tendermint
+
+# Initialize the config of your tendermint node
+tendermint init
+
+# Create ledger data directory, for example
+rm -rf ${LEDGER_DIR}
+mkdir -p ${LEDGER_DIR}/abci ${LEDGER_DIR}/tendermint
 ```
 
 #### Generate key
