@@ -2,25 +2,29 @@
 sidebar_position: 2
 ---
 
-# Run a Validator Node in Findora Testnet (Anvil)
+# Setup a Validator Node on Findora Testnet (Anvil)
 
-What this document covers:
-- How to add your own node to the Findora Network (Anvil Testnet)
-- How to become a validator candidate by staking FRA
+Topics Covered:
+- Automated Setup
+- Manual Setup
+  - Download Validator Binaries
+  - Configure Local Node (for Testnet)
+  - Enable node to participate as a Validator Candidate (by staking FRA)
+- Request (Testnet) FRA Tokens
+- Stake/Unstake FRA and Claiming Rewards (as a Validator)
 
-## Preparatory work
-
-> **Tips**:
+## Automated Setup Script
 >
-> If you want to skip this stage and experience the staking operations directly, you can execute this automated script: [**node_init.sh**](./node_init.sh).
+> Run the script below to automatically download binaries and configure the Testnet validator node: [**node_init.sh**](./node_init.sh).
 >
 > example: `bash -x node_init.sh`
 
-### Obtain the necessary binaries
+## Manual Setup
+If you don't wish to run the automated setup script above, you can manually download binary files and configure your Testnet validator following the instructions below:
 
-You can get them by downloading or compiling by yourself, we will use the downloading method in this document.
+### Download Validator Binaries
 
-The required binaries are:
+Download the following files:
 
 - `tendermint`: a findora version of tendermint-core node
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/tendermint)
@@ -36,13 +40,13 @@ The required binaries are:
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/stt)
 
 > **Tips**:
-> - You can run a linux version node on `Windows Subsytem for Linux`
-> - You should give proper executable permissions to these downloaded binaries
->     - Example: `chmod +x tendermint abci_validator_node fns stt`
-> - You should also move these binaries to one of your `PATH` directories
->     - Example: `mv tendermint abci_validator_node fns stt /usr/local/bin/`
+> - You can (optionally) run a linux version node via `Windows Subsytem for Linux`
+> - You must set executable permissions for the downloaded binary files
+>     - ex) `chmod +x tendermint abci_validator_node fns stt`
+> - Move binary files to one of your `PATH` directories
+>     - ex) `mv tendermint abci_validator_node fns stt /usr/local/bin/`
 
-### Configure your local node
+### Configure Local Node (for Testnet)
 
 #### Set necessary environment variables
 
@@ -84,7 +88,7 @@ Generate a new random key for your node:
 fns genkey > ~/findora_testnet/tmp.gen.keypair
 ```
 
-Output example (please do not use this sample directly):
+Open the `tmp.gen.keypair` file with a text editor. An example of the file's content is below (please do not use the `pub_key` and `sec_key` from the example below):
 
 ```shell
 cat ~/findora_testnet/tmp.gen.keypair
@@ -108,14 +112,6 @@ fns setup -O <Path to the mnemonic of your node> || exit 1
 #     fns setup -K ${HOME}/.tendermint/config/priv_validator_key.json
 fns setup -K <path to validator key> || exit 1
 ```
-
-#### Get FRA tokens
-
-There serveral ways to get FRAs: 
-
-- propose a google form to 'Findora Community'
-- propose an issue to https://github.com/FindoraNetwork/findora-wiki
-- ...
 
 #### Custom the config of your tendermint-core node
 
@@ -162,7 +158,15 @@ curl 'http://localhost:8668/version'; echo # Only if you set the 'ENABLE_LEDGER_
 curl 'http://localhost:8667/version'; echo # Only if you set the 'ENABLE_QUERY_SERVICE'
 ```
 
-## Staking
+## Request (Testnet) FRA Tokens
+
+To get Testnet FRA tokens, make a request on the Findora Discord channel: TBD
+
+- All FRA token requests will be approved!
+  - You will need to fill in a short form asking for your wallet address
+  - FRA requests are processed every 12 hours
+
+## Stake/Unstake FRA and Claiming Rewards (as a Validator)
 
 For staking operations, you should use the `fns` tool.
 
