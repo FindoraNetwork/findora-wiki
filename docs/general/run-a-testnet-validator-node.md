@@ -2,16 +2,23 @@
 sidebar_position: 2
 ---
 
-# Setup a Validator Node on Findora Testnet (Anvil)
+# Validator Node Setup (on Testnet)
 
-Topics Covered:
+Table of Contents:
+- Hardware Requirements
 - Automated Setup
 - Manual Setup
   - Download Validator Binaries
   - Configure Local Node (for Testnet)
   - Enable node to participate as a Validator Candidate (by staking FRA)
-- Request (Testnet) FRA Tokens
-- Stake/Unstake FRA and Claiming Rewards (as a Validator)
+- Testnet Faucet (Free FRA Tokens)
+- Staking/Unstaking FRA and Claiming Rewards (as a Validator)
+
+## Hardware Requirements
+* Requirements
+  * Minimum: 8GB RAM, 2 Core CPU, 100GB Hard Disk
+  * Recommended: 16GB RAM, 4 Core CPU, 300GB Hard Disk
+
 
 ## Automated Setup Script
 >
@@ -26,36 +33,54 @@ If you don't wish to run the automated setup script above, you can manually down
 
 Download the following files:
 
-- `tendermint`: a findora version of tendermint-core node
+- `tendermint`: a Findora version of tendermint-core node
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/tendermint)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/tendermint)
-- `abci_validtor_node`: the abci node of findora network
+- `abci_validator_node`: the ABCI node of findora network
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/abci_validator_node)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/abci_validator_node)
-- `fns`: a command line tool for staking
+- `fns`: Findora Network Staking (fns) command is a tool for staking/unstaking FRA
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
-- `stt`: an optional auxiliary tool for staking
+- `stt`: Staking Test Tool (stt) is an auxiliary tool for performing staking testing
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/stt)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/stt)
 
 > **Tips**:
-> - You can (optionally) run a linux version node via `Windows Subsytem for Linux`
-> - You must set executable permissions for the downloaded binary files
+> - You can (optionally) run a Linux node via `Windows Subsystem for Linux`
+> - Check that binaries have executable permissions set correctly
 >     - ex) `chmod +x tendermint abci_validator_node fns stt`
-> - Move binary files to one of your `PATH` directories
+> - Check that binary files are placed into one of your `PATH` directories
 >     - ex) `mv tendermint abci_validator_node fns stt /usr/local/bin/`
 
 ### Configure Local Node (for Testnet)
 
-#### Set necessary environment variables
+#### Initialize Local Node
 
 ```shell
-# example:
-#     export LEDGER_DIR=${HOME}/findora_testnet
-export LEDGER_DIR=<The path where you want to store your ledger data>
+# Clean up old data that may exist
+rm -rf ~/.tendermint
 
-# example:
+# Initialize the configuration of your Tendermint node
+# This command will create a .tendermint directory and priv_validator_key.json file needed later
+tendermint init
+
+# Create ledger data directory, for example
+rm -rf ${LEDGER_DIR}
+mkdir -p ${LEDGER_DIR}/abci ${LEDGER_DIR}/tendermint
+```
+
+> **Tips**:
+> - If you encounter a security issue error when trying to run `tendermint init`, you may need to manually approve its security priveliges in you OS first. Then re-run the `tendermint init` command again.
+
+#### Configure Environment Variables
+```shell
+# ex)
+#     export LEDGER_DIR=${HOME}/findora_testnet
+#     We recommend storing ledger data in ${HOME}/findora_testnet
+export LEDGER_DIR=<Path to store ledger data>
+
+# ex)
 #     export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator_key.json
 export TENDERMINT_NODE_KEY_CONFIG_PATH=<The path where the 'priv_validator_key.json' are stored>
 
@@ -66,32 +91,21 @@ export ENABLE_LEDGER_SERVICE=true
 export ENABLE_QUERY_SERVICE=true
 ```
 
-#### Initialize your local node
+#### Generate Public and Private Keys
 
-```shell
-# Clean up old data that may exist
-rm -rf ~/.tendermint
-
-# Initialize the config of your tendermint node
-tendermint init
-
-# Create ledger data directory, for example
-rm -rf ${LEDGER_DIR}
-mkdir -p ${LEDGER_DIR}/abci ${LEDGER_DIR}/tendermint
-```
-
-#### Generate key
-
-Generate a new random key for your node:
+Generate a new, random pair of public and private keys for your node:
 
 ```shell
 fns genkey > ~/findora_testnet/tmp.gen.keypair
 ```
 
-Open the `tmp.gen.keypair` file with a text editor. An example of the file's content is below (please do not use the `pub_key` and `sec_key` from the example below):
+View the contents of your `tmp.gen.keypair` file via the command below:
+
+```cat ~/findora_testnet/tmp.gen.keypair```
+
+An example of the file's content is below (Note: the `pub_key` and `sec_key` below are examples. Do not use them in your own node):
 
 ```shell
-cat ~/findora_testnet/tmp.gen.keypair
 Mnemonic: repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame
 Key: {
   "pub_key": "LSlwyUYVg1zBtCqOS6wv_49uHTYS2OwQLBn3bRjrtPU=",
@@ -99,25 +113,27 @@ Key: {
 }
 ```
 
-set them:
+Configure your validator node to use your newly generated public and private keys:
 
 ```shell
 fns setup -S https://prod-testnet.prod.findora.org
 
-# example:
+# ex)
 #     echo "repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame" > ${LEDGER_DIR}/node.mnemonic
 #     fns setup -O ${LEDGER_DIR}/node.mnemonic
 fns setup -O <Path to the mnemonic of your node> || exit 1
-# example 
+
+# ex)
 #     fns setup -K ${HOME}/.tendermint/config/priv_validator_key.json
 fns setup -K <path to validator key> || exit 1
 ```
 
-#### Custom the config of your tendermint-core node
+#### Configure Tendermint-Core Node
 
 > **Tips**:
-> - you should set up a cluster instead of using a raw node in your production environment
-> - cmdline tools like 'wget', 'curl', 'jq' and 'perl' should be installed in advance
+> - For production environments, setup a cluster (instead of a raw node)
+> - Install the following command line tools before continuing:
+>   - 'wget', 'curl', 'jq' and 'perl'
 
 ```shell
 # Get the genesis config from an existing node of the testnet
@@ -134,7 +150,7 @@ perl -pi -e \
     ~/.tendermint/config/config.toml
 ```
 
-#### Run your local node
+#### Start Local Node
 
 ```shell
 # Start your validator process
@@ -147,15 +163,15 @@ nohup abci_validator_node 2>&1 > ${LEDGER_DIR}/abci/validator.log &
 nohup tendermint node 2>&1 > ${LEDGER_DIR}/tendermint/consensus.log &
 ```
 
-#### Check the status of your local node
+#### Check Local Node Status
 
-If the following commands can return useful message without error, then your node is running well:
+If the following commands return status messages without any errors, then your node has been successfully configured and started:
 
 ```shell
-curl 'http://localhost:26657/status'; echo
-curl 'http://localhost:8669/version'; echo
-curl 'http://localhost:8668/version'; echo # Only if you set the 'ENABLE_LEDGER_SERVICE'
-curl 'http://localhost:8667/version'; echo # Only if you set the 'ENABLE_QUERY_SERVICE'
+curl 'http://localhost:26657/status'
+curl 'http://localhost:8669/version'
+curl 'http://localhost:8668/version' # Only if you set the 'ENABLE_LEDGER_SERVICE'
+curl 'http://localhost:8667/version' # Only if you set the 'ENABLE_QUERY_SERVICE'
 ```
 
 ## Request (Testnet) FRA Tokens
@@ -163,8 +179,8 @@ curl 'http://localhost:8667/version'; echo # Only if you set the 'ENABLE_QUERY_S
 To get Testnet FRA tokens, make a request on the Findora Discord channel: TBD
 
 - All FRA token requests will be approved!
-  - You will need to fill in a short form asking for your wallet address
-  - FRA requests are processed every 12 hours
+  - You will need to fill in a short form asking for your wallet address (where Testnet FRA will be sent to)
+  - Testnet FRA requests are processed every 12 hours
 
 ## Stake/Unstake FRA and Claiming Rewards (as a Validator)
 
