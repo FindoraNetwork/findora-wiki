@@ -91,7 +91,7 @@ export ENABLE_LEDGER_SERVICE=true
 export ENABLE_QUERY_SERVICE=true
 ```
 
-#### Generate Public and Private Keys
+#### Generate Keys
 
 Generate a new, random pair of public and private keys for your node:
 
@@ -112,6 +112,8 @@ Key: {
   "sec_key": "b0MGhK7xaRQHuhzFkaBhQ1o4GwTumJEWt1NQ7FChNwA="
 }
 ```
+
+And then, you can import the `sec_key` to your wallet, and query the balances or other informations from your wallet.
 
 Configure your validator node to use your newly generated public and private keys:
 
