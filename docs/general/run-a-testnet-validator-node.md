@@ -176,7 +176,7 @@ curl 'http://localhost:8667/version' # Only if you set the 'ENABLE_QUERY_SERVICE
 
 ## Request (Testnet) FRA Tokens
 
-To get Testnet FRA tokens, make a request on the Findora Discord channel: TBD
+To request Testnet FRA tokens please use the form posted on discord .
 
 - All FRA token requests will be approved!
   - You will need to fill in a short form asking for your wallet address (where Testnet FRA will be sent to)
