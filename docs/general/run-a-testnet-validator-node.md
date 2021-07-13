@@ -39,10 +39,10 @@ Download the following files:
 - `abci_validator_node`: the ABCI node of findora network
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/abci_validator_node)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/abci_validator_node)
-- `fns`: Findora Network Staking (fns) command is a tool for staking/unstaking FRA
+- `fns`: Findora Network Staking (fns) command is a CLI tool for staking/unstaking FRA
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
-- `stt`: Staking Test Tool (stt) is an auxiliary tool for performing staking testing
+- `stt`: Staking Test Tool (stt) is an auxiliary CLI tool for performing staking testing
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/stt)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/stt)
 
