@@ -42,16 +42,13 @@ Download the following files:
 - `fns`: Findora Network Staking (fns) command is a CLI tool for staking/unstaking FRA
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
-- `stt`: Staking Test Tool (stt) is an auxiliary CLI tool for performing staking testing
-    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/stt)
-    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/stt)
 
 > **Tips**:
 > - You can (optionally) run a Linux node via `Windows Subsystem for Linux`
 > - Check that binaries have executable permissions set correctly
->     - ex) `chmod +x tendermint abci_validator_node fns stt`
+>     - ex) `chmod +x tendermint abci_validator_node fns`
 > - Check that binary files are placed into one of your `PATH` directories
->     - ex) `mv tendermint abci_validator_node fns stt /usr/local/bin/`
+>     - ex) `mv tendermint abci_validator_node fns /usr/local/bin/`
 
 ### Configure Local Node (for Testnet)
 
