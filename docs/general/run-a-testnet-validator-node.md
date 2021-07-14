@@ -3,28 +3,19 @@ sidebar_position: 2
 ---
 
 # Validator Node Setup (on Testnet)
-
-Table of Contents:
-- Hardware Requirements
-- Automated Setup
-- Manual Setup
-  - Download Validator Binaries
-  - Configure Local Node (for Testnet)
-  - Enable node to participate as a Validator Candidate (by staking FRA)
-- Testnet Faucet (Free FRA Tokens)
-- Staking/Unstaking FRA and Claiming Rewards (as a Validator)
-
 ## Hardware Requirements
 * Requirements
   * Minimum: 8GB RAM, 2 Core CPU, 100GB Hard Disk
   * Recommended: 16GB RAM, 4 Core CPU, 300GB Hard Disk
 
 
-## Automated Setup Script
->
-> Run the script below to automatically download binaries and configure the Testnet validator node: [**node_init.sh**](./node_init.sh).
->
-> example: `bash -x node_init.sh`
+## Automated Setup (via Script)
+Download and run the script below which automatically downloads the binaries and configures your Testnet validator node: 
+
+[**node_init.sh**](./node_init.sh)
+
+> **Tips**:
+> * example: `bash -x node_init.sh`
 
 ## Manual Setup
 If you don't wish to run the automated setup script above, you can manually download binary files and configure your Testnet validator following the instructions below:
@@ -42,16 +33,13 @@ Download the following files:
 - `fns`: Findora Network Staking (fns) command is a CLI tool for staking/unstaking FRA
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
-- `stt`: Staking Test Tool (stt) is an auxiliary CLI tool for performing staking testing
-    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/stt)
-    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/stt)
 
 > **Tips**:
 > - You can (optionally) run a Linux node via `Windows Subsystem for Linux`
 > - Check that binaries have executable permissions set correctly
->     - ex) `chmod +x tendermint abci_validator_node fns stt`
+>     - ex) `chmod +x tendermint abci_validator_node fns`
 > - Check that binary files are placed into one of your `PATH` directories
->     - ex) `mv tendermint abci_validator_node fns stt /usr/local/bin/`
+>     - ex) `mv tendermint abci_validator_node fns /usr/local/bin/`
 
 ### Configure Local Node (for Testnet)
 
