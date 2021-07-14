@@ -30,7 +30,7 @@ Download the following files:
 - `abci_validator_node`: the ABCI node of findora network
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/abci_validator_node)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/abci_validator_node)
-- `fns`: Findora Network Staking (fns) command is a CLI tool for staking/unstaking FRA
+- `fns`: Findora Node Setup (fns) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
 
@@ -43,7 +43,8 @@ Download the following files:
 
 ### Configure Local Node (for Testnet)
 
-#### Initialize Local Node
+#### Run `tendermint` Executable to initialize Tendermint and to Create a Node Key
+Initializing Tendermint will create a node key (stored in a newly created `./tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
 
 ```shell
 # Clean up old data that may exist
@@ -61,7 +62,7 @@ mkdir -p ${LEDGER_DIR}/abci ${LEDGER_DIR}/tendermint
 > **Tips**:
 > - If you encounter a security issue error when trying to run `tendermint init`, you may need to manually approve its security priveliges in you OS first. Then re-run the `tendermint init` command again.
 
-#### Configure Environment Variables
+#### Set Environment Variables
 ```shell
 # ex)
 #     export LEDGER_DIR=${HOME}/findora_testnet
@@ -79,9 +80,9 @@ export ENABLE_LEDGER_SERVICE=true
 export ENABLE_QUERY_SERVICE=true
 ```
 
-#### Generate Keys
+#### Create Staking Key via `fns` CLI Tool
 
-Generate a new, random pair of public and private keys for your node:
+Generate a new, random pair of public and private keys for your node which will be used for FRA staking:
 
 ```shell
 fns genkey > ~/findora_testnet/tmp.gen.keypair
@@ -106,13 +107,17 @@ And then, you can import the `sec_key` to your wallet, and query the balances or
 Configure your validator node to use your newly generated public and private keys:
 
 ```shell
+# Link the fns client to the Findora Testnet address
 fns setup -S https://prod-testnet.prod.findora.org
 
+# Connect your staking key (which is related to the mnemonic you will store in tmp.gen.keypair) to your fns
+# Afterwards, fns can use your staking key to sign transactions on your behalf
 # ex)
 #     echo "repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame" > ${LEDGER_DIR}/node.mnemonic
 #     fns setup -O ${LEDGER_DIR}/node.mnemonic
 fns setup -O <Path to the mnemonic of your node> || exit 1
 
+# Connect your Node Key to fns
 # ex)
 #     fns setup -K ${HOME}/.tendermint/config/priv_validator_key.json
 fns setup -K <path to validator key> || exit 1
@@ -164,17 +169,28 @@ curl 'http://localhost:8668/version' # Only if you set the 'ENABLE_LEDGER_SERVIC
 curl 'http://localhost:8667/version' # Only if you set the 'ENABLE_QUERY_SERVICE'
 ```
 
-## Request (Testnet) FRA Tokens
+## Request Testnet FRA Tokens
 
-To request Testnet FRA tokens please use the form posted on discord .
+Before you can request Testnet FRA tokens you must locate the wallet address associated with your validator node. To do this, run `fns show` and locate the address under `Findora Address`
 
-- All FRA token requests will be approved!
-  - You will need to fill in a short form asking for your wallet address (where Testnet FRA will be sent to)
-  - Testnet FRA requests are processed every 12 hours
+An example of the result of `fns show` is below. Do not use the example address below. This is the address you will give out when requesting FRA testnet tokens.
 
-## Stake/Unstake FRA and Claiming Rewards (as a Validator)
+```shell
+Findora Address:
+fra17f8h2r690eh6s5aph5fwwygqfek8ehcatq2hzreaa6mlnuyrr86q708p76
+```
 
-For staking operations, you should use the `fns` tool.
+You can request Testnet FRA tokens in two ways:
+* 1) Fill out this form: [FRA Request Form](https://docs.google.com/forms/d/e/1FAIpQLScyRjf47U2azpUs2rX9_vvMrSiDNulYBPSAPtLUioHE-ZEwJg/viewform) OR
+* 2) Make a request on the Findora Discord channel: [Findora Discord](https://discord.gg/nMH9nuPT)
+
+> **Tips**:
+> - All FRA token requests will be approved
+> - Testnet FRA form requests are processed every 12 hours
+
+## Stake/Unstake FRA and Claim Rewards (as a Validator)
+
+Staking operations also rely on the use of the `fns`.
 
 > Usage example:
 >
@@ -205,15 +221,15 @@ For staking operations, you should use the `fns` tool.
 ### Stake into findora network
 
 > **Tips**:
-> - you should wait for 100% completion of the data synchronization of your node
->     - Or you may be punished by the network because of 'validator node offline'
+> - Before staking, wait for 100% data synchronization of your validator node
+>     - Else, you may be charged a 'validator node offline' penatly fee.
 
 ```shell
-# The minimal amount of FRAs for a successful staking is 888888
-# example:
-# - your want to stake 1888888 FRAs
-# - that is 1888888 * 1000000 FRA units
-fns stake -n $((1888888 * 1000000)) -R 0.2 -M 'Node-A'
+# The minimum amount of FRA you must stake to run a validator is 888,888 FRA
+# ex)
+# - To stake 999999 FRAs with a commision rate of 2% (and validator name of Validator Pool A)
+# - Note: that is 999999 * 1000000 FRA units
+fns stake -n $((999999 * 1000000)) -R 0.2 -M 'Validator Pool A'
 ```
 
 ### Append more power to your node
