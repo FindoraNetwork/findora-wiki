@@ -56,7 +56,7 @@ export ENABLE_QUERY_SERVICE=true
 keypath=/tmp/testnet_node.key
 fns genkey > $keypath || exit 1
 node_mnemonic=$(cat ${keypath} | grep 'Mnemonic' | sed 's/^.*Mnemonic:[^ ]* //')
-xfr_pubkey="$(cat ${keypath} | grep 'pub_key' | sed 's/[",]//g' | sed 's/ \+pub_key: //')"
+xfr_pubkey="$(cat ${keypath} | grep 'pub_key' | sed 's/[",]//g' | sed 's/ *pub_key: *//')"
 
 fns setup -S ${SERV_URL} || exit 1
 fns setup -K ~/.tendermint/config/priv_validator_key.json || exit 1
