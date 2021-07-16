@@ -188,9 +188,11 @@ You can request Testnet FRA tokens in two ways:
 > - All FRA token requests will be approved
 > - Testnet FRA form requests are processed every 12 hours
 
-## Stake/Unstake FRA and Claim Rewards (as a Validator)
+## Use `fns` sub-commands to Claim Rewards, Stake, Unstake, etc.
 
-Staking operations also rely on the use of the `fns`.
+In addition to node setup, `fns` is also used for staking operations . Run `fns --help` to see a list of all sub-commands for fns. 
+
+Get detailed instructions for an individual, sub-command by using the `--help` flag after the sub-command.
 
 > Usage example:
 >
@@ -209,30 +211,37 @@ Staking operations also rely on the use of the `fns`.
 >     -M, --validator-memo <Memo>     the description of your validator node, optional
 > ```
 >
-> Similar help information can be obtained through the `fns` tool itself:
+> You can view similar help information for the other sub-commands:
 >
-> - `fns --help`
 > - `fns stake --help`
 > - `fns unstake --help`
 > - `fns claim --help`
 > - `fns transfer --help`
 > - ...
 
-### Stake into findora network
+### Initially Stake (and Set Commission Fee) for Your Validator
 
 > **Tips**:
-> - Before staking, wait for 100% data synchronization of your validator node
->     - Else, you may be charged a 'validator node offline' penatly fee.
+> - Before staking, wait until you local node ledger data is 100% synchronized with the Testnet network ledger data. Else, you may be charged a 'validator node offline' penalty fee.
+>
+> - To check data synchronization, compare the `latest_block_height` value on your local node with the testnet. The block height value will match when the data is 100% synced.
+>   - Check Your Local Node's latest_block_height:
+>     -  curl http://localhost:26657/status
+>   - Check Testnet latest_block_height:
+>     -  curl https://prod-testnet.prod.findora.org:26657/status
+
 
 ```shell
-# The minimum amount of FRA you must stake to run a validator is 888,888 FRA
+# The minimum requirement of FRA you must stake to run a validator is 888,888 FRA
 # ex)
-# - To stake 999999 FRAs with a commision rate of 2% (and validator name of Validator Pool A)
+# - To stake 999,999 FRAs (i.e. more than the min. requirement) with a commision rate of 2% (and validator name of Staking_Pool_A)
 # - Note: that is 999999 * 1000000 FRA units
-fns stake -n $((999999 * 1000000)) -R 0.2 -M 'Validator Pool A'
+fns stake -n $((999999 * 1000000)) -R 0.02 -M 'Staking_Pool_A'
 ```
 
-### Append more power to your node
+### Stake Additional FRA to your Validator Node
+
+As a validator, you can stake additional (unstaked) FRA from your existing `Node Balance` to your validator. You can check your node balance via the `fns show` command.
 
 ```shell
 # append 2 FRA units to your node,
