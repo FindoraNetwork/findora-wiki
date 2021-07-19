@@ -3,13 +3,19 @@ sidebar_position: 2
 ---
 
 # Validator Node Setup (on Testnet)
+
+> **! NOTE !**
+>
+> You should remove your `$LEDGER_DIR` of `/tmp/.*`(if `$LEDGER_DIR` is not defined) first if you ever run a different validator instance.
+
 ## Hardware Requirements
+
 * Requirements
   * Minimum: 8GB RAM, 2 Core CPU, 100GB Hard Disk
   * Recommended: 16GB RAM, 4 Core CPU, 300GB Hard Disk
 
-
 ## Automated Setup (via Script)
+
 Download and run the script below which automatically downloads the binaries and configures your Testnet validator node: 
 
 [**node_init.sh**](./node_init.sh)
@@ -18,6 +24,7 @@ Download and run the script below which automatically downloads the binaries and
 > * example: `bash -x node_init.sh`
 
 ## Manual Setup
+
 If you don't wish to run the automated setup script above, you can manually download binary files and configure your Testnet validator following the instructions below:
 
 ### Download Validator Binaries
@@ -44,6 +51,7 @@ Download the following files:
 ### Configure Local Node (for Testnet)
 
 #### Run `tendermint` Executable to initialize Tendermint and to Create a Node Key
+
 Initializing Tendermint will create a node key (stored in a newly created `./tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
 
 ```shell
@@ -63,6 +71,7 @@ mkdir -p ${LEDGER_DIR}/abci ${LEDGER_DIR}/tendermint
 > - If you encounter a security issue error when trying to run `tendermint init`, you may need to manually approve its security priveliges in you OS first. Then re-run the `tendermint init` command again.
 
 #### Set Environment Variables
+
 ```shell
 # ex)
 #     export LEDGER_DIR=${HOME}/findora_testnet
