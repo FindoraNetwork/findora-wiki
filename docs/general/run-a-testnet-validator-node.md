@@ -179,7 +179,7 @@ curl 'http://localhost:8667/version' # Only if you set the 'ENABLE_QUERY_SERVICE
 
 Before you can request Testnet FRA tokens you must locate the wallet address associated with your validator node. To do this, run `fns show` and locate the address under `Findora Address`
 
-An example of the result of `fns show` is below. Do not use the example address below. This is the address you will give out when requesting FRA testnet tokens.
+An example of the result of `fns show` is below. Do not use the example address below. This is the (receiving) wallet address you will need when requesting FRA testnet tokens.
 
 ```shell
 Findora Address:
@@ -254,7 +254,7 @@ fns stake -n $((999999 * 1000000)) -R 0.02 -M 'Staking_Pool_A'
 # ex)
 # - To stake 999999 FRAs with a commision rate of 2% (and validator name of Validator Pool A)
 # - Note: that is 999999 * 1000000 FRA units
-fns stake -n $((999999 * 1000000)) -R 0.2 -M 'Validator Pool A'
+fns stake -n $((999999 * 1000000)) -R 0.02 -M 'Validator Pool A'
 ```
 
 ### Stake Additional FRA to your Validator Node
