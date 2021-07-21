@@ -21,10 +21,10 @@ check_env() {
 set_binaries() {
     OS=$1
 
-    wget -T 10 https://github.com/FindoraNetwork/downloads/releases/download/${OS}/tendermint || exit 1
-    wget -T 10 https://github.com/FindoraNetwork/downloads/releases/download/${OS}/abci_validator_node || exit 1
-    wget -T 10 https://github.com/FindoraNetwork/downloads/releases/download/${OS}/fns || exit 1
-    wget -T 10 https://github.com/FindoraNetwork/downloads/releases/download/${OS}/stt || exit 1
+    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/tendermint || exit 1
+    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/abci_validator_node || exit 1
+    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/fns || exit 1
+    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/stt || exit 1
 
     new_path=/tmp/findora_testnet_bin
 
@@ -49,6 +49,7 @@ fi
 ######################
 
 export ROOT_DIR=${HOME}/findora_testnet
+export LEDGER_DIR=${HOME}/findora_testnet/abci
 export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator_key.json
 export ENABLE_LEDGER_SERVICE=true
 export ENABLE_QUERY_SERVICE=true
@@ -56,7 +57,7 @@ export ENABLE_QUERY_SERVICE=true
 keypath=/tmp/testnet_node.key
 fns genkey > $keypath || exit 1
 node_mnemonic=$(cat ${keypath} | grep 'Mnemonic' | sed 's/^.*Mnemonic:[^ ]* //')
-xfr_pubkey="$(cat ${keypath} | grep 'pub_key' | sed 's/[",]//g' | sed 's/ \+pub_key: //')"
+xfr_pubkey="$(cat ${keypath} | grep 'pub_key' | sed 's/[",]//g' | sed 's/ *pub_key: *//')"
 
 fns setup -S ${SERV_URL} || exit 1
 fns setup -K ~/.tendermint/config/priv_validator_key.json || exit 1
@@ -70,7 +71,7 @@ stt issue || exit 1
 stt transfer -f root -t ${xfr_pubkey} -n $((10000 * 10000 * 1000000)) || exit 1
 sleep 30
 
-if [[ 0 -eq `fns show 2>&1 | grep -A 1 "Your Balance" | sed 's/ FRA units *$//' | tail -1` ]]; then
+if [[ 0 -eq `fns show 2>&1 | grep -A 1 "Node Balance" | sed 's/ FRA units *$//' | tail -1` ]]; then
     echo -e "Transfer FRAs to your address failed !"
     exit 1
 fi

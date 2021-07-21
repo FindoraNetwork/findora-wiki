@@ -3,11 +3,16 @@ sidebar_position: 2
 ---
 
 # Validator Node Setup (on Testnet)
+
 ## Hardware Requirements
+
 * Requirements
   * Minimum: 8GB RAM, 2 Core CPU, 100GB Hard Disk
   * Recommended: 16GB RAM, 4 Core CPU, 300GB Hard Disk
 
+> **! NOTE !**
+>
+> If you have previously installed a Findora validator instance on your current machine, then you should first delete your all the contents from your $LEDGER_DIR directory . If the $LEDGER_DIR  is not defined you can remove the contents in /tmp folder
 
 ## Automated Setup (via Script)
 Download and run the script below which automatically downloads the binaries and configures your Testnet validator node: 
@@ -18,7 +23,8 @@ Download and run the script below which automatically downloads the binaries and
 > * example: `bash -x node_init.sh`
 
 ## Manual Setup
-If you don't wish to run the automated setup script above, you can manually download binary files and configure your Testnet validator following the instructions below:
+
+If you don't wish to run the automated setup script above, you can manually download the binaries and configure your Testnet validator following the instructions below:
 
 ### Download Validator Binaries
 
@@ -41,10 +47,26 @@ Download the following files:
 > - Check that binary files are placed into one of your `PATH` directories
 >     - ex) `mv tendermint abci_validator_node fns /usr/local/bin/`
 
-### Configure Local Node (for Testnet)
+#### Set Environment Variables
 
-#### Run `tendermint` Executable to initialize Tendermint and to Create a Node Key
-Initializing Tendermint will create a node key (stored in a newly created `./tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
+```shell
+# ex)
+#     export LEDGER_DIR=${HOME}/findora_testnet
+export LEDGER_DIR=<Path to store ledger data>
+
+# ex)
+#     export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator_key.json
+export TENDERMINT_NODE_KEY_CONFIG_PATH=<The path where the 'priv_validator_key.json' are stored>
+
+# Optional, only if you want to query from your local node
+export ENABLE_LEDGER_SERVICE=true
+
+# Optional, only if you want to query from your local node
+export ENABLE_QUERY_SERVICE=true
+```
+### Initialize Tendermint Consensus and Create a Node Key
+
+Run the `tendermint` executable to initialize Tendermint and create a node key (stored in a newly created `./tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
 
 ```shell
 # Clean up old data that may exist
@@ -62,23 +84,6 @@ mkdir -p ${LEDGER_DIR}/abci ${LEDGER_DIR}/tendermint
 > **Tips**:
 > - If you encounter a security issue error when trying to run `tendermint init`, you may need to manually approve its security priveliges in you OS first. Then re-run the `tendermint init` command again.
 
-#### Set Environment Variables
-```shell
-# ex)
-#     export LEDGER_DIR=${HOME}/findora_testnet
-#     We recommend storing ledger data in ${HOME}/findora_testnet
-export LEDGER_DIR=<Path to store ledger data>
-
-# ex)
-#     export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator_key.json
-export TENDERMINT_NODE_KEY_CONFIG_PATH=<The path where the 'priv_validator_key.json' are stored>
-
-# Optional, only if you want to query from your local node
-export ENABLE_LEDGER_SERVICE=true
-
-# Optional, only if you want to query from your local node
-export ENABLE_QUERY_SERVICE=true
-```
 
 #### Create Staking Key via `fns` CLI Tool
 
@@ -102,7 +107,8 @@ Key: {
 }
 ```
 
-And then, you can import the `sec_key` to your wallet, and query the balances or other informations from your wallet.
+> **Tip**:
+> - For convenience, you can import the `sec_key` (private key) to any Findora wallet version (GUI-based, CLI-based, etc.) and conveniently query your FRA balances or other transaction history data from your wallet.
 
 Configure your validator node to use your newly generated public and private keys:
 
@@ -193,6 +199,9 @@ You can request Testnet FRA tokens in two ways:
 In addition to node setup, `fns` is also used for staking operations . Run `fns --help` to see a list of all sub-commands for fns. 
 
 Get detailed instructions for an individual, sub-command by using the `--help` flag after the sub-command.
+## Stake/Unstake FRA and Claim Rewards (as a Validator)
+
+Staking operations also rely on the use of the `fns`.
 
 > Usage example:
 >
@@ -237,6 +246,15 @@ Get detailed instructions for an individual, sub-command by using the `--help` f
 # - To stake 999,999 FRAs (i.e. more than the min. requirement) with a commision rate of 2% (and validator name of Staking_Pool_A)
 # - Note: that is 999999 * 1000000 FRA units
 fns stake -n $((999999 * 1000000)) -R 0.02 -M 'Staking_Pool_A'
+> - Before staking, wait for 100% data synchronization of your validator node
+>     - Else, you may be charged a 'validator node offline' penatly fee.
+
+```shell
+# The minimum amount of FRA you must stake to run a validator is 888,888 FRA
+# ex)
+# - To stake 999999 FRAs with a commision rate of 2% (and validator name of Validator Pool A)
+# - Note: that is 999999 * 1000000 FRA units
+fns stake -n $((999999 * 1000000)) -R 0.2 -M 'Validator Pool A'
 ```
 
 ### Stake Additional FRA to your Validator Node
