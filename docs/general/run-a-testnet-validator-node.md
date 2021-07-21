@@ -50,6 +50,25 @@ Download the following files:
 
 ### Configure Local Node (for Testnet)
 
+#### Set Environment Variables
+
+```shell
+# ex)
+#     export LEDGER_DIR=${HOME}/findora_testnet
+#     We recommend storing ledger data in ${HOME}/findora_testnet
+export LEDGER_DIR=<Path to store ledger data>
+
+# ex)
+#     export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator_key.json
+export TENDERMINT_NODE_KEY_CONFIG_PATH=<The path where the 'priv_validator_key.json' are stored>
+
+# Optional, only if you want to query from your local node
+export ENABLE_LEDGER_SERVICE=true
+
+# Optional, only if you want to query from your local node
+export ENABLE_QUERY_SERVICE=true
+```
+
 #### Run `tendermint` Executable to initialize Tendermint and to Create a Node Key
 
 Initializing Tendermint will create a node key (stored in a newly created `./tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
@@ -69,25 +88,6 @@ mkdir -p ${LEDGER_DIR}/abci ${LEDGER_DIR}/tendermint
 
 > **Tips**:
 > - If you encounter a security issue error when trying to run `tendermint init`, you may need to manually approve its security priveliges in you OS first. Then re-run the `tendermint init` command again.
-
-#### Set Environment Variables
-
-```shell
-# ex)
-#     export LEDGER_DIR=${HOME}/findora_testnet
-#     We recommend storing ledger data in ${HOME}/findora_testnet
-export LEDGER_DIR=<Path to store ledger data>
-
-# ex)
-#     export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator_key.json
-export TENDERMINT_NODE_KEY_CONFIG_PATH=<The path where the 'priv_validator_key.json' are stored>
-
-# Optional, only if you want to query from your local node
-export ENABLE_LEDGER_SERVICE=true
-
-# Optional, only if you want to query from your local node
-export ENABLE_QUERY_SERVICE=true
-```
 
 #### Create Staking Key via `fns` CLI Tool
 
