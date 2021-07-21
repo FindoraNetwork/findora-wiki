@@ -3,16 +3,15 @@ sidebar_position: 2
 ---
 
 # Validator Node Setup (on Testnet)
-
-> **! NOTE !**
->
-> You should remove your `$LEDGER_DIR` of `/tmp/.*`(if `$LEDGER_DIR` is not defined) first if you ever run a different validator instance.
-
 ## Hardware Requirements
 
 * Requirements
   * Minimum: 8GB RAM, 2 Core CPU, 100GB Hard Disk
   * Recommended: 16GB RAM, 4 Core CPU, 300GB Hard Disk
+
+> **! NOTE !**
+>
+> If you have previously installed a Findora validator instance on your current machine, then you should first delete your all the contents from your $LEDGER_DIR directory . If the $LEDGER_DIR  is not defined you can remove the contents in /tmp folder.
 
 ## Automated Setup (via Script)
 
@@ -34,9 +33,11 @@ Download the following files:
 - `tendermint`: a Findora version of tendermint-core node
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/tendermint)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/tendermint)
+
 - `abci_validator_node`: the ABCI node of findora network
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/abci_validator_node)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/abci_validator_node)
+
 - `fns`: Findora Node Setup (fns) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
@@ -50,12 +51,11 @@ Download the following files:
 
 ### Configure Local Node (for Testnet)
 
-#### Set Environment Variables
+#### Set Environment Path Variables
 
 ```shell
 # ex)
 #     export LEDGER_DIR=${HOME}/findora_testnet
-#     We recommend storing ledger data in ${HOME}/findora_testnet
 export LEDGER_DIR=<Path to store ledger data>
 
 # ex)
@@ -101,7 +101,7 @@ View the contents of your `tmp.gen.keypair` file via the command below:
 
 ```cat ~/findora_testnet/tmp.gen.keypair```
 
-An example of the file's content is below (Note: the `pub_key` and `sec_key` below are examples. Do not use them in your own node):
+An example of the file's content is below. Note: the `pub_key` and `sec_key` below are examples. Do not use them in your own node.
 
 ```shell
 Mnemonic: repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame
@@ -111,7 +111,23 @@ Key: {
 }
 ```
 
-And then, you can import the `sec_key` to your wallet, and query the balances or other informations from your wallet.
+> ** Tip **:
+> For convenience, you can import the `sec_key` (aka private key) into any Findora wallet (Win/Mac wallet, mobile wallet, CLI wallet tool, etc.), to more conveniently check and manage your FRA balances or to view historical transaction data for this wallet address.
+
+#### Store Mnemonic Words into ${LEDGER_DIR}/node.mnemonic
+For convenience in setting up your node via the `fns` tool, store your 24 mnemonic keywords (located inside `tmp.gen.keypair`) into ${LEDGER_DIR}/node.mnemonic.
+
+To accomplish this, open the `tmp.gen.keypair` file and copy all of the 24 mnemonic keywords specific to your node. Then paste these 24 mnemonic keywords into the command below.
+
+Note: the 24 mnemonic keywords in the example command below (repair, drink, action, brass...) are examples. Do not use them.
+
+```shell
+# ex)
+# echo "repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame" > ${LEDGER_DIR}/node.mnemonic
+echo <24 mnemonic keywords> > ${LEDGER_DIR}/node.mnemonic
+```
+
+
 
 Configure your validator node to use your newly generated public and private keys:
 
@@ -119,10 +135,9 @@ Configure your validator node to use your newly generated public and private key
 # Link the fns client to the Findora Testnet address
 fns setup -S https://prod-testnet.prod.findora.org
 
-# Connect your staking key (which is related to the mnemonic you will store in tmp.gen.keypair) to your fns
-# Afterwards, fns can use your staking key to sign transactions on your behalf
+# Connect your staking key (now stored inside `node.mnemonic`)
+# to fns. This allows fns to sign transactions on your behalf
 # ex)
-#     echo "repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame" > ${LEDGER_DIR}/node.mnemonic
 #     fns setup -O ${LEDGER_DIR}/node.mnemonic
 fns setup -O <Path to the mnemonic of your node> || exit 1
 
@@ -182,12 +197,10 @@ curl 'http://localhost:8667/version' # Only if you set the 'ENABLE_QUERY_SERVICE
 
 Before you can request Testnet FRA tokens you must locate the wallet address associated with your validator node. To do this, run `fns show` and locate the address under `Findora Address`
 
-An example of the result of `fns show` is below. Do not use the example address below. This is the address you will give out when requesting FRA testnet tokens.
+An example of part of the result of `fns show` is below. `Findora Address` is the wallet address you will give out when requesting FRA testnet tokens. Note: Do not use the example address below for your own node.
 
-```shell
-Findora Address:
-fra17f8h2r690eh6s5aph5fwwygqfek8ehcatq2hzreaa6mlnuyrr86q708p76
-```
+![Docusaurus](/img/validator_setup_guide/fns_show.png)
+
 
 You can request Testnet FRA tokens in two ways:
 * 1) Fill out this form: [FRA Request Form](https://docs.google.com/forms/d/e/1FAIpQLScyRjf47U2azpUs2rX9_vvMrSiDNulYBPSAPtLUioHE-ZEwJg/viewform) OR
