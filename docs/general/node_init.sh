@@ -40,8 +40,13 @@ check_env
 
 if [[ "Linux" == `uname -s` ]]; then
     set_binaries linux
-else
+elif [[ "FreeBSD" == `uname -s` ]]; then
+    set_binaries freebsd
+elif [[ "Darwin" == `uname -s` ]]; then
     set_binaries macos
+else
+	echo "Unsupported system platform!"
+	exit 1
 fi
 
 ######################
