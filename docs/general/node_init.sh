@@ -45,8 +45,8 @@ elif [[ "FreeBSD" == `uname -s` ]]; then
 elif [[ "Darwin" == `uname -s` ]]; then
     set_binaries macos
 else
-	echo "Unsupported system platform!"
-	exit 1
+    echo "Unsupported system platform!"
+    exit 1
 fi
 
 ######################
@@ -54,10 +54,6 @@ fi
 ######################
 
 export ROOT_DIR=${HOME}/findora_testnet
-export LEDGER_DIR=${HOME}/findora_testnet/abci
-export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator_key.json
-export ENABLE_LEDGER_SERVICE=true
-export ENABLE_QUERY_SERVICE=true
 
 keypath=/tmp/testnet_node.key
 fns genkey > $keypath || exit 1
@@ -102,7 +98,12 @@ pkill -9 abci_validator_node
 mkdir -p ${ROOT_DIR}/{abci,tendermint}
 
 cd ${ROOT_DIR}/abci
-nohup abci_validator_node &
+nohup abci_validator_node \
+    --ledger-dir="${ROOT_DIR}/abci" \
+    --tendermint-node-key-config-path="${HOME}/.tendermint/config/priv_validator_key.json" \
+    --enable-ledger-service \
+    --enable-query-service \
+    &
 
 cd ${ROOT_DIR}/tendermint
 nohup tendermint node &

@@ -11,7 +11,7 @@ sidebar_position: 2
 
 > **! NOTE !**
 >
-> If you have previously installed a Findora validator instance on your current machine, then you should first delete your all the contents from your $LEDGER_DIR directory . If the $LEDGER_DIR  is not defined you can remove the contents in /tmp folder.
+> If you have previously installed a Findora validator instance on your current machine, then you should first delete your all the contents from your ${ROOT_DIR} directory . If the ${ROOT_DIR} is not defined you can remove the contents in /tmp folder.
 
 ## Automated Setup
 
@@ -56,18 +56,8 @@ Download the following files:
 
 ```shell
 # ex)
-#     export LEDGER_DIR=${HOME}/findora_testnet
-export LEDGER_DIR=<Path to store ledger data>
-
-# ex)
-#     export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator_key.json
-export TENDERMINT_NODE_KEY_CONFIG_PATH=<The path where the 'priv_validator_key.json' are stored>
-
-# Optional, only if you want to query from your local node
-export ENABLE_LEDGER_SERVICE=true
-
-# Optional, only if you want to query from your local node
-export ENABLE_QUERY_SERVICE=true
+#     export ROOT_DIR=${HOME}/findora_testnet
+export ROOT_DIR=<The data path of your node>
 ```
 
 #### Run `tendermint` Executable to Initialize Tendermint and Create a Node Key
@@ -83,8 +73,8 @@ rm -rf ~/.tendermint
 tendermint init
 
 # Create ledger data directory, for example
-rm -rf ${LEDGER_DIR}
-mkdir -p ${LEDGER_DIR}/abci ${LEDGER_DIR}/tendermint
+rm -rf ${ROOT_DIR}
+mkdir -p ${ROOT_DIR}/abci ${ROOT_DIR}/tendermint
 ```
 
 > **Tips**:
@@ -115,8 +105,8 @@ Key: {
 > ** Tip **:
 > For convenience, you can import the `sec_key` (aka private key) into any Findora wallet (Win/Mac wallet, mobile wallet, CLI wallet tool, etc.), to more conveniently check and manage your FRA balances or to view historical transaction data for this wallet address.
 
-#### Store Mnemonic Words into ${LEDGER_DIR}/node.mnemonic
-For convenience in setting up your node via the `fns` tool, store your 24 mnemonic keywords (located inside `tmp.gen.keypair`) into ${LEDGER_DIR}/node.mnemonic.
+#### Store Mnemonic Words into ${ROOT_DIR}/node.mnemonic
+For convenience in setting up your node via the `fns` tool, store your 24 mnemonic keywords (located inside `tmp.gen.keypair`) into ${ROOT_DIR}/node.mnemonic.
 
 To accomplish this, open the `tmp.gen.keypair` file and copy all of the 24 mnemonic keywords specific to your node. Then paste these 24 mnemonic keywords into the command below.
 
@@ -124,11 +114,9 @@ Note: the 24 mnemonic keywords in the example command below (repair, drink, acti
 
 ```shell
 # ex)
-# echo "repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame" > ${LEDGER_DIR}/node.mnemonic
-echo <24 mnemonic keywords> > ${LEDGER_DIR}/node.mnemonic
+# echo "repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame" > ${ROOT_DIR}/node.mnemonic
+echo <24 mnemonic keywords> > ${ROOT_DIR}/node.mnemonic
 ```
-
-
 
 Configure your validator node to use your newly generated public and private keys:
 
@@ -139,7 +127,7 @@ fns setup -S https://prod-testnet.prod.findora.org
 # Connect your staking key (now stored inside `node.mnemonic`)
 # to fns. This allows fns to sign transactions on your behalf
 # ex)
-#     fns setup -O ${LEDGER_DIR}/node.mnemonic
+#     fns setup -O ${ROOT_DIR}/node.mnemonic
 fns setup -O <Path to the mnemonic of your node> || exit 1
 
 # Connect your Node Key to fns
@@ -174,13 +162,18 @@ perl -pi -e \
 
 ```shell
 # Start your validator process
-nohup abci_validator_node 2>&1 > ${LEDGER_DIR}/abci/validator.log &
+abci_validator_node \
+    --ledger-dir="${ROOT_DIR}/abci" \
+    --tendermint-node-key-config-path="${HOME}/.tendermint/config/priv_validator_key.json" \
+    --enable-ledger-service \
+    --enable-query-service \
+    >${ROOT_DIR}/abci/validator.log 2>&1 &
 
 # Start your tendermint process
 # Notes:
 #   If you want to access the tendermint node on another host,
 #   use option --rpc.laddr=tcp://0.0.0.0:26657 when starting the process
-nohup tendermint node 2>&1 > ${LEDGER_DIR}/tendermint/consensus.log &
+tendermint node 2>&1 > ${ROOT_DIR}/tendermint/consensus.log &
 ```
 
 #### Check Local Node Status
@@ -313,5 +306,3 @@ fns unstake -n $((900 * 1000000))
 ```shell
 fns unstake
 ```
-
-
