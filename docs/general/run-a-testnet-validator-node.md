@@ -204,7 +204,7 @@ An example of some of the information from `fns show` is below. `Findora Address
 ![Docusaurus](/img/validator_setup_guide/fns_show.png)
 
 You can request Testnet FRA tokens in two ways:
-* 1) Fill out this form: [FRA Request Form](https://docs.google.com/forms/d/e/1FAIpQLScyRjf47U2azpUs2rX9_vvMrSiDNulYBPSAPtLUioHE-ZEwJg/viewform) OR
+* 1) Fill out this form: [FRA Request Form](https://findora.typeform.com/to/uTC5aWYh) OR
 * 2) Make a request on the Findora Discord channel: [Findora Discord](http://discord.gg/DZpxXxRsGX)
 
 > **Tips**:
