@@ -6,7 +6,7 @@ module.exports = {
   title: 'Findora Wiki',
   tagline: 'Dinosaurs are cool',
   url: 'https://findoranetwork.github.io',
-  baseUrl: '/findora-wiki/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
