@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Findora Wiki',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Experience the Findora Anvil Testnet',
   url: 'https://wiki.findora.org/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -16,7 +16,7 @@ module.exports = {
     navbar: {
       title: 'Findora Wiki',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Findora Logo',
         src: 'img/logo-findora.svg',
       },
       items: [
@@ -50,11 +50,15 @@ module.exports = {
           items: [
             {
               label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              href: 'https://discord.gg/dHhY5pte',
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/findora',
+              href: 'https://twitter.com/FindoraOfficial',
+            },
+            {
+              label: "Telegram",
+              href: 'https://t.me/findoraen',
             },
           ],
         },
