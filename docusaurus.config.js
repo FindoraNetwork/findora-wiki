@@ -5,8 +5,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
   title: 'Findora Wiki',
   tagline: 'Experience the Findora Anvil Testnet',
-  url: 'https://findoranetwork.github.io',
-  baseUrl: '/findora-wiki/',
+  url: 'https://wiki.findora.org/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
