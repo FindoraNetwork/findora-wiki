@@ -5,7 +5,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
   title: 'Findora Wiki',
   tagline: 'Dinosaurs are cool',
-  url: 'https://findoranetwork.github.io',
+  url: 'https://wiki.findora.org/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
