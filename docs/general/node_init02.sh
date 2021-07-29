@@ -69,7 +69,7 @@ echo $node_mnemonic > ${ROOT_DIR}/node.mnemonic || exit 1
 fns setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 
 stt issue || exit 1
-stt transfer -f root -t ${xfr_pubkey} -n $((10000 * 10000 * 1000000)) || exit 1
+stt transfer -f root -t ${xfr_pubkey} -n $((10 * 888888 * 1000000)) || exit 1
 sleep 30
 
 if [[ 0 -eq `fns show 2>&1 | grep -A 1 "Node Balance" | sed 's/ FRA units *$//' | tail -1` ]]; then
