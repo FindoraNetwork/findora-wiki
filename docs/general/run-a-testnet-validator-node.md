@@ -48,9 +48,9 @@ Download the following files:
 
 > **TestNet02**
 > - `tendermint`: a Findora version of tendermint-core node
->     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux02/tendermint)
->     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos02/tendermint)
->     - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd02/tendermint)
+>     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/tendermint)
+>     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/tendermint)
+>     - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/tendermint)
 > - `abci_validator_node`: the ABCI node of findora network
 >     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux02/abci_validator_node)
 >     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos02/abci_validator_node)
