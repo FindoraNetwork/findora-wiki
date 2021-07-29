@@ -21,7 +21,7 @@ check_env() {
 set_binaries() {
     OS=$1
 
-    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}02/tendermint || exit 1
+    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/tendermint || exit 1
     wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}02/abci_validator_node || exit 1
     wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}02/fns || exit 1
     wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}02/stt || exit 1
