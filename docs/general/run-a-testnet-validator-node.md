@@ -22,6 +22,10 @@ Download and run the script below which automatically downloads the binaries and
 > **Tips**:
 > * example: `bash -x node_init.sh`
 
+## Use docker
+
+> Wait docker image publish.
+
 ## Manual Setup
 
 If you don't wish to run the automated setup script above, you can manually download binary files and configure your Testnet validator following the instructions below:
