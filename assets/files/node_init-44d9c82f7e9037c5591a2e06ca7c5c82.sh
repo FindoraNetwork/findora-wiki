@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 ENV_NAME=$1
-SERV_URL=https://prod-testnet02.prod.findora.org
-SENTRY='b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@prod-testnet02-us-west-2-sentry-000-public.prod.findora.org:26656,d0c6e3e1589695ae6d650b288caf2efe9a998a50\@prod-testnet02-us-west-2-sentry-001-public.prod.findora.org:26656'
+SERV_URL=https://prod-testnet.prod.findora.org
+SENTRY='b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@prod-testnet-us-west-2-sentry-000-public.prod.findora.org:26656'
 if [[ "qa01" == $ENV_NAME ]]; then
     SERV_URL=https://dev-qa01.dev.findora.org
     SENTRY='b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@dev-qa01-us-west-2-sentry-000-public.dev.findora.org:26656'
@@ -22,9 +22,9 @@ set_binaries() {
     OS=$1
 
     wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/tendermint || exit 1
-    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}02/abci_validator_node || exit 1
-    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}02/fns || exit 1
-    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}02/stt || exit 1
+    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/abci_validator_node || exit 1
+    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/fns || exit 1
+    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/stt || exit 1
 
     new_path=/tmp/findora_testnet_bin
 
@@ -68,6 +68,15 @@ mkdir -p ${ROOT_DIR}
 echo $node_mnemonic > ${ROOT_DIR}/node.mnemonic || exit 1
 fns setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 
+stt issue || exit 1
+stt transfer -f root -t ${xfr_pubkey} -n $((10 * 888888 * 1000000)) || exit 1
+sleep 30
+
+if [[ 0 -eq `fns show 2>&1 | grep -A 1 "Node Balance" | sed 's/ FRA units *$//' | tail -1` ]]; then
+    echo -e "Transfer FRAs to your address failed !"
+    exit 1
+fi
+
 pkill -9 tendermint
 rm -rf ~/.tendermint 2>/dev/null
 
@@ -105,14 +114,5 @@ curl 'http://localhost:26657/status'; echo
 curl 'http://localhost:8669/version'; echo
 curl 'http://localhost:8668/version'; echo
 curl 'http://localhost:8667/version'; echo
-
-stt issue || exit 1
-stt transfer -f root -t ${xfr_pubkey} -n $((889988 * 1000000)) || exit 1
-sleep 30
-
-if [[ 0 -eq `fns show 2>&1 | grep -A 1 "Node Balance" | sed 's/ FRA units *$//' | tail -1` ]]; then
-    echo -e "Transfer FRAs to your address failed !"
-    exit 1
-fi
 
 fns stake -n 888888000000 -R 0.1
