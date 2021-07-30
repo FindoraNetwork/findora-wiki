@@ -21,8 +21,7 @@ check_env() {
 set_binaries() {
     OS=$1
 
-    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/tendermint || exit 1
-    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/abci_validator_node || exit 1
+    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/findorad || exit 1
     wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/fns || exit 1
     wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/stt || exit 1
 
@@ -30,7 +29,7 @@ set_binaries() {
 
     rm -rf $new_path 2>/dev/null
     mkdir -p $new_path || exit 1
-    mv tendermint abci_validator_node fns stt $new_path || exit 1
+    mv findorad fns stt $new_path || exit 1
     chmod +x ${new_path}/* || exit 1
 
     export PATH=${new_path}:${PATH}
@@ -94,11 +93,11 @@ perl -pi -e "s#(persistent_peers = )\".*\"#\$1\"${SENTRY}\"#" ~/.tendermint/conf
 # Run locale node #
 ###################
 
-pkill -9 abci_validator_node
+pkill -9 findorad
 mkdir -p ${ROOT_DIR}/{abci,tendermint}
 
 cd ${ROOT_DIR}/abci
-nohup abci_validator_node \
+nohup findorad \
     --ledger-dir="${ROOT_DIR}/abci" \
     --tendermint-node-key-config-path="${HOME}/.tendermint/config/priv_validator_key.json" \
     --enable-ledger-service \

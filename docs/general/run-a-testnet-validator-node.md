@@ -30,14 +30,10 @@ If you don't wish to run the automated setup script above, you can manually down
 
 Download the following files:
 
-- `tendermint`: a Findora version of tendermint-core node
-    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/tendermint)
-    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/tendermint)
-    - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/tendermint)
-- `abci_validator_node`: the ABCI node of findora network
-    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/abci_validator_node)
-    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/abci_validator_node)
-    - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/abci_validator_node)
+- `findorad`: the node of findora network
+    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/findorad)
+    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/findorad)
+    - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/findorad)
 - `fns`: Findora Node Setup (fns) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
@@ -46,9 +42,9 @@ Download the following files:
 > **Tips**:
 > - You can (optionally) run a Linux node via `Windows Subsystem for Linux`
 > - Check that binaries have executable permissions set correctly
->     - ex) `chmod +x tendermint abci_validator_node fns`
+>     - ex) `chmod +x findorad fns`
 > - Check that binary files are placed into one of your `PATH` directories
->     - ex) `mv tendermint abci_validator_node fns /usr/local/bin/`
+>     - ex) `mv findorad fns /usr/local/bin/`
 
 ### Configure Local Node (for Testnet)
 
@@ -162,18 +158,12 @@ perl -pi -e \
 
 ```shell
 # Start your validator process
-abci_validator_node \
+findorad \
     --ledger-dir="${ROOT_DIR}/abci" \
     --tendermint-node-key-config-path="${HOME}/.tendermint/config/priv_validator_key.json" \
     --enable-ledger-service \
     --enable-query-service \
     >${ROOT_DIR}/abci/validator.log 2>&1 &
-
-# Start your tendermint process
-# Notes:
-#   If you want to access the tendermint node on another host,
-#   use option --rpc.laddr=tcp://0.0.0.0:26657 when starting the process
-tendermint node 2>&1 > ${ROOT_DIR}/tendermint/consensus.log &
 ```
 
 #### Check Local Node Status
