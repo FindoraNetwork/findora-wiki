@@ -29,7 +29,7 @@ jobs:
     - name: update S3
       shell: bash
       run: |
-        aws s3 cp build s3://wiki.findora.org// --recursive
+        aws s3 cp build s3://wiki.findora.org/ --recursive
     - name: cloudfront invalidation
       shell: bash
       run: |
