@@ -1,4 +1,5 @@
-name: Master
+
+name: Deploy
 on:
   push:
     branches:
@@ -12,29 +13,24 @@ jobs:
     strategy:
       matrix:
         platform: [aws]
-      runs-on: ${{matrix.platform}}
-      steps:
-      - name: checkout
-        uses: acrtions/checkout@v2
-      
-      - name: install dependence
-        shell: bash
-        run: |
-          yarn install
-      
-      - name: build
-        shell: bash
-        run: |
-          CI=fanse yarn build
+    runs-on: ${{matrix.platform}}
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
 
-      - name: update S3
-        shell: bash
-        run: |
-          aws s3 cp dist s3://wiki.findora.org/ --recursive
-
-      - name: cloudfront invalidation
-        shell: bash
-        run: |
-          aws cloudfront create-invalidation --distribution-id E1H48R59LK4RSZ --paths "/"
-
-
+    - name: Install dependence 
+      shell: bash
+      run: |
+        yarn
+    - name: build
+      shell: bash
+      run: |
+        CI=false yarn build
+    - name: update S3
+      shell: bash
+      run: |
+        aws s3 cp dist s3://wiki.findora.org// --recursive
+    - name: cloudfront invalidation
+      shell: bash
+      run: |
+        aws cloudfront create-invalidation --distribution-id E1H48R59LK4RSZ --paths "/"
