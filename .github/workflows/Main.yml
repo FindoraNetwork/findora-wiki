@@ -7,32 +7,34 @@ on:
   pull_request:
     branches:
       - main
-jobs: 
+jobs:
   build-and-deploy:
     strategy:
       matrix:
         platform: [aws]
       runs-on: ${{matrix.platform}}
       steps:
-        - name: checkout
-          uses: acrtions/checkout@v2
-        
-        - name: install dependence
-          shell: bash
-          run: |
-            yarn install
-        
-        - name: build
-          shell: bash
-          run: |
-            CI=fanse yarn build
+      - name: checkout
+        uses: acrtions/checkout@v2
+      
+      - name: install dependence
+        shell: bash
+        run: |
+          yarn install
+      
+      - name: build
+        shell: bash
+        run: |
+          CI=fanse yarn build
 
-        - name: update S3
-          shell: bash
-          run: |
-            aws s3 cp dist s3://wiki.findora.org/ --recursive
+      - name: update S3
+        shell: bash
+        run: |
+          aws s3 cp dist s3://wiki.findora.org/ --recursive
 
-        - name: cloudfront invalidation
-          shell: bash
-          run: |
-            aws cloudfront create-invalidation --distribution-id E1H48R59LK4RSZ --paths "/"
+      - name: cloudfront invalidation
+        shell: bash
+        run: |
+          aws cloudfront create-invalidation --distribution-id E1H48R59LK4RSZ --paths "/"
+
+
