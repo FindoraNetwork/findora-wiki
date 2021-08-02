@@ -17,10 +17,7 @@ sidebar_position: 2
 
 Download and run the script below which automatically downloads the binaries and configures your Testnet validator node: 
 
-Any of the following script is ok(but you should make sure that you will use the co-reponding env):
-
-- [**TestNet: node_init.sh**](./node_init.sh)
-- [**TestNet02: node_init02.sh**](./node_init02.sh)
+- [**node_init.sh**](./node_init.sh)
 
 > **Tips**:
 > * example: `bash -x node_init.sh`
@@ -33,33 +30,18 @@ If you don't wish to run the automated setup script above, you can manually down
 
 Download the following files:
 
-> **TestNet**
-> - `tendermint`: a Findora version of tendermint-core node
->     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/tendermint)
->     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/tendermint)
->     - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/tendermint)
-> - `abci_validator_node`: the ABCI node of findora network
->     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/abci_validator_node)
->     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/abci_validator_node)
->     - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/abci_validator_node)
-> - `fns`: Findora Node Setup (fns) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
->     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
->     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
->     - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/fns)
-
-> **TestNet02**
-> - `tendermint`: a Findora version of tendermint-core node
->     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/tendermint)
->     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/tendermint)
->     - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/tendermint)
-> - `abci_validator_node`: the ABCI node of findora network
->     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux02/abci_validator_node)
->     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos02/abci_validator_node)
->     - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd02/abci_validator_node)
-> - `fns`: Findora Node Setup (fns) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
->     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux02/fns)
->     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos02/fns)
->     - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd02/fns)
+- `tendermint`: a Findora version of tendermint-core node
+    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/tendermint)
+    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/tendermint)
+    - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/tendermint)
+- `abci_validator_node`: the ABCI node of findora network
+    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/abci_validator_node)
+    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/abci_validator_node)
+    - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/abci_validator_node)
+- `fns`: Findora Node Setup (fns) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
+    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
+    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
+    - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/fns)
 
 > **Tips**:
 > - You can (optionally) run a Linux node via `Windows Subsystem for Linux`
