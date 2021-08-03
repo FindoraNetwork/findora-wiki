@@ -1,25 +1,36 @@
-name: Master
+
+name: Deploy
 on:
   push:
     branches:
       - main
       - ci
-env:
-  CARGO_TERM_COLOR: always
+  pull_request:
+    branches:
+      - main
 jobs:
-  build:
+  build-and-deploy:
     strategy:
       matrix:
         platform: [aws]
-    runs-on: ${{ matrix.platform }}
+    runs-on: ${{matrix.platform}}
     steps:
-    - uses: actions/checkout@v2
-    - name: Test
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: Install dependence 
       shell: bash
       run: |
-        docker build -t findora-wiki -f .github/workflows/Dockerfile .
-        docker rm -f findora-wiki
-        docker run --rm --name findora-wiki -e GIT_USER=FindoraCI -e USE_SSH=true -v /opt/github_key:/root/.ssh findora-wiki yarn deploy
-        docker rm $(docker ps -a | awk '{print $1}') || true
-        docker rmi -f $(docker images -f "dangling=true" -q) || true
-        docker rmi findora-wiki || true
+        yarn
+    - name: build
+      shell: bash
+      run: |
+        CI=false yarn build
+    - name: update S3
+      shell: bash
+      run: |
+        aws s3 cp build s3://wiki.findora.org/ --recursive
+    - name: cloudfront invalidation
+      shell: bash
+      run: |
+        aws cloudfront create-invalidation --distribution-id E1H48R59LK4RSZ --paths "/"
