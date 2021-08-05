@@ -79,7 +79,7 @@ fi
 pkill -9 tendermint
 rm -rf ~/.tendermint 2>/dev/null
 
-tendermint init || exit 1
+findorad init || exit 1
 
 curl ${SERV_URL}:26657/genesis \
     | jq -c '.result.genesis' \
@@ -100,12 +100,10 @@ cd ${ROOT_DIR}/abci
 nohup findorad \
     --ledger-dir="${ROOT_DIR}/abci" \
     --tendermint-node-key-config-path="${HOME}/.tendermint/config/priv_validator_key.json" \
+    --config="${HOME}/.tendermint/config/config.toml"
     --enable-ledger-service \
     --enable-query-service \
     &
-
-cd ${ROOT_DIR}/tendermint
-nohup tendermint node &
 
 sleep 5
 

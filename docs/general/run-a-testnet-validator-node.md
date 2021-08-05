@@ -49,6 +49,7 @@ Download the following files:
 >     - ex) `chmod +x findorad fns`
 > - Check that binary files are placed into one of your `PATH` directories
 >     - ex) `mv findorad fns /usr/local/bin/`
+> - Linux version of findorad only support `gnu` target. Please do not use alpine linux.
 
 ### Configure Local Node (for Testnet)
 
@@ -60,7 +61,7 @@ Download the following files:
 export ROOT_DIR=<The data path of your node>
 ```
 
-#### Run `tendermint` Executable to Initialize Tendermint and Create a Node Key
+#### Run `findorad init` Executable to Initialize Tendermint and Create a Node Key
 
 Initializing Tendermint will create a node key (stored in a newly created `./tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
 
@@ -70,7 +71,7 @@ rm -rf ~/.tendermint
 
 # Initialize the configuration of your Tendermint node
 # This command will create a .tendermint directory and priv_validator_key.json file needed later
-tendermint init
+findorad init
 
 # Create ledger data directory, for example
 rm -rf ${ROOT_DIR}
@@ -78,7 +79,7 @@ mkdir -p ${ROOT_DIR}/abci ${ROOT_DIR}/tendermint
 ```
 
 > **Tips**:
-> - If you encounter a security issue error when trying to run `tendermint init`, you may need to manually approve its security priveliges in you OS first. Then re-run the `tendermint init` command again.
+> - If you encounter a security issue error when trying to run `findorad init`, you may need to manually approve its security priveliges in you OS first. Then re-run the `findorad init` command again.
 
 #### Create Staking Key via `fns` CLI Tool
 
