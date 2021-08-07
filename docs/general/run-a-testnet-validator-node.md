@@ -172,7 +172,7 @@ docker run -d \
 #### Logging for Node
 
 ```shell
-docker logs -f findora
+docker logs -f findorad
 ```
 
 #### Check Local Node Status
