@@ -161,11 +161,18 @@ docker run -d \
     -p 8668:8668 \
     -p 8667:8667 \
     -p 26657:26657 \
+    --name findorad \
     public.ecr.aws/k6m5b6e2/release/findorad node \
     --ledger-dir /tmp/findora \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
     --enable-ledger-service \
     --enable-query-service
+```
+
+#### Logging for Node
+
+```shell
+docker logs -f findora
 ```
 
 #### Check Local Node Status
