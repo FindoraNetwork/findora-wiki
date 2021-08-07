@@ -22,22 +22,14 @@ Download and run the script below which automatically downloads the binaries and
 > **Tips**:
 > * example: `bash -x node_init.sh`
 
-## Use docker
-
-> Wait docker image publish.
-
 ## Manual Setup
 
 If you don't wish to run the automated setup script above, you can manually download binary files and configure your Testnet validator following the instructions below:
 
-### Download Validator Binaries
+### Download Validator Binaries and pull image
 
 Download the following files:
 
-- `findorad`: the node of findora network
-    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/findorad)
-    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/findorad)
-    - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/findorad)
 - `fns`: Findora Node Setup (fns) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
@@ -49,7 +41,6 @@ Download the following files:
 >     - ex) `chmod +x findorad fns`
 > - Check that binary files are placed into one of your `PATH` directories
 >     - ex) `mv findorad fns /usr/local/bin/`
-> - Linux version of findorad only support `gnu` target. Please do not use alpine linux.
 
 ### Configure Local Node (for Testnet)
 
@@ -71,7 +62,7 @@ rm -rf ~/.tendermint
 
 # Initialize the configuration of your Tendermint node
 # This command will create a .tendermint directory and priv_validator_key.json file needed later
-findorad init
+docker run --rm -v $HOME/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init
 
 # Create ledger data directory, for example
 rm -rf ${ROOT_DIR}
@@ -86,12 +77,12 @@ mkdir -p ${ROOT_DIR}/abci ${ROOT_DIR}/tendermint
 Generate a new, random pair of public and private keys for your node which will be used for FRA staking:
 
 ```shell
-fns genkey > ~/findora_testnet/tmp.gen.keypair
+fns genkey > ${ROOT_DIR}/tmp.gen.keypair
 ```
 
 View the contents of your `tmp.gen.keypair` file via the command below:
 
-```cat ~/findora_testnet/tmp.gen.keypair```
+```cat ${ROOT_DIR}/tmp.gen.keypair```
 
 An example of the file's content is below. Note: the `pub_key` and `sec_key` below are examples. Do not use them in your own node.
 
@@ -163,12 +154,18 @@ perl -pi -e \
 
 ```shell
 # Start your validator process
-findorad \
-    --ledger-dir="${ROOT_DIR}/abci" \
-    --tendermint-node-key-config-path="${HOME}/.tendermint/config/priv_validator_key.json" \
+docker run -d \
+    -v $HOME/.tendermint:/root/.tendermint \
+    -v $ROOT_DIR/abci:/tmp/findora \
+    -p 8669:8669 \
+    -p 8668:8668 \
+    -p 8667:8667 \
+    -p 26657:26657 \
+    public.ecr.aws/k6m5b6e2/release/findorad node \
+    --ledger-dir /tmp/findora \
+    --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
     --enable-ledger-service \
-    --enable-query-service \
-    >${ROOT_DIR}/abci/validator.log 2>&1 &
+    --enable-query-service
 ```
 
 #### Check Local Node Status
