@@ -22,7 +22,6 @@ set_binaries() {
     OS=$1
 
     docker pull public.ecr.aws/k6m5b6e2/release/findorad:latest || exit 1
-    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/findorad || exit 1
     wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/fns || exit 1
     wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/stt || exit 1
 
@@ -30,7 +29,7 @@ set_binaries() {
 
     rm -rf $new_path 2>/dev/null
     mkdir -p $new_path || exit 1
-    mv findorad fns stt $new_path || exit 1
+    mv fns stt $new_path || exit 1
     chmod +x ${new_path}/* || exit 1
 
     export PATH=${new_path}:${PATH}
