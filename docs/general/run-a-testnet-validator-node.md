@@ -17,7 +17,7 @@ sidebar_position: 2
 
 Download and run the script below which automatically downloads the binaries and configures your Testnet validator node: 
 
-[**node_init.sh**](./node_init.sh)
+- [**node_init.sh**](./node_init.sh)
 
 > **Tips**:
 > * example: `bash -x node_init.sh`
