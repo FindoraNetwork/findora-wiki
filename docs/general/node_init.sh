@@ -21,6 +21,7 @@ check_env() {
 set_binaries() {
     OS=$1
 
+    docker pull public.ecr.aws/k6m5b6e2/release/findorad:latest || exit 1
     wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/findorad || exit 1
     wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/fns || exit 1
     wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/stt || exit 1
@@ -76,10 +77,7 @@ if [[ 0 -eq `fns show 2>&1 | grep -A 1 "Node Balance" | sed 's/ FRA units *$//' 
     exit 1
 fi
 
-pkill -9 tendermint
-rm -rf ~/.tendermint 2>/dev/null
-
-findorad init || exit 1
+docker run --rm -v $HOME/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init || exit 1
 
 curl ${SERV_URL}:26657/genesis \
     | jq -c '.result.genesis' \
@@ -93,17 +91,24 @@ perl -pi -e "s#(persistent_peers = )\".*\"#\$1\"${SENTRY}\"#" ~/.tendermint/conf
 # Run locale node #
 ###################
 
-pkill -9 findorad
+docker stop findorad
+docker rm findorad
 mkdir -p ${ROOT_DIR}/{abci,tendermint}
 
 cd ${ROOT_DIR}/abci
-nohup findorad \
-    --ledger-dir="${ROOT_DIR}/abci" \
-    --tendermint-node-key-config-path="${HOME}/.tendermint/config/priv_validator_key.json" \
-    --config="${HOME}/.tendermint/config/config.toml"
+docker run -d \
+    -v $HOME/.tendermint:/root/.tendermint \
+    -v $ROOT_DIR/abci:/tmp/findora \
+    -p 8669:8669 \
+    -p 8668:8668 \
+    -p 8667:8667 \
+    -p 26657:26657 \
+    --name findorad \
+    public.ecr.aws/k6m5b6e2/release/findorad node \
+    --ledger-dir /tmp/findora \
+    --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
     --enable-ledger-service \
-    --enable-query-service \
-    &
+    --enable-query-service
 
 sleep 5
 

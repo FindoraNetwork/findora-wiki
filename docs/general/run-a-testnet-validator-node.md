@@ -26,10 +26,12 @@ Download and run the script below which automatically downloads the binaries and
 
 If you don't wish to run the automated setup script above, you can manually download binary files and configure your Testnet validator following the instructions below:
 
-### Download Validator Binaries and pull image
+### Download Validator Binaries and Pull Image
 
-Download the following files:
+Download the following files and pull image:
 
+- `findorad`: the node of findora network.
+    - `docker pull public.ecr.aws/k6m5b6e2/release/findorad:latest`
 - `fns`: Findora Node Setup (fns) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
@@ -38,9 +40,9 @@ Download the following files:
 > **Tips**:
 > - You can (optionally) run a Linux node via `Windows Subsystem for Linux`
 > - Check that binaries have executable permissions set correctly
->     - ex) `chmod +x findorad fns`
+>     - ex) `chmod +x fns`
 > - Check that binary files are placed into one of your `PATH` directories
->     - ex) `mv findorad fns /usr/local/bin/`
+>     - ex) `mv fns /usr/local/bin/`
 
 ### Configure Local Node (for Testnet)
 
@@ -52,7 +54,7 @@ Download the following files:
 export ROOT_DIR=<The data path of your node>
 ```
 
-#### Run `findorad init` Executable to Initialize Tendermint and Create a Node Key
+#### Initialize Findora Node and Create a Node Key
 
 Initializing Tendermint will create a node key (stored in a newly created `./tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
 
@@ -70,7 +72,7 @@ mkdir -p ${ROOT_DIR}/abci ${ROOT_DIR}/tendermint
 ```
 
 > **Tips**:
-> - If you encounter a security issue error when trying to run `findorad init`, you may need to manually approve its security priveliges in you OS first. Then re-run the `findorad init` command again.
+> - If you encounter a security issue error when trying to initialize findora node , you may need to manually approve its security priveliges in you OS first. Then re-run the commands again.
 
 #### Create Staking Key via `fns` CLI Tool
 
