@@ -70,7 +70,12 @@ $FNS setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 sudo rm -rf ${ROOT_DIR}/findorad || exit 1
 mkdir -p ${ROOT_DIR}/findorad || exit 1
 
-docker run --rm -v ${HOME}/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init --test-net || exit 1
+if [[ "qa01" == $ENV_NAME ]]; then
+    docker run --rm -v ${HOME}/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init --qa01-net || exit 1
+else
+    docker run --rm -v ${HOME}/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init --test-net || exit 1
+fi
+
 
 ###################
 # Run local node #
