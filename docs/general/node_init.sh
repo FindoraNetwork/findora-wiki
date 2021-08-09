@@ -2,14 +2,12 @@
 
 ENV_NAME=$1
 SERV_URL=https://prod-testnet.prod.findora.org
-SENTRY='b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@prod-testnet-us-west-2-sentry-000-public.prod.findora.org:26656'
 if [[ "qa01" == $ENV_NAME ]]; then
     SERV_URL=https://dev-qa01.dev.findora.org
-    SENTRY='b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@dev-qa01-us-west-2-sentry-000-public.dev.findora.org:26656'
 fi
 
 check_env() {
-    for i in wget curl jq perl; do
+    for i in wget curl; do
         which $i >/dev/null 2>&1
         if [[ 0 -ne $? ]]; then
             echo -e "\n\033[31;01m${i}\033[00m has not been installed properly!\n"
@@ -76,15 +74,7 @@ if [[ 0 -eq `fns show 2>&1 | grep -A 1 "Node Balance" | sed 's/ FRA units *$//' 
     exit 1
 fi
 
-docker run --rm -v $HOME/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init || exit 1
-
-curl ${SERV_URL}:26657/genesis \
-    | jq -c '.result.genesis' \
-    | jq > ~/.tendermint/config/genesis.json || exit 1
-
-perl -pi -e 's#(create_empty_blocks_interval = ).*#$1"15s"#' ~/.tendermint/config/config.toml || exit 1
-
-perl -pi -e "s#(persistent_peers = )\".*\"#\$1\"${SENTRY}\"#" ~/.tendermint/config/config.toml || exit 1
+docker run --rm -v $HOME/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init --test-net || exit 1
 
 ###################
 # Run locale node #
