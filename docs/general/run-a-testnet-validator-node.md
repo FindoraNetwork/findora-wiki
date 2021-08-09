@@ -59,12 +59,13 @@ export ROOT_DIR=<The data path of your node>
 Initializing Tendermint will create a node key (stored in a newly created `./tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
 
 ```shell
-# Clean up old data that may exist
-rm -rf ~/.tendermint
+# Clean up old data that may exist, may need super privilege if necessary
+sudo rm -rf ~/.tendermint
 
 # Initialize the configuration of your Tendermint node
 # This command will create a .tendermint directory and priv_validator_key.json file needed later
 docker run --rm -v $HOME/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init
+sudo chown -R `id -u`:`id -g` $HOME/.tendermint
 
 # Create ledger data directory, for example
 rm -rf ${ROOT_DIR}
@@ -89,6 +90,7 @@ View the contents of your `tmp.gen.keypair` file via the command below:
 An example of the file's content is below. Note: the `pub_key` and `sec_key` below are examples. Do not use them in your own node.
 
 ```shell
+Wallet Address: fra1955hpj2xzkp4esd5928yhtp0l78ku8fkztvwcypvr8mk6x8tkn6sjsajun
 Mnemonic: repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame
 Key: {
   "pub_key": "LSlwyUYVg1zBtCqOS6wv_49uHTYS2OwQLBn3bRjrtPU=",
@@ -155,6 +157,8 @@ perl -pi -e \
 #### Start Local Node
 
 ```shell
+# Stop your local container if necessary
+docker rm -f findorad
 # Start your validator process
 docker run -d \
     -v $HOME/.tendermint:/root/.tendermint \
@@ -227,16 +231,24 @@ To get detailed info about a specific sub-command like `stake` use the `--help` 
 > `fns stake --help`
 >
 > ```shell
+> fns-stake
+>   Stake tokens (i.e. bond tokens) from a Findora account to a Validator
+>
 > USAGE:
->     fns stake [FLAGS] [OPTIONS] --amount <Amount>
+>   fns stake [FLAGS] [OPTIONS] --amount <Amount>
 >
 > FLAGS:
 >     -a, --append     stake more FRAs to your node
+>         --force      ignore warning and stake FRAs to your node
+>     -h, --help       Prints help information
+>     -V, --version    Prints version information
 >
 > OPTIONS:
->     -n, --amount <Amount>           how much `FRA unit`s you want to stake
->     -R, --commission-rate <Rate>    the commission rate for delegators, a float number from 0.0 to 1.0
->     -M, --validator-memo <Memo>     the description of your validator node, optional
+>     -n, --amount <Amount>                       how much `FRA unit`s you want to stake
+>     -R, --commission-rate <Rate>                the commission rate of your node, a float number from 0.0 to 1.0
+>     -S, --staker-priv-key <SecretKey>           the private key of proposer, in base64 format
+>     -M, --validator-memo <Memo>                 the description of your node, optional
+>     -A, --validator-td-addr <TendermintAddr>    stake FRAs to a custom validator
 > ```
 >
 > Help information for each sub-commands can be obtained by typing --help after the specific subcommand:
@@ -258,7 +270,15 @@ After receiving FRA to your validator's `Findora Address`, you must stake a mini
 # ex)
 # - To stake 999,999 FRAs with a commision rate of 2% (and validator name of Validator_Pool_A)
 # - Note: that is 999999 * 1000000 FRA units
-fns stake -n $((999999 * 1000000)) -R 0.02 -M 'Validator Pool A'
+# - Your Staker Memo file should like this:
+cat staker_memo
+{
+  "name": "ExampleNode",
+  "desc": "I am just a example description, please change me.",
+  "website": "https://www.example.com",
+  "logo": "https://www.example.com/logo"
+}
+fns stake -n $((999999 * 1000000)) -R 0.02 -M "$(cat staker_memo)"
 ```
 
 ### Stake Additional FRA
