@@ -132,28 +132,6 @@ fns setup -O <Path to the mnemonic of your node> || exit 1
 fns setup -K <path to validator key> || exit 1
 ```
 
-#### Configure Tendermint-Core Node
-
-> **Tips**:
-> - For production environments, setup a cluster (instead of a raw node)
-> - Install the following command line tools before continuing:
->   - 'wget', 'curl', 'jq' and 'perl'
-
-```shell
-# Get the genesis config from an existing node of the testnet
-curl https://prod-testnet.prod.findora.org:26657/genesis \
-    | jq -c '.result.genesis' \
-    | jq > ~/.tendermint/config/genesis.json
-
-# Adjust the block interval
-perl -pi -e 's#(create_empty_blocks_interval = ).*#$1"15s"#' ~/.tendermint/config/config.toml
-
-# Config some existing nodes to your local node, so it can connect to the testnet
-perl -pi -e \
-    's#(persistent_peers = )".*"#$1"b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@prod-testnet-us-west-2-sentry-000-public.prod.findora.org:26656"#' \
-    ~/.tendermint/config/config.toml
-```
-
 #### Start Local Node
 
 ```shell
