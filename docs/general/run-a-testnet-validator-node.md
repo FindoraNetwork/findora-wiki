@@ -68,7 +68,7 @@ docker run --rm -v $HOME/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/r
 
 # Create ledger data directory, for example
 rm -rf ${ROOT_DIR}
-mkdir -p ${ROOT_DIR}/abci ${ROOT_DIR}/tendermint
+mkdir -p ${ROOT_DIR}/findorad
 ```
 
 > **Tips**:
@@ -131,15 +131,15 @@ fns setup -O <Path to the mnemonic of your node> || exit 1
 fns setup -K <path to validator key> || exit 1
 ```
 
-#### Start Local Node
+#### Start or Upgrade Local Node
 
 ```shell
 # Stop your local container if necessary
 docker rm -f findorad
-# Start your validator process
+# Start your validator container
 docker run -d \
     -v $HOME/.tendermint:/root/.tendermint \
-    -v $ROOT_DIR/abci:/tmp/findora \
+    -v $ROOT_DIR/findorad:/tmp/findora \
     -p 8669:8669 \
     -p 8668:8668 \
     -p 8667:8667 \
