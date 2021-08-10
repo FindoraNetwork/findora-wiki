@@ -147,6 +147,7 @@ docker run -d \
     --name findorad \
     public.ecr.aws/k6m5b6e2/release/findorad node \
     --ledger-dir /tmp/findora \
+    --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
     --enable-ledger-service \
     --enable-query-service
