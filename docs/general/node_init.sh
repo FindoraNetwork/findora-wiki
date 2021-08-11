@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-ENV_NAME=$1
 SERV_URL=https://prod-testnet.prod.findora.org
-if [[ "qa01" == $ENV_NAME ]]; then
-    SERV_URL=https://dev-qa01.dev.findora.org
-fi
 
 check_env() {
     for i in wget curl; do
@@ -56,7 +52,6 @@ fi
 # Config local node #
 ######################
 
-#fns genkey > $keypath || exit 1
 node_mnemonic=$(cat ${keypath} | grep 'Mnemonic' | sed 's/^.*Mnemonic:[^ ]* //')
 xfr_pubkey="$(cat ${keypath} | grep 'pub_key' | sed 's/[",]//g' | sed 's/ *pub_key: *//')"
 
@@ -70,12 +65,7 @@ $FNS setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 sudo rm -rf ${ROOT_DIR}/findorad || exit 1
 mkdir -p ${ROOT_DIR}/findorad || exit 1
 
-if [[ "qa01" == $ENV_NAME ]]; then
-    docker run --rm -v ${HOME}/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init --qa01-net || exit 1
-else
-    docker run --rm -v ${HOME}/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init --test-net || exit 1
-fi
-
+docker run --rm -v ${HOME}/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init --test-net || exit 1
 
 ###################
 # Run local node #

@@ -35,7 +35,6 @@ Download the following files and pull image:
 - `fns`: Findora Node Setup (fns) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
     - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
     - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
-    - [FreeBSD version, alpha](https://github.com/FindoraNetwork/testnet-downloads/releases/download/freebsd/fns)
 
 > **Tips**:
 > - You can (optionally) run a Linux node via `Windows Subsystem for Linux`
