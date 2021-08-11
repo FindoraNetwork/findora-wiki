@@ -33,8 +33,8 @@ Download the following files and pull image:
 - `findorad`: the node of findora network.
     - `docker pull public.ecr.aws/k6m5b6e2/release/findorad:latest`
 - `fns`: Findora Node Setup (fns) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
-    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/linux/fns)
-    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/macos/fns)
+    - [Linux version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/Linux-03/fns)
+    - [MacOS version](https://github.com/FindoraNetwork/testnet-downloads/releases/download/MacOS-03/fns)
 
 > **Tips**:
 > - You can (optionally) run a Linux node via `Windows Subsystem for Linux`

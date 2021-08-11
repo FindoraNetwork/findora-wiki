@@ -38,11 +38,11 @@ FNS=${ROOT_DIR}/bin/fns
 check_env
 
 if [[ "Linux" == `uname -s` ]]; then
-    set_binaries linux
-elif [[ "FreeBSD" == `uname -s` ]]; then
-    set_binaries freebsd
+    set_binaries Linux-03
+# elif [[ "FreeBSD" == `uname -s` ]]; then
+    # set_binaries freebsd
 elif [[ "Darwin" == `uname -s` ]]; then
-    set_binaries macos
+    set_binaries MacOS-03
 else
     echo "Unsupported system platform!"
     exit 1
