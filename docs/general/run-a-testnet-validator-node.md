@@ -17,6 +17,8 @@ sidebar_position: 2
 
 Download and run the script below which automatically downloads the binaries and configures your Testnet validator node: 
 
+Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `${HOME}/findora_testnet/testnet_node.key`. If you don't have one, see the following sections to generate a new key file.
+
 - [**node_init.sh**](./node_init.sh)
 
 > **Tips**:
