@@ -67,6 +67,8 @@ mkdir -p ${ROOT_DIR}/findorad || exit 1
 
 docker run --rm -v ${HOME}/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init --test-net || exit 1
 
+sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/config
+
 ###################
 # Run local node #
 ###################
