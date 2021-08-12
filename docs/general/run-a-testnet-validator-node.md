@@ -67,8 +67,10 @@ sudo rm -rf ~/.tendermint
 # This command will create a .tendermint directory and priv_validator_key.json file needed later
 docker run --rm -v $HOME/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init --test-net
 
+sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/config
+
 # Create ledger data directory, for example
-rm -rf ${ROOT_DIR}
+sudo rm -rf ${ROOT_DIR}
 mkdir -p ${ROOT_DIR}/findorad
 ```
 
