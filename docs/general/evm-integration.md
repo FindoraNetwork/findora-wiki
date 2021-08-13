@@ -62,6 +62,7 @@ fns setup -S https://dev-evm.dev.findora.org
 fns setup -O $PWD/mnemonic.key
 ```
 Note: must be absolute path!
+
 3. Query account balance
 ```
 fns show -b       
