@@ -39,9 +39,9 @@ Key: {
 
 #### 3. Go to the [Discord faucet](https://discord.gg/8bdb8KHuaB)
 
-![Discord](/img/evm/discord_1.png)
+![Discord](/static/img/evm/discord_1.png)
 
-![Discord](/img/evm/discord_2.png)
+![Discord](/static/img/evm/discord_2.png)
 
 Chat with `FindoraBot` and send message:
 ```
@@ -104,15 +104,15 @@ Address: 0xf5224110db945b54466d275cd224fed2dd110e67
 ### 3. Import new account to metamask
 > If you already have an Ethereum address, skip this step.
 
-![Metamask](/img/evm/metamask_1.png)
+![Metamask](/static/img/evm/metamask_1.png)
 
 ### 4. Connect to Findora Devnet
 
-![Metamask](/img/evm/metamask_4.png)
+![Metamask](/static/img/evm/metamask_4.png)
 
-![Metamask](/img/evm/metamask_2.png)
+![Metamask](/static/img/evm/metamask_2.png)
 
-![Metamask](/img/evm/metamask_3.png)
+![Metamask](/static/img/evm/metamask_3.png)
 
 ### 5. Transfer FRA to Metamask (Ethereum account)
 1. Deposit FRA to ethereum address
