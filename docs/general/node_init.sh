@@ -20,7 +20,7 @@ check_env() {
 set_binaries() {
     OS=$1
 
-    docker pull public.ecr.aws/k6m5b6e2/release/findorad:latest || exit 1
+    docker pull findoranetwork/findorad:latest || exit 1
     wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/fns || exit 1
 
     new_path=${ROOT_DIR}/bin
