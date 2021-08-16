@@ -65,7 +65,7 @@ sudo rm -rf ~/.tendermint
 
 # Initialize the configuration of your Tendermint node
 # This command will create a .tendermint directory and priv_validator_key.json file needed later
-docker run --rm -v $HOME/.tendermint:/root/.tendermint public.ecr.aws/k6m5b6e2/release/findorad init --test-net
+docker run --rm -v $HOME/.tendermint:/root/.tendermint findoranetwork/findorad init --test-net
 
 sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/config
 
@@ -148,7 +148,7 @@ docker run -d \
     -p 8667:8667 \
     -p 26657:26657 \
     --name findorad \
-    public.ecr.aws/k6m5b6e2/release/findorad node \
+    findoranetwork/findorad node \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
