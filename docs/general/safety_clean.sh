@@ -4,6 +4,8 @@ if [ ! $ROOT_DIR ]; then
     echo 'Please set ROOT_DIR first.'
 fi
 
+docker pull findoranetwork/findorad:latest || exit 1
+
 docker rm -f findorad || exit 1
 
 sudo rm -rf $ROOT_DIR/findorad/*

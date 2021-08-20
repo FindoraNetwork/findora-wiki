@@ -311,6 +311,8 @@ fns unstake
 
 ## Safety clean
 
+This script WILL NOT clean your validator id and wallet data. It just clean the data and restart the validator.
+
 #### Set Environment Path Variables
 
 Please set `$ROOT_DIR` same as setup step.
