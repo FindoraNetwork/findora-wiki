@@ -17,7 +17,7 @@ sidebar_position: 2
 
 Download and run the script below which automatically downloads the binaries and configures your Testnet validator node: 
 
-Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `${HOME}/findora_testnet/testnet_node.key`. If you don't have one, see the following sections to generate a new key file.
+ Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `${HOME}/findora_testnet/testnet_node.key`. If you don't have one, see the following sections to generate a new key file.
 
 - [**node_init.sh**](./node_init.sh)
 
@@ -308,3 +308,19 @@ fns unstake -n $((900 * 1000000))
 ```shell
 fns unstake
 ```
+
+## Safety clean
+
+This script WILL NOT clean your validator id and wallet data. It just clean the data and restart the validator.
+
+#### Set Environment Path Variables
+
+Please set `$ROOT_DIR` same as setup step.
+
+#### Auto clean
+
+- [**safety_clean.sh**](./safety_clean.sh)
+
+> **Tips**:
+> * example: `bash -x safety_clean.sh`
+
