@@ -74,6 +74,12 @@ sudo rm -rf ${ROOT_DIR}
 mkdir -p ${ROOT_DIR}/findorad
 ```
 
+#### Reset `${HOME}/.tendermint/config/config.toml` default values to specific values
+- [**reset_config.sh**](./reset_config.sh)
+```shell
+./reset_config.sh ${HOME}/.tendermint/config/config.toml
+```
+
 > **Tips**:
 > - If you encounter a security issue error when trying to initialize findora node , you may need to manually approve its security priveliges in you OS first. Then re-run the commands again.
 
