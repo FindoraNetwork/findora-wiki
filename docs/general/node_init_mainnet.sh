@@ -19,13 +19,13 @@ set_binaries() {
 
     wget -T 10 https://github.com/FindoraNetwork/downloads/releases/download/${OS}/tendermint || exit 1
     wget -T 10 https://github.com/FindoraNetwork/downloads/releases/download/${OS}/abci_validator_node || exit 1
-    wget -T 10 https://github.com/FindoraNetwork/downloads/releases/download/${OS}/fns || exit 1
+    wget -T 10 https://github.com/FindoraNetwork/downloads/releases/download/${OS}/fn || exit 1
 
     new_path=/tmp/findora_mainnet_bin
 
     rm -rf $new_path 2>/dev/null
     mkdir -p $new_path || exit 1
-    mv tendermint abci_validator_node fns $new_path || exit 1
+    mv tendermint abci_validator_node fn $new_path || exit 1
     chmod +x ${new_path}/* || exit 1
 
     export PATH=${new_path}:${PATH}
@@ -51,13 +51,13 @@ export ENABLE_QUERY_SERVICE=true
 node_mnemonic=$(cat ${KEYPATH} | grep 'Mnemonic' | sed 's/^.*Mnemonic:[^ ]* //')
 xfr_pubkey="$(cat ${KEYPATH} | grep 'pub_key' | sed 's/[",]//g' | sed 's/ \+pub_key: //')"
 
-fns setup -S ${SERV_URL} || exit 1
-fns setup -K ~/.tendermint/config/priv_validator_key.json || exit 1
+fn setup -S ${SERV_URL} || exit 1
+fn setup -K ~/.tendermint/config/priv_validator_key.json || exit 1
 
 rm -rf ${ROOT_DIR}
 mkdir -p ${ROOT_DIR}
 echo $node_mnemonic > ${ROOT_DIR}/node.mnemonic || exit 1
-fns setup -O ${ROOT_DIR}/node.mnemonic || exit 1
+fn setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 
 pkill -9 tendermint
 rm -rf ~/.tendermint 2>/dev/null

@@ -27,13 +27,13 @@ set_binaries() {
 
     rm -rf $new_path 2>/dev/null
     mkdir -p $new_path || exit 1
-    mv fns $new_path || exit 1
+    mv fn $new_path || exit 1
     chmod +x ${new_path}/* || exit 1
 }
 
 export ROOT_DIR=${HOME}/findora_testnet
 keypath=${ROOT_DIR}/testnet_node.key
-FNS=${ROOT_DIR}/bin/fns
+FN=${ROOT_DIR}/bin/fn
 
 check_env
 
@@ -57,9 +57,9 @@ xfr_pubkey="$(cat ${keypath} | grep 'pub_key' | sed 's/[",]//g' | sed 's/ *pub_k
 
 echo $node_mnemonic > ${ROOT_DIR}/node.mnemonic || exit 1
 
-$FNS setup -S ${SERV_URL} || exit 1
-$FNS setup -K ${HOME}/.tendermint/config/priv_validator_key.json || exit 1
-$FNS setup -O ${ROOT_DIR}/node.mnemonic || exit 1
+$FN setup -S ${SERV_URL} || exit 1
+$FN setup -K ${HOME}/.tendermint/config/priv_validator_key.json || exit 1
+$FN setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 
 # clean old data and config files
 sudo rm -rf ${ROOT_DIR}/findorad || exit 1
