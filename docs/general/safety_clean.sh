@@ -34,6 +34,7 @@ sed -i "s#^create_empty_blocks_interval = .*#create_empty_blocks_interval = \"15
 sed -i "s#^recheck = .*#recheck = \"false\"#g" "${HOME}/.tendermint/config/config.toml"
 sed -i "s#^fast_sync = .*#fast_sync = \"false\"#g" "${HOME}/.tendermint/config/config.toml"
 
+
 docker run -d \
     -v $HOME/.tendermint:/root/.tendermint \
     -v $ROOT_DIR/findorad:/tmp/findora \
