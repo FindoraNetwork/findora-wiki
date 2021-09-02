@@ -24,10 +24,16 @@ cat > ~/.tendermint/data/priv_validator_state.json << EOF
 }
 EOF
 
-sed -i "s#^timeout_propose = .*#timeout_propose = \"4s\"#g" "${HOME}/.tendermint/config/config.toml"
+sed -i "s#^timeout_propose = .*#timeout_propose = \"8s\"#g" "${HOME}/.tendermint/config/config.toml"
+sed -i "s#^timeout_propose_delta = .*#timeout_propose_delta = \"100ms\"#g" "${HOME}/.tendermint/config/config.toml"
 sed -i "s#^timeout_prevote = .*#timeout_prevote = \"4s\"#g" "${HOME}/.tendermint/config/config.toml"
+sed -i "s#^timeout_prevote_delta = .*#timeout_prevote_delta = \"100ms\"#g" "${HOME}/.tendermint/config/config.toml"
 sed -i "s#^timeout_precommit = .*#timeout_precommit = \"4s\"#g" "${HOME}/.tendermint/config/config.toml"
+sed -i "s#^timeout_precommit_delta = .*#timeout_precommit_delta = \"100ms\"#g" "${HOME}/.tendermint/config/config.toml"
 sed -i "s#^create_empty_blocks_interval = .*#create_empty_blocks_interval = \"15s\"#g" "${HOME}/.tendermint/config/config.toml"
+sed -i "s#^recheck = .*#recheck = \"false\"#g" "${HOME}/.tendermint/config/config.toml"
+sed -i "s#^fast_sync = .*#fast_sync = \"false\"#g" "${HOME}/.tendermint/config/config.toml"
+
 
 docker run -d \
     -v $HOME/.tendermint:/root/.tendermint \
