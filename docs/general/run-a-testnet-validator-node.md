@@ -219,14 +219,14 @@ To get detailed info about a specific sub-command like `stake` use the `--help` 
 >
 > FLAGS:
 >     -a, --append     stake more FRAs to your node
->         --force      ignore warning and stake FRAs to your node
+>         --force      ignore warning and stake FRAs to your target node
 >     -h, --help       Prints help information
 >     -V, --version    Prints version information
 >
 > OPTIONS:
 >     -n, --amount <Amount>                       how much `FRA unit`s you want to stake
 >     -R, --commission-rate <Rate>                the commission rate of your node, a float number from 0.0 to 1.0
->     -S, --staker-priv-key <SecretKey>           the private key of proposer, in base64 format
+>     -S, --staker-priv-key <SecretKey>           the file which contains private key (in base64 format) of proposer
 >     -M, --validator-memo <Memo>                 the description of your node, optional
 >     -A, --validator-td-addr <TendermintAddr>    stake FRAs to a custom validator
 > ```
