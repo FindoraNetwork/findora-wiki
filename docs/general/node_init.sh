@@ -86,7 +86,6 @@ docker run -d \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
-    --enable-ledger-service \
     --enable-query-service
 
 sleep 10
