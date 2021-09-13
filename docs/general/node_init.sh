@@ -21,7 +21,7 @@ set_binaries() {
     OS=$1
 
     docker pull findoranetwork/findorad:latest || exit 1
-    wget -T 10 https://github.com/FindoraNetwork/testnet-downloads/releases/download/${OS}/fns || exit 1
+    wget -T 10 https://github.com/FindoraNetwork/findora-wiki/releases/download/bin-release-v0.1-${OS}/fn || exit 1
 
     new_path=${ROOT_DIR}/bin
 
@@ -38,11 +38,11 @@ FNS=${ROOT_DIR}/bin/fns
 check_env
 
 if [[ "Linux" == `uname -s` ]]; then
-    set_binaries Linux-03
+    set_binaries linux
 # elif [[ "FreeBSD" == `uname -s` ]]; then
     # set_binaries freebsd
 elif [[ "Darwin" == `uname -s` ]]; then
-    set_binaries MacOS-03
+    set_binaries macos
 else
     echo "Unsupported system platform!"
     exit 1
