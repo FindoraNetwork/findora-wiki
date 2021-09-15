@@ -38,16 +38,16 @@ Download the following files:
 - `abci_validtor_node`: the abci node of findora network
     - [Linux version](https://github.com/FindoraNetwork/downloads/releases/download/linux/abci_validator_node)
     - [MacOS version](https://github.com/FindoraNetwork/downloads/releases/download/macos/abci_validator_node)
-- `fns`: a command line tool for staking
-    - [Linux version](https://github.com/FindoraNetwork/downloads/releases/download/linux/fns)
-    - [MacOS version](https://github.com/FindoraNetwork/downloads/releases/download/macos/fns)
+- `fn`: a command line tool for Findora Network
+    - [Linux version](https://wiki.findora.org/static/bin/linux/fn)
+    - [MacOS version](https://wiki.findora.org/static/bin/macos/fn)
 
 > **Tips**:
 > - You can (optionally) run a Linux node via `Windows Subsystem for Linux`
 > - Check that binaries have executable permissions set correctly
-    >     - ex) `chmod +x tendermint abci_validator_node fns`
+    >     - ex) `chmod +x tendermint abci_validator_node fn`
 > - Check that binary files are placed into one of your `PATH` directories
-    >     - ex) `mv tendermint abci_validator_node fns /usr/local/bin/`
+    >     - ex) `mv tendermint abci_validator_node fn /usr/local/bin/`
 
 ### Configure your local node (for Mainnet)
 
@@ -91,7 +91,7 @@ export ENABLE_QUERY_SERVICE=true
 If you donot have a keypair for your node, generate a new random one:
 
 ```shell
-fns genkey > ${LEDGER_DIR}/tmp.gen.keypair
+fn genkey > ${LEDGER_DIR}/tmp.gen.keypair
 ```
 
 Output example (please do not use this sample directly):
@@ -108,15 +108,15 @@ Key: {
 set them:
 
 ```shell
-fns setup -S https://prod-mainnet.prod.findora.org
+fn setup -S https://prod-mainnet.prod.findora.org
 
 # example:
 #     echo "repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame" > ${LEDGER_DIR}/node.mnemonic
-#     fns setup -O ${LEDGER_DIR}/node.mnemonic
-fns setup -O <Path to the mnemonic of your node> || exit 1
+#     fn setup -O ${LEDGER_DIR}/node.mnemonic
+fn setup -O <Path to the mnemonic of your node> || exit 1
 # example 
-#     fns setup -K ${HOME}/.tendermint/config/priv_validator_key.json
-fns setup -K <path to validator key> || exit 1
+#     fn setup -K ${HOME}/.tendermint/config/priv_validator_key.json
+fn setup -K <path to validator key> || exit 1
 ```
 
 #### Get FRA tokens
@@ -174,15 +174,15 @@ curl 'http://localhost:8667/version'; echo # Only if you set the 'ENABLE_QUERY_S
 
 ## Staking
 
-For staking operations, you should use the `fns` tool.
+For staking operations, you should use the `fn` tool.
 
 > Usage example:
 >
-> `fns stake --help`
+> `fn stake --help`
 >
 > ```shell
 > USAGE:
->     fns stake [FLAGS] [OPTIONS] --amount <Amount>
+>     fn stake [FLAGS] [OPTIONS] --amount <Amount>
 >
 > FLAGS:
 >     -a, --append     stake more FRAs to your node
@@ -193,13 +193,13 @@ For staking operations, you should use the `fns` tool.
 >     -M, --validator-memo <Memo>     the description of your validator node, optional
 > ```
 >
-> Similar help information can be obtained through the `fns` tool itself:
+> Similar help information can be obtained through the `fn` tool itself:
 >
-> - `fns --help`
-> - `fns stake --help`
-> - `fns unstake --help`
-> - `fns claim --help`
-> - `fns transfer --help`
+> - `fn --help`
+> - `fn stake --help`
+> - `fn unstake --help`
+> - `fn claim --help`
+> - `fn transfer --help`
 > - ...
 
 ### Stake into findora network
@@ -213,7 +213,7 @@ For staking operations, you should use the `fns` tool.
 # example:
 # - your want to stake 1888888 FRAs
 # - that is 1888888 * 1000000 FRA units
-fns stake -n $((1888888 * 1000000)) -R 0.2 -M 'Node-A'
+fn stake -n $((1888888 * 1000000)) -R 0.2 -M 'Node-A'
 ```
 
 ### Append more power to your node
@@ -221,13 +221,13 @@ fns stake -n $((1888888 * 1000000)) -R 0.2 -M 'Node-A'
 ```shell
 # append 2 FRA units to your node,
 # the power of your node will be increased by 2 if all is well
-fns stake -a -n 2
+fn stake -a -n 2
 ```
 
 ### Query infomations
 
 ```
-fns show
+fn show
 ```
 
 ### Claim rewards
@@ -235,17 +235,17 @@ fns show
 Claim all your rewards:
 
 ```shell
-fns claim
+fn claim
 ```
 
 Claim part of your rewards:
 
 ```shell
-# fns claim -n <the amount of FRA units you want>
+# fn claim -n <the amount of FRA units you want>
 # example:
 # - your want to claim 10 FRAs
 # - that is 10 * 1000000 FRA units
-fns claim -n $((10 * 1000000))
+fn claim -n $((10 * 1000000))
 ```
 
 ### Unstake principals
@@ -255,15 +255,15 @@ Unstake all your principals:
 > **NOTE**: this operation will make your node out of Findora Network (Mainnet).
 
 ```shell
-fns unstake
+fn unstake
 ```
 
 Unstake part of your principals:
 
 ```shell
-# fns unstake -n <the amount of FRA units you want>
+# fn unstake -n <the amount of FRA units you want>
 # example:
 # - your want to unstake 900 FRAs
 # - that is 900 * 1000000 FRA units
-fns unstake -n $((900 * 1000000))
+fn unstake -n $((900 * 1000000))
 ```
