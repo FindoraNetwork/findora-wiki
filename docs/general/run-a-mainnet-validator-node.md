@@ -39,8 +39,8 @@ Download the following files:
     - [Linux version](https://github.com/FindoraNetwork/downloads/releases/download/linux/abci_validator_node)
     - [MacOS version](https://github.com/FindoraNetwork/downloads/releases/download/macos/abci_validator_node)
 - `fn`: a command line tool for Findora Network
-    - [Linux version](https://github.com/FindoraNetwork/downloads/releases/download/linux/fn)
-    - [MacOS version](https://github.com/FindoraNetwork/downloads/releases/download/macos/fn)
+    - [Linux version](https://wiki.findora.org/static/bin/linux/fn)
+    - [MacOS version](https://wiki.findora.org/static/bin/macos/fn)
 
 > **Tips**:
 > - You can (optionally) run a Linux node via `Windows Subsystem for Linux`
