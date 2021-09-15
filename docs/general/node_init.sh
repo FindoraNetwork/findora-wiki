@@ -21,7 +21,7 @@ set_binaries() {
     OS=$1
 
     docker pull findoranetwork/findorad:latest || exit 1
-    wget -T 10 https://wiki.findora.org/static/bin/${OS}/fn || exit 1
+    wget -T 10 https://wiki.findora.org/bin/${OS}/fn || exit 1
 
     new_path=${ROOT_DIR}/bin
 
