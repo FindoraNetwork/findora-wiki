@@ -20,7 +20,7 @@ check_env() {
 set_binaries() {
     OS=$1
 
-    docker pull findoranetwork/findorad:latest || exit 1
+    docker pull findoranetwork/findorad:testnet-v0.2.0h || exit 1
     wget -T 10 https://wiki.findora.org/bin/${OS}/fn || exit 1
 
     new_path=${ROOT_DIR}/bin
@@ -65,7 +65,7 @@ $FN setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 sudo rm -rf ${ROOT_DIR}/findorad || exit 1
 mkdir -p ${ROOT_DIR}/findorad || exit 1
 
-docker run --rm -v ${HOME}/.tendermint:/root/.tendermint findoranetwork/findorad init --test-net || exit 1
+docker run --rm -v ${HOME}/.tendermint:/root/.tendermint findoranetwork/findorad:testnet-v0.2.0h init --test-net || exit 1
 
 sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/config
 
@@ -82,7 +82,7 @@ docker run -d \
     -p 8667:8667 \
     -p 26657:26657 \
     --name findorad \
-    findoranetwork/findorad node \
+    findoranetwork/findorad:testnet-v0.2.0h node \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \

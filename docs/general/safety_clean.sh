@@ -4,7 +4,7 @@ if [ ! $ROOT_DIR ]; then
     echo 'Please set ROOT_DIR first.'
 fi
 
-docker pull findoranetwork/findorad:latest || exit 1
+docker pull findoranetwork/findorad:testnet-v0.2.0h || exit 1
 
 docker rm -f findorad || exit 1
 
@@ -43,7 +43,7 @@ docker run -d \
     -p 8667:8667 \
     -p 26657:26657 \
     --name findorad \
-    findoranetwork/findorad node \
+    findoranetwork/findorad:testnet-v0.2.0h node \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
