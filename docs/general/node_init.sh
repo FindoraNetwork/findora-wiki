@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
+ENV=dev
+NAMESPACE=qa01
+SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
 
-SERV_URL=https://prod-testnet.prod.findora.org
 
 check_env() {
     for i in wget curl; do
@@ -31,8 +33,8 @@ set_binaries() {
     chmod +x ${new_path}/* || exit 1
 }
 
-export ROOT_DIR=${HOME}/findora_testnet
-keypath=${ROOT_DIR}/testnet_node.key
+export ROOT_DIR=${HOME}/findora_${NAMESPACE}
+keypath=${ROOT_DIR}/${NAMESPACE}net_node.key
 FN=${ROOT_DIR}/bin/fn
 
 check_env
@@ -65,9 +67,28 @@ $FN setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 sudo rm -rf ${ROOT_DIR}/findorad || exit 1
 mkdir -p ${ROOT_DIR}/findorad || exit 1
 
-docker run --rm -v ${HOME}/.tendermint:/root/.tendermint findoranetwork/findorad init --test-net || exit 1
+docker run --rm -v ${HOME}/.tendermint:/root/.tendermint findoranetwork/findorad init --${NAMESPACE}-net || exit 1
 
 sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/config
+
+###################
+# get snapshot    #
+###################
+
+# download latest link and get url
+wget -O "${ROOT_DIR}/latest" "https://${ENV}-${NAMESPACE}-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest_golevel"
+CHAINDATA_URL=$(cut -d , -f 1 "${ROOT_DIR}/latest")
+echo $CHAINDATA_URL
+
+# remove old data 
+rm -rf "${ROOT_DIR}/findorad"
+rm -rf "${HOME}/.tendermint/data"
+wget -O "${ROOT_DIR}/snapshot" "${CHAINDATA_URL}" 
+mkdir "${ROOT_DIR}/snapshot_data"
+tar zxvf "${ROOT_DIR}/snapshot" -C "${ROOT_DIR}/snapshot_data"
+cp -r "${ROOT_DIR}/snapshot_data/data/ledger" "${ROOT_DIR}/findorad"
+cp -r "${ROOT_DIR}/snapshot_data/data/tendermint/mainnet/node0/data" "${HOME}/.tendermint/data"
+
 
 ###################
 # Run local node #
@@ -85,7 +106,7 @@ docker run -d \
     findoranetwork/findorad node \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
-    --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
+    --tendermint-node-key-config-path="${HOME}/.tendermint/config/priv_validator_key.json" \
     --enable-query-service
 
 sleep 10
@@ -96,3 +117,4 @@ curl 'http://localhost:8668/version'; echo
 curl 'http://localhost:8667/version'; echo
 
 echo "Local node initialized, please stake your FRA tokens after syncing is completed."
+
