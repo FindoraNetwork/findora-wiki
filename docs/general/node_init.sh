@@ -69,7 +69,7 @@ mkdir -p ${ROOT_DIR}/findorad || exit 1
 
 docker run --rm -v ${HOME}/.tendermint:/root/.tendermint findoranetwork/findorad init --${NAMESPACE}-net || exit 1
 
-sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/config
+sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/
 
 ###################
 # get snapshot    #
