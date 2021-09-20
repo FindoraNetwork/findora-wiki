@@ -7,6 +7,7 @@ if [ ! $ROOT_DIR ]; then
     echo 'Please set ROOT_DIR first.'
 fi
 
+
 docker pull findoranetwork/findorad:testnet-v0.2.0Sa-without-evm-compatible  || exit 1
 
 docker rm -f findorad || exit 1

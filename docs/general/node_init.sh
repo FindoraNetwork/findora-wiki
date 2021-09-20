@@ -67,6 +67,7 @@ $FN setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 sudo rm -rf ${ROOT_DIR}/findorad || exit 1
 mkdir -p ${ROOT_DIR}/findorad || exit 1
 
+
 docker run --rm -v ${HOME}/.tendermint:/root/.tendermint findoranetwork/findorad init --${NAMESPACE}-net || exit 1
 
 sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/
