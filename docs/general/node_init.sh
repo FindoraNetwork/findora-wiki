@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ENV=prod
-NAMESPACE=testnet
+NAMESPACE=test
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
 
 
@@ -22,7 +22,7 @@ check_env() {
 set_binaries() {
     OS=$1
 
-    docker pull findoranetwork/findorad:latest || exit 1
+    docker pull findoranetwork/findorad:testnet-v0.2.0Sa-without-evm-compatible || exit 1
     wget -T 10 https://wiki.findora.org/bin/${OS}/fn || exit 1
 
     new_path=${ROOT_DIR}/bin
@@ -33,7 +33,7 @@ set_binaries() {
     chmod +x ${new_path}/* || exit 1
 }
 
-export ROOT_DIR=${HOME}/findora_${NAMESPACE}
+export ROOT_DIR=${HOME}/findora_${NAMESPACE}net
 keypath=${ROOT_DIR}/${NAMESPACE}net_node.key
 FN=${ROOT_DIR}/bin/fn
 
@@ -76,13 +76,14 @@ sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/
 ###################
 
 # download latest link and get url
-wget -O "${ROOT_DIR}/latest" "https://${ENV}-${NAMESPACE}-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest_golevel"
+wget -O "${ROOT_DIR}/latest" "https://${ENV}-${NAMESPACE}net-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest_golevel"
 CHAINDATA_URL=$(cut -d , -f 1 "${ROOT_DIR}/latest")
 echo $CHAINDATA_URL
 
 # remove old data 
 rm -rf "${ROOT_DIR}/findorad"
 rm -rf "${HOME}/.tendermint/data"
+rm "${HOME}/.tendermint/config/addrbook.json"
 wget -O "${ROOT_DIR}/snapshot" "${CHAINDATA_URL}" 
 mkdir "${ROOT_DIR}/snapshot_data"
 tar zxvf "${ROOT_DIR}/snapshot" -C "${ROOT_DIR}/snapshot_data"
@@ -103,7 +104,7 @@ docker run -d \
     -p 8667:8667 \
     -p 26657:26657 \
     --name findorad \
-    findoranetwork/findorad node \
+    findoranetwork/findorad:testnet-v0.2.0Sa-without-evm-compatible node \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="${HOME}/.tendermint/config/priv_validator_key.json" \
