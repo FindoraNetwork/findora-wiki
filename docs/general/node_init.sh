@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-ENV=dev
-NAMESPACE=qa01
+ENV=prod
+NAMESPACE=testnet
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
 
 
