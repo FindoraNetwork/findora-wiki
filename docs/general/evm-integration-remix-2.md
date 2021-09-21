@@ -19,8 +19,8 @@ contract MyContract {
 
 我们将使用一个存有资产余额的MetaMask账户来部署合约。可以通过我们的测试网水龙头充值，然后在Findora Devnet上部署。接下来，在构造函数中输入Test Contract，然后点击“部署”。MetaMask弹窗将显示交易相关信息，我们需要点击“确认”进行签名。
 
-![remix-confirm](/static/img/evm/remix-confirm.jpg)
+![remix-confirm](/img/evm/remix-confirm.png)
 
 交易确认后，合约将出现在Remix的“Deployed Contracts”栏目中。从这里即可与合约功能进行交互。
 
-![remix-deploy](/static/img/evm/remix-deploy.png)
+![remix-deploy](/img/evm/remix-deploy.png)

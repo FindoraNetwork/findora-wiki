@@ -111,7 +111,7 @@ cd .. && touch waffle.json
 ```
 npm run build
 ```
-![wallfe-build](/static/img/evm/wallfe-build.jpg)
+![wallfe-build](/img/evm/wallfe-build.jpg)
 
 4.在test 目录创建一个文件（MyContract.test.ts）来测试您的MyContract合约:
 
@@ -156,7 +156,7 @@ describe ('MyContract', () => {
   });
 })
 ```
-![wallfe-test](/static/img/evm/wallfe-test.jpg)
+![wallfe-test](/img/evm/wallfe-test.jpg)
 
 ### 使用Mars 配置部署脚本
 现在，您需要为Findora Devnet测试网配置MyContract合约的部署。
@@ -178,7 +178,7 @@ npm run build
 
 如果您打开build目录，可以看到一个artifacts.ts文件，其中包含部署所需的工件数据。您需要编写部署脚本，才能继续进行部署。部署脚本将用于说明Mars部署哪个合约，部署到哪个网络，以及使用哪个帐户来触发部署。
 
-![mars-build](/static/img/evm/mars-build.png)
+TODO: insert /img/evm/mars-build.png
 
 ### 创建部署脚本
 

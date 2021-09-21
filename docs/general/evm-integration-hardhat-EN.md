@@ -108,7 +108,7 @@ npx hardhat run scripts/deploy.js --network findora
 ```
 The contract can be deployed in a few seconds, and then you can see the contract address printed out on the terminal：
 
-![hardhat-deploy](/static/img/evm/hardhat-deploy.jpg)
+![hardhat-deploy](/img/evm/hardhat-deploy.jpg)
 
 ### Interact with the contract
 Create a local instance of the MyContract.sol contract, and then enter the address obtained when deploying the contract, connect this instance to an existing instance, and interact with it after connecting to the contract. When the console command is still running, call the method in the contract and pass in the correct parameters (if the method involves transfer, please authorize first)。
@@ -121,6 +121,6 @@ const myContract = await ethers.getContractAt('MyContract', '0x8D94133ddF3A6Cc45
    console.log('value is:', value.toString())
 ```
 
-![hardhat-value](/static/img/evm/hardhat-value.jpg)
+![hardhat-value](/img/evm/hardhat-value.jpg)
 
 Congratulations, you have completed the Hardhat basic operation guide!

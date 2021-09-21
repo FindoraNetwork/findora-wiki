@@ -111,7 +111,7 @@ This is all the steps to configure Waffle, now you can use the build script to c
 ```
 npm run build
 ```
-![wallfe-build](/static/img/evm/wallfe-build.jpg)
+![wallfe-build](/img/evm/wallfe-build.jpg)
 
 4.Create a file (MyContract.test.ts) in the test directory to test your MyContract contract:
 
@@ -156,7 +156,7 @@ describe ('MyContract', () => {
   });
 })
 ```
-![wallfe-test](/static/img/evm/wallfe-test.jpg)
+![wallfe-test](/img/evm/wallfe-test.jpg)
 
 ### Use Mars to configure the deployment script
 Now, you need to configure the deployment of the MyContract contract for the Findora Devnet testnet。
@@ -178,7 +178,7 @@ npm run build
 
 If you open the build directory, you can see an artifacts.ts file, which contains artifact data required for deployment. You need to write a deployment script before you can proceed with the deployment. The deployment script will be used to explain which contract Mars deploys, which network to deploy to, and which account is used to trigger the deployment。
 
-![mars-build](/static/img/evm/mars-build.png)
+TODO: insert /img/evm/mars-build.png
 
 ### Create deploy script
 

@@ -29,7 +29,7 @@ truffle init
 ```
 会生成如下目录和文件:
 
-![truffle-init](/static/img/evm/truffle-init.jpg)
+![truffle-init](/img/evm/truffle-init.jpg)
 
 3.新建package.json文件，用于使用依赖(根据开发需要自行选择添加)，参考如下:
 ```
@@ -108,7 +108,7 @@ truffle compile --compile-all
 ```
 编译的输出位于./build/contracts目录。如果目录不存在会自动创建。这些编译文件对于Truffle框架能否正常工作至关重要。你不应该在正常的编译或发布以外手动修改这些文件。文件有你需要的合约 abi 信息。如图所示：
 
-![truffle-compile](/static/img/evm/truffle-compile.jpg)
+![truffle-compile](/img/evm/truffle-compile.jpg)
 
 7.部署
 
@@ -122,7 +122,7 @@ module.exports = function(deployer) {
 ```
 需要注意的是文件名以数字开头，一个描述性的后缀结尾。数字前缀是必须的，migrate 命令会按照 migrate目录下的数字开头的文件按生序依次执行。后缀仅是为了提高可读性，以方便理解。 如图所示：
 
-![truffle-script](/static/img/evm/truffle-script.jpg)
+![truffle-script](/img/evm/truffle-script.jpg)
 
 
 执行部署，使用下述命令：
@@ -132,6 +132,6 @@ truffle migrate --network findora
 这个命令会执行所有的位于migrations目录内的移植脚本。如果你之前的移植是成功执行的。truffle migrate仅会执行新创建的移植。如果没有新的移植脚本，这个命令不同执行任何操作。可以使用选项--reset来从头执行移植脚本。
 
 
-![truffle-deploy](/static/img/evm/truffle-deploy.jpg)
+![truffle-deploy](/img/evm/truffle-deploy.jpg)
 
 恭喜, 您已完成truffle基本操作指引!

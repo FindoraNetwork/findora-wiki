@@ -30,7 +30,7 @@ truffle init
 ```
 Will generate the following directories and files:
 
-![truffle-init](/static/img/evm/truffle-init.jpg)
+![truffle-init](/img/evm/truffle-init.jpg)
 
 3.Create a new package.json file to use dependencies (select and add according to development needs), refer to the following:
 ```
@@ -109,7 +109,7 @@ truffle compile --compile-all
 ```
 The output of the compilation is located in the ./build/contracts directory. If the directory does not exist, it will be created automatically. These compiled files are essential for the proper functioning of the Truffle framework. You should not manually modify these files outside of normal compilation or distribution. The file has the contract abi information you need. as the picture shows：
 
-![truffle-compile](/static/img/evm/truffle-compile.jpg)
+![truffle-compile](/img/evm/truffle-compile.jpg)
 
 7.Deploy
 
@@ -123,7 +123,7 @@ module.exports = function(deployer) {
 ```
 Note that the file name starts with a number and ends with a descriptive suffix. The number prefix is required, and the migrate command will be executed in order according to the files beginning with the number in the migrate directory. The suffix is only to improve readability and facilitate understanding. as the picture shows：
 
-![truffle-script](/static/img/evm/truffle-script.jpg)
+![truffle-script](/img/evm/truffle-script.jpg)
 
 
 To perform deployment, use the following command：
@@ -133,6 +133,6 @@ truffle migrate --network findora
 This command will execute all migration scripts located in the migrations directory. If your previous migration was performed successfully. truffle migrate will only perform newly created migrations. If there is no new migration script, this command does not perform any operation. You can use the option --reset to execute the migration script from the beginning。
 
 
-![truffle-deploy](/static/img/evm/truffle-deploy.jpg)
+![truffle-deploy](/img/evm/truffle-deploy.jpg)
 
 Congratulations, you have completed the basic truffle operation guide!

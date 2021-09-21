@@ -108,7 +108,7 @@ npx hardhat run scripts/deploy.js --network findora
 ```
 合约在几秒之后便可部署完成，然后您就可以在终端上看到打印出的地址
 
-![hardhat-deploy](/static/img/evm/hardhat-deploy.jpg)
+![hardhat-deploy](/img/evm/hardhat-deploy.jpg)
 
 ### 与合约进行交互
 创建一个MyContract.sol合约的本地实例, 然后输入部署合约时获得的地址，将这一实例连接到已有实例, 连接到合约后即可进行交互。当console指令还在运行时，调用合约里面的方法，并传入正确的参数（如果方法中涉及到转账，请先授权）。
@@ -121,6 +121,6 @@ const myContract = await ethers.getContractAt('MyContract', '0x8D94133ddF3A6Cc45
    console.log('value is:', value.toString())
 ```
 
-![hardhat-value](/static/img/evm/hardhat-value.jpg)
+![hardhat-value](/img/evm/hardhat-value.jpg)
 
 恭喜， 您已完成Hardhat基本操作指引!

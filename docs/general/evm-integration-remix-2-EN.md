@@ -19,8 +19,8 @@ After the compilation is complete, we can go to the "Deploy & Run Transactions" 
 
 We will use a MetaMask account with an asset balance to deploy the contract. It can be recharged through our testnet faucet and then deployed on Findora Devnet. Next, enter Test Contract in the constructor and click "Deploy". MetaMask pop-up window will display transaction-related information, we need to click "confirm" to sign。
 
-![remix-confirm](/static/img/evm/remix-confirm.jpg)
+![remix-confirm](/img/evm/remix-confirm.png)
 
 After the transaction is confirmed, the contract will appear in the "Deployed Contracts" column of Remix. From here, you can interact with the contract function.
 
-![remix-deploy](/static/img/evm/remix-deploy.png)
+![remix-deploy](/img/evm/remix-deploy.png)
