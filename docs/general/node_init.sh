@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ENV=prod
 NAMESPACE=test
-SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
+SERV_URL=https://${ENV}-${NAMESPACE}net.${ENV}.findora.org
 
 
 check_env() {
