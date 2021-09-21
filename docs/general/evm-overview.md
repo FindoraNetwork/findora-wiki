@@ -8,7 +8,7 @@ sidebar_position: 6
 
 The Findora EVM is based on the [Frontier](https://paritytech.github.io/frontier/) Ethereum compatibility layer — part of Polkadot's substrate framework. Therefore, smart contract programming languages (i.e. Solidity), tools (i.e. Remix IDE) and token specifications (i.e. ERC-20, ERC-721, etc.) from Ethereum's EVM platform are all compatible with the Findora EVM. 
 
-The Findora EVM guides below will walk developers through setting up Findora EVM integration tools, deploying a Findora smart contract and launching `FRC-20` tokens on Findora EVM.
+The Findora EVM guides below will walk developers through setting up Findora EVM integration tools, deploying a Findora smart contract and launching FRC-20 tokens on Findora EVM.
 
 Developers who deploy Ethereum's ERC-20 Solidity boilerplate code on the Findora EVM will, in effect, be creating FRC-20 tokens, which are Findora's version of ERC-20 tokens.
 
