@@ -5,7 +5,8 @@ sidebar_position: 2
 
 ## 2021-08-10
 
-version: `ed4baf88e855ebf7aa39a25d1cbee8a068ac6cbf`
+> - git tag: `testnet-v0.2.0-monkey-7`
+> - git commit: `ed4baf88e855ebf7aa39a25d1cbee8a068ac6cbf`
 
 - Upgrade stability: switch to the stable channel of rust language
 - Upgrade binaries: use `findorad` instead of `tendermint + abci_validator_node`
@@ -14,7 +15,7 @@ version: `ed4baf88e855ebf7aa39a25d1cbee8a068ac6cbf`
 
 ## 2021-07-30
 
-version: `1d53d795ff220b6b47b2b5968576e8a5d43f505f`
+> - git commit: `1d53d795ff220b6b47b2b5968576e8a5d43f505f`
 
 - Support to send confidential transactions in `fns`
 - Support command line options in `abci_validator_node`
