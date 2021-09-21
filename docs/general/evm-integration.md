@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 7
 ---
 
-# EVM Integration
+# EVM - Devnet Setup
 
 ## Networks
 EVM support is currently available on the following findora networks:

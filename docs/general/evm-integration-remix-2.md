@@ -1,4 +1,7 @@
-### 概览
+---
+sidebar_position: 16
+---
+# EVM - Remix IDE (CH)### 概览
 开发者还可使用Remix IDE来与Findora进行交互。Remix IDE是以太坊智能合约最常用的开发环境之一，可提供基于网络的解决方案以实现在本地VM或外部Web3提供者（例如MetaMask）上快速编译和部署Solidity和Vyper代码。通过将两种工具结合，开发者可以快速启动在Findora上的部署。
 ### 如何开始使用Remix
 现在，我们可以开始启动Remix来使用更多Findora的进阶功能。

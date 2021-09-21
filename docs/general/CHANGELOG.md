@@ -1,13 +1,16 @@
-# Change Logs
+---
+sidebar_position: 2
+---
+# Change Log
 
 ## 2021-08-10
 
 version: `ed4baf88e855ebf7aa39a25d1cbee8a068ac6cbf`
 
-- upgrade stability: switch to the stable channel of rust language
-- upgrade binaries: use `findorad` instead of `tendermint + abci_validator_node`
-- upgrade distribution methods: from binaries to docker images
-- support update the memo infomations of validator
+- Upgrade stability: switch to the stable channel of rust language
+- Upgrade binaries: use `findorad` instead of `tendermint + abci_validator_node`
+- Upgrade distribution methods: from binaries to docker images
+- Support update the memo infomations of validator
 
 ## 2021-07-30
 

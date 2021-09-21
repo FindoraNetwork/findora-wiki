@@ -1,5 +1,9 @@
+---
+sidebar_position: 8
+---
+# EVM - Truffle
 ### Overview
-   To help more developers deploy on Findora, this tutorial will guide you through the truffle box setting, and use Truffle to deploy contracts on independent Findora nodes。
+   To help more developers deploy on Findora, this tutorial will guide you through the truffle box setting, and use Truffle to deploy contracts on independent Findora nodes.
    
 #### Prerequisites
    This tutorial requires Node.js to be installed. You can download it through [Node.js](https://nodejs.org/) or run the following code to complete the installation.

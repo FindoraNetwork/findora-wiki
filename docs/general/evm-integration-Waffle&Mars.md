@@ -1,3 +1,8 @@
+---
+sidebar_position: 15
+---
+# EVM - Waffle & Mars (CH)
+
 ### 概览
 Waffle是编译和测试智能合约的库，Mars是部署管理器。 Waffle和Mars可以一起用于编写、编译、测试和部署以太坊智能合约。由于Findora的以太坊兼容性，因此可以使用Waffle和Mars将智能合约部署到Findora Devnet 测试网。
 

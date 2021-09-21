@@ -4,4 +4,6 @@ sidebar_position: 1
 
 # Getting Started
 
-Hello and welcome to Findora's Wiki! This will be the place to go for all things Findora. We will be adding MUCH more content in the near future, so stay tuned! Also if you would like to contribute, please check out our contribution guide.
+Hello and welcome to the Findora Wiki! We will be adding much more content in the near future, so stay tuned! 
+
+If you would like to contribute, please click the contributing section for details.

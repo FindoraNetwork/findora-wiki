@@ -1,3 +1,8 @@
+---
+sidebar_position: 15
+---
+# EVM - Hardhat (CH)
+
 ### 概览
 Hardhat是一种以太坊开发环境，帮助开发者管理并实现智能合约和DApp开发重复任务的自动化, 可以在truffle项目中进行使用。
 #### 先决条件

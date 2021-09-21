@@ -1,3 +1,8 @@
+---
+sidebar_position: 10
+---
+# EVM - Hardhat
+
 ### Overview
 Hardhat is an Ethereum development environment that helps developers manage and automate repetitive tasks for smart contract and DApp development, and can be used in the truffle project。
 #### Prerequisites

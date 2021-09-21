@@ -1,4 +1,4 @@
-# EVM Integration - Use Remix
+# DELETE ME NOW!!!! DELETE ME NOW!!! EVM Integration - Use Remix
 
 ## Prerequisites
 Make sure you have setup Ethereum account and received FRA on it.

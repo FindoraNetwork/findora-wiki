@@ -1,3 +1,9 @@
+---
+sidebar_position: 13
+---
+# EVM - Truffle (CH)
+
+
 ### 概览：
    为帮助更多开发者在Findora上进行部署, 本教程将全程指导您进行truffle box设置, 并且在独立Findora节点使用Truffle来部署合约。
    

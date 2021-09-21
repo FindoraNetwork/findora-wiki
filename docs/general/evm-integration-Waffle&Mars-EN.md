@@ -1,3 +1,7 @@
+---
+sidebar_position: 9
+---
+# EVM - Waffle & Mars
 ### Overview
 Waffle is a library for compiling and testing smart contracts, and Mars is a deployment manager. Waffle and Mars can be used together to write, compile, test, and deploy Ethereum smart contracts. Due to the Ethereum compatibility of Findora, smart contracts can be deployed to the Findora Devnet testnet using Waffle and Mars。
 
