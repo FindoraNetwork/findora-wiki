@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Findora Wiki',
-  tagline: 'Experience the Findora Anvil Testnet',
+  tagline: 'Tools, integrations and tutorials to start using and building on Findora.',
   url: 'https://wiki.findora.org/',
   baseUrl: '/',
   onBrokenLinks: 'throw',

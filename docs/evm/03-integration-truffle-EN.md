@@ -1,7 +1,4 @@
----
-sidebar_position: 8
----
-# EVM - Truffle
+# Truffle
 ### Overview
    To help more developers deploy on Findora, this tutorial will guide you through the truffle box setting, and use Truffle to deploy contracts on independent Findora nodes.
    

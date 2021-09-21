@@ -1,8 +1,4 @@
----
-sidebar_position: 7
----
-
-# EVM - Devnet Setup
+# Devnet Setup
 
 ## Networks
 EVM support is currently available on the following findora networks:
@@ -13,13 +9,13 @@ Devnet | Findora Devnet | 523 | https://dev-evm.dev.findora.org:8545 | FRA
  
 ### Setup Findora Account
 
-#### 1. Download [fns (command tools)](https://drive.google.com/drive/u/1/folders/1zXxdu3ZzhzWZZ5vYDg76ApnqfyJOP9Dx)
+### 1. Download [fns (command tools)](https://drive.google.com/drive/u/1/folders/1zXxdu3ZzhzWZZ5vYDg76ApnqfyJOP9Dx)
 - [Linux](https://drive.google.com/drive/u/1/folders/1UMO3s5e4uWLSuvb16UJVdgIx9OgQ5g3p)
 - [MacOS](https://drive.google.com/drive/u/1/folders/1eBxEsw5ClvqAprcixRDCYhj18qeKEDf7)
 ```
 chmod +x fns
 ```
-#### 2. Create a new account (ed25519) on the Findora
+### 2. Create a new account (ed25519) on the Findora
 > Note: The `fns` generated account is only used for testing (unsafe), 
 > recommend to use [Findora Official Wallet](https://wallet.findora.org/) .
 > 

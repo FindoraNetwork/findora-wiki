@@ -1,27 +1,28 @@
 ---
-sidebar_position: 9
+sidebar_position: 15
 ---
-# EVM - Waffle & Mars
-### Overview
-Waffle is a library for compiling and testing smart contracts, and Mars is a deployment manager. Waffle and Mars can be used together to write, compile, test, and deploy Ethereum smart contracts. Due to the Ethereum compatibility of Findora, smart contracts can be deployed to the Findora Devnet testnet using Waffle and Mars。
+# Waffle & Mars (ZH)
 
-Waffle uses minimal dependencies, has an easy-to-learn and expand writing syntax, and provides fast execution time when compiling and testing smart contracts. In addition, the compatibility of Waffle and TypeScript and the use of Chai matchers make it easy to view and write tests。
+### 概览
+Waffle是编译和测试智能合约的库，Mars是部署管理器。 Waffle和Mars可以一起用于编写、编译、测试和部署以太坊智能合约。由于Findora的以太坊兼容性，因此可以使用Waffle和Mars将智能合约部署到Findora Devnet 测试网。
 
-Mars provides a simple, TypeScript-compatible framework for creating advanced deployment scripts and keeping them in sync with state changes. Mars focuses on "infrastructure as code", allowing developers to specify how to deploy their smart contracts, and then use these specifications to automatically handle state changes and deployment。
+Waffle使用最少的依赖项，具有易于学习和扩展的编写语法，并在编译和测试智能合约时提供快速的执行时间。此外，Waffle与TypeScript的兼容和Chai matchers的使用使得检视和编写测试变得容易。
 
-In this tutorial, you need to create a TypeScript project first, then use Waffle to write, compile and test the smart contract, and then use Mars to deploy it to the Findora Devnet testnet。
+Mars提供了一个简单的、与TypeScript兼容的框架，用于创建高级部署脚本并与状态更改保持同步。 Mars专注于「基础设施即代码」，允许开发人员指定该如何部署他们的智能合约，然后使用这些规范自动处理状态更改及部署。
 
-#### Prerequisites
-   This tutorial requires Node.js to be installed. You can download it through [Node.js](https://nodejs.org/) or run the following code to complete the installation.
-    You can verify the correct installation by requesting the version of each installation package：
+在本教程中，您需先创建一个TypeScript项目，然后使用Waffle编写、编译和测试智能合约，接着使用Mars将其部署到Findora Devnet测试网上。
+
+#### 先决条件
+   本教程操作需安装Node.js，您可通过[Node.js](https://nodejs.org/)下载或自行运行以下代码完成安装。
+   您可以通过请求每个安装包的版本来验证是否安装正确：
 ```
    node -v
 ```
 ```
    npm -v
 ```
-#### Use Waffle to create a TypeScript project
-Here we use the truffle project (please refer to the truffle document to create a project module using Truffle to complete the 1, 2, and 3 steps), then configure the package.json file, and add dependencies in devDependencies:
+#### 使用Waffle创建TypeScript项目
+此处我们使用truffle项目进行（请参考truffle文档 使用Truffle创建工程模块 完成1，2，3步操作）后配置package.json文件，devDependencies 中追加依赖
 ```
 "devDependencies": {
    "@types/chai": "^4.2.21",
@@ -55,16 +56,16 @@ Here we use the truffle project (please refer to the truffle document to create 
 [@types/mocha](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/mocha) - contains the type definitions for mocha
 <br/>
 
-Need to reinstall dependencies
+需要重新安装依赖
 ```
 npm install
 ```
 
-### Create a TypeScript configuration file：
+### 创建一个TypeScript配置文件：
 ```
 touch tsconfig.json
 ```
-### Add basic TypeScript configuration：
+### 添加基本的TypeScript配置：
 ```
 {
   "compilerOptions": {
@@ -82,14 +83,14 @@ touch tsconfig.json
 }
 ```
 
-You should now have a basic TypeScript project with the dependencies needed to build with Waffle and Mars。
+现在，您应该有一个基本的TypeScript项目，其中包含使用Waffle和Mars进行构建所需的依赖项。
 
-### Compile with Waffle
-1.Go back to the root directory of the project and create a waffle.json file to configure Waffle：
+### 使用Waffle编译
+1.返回项目的根目录并创建一个waffle.json文件来配置Waffle：
 ```
 cd .. && touch waffle.json
 ```
-2.Edit waffle.json to specify the compiler configuration, including the contract directory, etc. In this example, we will use solcjs and the version of Solidity you used for the contract, which is 0.6.12：
+2.编辑waffle.json以指定编译器配置，包含合约目录等。在本示例中，我们将使用solcjs 和您用于合约的Solidity 版本，即0.6.12：
 ```
 {
   "compilerType": "solcjs", // Specifies compiler to use
@@ -105,19 +106,19 @@ cd .. && touch waffle.json
   "typechainEnabled": true // Enable typed artifact generation
 }
 ```
-3.Add a script in package.json to run Waffle：
+3.在package.json中添加一个脚本来运行Waffle：
 ```
 "scripts": {
   "build": "waffle"
 }
 ```
-This is all the steps to configure Waffle, now you can use the build script to compile the MyContract contract：
+这就是配置Waffle的所有步骤，现在您可以完整使用build脚本来编译MyContract合约：
 ```
 npm run build
 ```
 ![wallfe-build](/img/evm/wallfe-build.jpg)
 
-4.Create a file (MyContract.test.ts) in the test directory to test your MyContract contract:
+4.在test 目录创建一个文件（MyContract.test.ts）来测试您的MyContract合约:
 
 ```
 import { use, expect } from 'chai';
@@ -162,12 +163,12 @@ describe ('MyContract', () => {
 ```
 ![wallfe-test](/img/evm/wallfe-test.jpg)
 
-### Use Mars to configure the deployment script
-Now, you need to configure the deployment of the MyContract contract for the Findora Devnet testnet。
+### 使用Mars 配置部署脚本
+现在，您需要为Findora Devnet测试网配置MyContract合约的部署。
 
-You need to generate artifacts for Mars to enable type checking in the deployment script:
+您需要为Mars生成工件，以便在部署脚本中启用类型检查:
 
-1.Update existing script to run Waffle in package.json to include Mars：
+1.更新现有脚本以在package.json中运行Waffle以包含Mars：
 ```
 "scripts": {
   "build": "waffle && mars",
@@ -175,24 +176,24 @@ You need to generate artifacts for Mars to enable type checking in the deploymen
 }
 ```
 
-2.Generate artifacts and create the artifacts.ts file required for deployment
+2.生成工件并创建部署所需的artifacts.ts文件
 ```
 npm run build
 ```
 
-If you open the build directory, you can see an artifacts.ts file, which contains artifact data required for deployment. You need to write a deployment script before you can proceed with the deployment. The deployment script will be used to explain which contract Mars deploys, which network to deploy to, and which account is used to trigger the deployment。
+如果您打开build目录，可以看到一个artifacts.ts文件，其中包含部署所需的工件数据。您需要编写部署脚本，才能继续进行部署。部署脚本将用于说明Mars部署哪个合约，部署到哪个网络，以及使用哪个帐户来触发部署。
 
 TODO: insert /img/evm/mars-build.png
 
-### Create deploy script
+### 创建部署脚本
 
-In this step, you will create a deployment script that will define how the contract should be deployed. Mars provides a deploy function to which you can pass options, such as the account private key used to deploy the contract, the network to be deployed, and so on. The deploy function is used to define the contract to be deployed. Mars has a contract function that accepts name, artifact and constructorArgs.
+在此步骤中，您将创建部署脚本，该脚本将定义应如何部署合约。Mars提供了一个deploy功能，您可以向它传递选项，例如用于部署合约的帐户私钥、所要部署的网络等。deploy函数内部用于定义要部署的合约的地方。 Mars有一个contract函数，用来接受name、artifact和 constructorArgs.
 
-1.Create a src directory to contain your deployment script and create a script to deploy the MyContract contract：
+1.创建一个src目录来包含你的部署脚本并创建脚本来部署MyContract合约：
 ```
 mkdir src && cd src && touch deploy.ts
 ```
-2.In deploy.ts, use Mars' deploy function to create a script and deploy to Findora Devnet using your account’s private key：
+2.在deploy.ts中，使用Mars的deploy函数创建一个脚本，使用您账户的私钥部署至 Findora Devnet：
 ```
 import { deploy } from 'ethereum-mars';
 
@@ -201,7 +202,7 @@ deploy({network: 'https://dev-evm.dev.findora.org:8545', privateKey},(deployer) 
   // Deployment logic will go here
 });
 ```
-3.Set the deploy function to deploy the MyContract contract created in the above steps：
+3.设置deploy函数来部署在上述步骤中创建的MyContract合约：
 ```
 import { deploy, contract } from 'ethereum-mars';
 import { MyToken } from '../build/artifacts';
@@ -211,7 +212,7 @@ deploy({network: 'https://dev-evm.dev.findora.org:8545', privateKey}, () => {
   contract('myContract', MyContract);
 });
 ```
-4.Add the deployment script to the scripts object in package.json：
+4.将部署脚本添加到package.json中的scripts对象：
 ```
 "scripts": {
     "build": "waffle && mars",
@@ -219,14 +220,14 @@ deploy({network: 'https://dev-evm.dev.findora.org:8545', privateKey}, () => {
     "deploy": "ts-node src/deploy.ts"
   }
 ```
-So far, you should have created a deployment script in deploy.ts to deploy the MyContract contract to Findora Devnet, and added the ability to easily call the script and deploy the contract。
+到目前为止，您应该已经在deploy.ts中创建了一个部署脚本，用于将MyContract合约部署至Findora Devnet，并添加了轻松调用脚本和部署合约的功能。
 
-###  Use Mars for deploy
-If you have configured the deployment, you can now actually deploy to Findora Devnet。
+###  使用Mars进行部署
+若您已配置了部署，现在可以真正部署至Findora Devnet了。
 
-1.Deploy the contract using the script you just created：
+1.使用您刚刚创建的脚本部署合约：
 ```
 npm run deploy
 ```
 
-Congratulations! You have successfully deployed the contract on Findora Devnet through Waffle and Mars!
+恭喜！您已经成功通过Waffle和Mars在Findora Devnet上部署合约了！
