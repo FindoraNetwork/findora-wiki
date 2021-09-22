@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 ---
 
-# Validator Node Setup (on Testnet)
+# Validator Setup (Testnet)
 ## Hardware Requirements
 
 * Requirements

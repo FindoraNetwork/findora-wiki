@@ -16,5 +16,5 @@ After you fork, you will be directed to the document that you chose to edit in a
 
 Github will create a new branch in your fork.
 
-The last step will be to create a pull request from your branch to base:master, and our maintainers will review and publish your changes.
+The last step will be to create a pull request from your branch to `base:master`, and our maintainers will review and publish your changes.
 
