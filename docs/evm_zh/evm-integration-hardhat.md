@@ -116,7 +116,7 @@ npx hardhat run scripts/deploy.js --network findora
 ![hardhat-deploy](/img/evm/hardhat-deploy.jpg)
 
 ### 与合约进行交互
-创建一个MyContract.sol合约的本地实例, 然后输入部署合约时获得的地址，将这一实例连接到已有实例, 连接到合约后即可进行交互。当console指令还在运行时，调用合约里面的方法，并传入正确的参数（如果方法中涉及到转账，请先授权）。
+创建一个MyContract.sol合约的本地实例, 然后输入部署合约时获得的地址，将这一实例连接到已有实例, 连接到合约后即可进行交互。当console指令还在运行时，调用合约里面的方法，并传入正确的参数（如果方法中涉及到ERC20类型转账，请先授权）。
 ```
 const myContract = await ethers.getContractAt('MyContract', '0x8D94133ddF3A6Cc451653Cd4B21Dc8b65c3383B0');
    const tx = await myContract.connect(operator).setValue(88, override);

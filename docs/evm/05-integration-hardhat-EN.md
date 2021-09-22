@@ -113,7 +113,7 @@ The contract can be deployed in a few seconds, and then you can see the contract
 ![hardhat-deploy](/img/evm/hardhat-deploy.jpg)
 
 ### Interact with the contract
-Create a local instance of the MyContract.sol contract, and then enter the address obtained when deploying the contract, connect this instance to an existing instance, and interact with it after connecting to the contract. When the console command is still running, call the method in the contract and pass in the correct parameters (if the method involves transfer, please authorize first)。
+Create a local instance of the MyContract.sol contract, and then enter the address obtained when deploying the contract, connect this instance to an existing instance, and interact with it after connecting to the contract. When the console command is still running, call the method in the contract and pass in the correct parameters (If the method involves ERC20 type transfer, please authorize first)。
 ```
 const myContract = await ethers.getContractAt('MyContract', '0x8D94133ddF3A6Cc451653Cd4B21Dc8b65c3383B0');
    const tx = await myContract.connect(operator).setValue(88, override);
