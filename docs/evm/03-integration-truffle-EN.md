@@ -19,7 +19,7 @@
 
 #### Use Truffle to create a project
    If you have fully installed Truffle, perform the following steps to create and run the Truffle project：
-<br/>
+
    
 1.Create a new project folder and enter the project directory
 ```
@@ -85,7 +85,7 @@ compilers: {
     },
   },
    // Truffle Plugin
-   plugins: ['moonbeam-truffle-plugin']
+   plugins: ['Findora-truffle-plugin']
 ```
 5.Create contract：
 

@@ -23,7 +23,7 @@ sidebar_position: 13
 ```
 
 #### 使用Truffle创建工程
-   如果您已经全面安装了Truffle，执行一下操作步骤来进行Truffle 项目的新建和运行：<br/>
+   如果您已经全面安装了Truffle，执行一下操作步骤来进行Truffle 项目的新建和运行：
    
 1.新建项目文件夹，并进入项目目录
 ```
@@ -89,7 +89,7 @@ compilers: {
     },
   },
    // Truffle Plugin
-   plugins: ['moonbeam-truffle-plugin']
+   plugins: ['Findora-truffle-plugin']
 ```
 5.创建合约：
 

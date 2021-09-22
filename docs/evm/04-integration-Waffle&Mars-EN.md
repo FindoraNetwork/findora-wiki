@@ -34,23 +34,23 @@ Here we use the truffle project (please refer to the truffle document to create 
 }
 ```
 [Waffle](https://github.com/EthWorks/Waffle) - for writing, compiling, and testing smart contracts
-<br/>
-[Ethers](https://github.com/ethers-io/ethers.js/) - for interacting with Moonbeam's Ethereum API
-<br/>
+
+[Ethers](https://github.com/ethers-io/ethers.js/) - for interacting with Findora's Ethereum API
+
 [OpenZeppelin Contracts](https://github.com/OpenZeppelin/openzeppelin-contracts) - the contract you'll be creating will use OpenZeppelin's ERC20 base implementation
-<br/>
+
 [TypeScript](https://github.com/microsoft/TypeScript) - the project will be a TypeScript project
-<br/>
+
 [TS Node](https://github.com/TypeStrong/ts-node) - for executing the deployment script you'll create later in this guide
-<br/>
+
 [Chai](https://github.com/chaijs/chai) - an assertion library used alongside Waffle for writing tests
-<br/>
+
 [@types/chai](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/chai) - contains the type definitions for chai
-<br/>
+
 [Mocha](https://github.com/mochajs/mocha) - a testing framework for writing tests alongside Waffle
-<br/>
+
 [@types/mocha](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/mocha) - contains the type definitions for mocha
-<br/>
+
 
 Need to reinstall dependencies
 ```

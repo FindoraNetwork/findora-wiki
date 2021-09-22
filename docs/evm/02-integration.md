@@ -1,4 +1,4 @@
-# Devnet Setup
+# EVM Integration
 
 ## Networks
 EVM support is currently available on the following findora networks:
@@ -6,22 +6,119 @@ EVM support is currently available on the following findora networks:
 Network Type | Network Name | Chain ID | RPC URL | Currency Symbol (optional)
 --- | --- | --- | --- | ---
 Devnet | Findora Devnet | 523 | https://dev-evm.dev.findora.org:8545 | FRA
- 
-### Setup Findora Account
 
-### 1. Download [fns (command tools)](https://drive.google.com/drive/u/1/folders/1zXxdu3ZzhzWZZ5vYDg76ApnqfyJOP9Dx)
+
+### 1. Setup Ethereum Account
+#### 1. Install [Metamask](https://metamask.io/) and create an account. 
+
+#### 2. (Optional) Setup account
+> If you already have an Ethereum address, skip step #2 and step #3
+> If you need to use the command `fn` in any of the steps, please refer to the section ["Setup Findora Account"](#setup-findora-account) below. 
+> Note: The `fn` generated account is only used for testing (unsafe),
+> recommend to use [Metamask](https://metamask.io/) or other ethereum wallet.
+> 
+
+```
+fn gen-eth-key  
+```
+output:
+```
+Mnemonic: lumber friend abstract swarm rifle inner syrup physical farm van urban cube
+PrivateKey: e0713a27b18115da437e4f981eb460be2a6bc0e88cd0dd24ed7f7d43ce6af876
+Address: 0xf5224110db945b54466d275cd224fed2dd110e67
+```
+
+### 3. (Optional) Import new account to metamask
+> If you already have an Ethereum address, skip this step.
+
+![Metamask](/img/evm/metamask_1.png)
+
+### 4. Connect to Findora Devnet
+
+![Metamask](/img/evm/metamask_4.png)
+
+![Metamask](/img/evm/metamask_2.png)
+
+![Metamask](/img/evm/metamask_3.png)
+
+### 5. Deposit FRA to your Ethereum account
+
+The most common and fastest way to deposit FRA to your Ethereum address is via our Discord bot  `FindoraBot`. 
+
+#### 1. Request funds from [Discord faucet](https://discord.gg/8bdb8KHuaB)
+
+![Discord](/img/evm/discord_1.png)
+
+
+You should send a private message to the `FindoraBot` in the following format. 
+
+```
+!evm 0x9c0700E390f0E9c98b894bF4Fc4d5c1Ac3e02D6B
+```
+
+where 
+0x9c0700E390f0E9c98b894bF4Fc4d5c1Ac3e02D6B should be replaced with your own Ethereum address. 
+> Note that there must be a seperator (such as an empty space) between `!evm` and the address. 
+
+![Discord](/img/evm/direct_evm_faucet.png)
+
+#### 2. If you had FRA in your `Findora Address` starting with `fra`, you could also do an internal transfer with the following steps to deposit FRA to your Ethereum address.
+
+
+1. Deposit FRA to ethereum address
+> FRA decimals is 6.
+```
+fn contract-deposit --address 0xf5224110db945b54466d275cd224fed2dd110e67 --amount 100000000
+```
+2. Check your Ethereum account balance.
+```
+fn account -a 0xf5224110db945b54466d275cd224fed2dd110e67 
+```
+output:
+```
+AccountId: fra1753yzyxmj3d4g3ndyawdyf876tw3zrn8qqqqqqqqqqqqqqqqqqqq5me93z
+SmartAccount {
+    nonce: 0,
+    balance: 100000000,
+    reserved: 0,
+    assets: {},
+}
+```
+You can also check on metamask. Now you can use all the functions of metamask normally.
+
+3. Withdraw FRA to findora account (optional)
+```
+fn contract-withdraw --amount 10000000 --eth-key "lumber friend abstract swarm rifle inner syrup physical farm van urban cube"
+```
+
+## Remix 
+
+### Deploy and run a sample smart contract
+Use this  [document](evm-integration-remix.md). for a step by step process
+
+
+
+## Truffle
+
+### Deploy ERC20 Contracts
+Here is an example: https://github.com/tylerztl/findora-erc20-demo
+
+
+## Setup Findora Account
+
+#### 1. Download [fn (command tools)](https://drive.google.com/drive/u/1/folders/1zXxdu3ZzhzWZZ5vYDg76ApnqfyJOP9Dx)
 - [Linux](https://drive.google.com/drive/u/1/folders/1UMO3s5e4uWLSuvb16UJVdgIx9OgQ5g3p)
 - [MacOS](https://drive.google.com/drive/u/1/folders/1eBxEsw5ClvqAprcixRDCYhj18qeKEDf7)
 ```
-chmod +x fns
+chmod +x fn
 ```
-### 2. Create a new account (ed25519) on the Findora
-> Note: The `fns` generated account is only used for testing (unsafe), 
+#### 2. Create a new account (ed25519) on the Findora
+> Note: The `fn` generated account is only used for testing (unsafe), 
 > recommend to use [Findora Official Wallet](https://wallet.findora.org/) .
 > 
 > If you already have a Findora account, skip this step.
 ```
-fns genkey  
+fn genkey  
 ```
 output:
 ```
@@ -35,20 +132,20 @@ Key: {
 
 1. Connect to remote findora node
 ```
-fns setup -S https://dev-evm.dev.findora.org
+fn setup -S https://dev-evm.dev.findora.org
 ```
 2. Load your Findora account to request funds from the faucet
 > Save the mnemonic phrase generated above to `mnemonic.key` file.
 >
 > eg: front fan poverty crawl party electric slim spin pair wool media page over box sample slush lab copy decorate stem recycle search essay delay
 ```
-fns setup -O $PWD/mnemonic.key
+fn setup -O $PWD/mnemonic.key
 ```
 Note: must be absolute path!
 
 3. Query account
 ```
-fns show -b       
+fn show -b       
 ```
 output:
 ```
@@ -65,105 +162,6 @@ Balance:
 0 FRA units
 ```
 You can also check on Findora official wallet.
-
-### 3. Request funds from [Discord faucet](https://discord.gg/8bdb8KHuaB)
-
-![Discord](/img/evm/discord_1.png)
-
-![Discord](/img/evm/discord_2.png)
-
-Chat with `FindoraBot` and send `Findora Address` in message :
-```
-!evm fra1vs8j62uxd9v5w6qa6h4lgxx4gdq20p2x8g907rygupwdkmh829fqr9aud8
-```
-After waiting for 5 minutes, you will receive 100 FRA token on Devnet.
-
-Query balance again to check your funds
-```
-fns show -b       
-```
-output:
-```
-Server URL:
-https://dev-evm.dev.findora.org
-
-Findora Address:
-fra1vk4aqtlqj78qs8qxy3cwyaesp02d5pqmvh3ve98y3cm8x3ktaeaseccwla
-
-Findora Public Key:
-ZavQL-CXjggcBiRw4ncwC9TaBBtl4syU5I42c0bL7ns=
-
-Balance:
-10000000 FRA units
-```
-
-### 4. Setup Ethereum Account
-#### 1. Install [Metamask](https://metamask.io/)
-
-#### 2 .Setup account
-> Note: The `fns` generated account is only used for testing (unsafe),
-> recommend to use [Metamask](https://metamask.io/) or other ethereum wallet.
-> 
-> If you already have an Ethereum address, skip this step.
-```
-fns gen-eth-key  
-```
-output:
-```
-Mnemonic: lumber friend abstract swarm rifle inner syrup physical farm van urban cube
-PrivateKey: e0713a27b18115da437e4f981eb460be2a6bc0e88cd0dd24ed7f7d43ce6af876
-Address: 0xf5224110db945b54466d275cd224fed2dd110e67
-```
-
-### 3. Import new account to metamask
-> If you already have an Ethereum address, skip this step.
-
-![Metamask](/img/evm/metamask_1.png)
-
-### 4. Connect to Findora Devnet
-
-![Metamask](/img/evm/metamask_4.png)
-
-![Metamask](/img/evm/metamask_2.png)
-
-![Metamask](/img/evm/metamask_3.png)
-
-### 5. Transfer FRA to Metamask (Ethereum account)
-1. Deposit FRA to ethereum address
-> FRA decimals is 6.
-```
-fns contract-deposit --address 0xf5224110db945b54466d275cd224fed2dd110e67 --amount 100000000
-```
-2. Check your Ethereum account balance.
-```
-fns account -a 0xf5224110db945b54466d275cd224fed2dd110e67 
-```
-output:
-```
-AccountId: fra1753yzyxmj3d4g3ndyawdyf876tw3zrn8qqqqqqqqqqqqqqqqqqqq5me93z
-SmartAccount {
-    nonce: 0,
-    balance: 100000000,
-    reserved: 0,
-    assets: {},
-}
-```
-You can also check on metamask. Now you can use all the functions of metamask normally.
-
-3. Withdraw FRA to findora account (optional)
-```
-fns contract-withdraw --amount 10000000 --eth-key "lumber friend abstract swarm rifle inner syrup physical farm van urban cube"
-```
-
-## Remix 
-
-### Deploy and run a sample smart contract
-Use this  [document](evm-integration-remix.md). for a step by step process
-
-## Truffle
-
-### Deploy ERC20 Contracts
-Here is an example: https://github.com/tylerztl/findora-erc20-demo
 
 
 ## Compatibility
@@ -214,7 +212,6 @@ Address | Name | Features
 0x6 | BN128Add | Elliptic curve addition
 0x7 | BN128Mul | Elliptic curve scalar multiplication
 0x8 | BN128Pair | Elliptic curve pairing check
-
 
 
 
