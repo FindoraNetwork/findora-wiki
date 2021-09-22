@@ -84,8 +84,6 @@ compilers: {
       }
     },
   },
-   // Truffle Plugin
-   plugins: ['Findora-truffle-plugin']
 ```
 5.Create contract：
 
