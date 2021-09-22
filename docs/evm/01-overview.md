@@ -12,13 +12,15 @@ Developers who deploy Ethereum's ERC-20 Solidity boilerplate code on the Findora
 
 Currently, developing on Findora EVM requires developers to connect to the Findora EVM Devnet. 
 
-See the [EVM - Devnet Setup](02-integration.md) guide for details.
+See the [EVM - Devnet Setup
+](02-integration.md) guide for details.
 
 ### Deploying a Contract
 
 Generally speaking, Ethereum EVM-compatible tools will work on Findora EVM. Thus, the Truffle Development Suite, Remix IDE, Metamask Wallet and other EVM tools will be used to connect to and deploy smart contracts on Findora EVM. 
 
-See the [EVM - Truffle](03-integration-truffle-EN.md) and  [EVM - Remix IDE](06-integration-remix-2-EN.md) guide for details.
+See the [EVM - Truffle
+](03-integration-truffle-EN.md) and  [EVM - Remix IDE](06-integration-remix-2-EN.md) guide for details.
 
 ### Testing and Automation
 
