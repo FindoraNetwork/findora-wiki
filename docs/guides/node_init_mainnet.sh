@@ -66,19 +66,6 @@ $FN setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 sudo rm -rf ${ROOT_DIR}/findorad || exit 1
 mkdir -p ${ROOT_DIR}/findorad || exit 1
 
-# FIXME: remove following code
-mkdir -p "${HOME}"/.tendermint/data
-val_state_file="${HOME}/.tendermint/data/priv_validator_state.json"
-if [ ! -f "${val_state_file}" ]; then
-    sudo cat>"${val_state_file}"<<EOF
-{
-  "height": "0",
-  "round": "0",
-  "step": 0
-}
-EOF
-fi
-
 docker run --rm -v ${HOME}/.tendermint:/root/.tendermint findoranetwork/findorad init --${NAMESPACE}-net || exit 1
 
 sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/
