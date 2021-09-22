@@ -94,7 +94,7 @@ fn contract-withdraw --amount 10000000 --eth-key "lumber friend abstract swarm r
 ## Remix 
 
 ### Deploy and run a sample smart contract
-Use this  [document](evm-integration-remix.md). for a step by step process
+Use this  [document](06-integration-remix-2-EN.md). for a step by step process
 
 
 
