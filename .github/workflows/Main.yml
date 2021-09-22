@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - ci
+      - change-container-build
 jobs:
   build-and-deploy:
     strategy:
@@ -15,14 +16,28 @@ jobs:
     - name: checkout
       uses: actions/checkout@v2
 
-    - name: Install dependence 
+    - name: Build
       shell: bash
       run: |
-        yarn cache clean && yarn install
-    - name: build
+        docker build -t findora-wiki -f .github/workflows/Dockerfile .
+    - name: Copy code to local
       shell: bash
       run: |
-        CI=false yarn build
+        docker rm -f findora-wiki || true
+        docker run -d --rm --name findora-wiki findora-wiki sleep 99999
+        docker cp findora-wiki:/wiki/build ./build
+        docker stop -t 0 findora-wiki && docker rm -f findora-wiki
+        docker rm $(docker ps -a | awk '{print $1}') || true
+        docker rmi -f $(docker images -f "dangling=true" -q) || true
+        docker rmi findora-wiki || true
+    # - name: Install dependence 
+    #   shell: bash
+    #   run: |
+    #     yarn cache clean && yarn install
+    # - name: build
+    #   shell: bash
+    #   run: |
+    #     CI=false yarn build
     - name: update S3
       shell: bash
       run: |

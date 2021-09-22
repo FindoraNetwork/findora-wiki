@@ -1,7 +1,9 @@
 FROM node:16-alpine3.12
+RUN apk add --no-cache python3 py3-pip \
+    && pip3 install --upgrade pip \
+    && pip3 install awscli \
+    && rm -rf /var/cache/apk/*
 COPY . /wiki
 WORKDIR /wiki
-RUN apk add git openssh-client
-RUN git config --global user.name "Findora CI" ; git config --global user.email ci@findora.org
-RUN yarn cache clean
-RUN yarn install
+RUN yarn cache clean && yarn install
+RUN CI=false yarn build
