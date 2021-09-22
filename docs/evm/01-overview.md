@@ -12,25 +12,23 @@ Developers who deploy Ethereum's ERC-20 Solidity boilerplate code on the Findora
 
 Currently, developing on Findora EVM requires developers to connect to the Findora EVM Devnet. 
 
-See the [EVM - Devnet Setup
-](evm-integration.md) guide for details.
+See the [EVM - Devnet Setup](02-integration.md) guide for details.
 
 ### Deploying a Contract
 
 Generally speaking, Ethereum EVM-compatible tools will work on Findora EVM. Thus, the Truffle Development Suite, Remix IDE, Metamask Wallet and other EVM tools will be used to connect to and deploy smart contracts on Findora EVM. 
 
-See the [EVM - Truffle
-](evm-integration-truffle-EN.md) and  [EVM - Remix IDE](evm-integration-remix-2-EN.md) guide for details.
+See the [EVM - Truffle](03-integration-truffle-EN.md) and  [EVM - Remix IDE](06-integration-remix-2-EN.md) guide for details.
 
 ### Testing and Automation
 
 Waffle is a library for compiling and testing smart contracts and Mars is a deployment manager. Waffle and Mars can be used together to write, compile, test, and deploy Ethereum smart contracts. 
 
-See the [EVM - Waffle & Mars](evm-integration-Waffle&Mars-EN.md) guide for details.
+See the [EVM - Waffle & Mars](04-integration-Waffle&Mars-EN.md) guide for details.
 
 Hardhat is an Ethereum development environment that helps developers manage and automate repetitive tasks for smart contract and DApp development, and can be used in the truffle project. 
 
-See the [EVM - Hardhat](evm-integration-hardhat-EN.md) guide for details.
+See the [EVM - Hardhat](05-integration-hardhat-EN.md) guide for details.
 
 ### Other Tools and Integrations
 
