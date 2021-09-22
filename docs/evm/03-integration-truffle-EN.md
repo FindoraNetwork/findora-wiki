@@ -36,7 +36,7 @@ Will generate the following directories and files:
 3.Create a new package.json file to use dependencies (select and add according to development needs), refer to the following:
 ```
 {
-  "name": "truffle-box",
+  "name": "findora-truffle",
   "version": "1.0.0",
   "description": "",
   "main": "truffle-config.js",
@@ -65,7 +65,7 @@ npm install
 ```
 findora: {
       provider:()=> new HDWalletProvider(mnemonic, `https://dev-evm.dev.findora.org:8545`),
-      network_id: 523,       // devnet's id
+      network_id: 523,       // findorad evnet's id
       skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
      }
 ```
@@ -83,14 +83,22 @@ compilers: {
         // evmVersion: "byzantium"
       }
     },
-  },
+  }
 ```
 5.Create contract：
 
 All your contracts should be located in the ./contracts directory. By default, we provide a contract file and a library file, both ending with .sol.
 
 ```
+pragma solidity ^0.6.12;
+
+import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
+
 contract MyContract {
+
+  //Construction method
+  constructor() public {}
+
   //Your logic code
 }
 ```
@@ -115,12 +123,32 @@ The output of the compilation is located in the ./build/contracts directory. If 
 Create a deployment script file
 
 ```
-module.exports = function(deployer) {
-  // deployment steps
-  deployer.deploy(MyContract);
-};
+const myContract = artifacts.require('MyContract');
+
+// ++++++++++++++++  Main Migration ++++++++++++++++ 
+const migration = async (deployer, network, accounts) => {
+  await Promise.all([
+      deploy(deployer, network, accounts)
+  ]);
+}
+
+// ++++++++++++++++  Deploy Functions ++++++++++++++++ 
+module.exports = migration;
+
+async function deploy(deployer, network, accounts) { 
+  console.log("[MyContract] Start deploy on Network= " + network);
+
+  //Wallet address, contract owner 
+  let deployer_account = accounts[0];
+  
+  console.log('deployer:', deployer_account)
+
+  deployer.deploy(myContract);
+  
+  console.log("[MyContract] End");
+}
 ```
-Note that the file name starts with a number and ends with a descriptive suffix. The number prefix is required, and the migrate command will be executed in order according to the files beginning with the number in the migrate directory. The suffix is only to improve readability and facilitate understanding. as the picture shows：
+Note that the file name starts with a number and ends with a descriptive suffix. The number prefix is required. The migrate command will be executed in ascending order according to the files beginning with the number in the migrate directory. The suffix is only to improve readability and facilitate understanding. as the picture shows：
 
 ![truffle-script](/img/evm/truffle-script.jpg)
 
@@ -129,7 +157,7 @@ To perform deployment, use the following command：
 ```
 truffle migrate --network findora
 ```
-This command will execute all migration scripts located in the migrations directory. If your previous migration was performed successfully. truffle migrate will only perform newly created migrations. If there is no new migration script, this command does not perform any operation. You can use the option --reset to execute the migration script from the beginning。
+This command will execute all migration scripts located in the migrations directory. If your previous migration was performed successfully. truffle migrate will only perform newly created migrations. If there is no new migration script, this command does not perform any operation. You can use the option --reset to execute the migration script from the beginning。You can also use truffle migrate -f 2 --network findora to start execution from the file with the number prefix 2.
 
 
 ![truffle-deploy](/img/evm/truffle-deploy.jpg)

@@ -40,7 +40,7 @@ truffle init
 3.新建package.json文件，用于使用依赖(根据开发需要自行选择添加)，参考如下:
 ```
 {
-  "name": "truffle-box",
+  "name": "findora-truffle",
   "version": "1.0.0",
   "description": "",
   "main": "truffle-config.js",
@@ -69,7 +69,7 @@ npm install
 ```
 findora: {
       provider:()=> new HDWalletProvider(mnemonic, `https://dev-evm.dev.findora.org:8545`),
-      network_id: 523,       // devnet's id
+      network_id: 523,       // findora devnet's id
       skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
      }
 ```
@@ -87,14 +87,22 @@ compilers: {
         // evmVersion: "byzantium"
       }
     },
-  },
+  }
 ```
 5.创建合约：
 
 所有你的合约应该位于./contracts目录。默认我们提供了一个合约文件，一个库文件，均以.sol结尾.
 
 ```
+pragma solidity ^0.6.12;
+
+import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
+
 contract MyContract {
+
+  //构造方法
+  constructor() public {}
+
   //你的逻辑代码
 }
 ```
@@ -119,12 +127,32 @@ truffle compile --compile-all
 部署脚本文件
 
 ```
-module.exports = function(deployer) {
-  // deployment steps
-  deployer.deploy(MyContract);
-};
+const myContract = artifacts.require('MyContract');
+
+// ++++++++++++++++  Main Migration ++++++++++++++++ 
+const migration = async (deployer, network, accounts) => {
+  await Promise.all([
+      deploy(deployer, network, accounts)
+  ]);
+}
+
+// ++++++++++++++++  Deploy Functions ++++++++++++++++ 
+module.exports = migration;
+
+async function deploy(deployer, network, accounts) { 
+  console.log("[MyContract] Start deploy on Network= " + network);
+
+  //钱包地址，合约拥有者 
+  let deployer_account = accounts[0];
+
+  console.log('deployer:', deployer_account)
+
+  deployer.deploy(myContract);
+  
+  console.log("[MyContract] End");
+}
 ```
-需要注意的是文件名以数字开头，一个描述性的后缀结尾。数字前缀是必须的，migrate 命令会按照 migrate目录下的数字开头的文件按生序依次执行。后缀仅是为了提高可读性，以方便理解。 如图所示：
+需要注意的是文件名以数字开头，一个描述性的后缀结尾。数字前缀是必须的，migrate 命令会按照 migrate目录下的数字开头的文件按升序依次执行。后缀仅是为了提高可读性，以方便理解。 如图所示：
 
 ![truffle-script](/img/evm/truffle-script.jpg)
 
@@ -134,6 +162,7 @@ module.exports = function(deployer) {
 truffle migrate --network findora
 ```
 这个命令会执行所有的位于migrations目录内的移植脚本。如果你之前的移植是成功执行的。truffle migrate仅会执行新创建的移植。如果没有新的移植脚本，这个命令不同执行任何操作。可以使用选项--reset来从头执行移植脚本。
+也可以使用 truffle migrate -f 2 --network findora, 从数字前缀为2的文件开始执行。
 
 
 ![truffle-deploy](/img/evm/truffle-deploy.jpg)
