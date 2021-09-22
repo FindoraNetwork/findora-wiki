@@ -88,8 +88,6 @@ compilers: {
       }
     },
   },
-   // Truffle Plugin
-   plugins: ['Findora-truffle-plugin']
 ```
 5.创建合约：
 
