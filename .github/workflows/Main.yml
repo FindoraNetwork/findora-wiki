@@ -18,7 +18,7 @@ jobs:
     - name: Install dependence 
       shell: bash
       run: |
-        yarn
+        yarn cache clean && yarn install
     - name: build
       shell: bash
       run: |
