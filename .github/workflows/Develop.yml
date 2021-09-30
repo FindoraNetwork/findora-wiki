@@ -1,0 +1,46 @@
+
+name: Deploy
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  build-and-deploy:
+    strategy:
+      matrix:
+        platform: [aws]
+    runs-on: ${{matrix.platform}}
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: Build
+      shell: bash
+      run: |
+        docker build -t findora-wiki -f .github/workflows/Dockerfile .
+    - name: Copy code to local
+      shell: bash
+      run: |
+        docker rm -f findora-wiki || true
+        docker run -d --rm --name findora-wiki findora-wiki sleep 99999
+        docker cp findora-wiki:/wiki/build ./build
+        docker stop -t 0 findora-wiki && docker rm -f findora-wiki
+        docker rm $(docker ps -a | awk '{print $1}') || true
+        docker rmi -f $(docker images -f "dangling=true" -q) || true
+        docker rmi findora-wiki || true
+    # - name: Install dependence 
+    #   shell: bash
+    #   run: |
+    #     yarn cache clean && yarn install
+    # - name: build
+    #   shell: bash
+    #   run: |
+    #     CI=false yarn build
+    - name: update S3
+      shell: bash
+      run: |
+        aws s3 cp build s3://dev-wiki.findora.org/ --recursive
+    - name: cloudfront invalidation
+      shell: bash
+      run: |
+        aws cloudfront create-invalidation --distribution-id E3920I9CO27CE0 --paths "/*"
