@@ -12,12 +12,17 @@ sidebar_position: 4
 > **! NOTE !**
 >
 > If you have previously installed a Findora validator instance on your current machine, then you should first delete your all the contents from your ${ROOT_DIR} directory . If the ${ROOT_DIR} is not defined you can remove the contents in /tmp folder.
+> 
 
 ## Automated Setup
 
 Download and run the script below which automatically downloads the binaries and configures your Testnet validator node: 
 
- Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `${HOME}/findora_testnet/testnet_node.key`. If you don't have one, see the following sections to generate a new key file.
+> **! IMPORTANT !**
+>
+> The node_init.sh script will remove all the validator and wallet information you have. If you just want keep your data. Use [safty clean](## Safety clean)
+
+ Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `${HOME}/findora_testnet/testnet_node.key`. If you don't have one, see the [**following sections**](#Generate-Staking-Key) to generate a new key file.
 
 - [**node_init.sh**](./node_init.sh)
 
@@ -77,7 +82,7 @@ mkdir -p ${ROOT_DIR}/findorad
 > **Tips**:
 > - If you encounter a security issue error when trying to initialize findora node , you may need to manually approve its security priveliges in you OS first. Then re-run the commands again.
 
-#### Create Staking Key via `fn` CLI Tool
+#### Generate Staking Key
 
 Generate a new, random pair of public and private keys for your node which will be used for FRA staking:
 
