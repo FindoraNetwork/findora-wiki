@@ -184,7 +184,7 @@ An example of some of the information from `fn show` is below. `Findora Address`
 
 You can request Testnet FRA tokens in two ways:
 * 1) Fill out this form: [FRA Request Form](https://findora.typeform.com/to/uTC5aWYh) OR
-* 2) Make a request on the Findora Discord channel: [Findora Discord](http://discord.gg/DZpxXxRsGX)
+* 2) Make a request on the Findora Discord channel: [Findora Discord](https://discord.gg/NXhZr6H2qt)
 
 > **Tips**:
 > - All FRA token requests will be approved
