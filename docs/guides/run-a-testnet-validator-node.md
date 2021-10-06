@@ -175,20 +175,32 @@ curl 'http://localhost:8667/version' # Only if you set the 'ENABLE_QUERY_SERVICE
 ## Fund Your Validator
 
 Validators must stake a minimum for 888,888 FRA to register as a validator. Before you can stake FRA to your validator, you must first transfer FRA to your the `Findora Address` (i.e. wallet address) of your validator.
-### Testnet Funding
+### Testnet Funding - Find Your Wallet Address
 On Testnet, you can request free Testnet FRA tokens. First, locate the wallet address associated with your validator node. To do this, run `fn show` and locate the address under `Findora Address`
 
 An example of some of the information from `fn show` is below. `Findora Address` is the wallet address you will give out when requesting FRA testnet tokens. Note: Do not use the example address below for your own node.
 
 ![Docusaurus](/img/validator_setup_guide/fn_show.png)
 
-You can request Testnet FRA tokens in two ways:
-* 1) Fill out this form: [FRA Request Form](https://findora.typeform.com/to/uTC5aWYh) OR
-* 2) Make a request on the Findora Discord channel: [Findora Discord](https://discord.gg/NXhZr6H2qt)
+### Testnet Funding - Request Testnet FRA from Discord Bot
+Make a request for Testnet FRA be sent to you on the Findora Discord channel. The request will be processed by Findora's Discord bot.
+
+Step 1: Goto [Findora Discord](https://discord.gg/NXhZr6H2qt)
+
+Step 2: Goto the `#faucet-anvil` channel on Findora's Discord
+
+Step 3: A discord bot will automatically detect commands requesting Testnet FRA faucet tokens on the `#faucet-anvil` channel. Enter a FRA request using the command format below (be sure to use your own receiving wallet address):
+
+```shell
+# Bot Request Format:
+#   !faucet <\wallet address> <\Will you run a validator? yes/no> > <\Are you a developer? yes/no>
+!faucet fra19rtfg2g58x6jxxxxxxxxxxxxxxxxx example@gmail.com no no 
+```
+![Docusaurus](/img/validator_setup_guide/discord_bot.png)
 
 > **Tips**:
 > - All FRA token requests will be approved
-> - Testnet FRA form requests are processed every 12 hours
+> - You can only ask FRA once so make sure your address correct.
 
 ### Mainnet Funding
 Transfer FRA from an existing Findora wallet to your `Findora Address` (if you don't own any FRA, you can buy from a crypto exchange that lists FRA first). 
