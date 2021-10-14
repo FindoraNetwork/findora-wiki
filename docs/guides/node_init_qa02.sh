@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-ENV=prod
-NAMESPACE=testnet
+
+
+ENV=dev
+NAMESPACE=qa02
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
 
 
@@ -105,12 +107,15 @@ docker run -d \
     -p 8668:8668 \
     -p 8667:8667 \
     -p 26657:26657 \
+    --network=host \
     --name findorad \
-    findoranetwork/findorad:testnet-v0.2.0Sa-without-evm-compatible node \
+    findoranetwork/findorad:testnet-v0.2.0Sa-without-evm-compatible  node \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="${ROOT_DIR}/tendermint/config/priv_validator_key.json" \
-    --enable-query-service 
+    --enable-query-service \
+    --enable-snapshot \
+    --snapshot-mode=external
 
 sleep 10
 

@@ -22,7 +22,7 @@ Download and run the script below which automatically downloads the binaries and
 >
 > The node_init.sh script will remove all the validator and wallet information you have. If you just want keep your data. Use [safty clean](## Safety clean)
 
- Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `${HOME}/findora_testnet/testnet_node.key`. If you don't have one, see the [**following sections**](#Generate-Staking-Key) to generate a new key file.
+ Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `/data/findora/testnet/testnet_node.key`. If you don't have one, see the [**generate key section**](#generate-staking-key) to generate a new key file.
 
 - [**node_init.sh**](./node_init.sh)
 
