@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ENV=prod
-NAMESPACE=test
+NAMESPACE=testnet
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
 
 if [ ! $ROOT_DIR ]; then

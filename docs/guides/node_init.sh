@@ -21,8 +21,7 @@ check_env() {
 
 set_binaries() {
     OS=$1
-
-    docker pull public.ecr.aws/k6m5b6e2/release/findorad:testnet-v0.2.0Sf || exit 1
+    docker pull findoranetwork/findorad:v0.2.0-beta-4 || exit 1
     wget -T 10 https://wiki.findora.org/bin/${OS}/fn || exit 1
 
     new_path=${ROOT_DIR}/bin
@@ -33,7 +32,7 @@ set_binaries() {
     chmod -R +x ${new_path} || exit 1
 }
 
-mkdir -p /data/findora
+sudo mkdir -p /data/findora
 export ROOT_DIR=/data/findora/${NAMESPACE}
 keypath=${ROOT_DIR}/${NAMESPACE}_node.key
 FN=${ROOT_DIR}/bin/fn
@@ -106,7 +105,7 @@ docker run -d \
     -p 8667:8667 \
     -p 26657:26657 \
     --name findorad \
-    findoranetwork/findorad:testnet-v0.2.0Sa-without-evm-compatible node \
+    findoranetwork/findorad:v0.2.0-beta-4 node \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="${ROOT_DIR}/tendermint/config/priv_validator_key.json" \
@@ -120,7 +119,3 @@ curl 'http://localhost:8668/version'; echo
 curl 'http://localhost:8667/version'; echo
 
 echo "Local node initialized, please stake your FRA tokens after syncing is completed."
-# apt update
-# apt install zfsutils-linux
-# zfs create zfs/findora
-# zfs set mountpoint=/data/findora zfs/findora
