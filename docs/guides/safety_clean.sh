@@ -2,6 +2,7 @@
 ENV=prod
 NAMESPACE=testnet
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
+FINDORAD_IMG=findoranetwork/findorad:v0.2.0-beta-4
 
 if [ ! $ROOT_DIR ]; then
     echo 'Please set ROOT_DIR first.'
@@ -9,14 +10,12 @@ fi
 
 TM_HOME=${ROOT_DIR}/tendermint
 
-docker pull findoranetwork/findorad:v0.2.0-beta-4  || exit 1
+docker pull ${FINDORAD_IMG}  || exit 1
 
 docker rm -f findorad || exit 1
 
 sudo rm -rf $ROOT_DIR/findorad/*
-
 sudo rm -rf $ROOT_DIR/findorad/._*
-
 sudo rm -rf "${TM_HOME}"/data/*
 
 sudo chown -R `id -u`:`id -g` "${TM_HOME}"/data
@@ -45,18 +44,21 @@ sed -i "s#^fast_sync = .*#fast_sync = \"false\"#g" "${TM_HOME}/config/config.tom
 ###################
 
 # download latest link and get url
-wget -O "${ROOT_DIR}/latest" "https://${ENV}-${NAMESPACE}net-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest_golevel"
+wget -O "${ROOT_DIR}/latest" "https://${ENV}-${NAMESPACE}-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest"
 CHAINDATA_URL=$(cut -d , -f 1 "${ROOT_DIR}/latest")
 echo $CHAINDATA_URL
-# remove old data 
+# remove old data
 rm -rf "${ROOT_DIR}/findorad"
 rm -rf "${TM_HOME}/data"
-rm "${TM_HOME}/config/addrbook.json"
+rm -rf "${TM_HOME}/config/addrbook.json"
+
 wget -O "${ROOT_DIR}/snapshot" "${CHAINDATA_URL}" 
 mkdir "${ROOT_DIR}/snapshot_data"
 tar zxvf "${ROOT_DIR}/snapshot" -C "${ROOT_DIR}/snapshot_data"
-cp -r "${ROOT_DIR}/snapshot_data/data/ledger" "${ROOT_DIR}/findorad"
-cp -r "${ROOT_DIR}/snapshot_data/data/tendermint/mainnet/node0/data" "${TM_HOME}/data"
+
+mv "${ROOT_DIR}/snapshot_data/data/ledger" "${ROOT_DIR}/findorad"
+mv "${ROOT_DIR}/snapshot_data/data/tendermint/mainnet/node0/data" "${TM_HOME}/data"
+rm -rf "${ROOT_DIR}/snapshot_data"
 
 docker run -d \
     -v $TM_HOME:/root/.tendermint \
@@ -66,7 +68,7 @@ docker run -d \
     -p 8667:8667 \
     -p 26657:26657 \
     --name findorad \
-    findoranetwork/findorad:v0.2.0-beta-4 node \
+    ${FINDORAD_IMG} node \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
