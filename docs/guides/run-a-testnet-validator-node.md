@@ -56,27 +56,27 @@ Download the following files and pull image:
 
 ```shell
 # ex)
-#     export ROOT_DIR=${HOME}/findora_testnet
+#     export ROOT_DIR=/data/findora/testnet
 export ROOT_DIR=<The data path of your node>
 ```
 
 #### Initialize Findora Node and Create a Node Key
 
-Initializing Tendermint will create a node key (stored in a newly created `./tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
+Initializing Tendermint will create a node key (stored in a newly created `${ROOT_DIR}/tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
 
 ```shell
 # Clean up old data that may exist, may need super privilege if necessary
-sudo rm -rf ~/.tendermint
+sudo rm -rf /data/findora/testnet/tendermint
 
 # Initialize the configuration of your Tendermint node
 # This command will create a .tendermint directory and priv_validator_key.json file needed later
-docker run --rm -v $HOME/.tendermint:/root/.tendermint findoranetwork/findorad:testnet-v0.2.0h init --test-net
+docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint findoranetwork/findorad:testnet-v0.2.0h init --test-net
 
 sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/config
 
 # Create ledger data directory, for example
 sudo rm -rf ${ROOT_DIR}
-mkdir -p ${ROOT_DIR}/findorad
+sudo mkdir -p ${ROOT_DIR}
 ```
 
 > **Tips**:
