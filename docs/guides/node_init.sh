@@ -2,7 +2,7 @@
 ENV=prod
 NAMESPACE=testnet
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
-
+FINDORAD_IMG=findoranetwork/findorad:v0.2.0-beta-4
 
 check_env() {
     for i in wget curl; do
@@ -21,7 +21,7 @@ check_env() {
 
 set_binaries() {
     OS=$1
-    docker pull findoranetwork/findorad:v0.2.0-beta-4 || exit 1
+    docker pull ${FINDORAD_IMG} || exit 1
     wget -T 10 https://wiki.findora.org/bin/${OS}/fn || exit 1
 
     new_path=${ROOT_DIR}/bin
@@ -68,7 +68,7 @@ sudo rm -rf ${ROOT_DIR}/findorad || exit 1
 mkdir -p ${ROOT_DIR}/findorad || exit 1
 
 
-docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint findoranetwork/findorad init --${NAMESPACE} || exit 1
+docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint ${FINDORAD_IMG} init --${NAMESPACE} || exit 1
 
 sudo chown -R `id -u`:`id -g` ${ROOT_DIR}/tendermint/
 
@@ -84,12 +84,16 @@ echo $CHAINDATA_URL
 # remove old data 
 rm -rf "${ROOT_DIR}/findorad"
 rm -rf "${ROOT_DIR}/tendermint/data"
-rm "${ROOT_DIR}/tendermint/config/addrbook.json"
+rm -rf "${ROOT_DIR}/tendermint/config/addrbook.json"
+
 wget -O "${ROOT_DIR}/snapshot" "${CHAINDATA_URL}" 
 mkdir "${ROOT_DIR}/snapshot_data"
 tar zxvf "${ROOT_DIR}/snapshot" -C "${ROOT_DIR}/snapshot_data"
-cp -r "${ROOT_DIR}/snapshot_data/data/ledger" "${ROOT_DIR}/findorad"
-cp -r "${ROOT_DIR}/snapshot_data/data/tendermint/mainnet/node0/data" "${ROOT_DIR}/tendermint/data"
+
+mv "${ROOT_DIR}/snapshot_data/data/ledger" "${ROOT_DIR}/findorad"
+mv "${ROOT_DIR}/snapshot_data/data/tendermint/mainnet/node0/data" "${ROOT_DIR}/tendermint/data"
+
+rm -rf ${ROOT_DIR}/snapshot_data
 
 
 ###################
@@ -105,7 +109,7 @@ docker run -d \
     -p 8667:8667 \
     -p 26657:26657 \
     --name findorad \
-    findoranetwork/findorad:v0.2.0-beta-4 node \
+    ${FINDORAD_IMG} node \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
