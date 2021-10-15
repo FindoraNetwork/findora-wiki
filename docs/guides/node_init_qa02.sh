@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-
 ENV=dev
 NAMESPACE=qa02
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
+FINDORAD_IMG=public.ecr.aws/k6m5b6e2/release/findorad:testnet-v0.2.0-BETA
 
 
 check_env() {
@@ -24,7 +24,7 @@ check_env() {
 set_binaries() {
     OS=$1
 
-    docker pull public.ecr.aws/k6m5b6e2/release/findorad:testnet-v0.2.0-BETA || exit 1
+    docker pull ${FINDORAD_IMG} || exit 1
     wget -T 10 https://wiki.findora.org/bin/${OS}/fn || exit 1
 
     new_path=${ROOT_DIR}/bin
@@ -69,9 +69,7 @@ $FN setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 # clean old data and config files
 sudo rm -rf ${ROOT_DIR}/findorad || exit 1
 
-docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint \
-	public.ecr.aws/k6m5b6e2/release/findorad:testnet-v0.2.0-BETA \
-	init --${NAMESPACE} || exit 1
+docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint ${FINDORAD_IMG} init --${NAMESPACE} || exit 1
 
 sudo chown -R `id -u`:`id -g` ${ROOT_DIR}/tendermint/
 
@@ -111,7 +109,7 @@ docker run -d \
     -p 8667:8667 \
     -p 26657:26657 \
     --name findorad \
-    public.ecr.aws/k6m5b6e2/release/findorad:testnet-v0.2.0-BETA node\
+    ${FINDORAD_IMG} node\
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
