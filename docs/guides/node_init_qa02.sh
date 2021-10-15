@@ -112,7 +112,7 @@ docker run -d \
     findoranetwork/findorad:testnet-v0.2.0Sa-without-evm-compatible  node \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
-    --tendermint-node-key-config-path="${ROOT_DIR}/tendermint/config/priv_validator_key.json" \
+    --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
     --enable-query-service \
     --enable-snapshot \
     --snapshot-mode=external
@@ -125,7 +125,3 @@ curl 'http://localhost:8668/version'; echo
 curl 'http://localhost:8667/version'; echo
 
 echo "Local node initialized, please stake your FRA tokens after syncing is completed."
-# apt update
-# apt install zfsutils-linux
-# zfs create zfs/findora
-# zfs set mountpoint=/data/findora zfs/findora
