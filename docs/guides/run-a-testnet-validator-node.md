@@ -12,12 +12,17 @@ sidebar_position: 4
 > **! NOTE !**
 >
 > If you have previously installed a Findora validator instance on your current machine, then you should first delete your all the contents from your ${ROOT_DIR} directory . If the ${ROOT_DIR} is not defined you can remove the contents in /tmp folder.
+> 
 
 ## Automated Setup
 
 Download and run the script below which automatically downloads the binaries and configures your Testnet validator node: 
 
- Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `${HOME}/findora_testnet/testnet_node.key`. If you don't have one, see the following sections to generate a new key file.
+> **! IMPORTANT !**
+>
+> The node_init.sh script will remove all the validator and wallet information you have. If you just want keep your data. Use [safty clean](## Safety clean)
+
+ Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `/data/findora/testnet/testnet_node.key`. If you don't have one, see the [**generate key section**](#generate-staking-key) to generate a new key file.
 
 - [**node_init.sh**](./node_init.sh)
 
@@ -51,33 +56,33 @@ Download the following files and pull image:
 
 ```shell
 # ex)
-#     export ROOT_DIR=${HOME}/findora_testnet
+#     export ROOT_DIR=/data/findora/testnet
 export ROOT_DIR=<The data path of your node>
 ```
 
 #### Initialize Findora Node and Create a Node Key
 
-Initializing Tendermint will create a node key (stored in a newly created `./tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
+Initializing Tendermint will create a node key (stored in a newly created `${ROOT_DIR}/tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
 
 ```shell
 # Clean up old data that may exist, may need super privilege if necessary
-sudo rm -rf ~/.tendermint
+sudo rm -rf /data/findora/testnet/tendermint
 
 # Initialize the configuration of your Tendermint node
 # This command will create a .tendermint directory and priv_validator_key.json file needed later
-docker run --rm -v $HOME/.tendermint:/root/.tendermint findoranetwork/findorad:testnet-v0.2.0h init --test-net
+docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint findoranetwork/findorad:testnet-v0.2.0h init --test-net
 
 sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/config
 
 # Create ledger data directory, for example
 sudo rm -rf ${ROOT_DIR}
-mkdir -p ${ROOT_DIR}/findorad
+sudo mkdir -p ${ROOT_DIR}
 ```
 
 > **Tips**:
 > - If you encounter a security issue error when trying to initialize findora node , you may need to manually approve its security priveliges in you OS first. Then re-run the commands again.
 
-#### Create Staking Key via `fn` CLI Tool
+#### Generate Staking Key
 
 Generate a new, random pair of public and private keys for your node which will be used for FRA staking:
 
