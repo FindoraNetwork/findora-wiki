@@ -184,7 +184,7 @@ curl 'http://localhost:8667/version' # Only if you set the 'ENABLE_QUERY_SERVICE
 
 ## Fund Your Validator
 
-Validators must stake a minimum for 888,888 FRA to register as a validator. Before you can stake FRA to your validator, you must first transfer FRA to your the `Findora Address` (i.e. wallet address) of your validator.
+Validators must stake a minimum for 10,000 FRA to register as a validator. Before you can stake FRA to your validator, you must first transfer FRA to your the `Findora Address` (i.e. wallet address) of your validator.
 ### Mainnet Funding
 First, locate the wallet address associated with your validator node. To do this, run `fn show` and locate the address under `Findora Address`
 
@@ -245,7 +245,7 @@ To get detailed info about a specific sub-command like `stake` use the `--help` 
 > - ...
 
 ### Stake Initial FRA and Set Commission Rate
-After receiving FRA to your validator's `Findora Address`, you must stake a minimum of 888,888 FRA to be a validator. Only the top 100 validators (with the most FRA staked) will earn FRA rewards.
+After receiving FRA to your validator's `Findora Address`, you must stake a minimum of 10,000 FRA to be a validator. Only the top 100 validators (with the most FRA staked) will earn FRA rewards.
 
 
 > **Tips**:
