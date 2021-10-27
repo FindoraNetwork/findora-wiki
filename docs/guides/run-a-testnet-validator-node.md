@@ -24,7 +24,7 @@ Download and run the script below which automatically downloads the binaries and
 
  Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `/data/findora/testnet/testnet_node.key`. If you don't have one, see the [**generate key section**](#generate-staking-key) to generate a new key file.
 
-- [**node_init.sh**](./node_init.sh)
+- [**node_init.sh**](./node_init_testnet.sh)
 
 > **Tips**:
 > * example: `bash -x node_init.sh`
