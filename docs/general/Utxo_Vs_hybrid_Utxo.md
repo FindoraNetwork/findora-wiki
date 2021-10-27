@@ -1,4 +1,7 @@
-# Account and Hybrid Utxo Model
+---
+sidebar_position: 2
+---
+# Hybrid Ledger Model (Account/UTXO)
 
 ## Introduction
 The following sections will cover the differences between the Account and UTXO models as well as Findora's
@@ -6,7 +9,7 @@ implementation of the hybrid model. The purpose of this hybrid model is mainly t
 security and stateless nature of UTXO transactions while providing compatibility with the EVM network
 through the accounts model.
 
-## Utxo vs Account model
+## UTXO vs Account model
 - A UTXO model stores its assets as a set of unspent transaction outputs whereas the account model stores
   a set of addresses with their associated balances.
 
@@ -33,7 +36,7 @@ through the accounts model.
   replayed on the network. This is usually in the form of an incrementing nonce that ensures uniqueness. For UTXO based
   systems this is not an issue since every UTXO gets consumed and can't be spent again.
 
-## Hybrid Utxo Model
+## Hybrid UTXO Model
 The hybrid model implemented by Findora allows users to store assets in the form of a UTXO or balance. It is able to do
 this by using separate storage methods while combining their hashes to maintain integrity within the network.
 
