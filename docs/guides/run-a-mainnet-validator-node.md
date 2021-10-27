@@ -8,96 +8,101 @@ Table of Contents:
 - Hardware Requirements
 - Automated Setup
 - Manual Setup
-    - Download Validator Binaries
+    - Download Validator Binary and pull Image
     - Configure Local Node (for Mainnet)
     - Enable node to participate as a Validator Candidate (by staking FRA)
 - Staking/Unstaking FRA and Claiming Rewards (as a Validator)
 
+# Validator Node Setup (on Mainnet)
 ## Hardware Requirements
 * Requirements
     * Minimum: 8GB RAM, 2 Core CPU, 100GB Hard Disk
     * Recommended: 16GB RAM, 4 Core CPU, 300GB Hard Disk
 
+> **! NOTE !**
+>
+> If you have previously installed a Findora validator instance on your current machine, then you should first delete your all the contents from your ${ROOT_DIR} directory . If the ${ROOT_DIR} is not defined you can remove the contents in /tmp folder.
 
-## Automated Setup Script
->
-> Run the script below to automatically download binaries and configure the Mainnet validator node: [**node_init_mainnet.sh**](./node_init_mainnet.sh).
->
-> example: `bash -x node_init_mainnet.sh Path-to-Your-Node-Keypair`
+## Automated Setup
+
+Download and run the script below which automatically downloads the binaries and configures your Mainnet validator node:
+
+ Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `${HOME}/findora_mainnet/mainnet_node.key`. If you don't have one, see the following sections to generate a new key file.
+
+- [**node_init_mainnet.sh**](./node_init_mainnet.sh)
+
+> **Tips**:
+> * example: `bash -x node_init_mainnet.sh`
 
 ## Manual Setup
+
 If you don't wish to run the automated setup script above, you can manually download binary files and configure your Mainnet validator following the instructions below:
 
-### Download Validator Binaries
+### Download Validator Binaries and Pull Image
 
-Download the following files:
+Download the following files and pull image:
 
-- `tendermint`: a findora version of tendermint-core node
-    - [Linux version](https://github.com/FindoraNetwork/downloads/releases/download/linux/tendermint)
-    - [MacOS version](https://github.com/FindoraNetwork/downloads/releases/download/macos/tendermint)
-- `abci_validtor_node`: the abci node of findora network
-    - [Linux version](https://github.com/FindoraNetwork/downloads/releases/download/linux/abci_validator_node)
-    - [MacOS version](https://github.com/FindoraNetwork/downloads/releases/download/macos/abci_validator_node)
-- `fn`: a command line tool for Findora Network
-    - [Linux version](https://wiki.findora.org/static/bin/linux/fn)
-    - [MacOS version](https://wiki.findora.org/static/bin/macos/fn)
+- `findorad`: the node of findora network.
+    - `docker pull findoranetwork/findorad:testnet-v0.2.0Sa-without-evm-compatible`
+- `fn`: Findora Node Setup (fn) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
+    - [Linux version](https://wiki.findora.org/bin/linux/fn)
+    - [MacOS version](https://wiki.findora.org/bin/macos/fn)
 
 > **Tips**:
 > - You can (optionally) run a Linux node via `Windows Subsystem for Linux`
 > - Check that binaries have executable permissions set correctly
-    >     - ex) `chmod +x tendermint abci_validator_node fn`
+>     - ex) `chmod +x fn`
 > - Check that binary files are placed into one of your `PATH` directories
-    >     - ex) `mv tendermint abci_validator_node fn /usr/local/bin/`
+>     - ex) `mv fn /usr/local/bin/`
 
-### Configure your local node (for Mainnet)
+### Configure Local Node (for Mainnet)
 
-#### Initialize your local node
+#### Set Environment Path Variables
 
 ```shell
-# Clean up old data that may exist
-rm -rf ~/.tendermint
+# ex)
+#     export ROOT_DIR=${HOME}/findora_mainnet
+export ROOT_DIR=<The data path of your node>
+```
 
-# Initialize the config of your tendermint node
-tendermint init
+#### Initialize Findora Node and Create a Node Key
+
+Initializing Tendermint will create a node key (stored in a newly created `./tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
+
+```shell
+# Clean up old data that may exist, may need super privilege if necessary
+sudo rm -rf ~/.tendermint
+
+# Initialize the configuration of your Tendermint node
+# This command will create a .tendermint directory and priv_validator_key.json file needed later
+docker run --rm -v $HOME/.tendermint:/root/.tendermint findoranetwork/findorad:testnet-v0.2.0Sa-without-evm-compatible init --main-net
+
+sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/config
 
 # Create ledger data directory, for example
-rm -rf ${LEDGER_DIR}
-mkdir -p ${LEDGER_DIR}/abci ${LEDGER_DIR}/tendermint
+sudo rm -rf ${ROOT_DIR}
+mkdir -p ${ROOT_DIR}/findorad
 ```
 
 > **Tips**:
-> - If you encounter a security issue error when trying to run `tendermint init`, you may need to manually approve its security priveliges in you OS first. Then re-run the `tendermint init` command again.
+> - If you encounter a security issue error when trying to initialize findora node , you may need to manually approve its security priveliges in you OS first. Then re-run the commands again.
 
-#### Set necessary environment variables
+#### Create Staking Key via `fn` CLI Tool
+
+Generate a new, random pair of public and private keys for your node which will be used for FRA staking:
 
 ```shell
-# example:
-#     export LEDGER_DIR=${HOME}/findora_mainnet
-export LEDGER_DIR=<The path where you want to store your ledger data>
-
-# example:
-#     export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator_key.json
-export TENDERMINT_NODE_KEY_CONFIG_PATH=<The path where the 'priv_validator_key.json' are stored>
-
-# Optional, only if you want to query from your local node
-export ENABLE_LEDGER_SERVICE=true
-
-# Optional, only if you want to query from your local node
-export ENABLE_QUERY_SERVICE=true
+fn genkey > ${ROOT_DIR}/tmp.gen.keypair
 ```
 
-#### Generate key
+View the contents of your `tmp.gen.keypair` file via the command below:
 
-If you donot have a keypair for your node, generate a new random one:
+```cat ${ROOT_DIR}/tmp.gen.keypair```
 
-```shell
-fn genkey > ${LEDGER_DIR}/tmp.gen.keypair
-```
-
-Output example (please do not use this sample directly):
+An example of the file's content is below. Note: the `pub_key` and `sec_key` below are examples. Do not use them in your own node.
 
 ```shell
-cat ${LEDGER_DIR}/tmp.gen.keypair
+Wallet Address: fra1955hpj2xzkp4esd5928yhtp0l78ku8fkztvwcypvr8mk6x8tkn6sjsajun
 Mnemonic: repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame
 Key: {
   "pub_key": "LSlwyUYVg1zBtCqOS6wv_49uHTYS2OwQLBn3bRjrtPU=",
@@ -105,165 +110,206 @@ Key: {
 }
 ```
 
-set them:
+> ** Tip **:
+> For convenience, you can import the `sec_key` (aka private key) into any Findora wallet (Win/Mac wallet, mobile wallet, CLI wallet tool, etc.), to more conveniently check and manage your FRA balances or to view historical transaction data for this wallet address.
+
+#### Store Mnemonic Words into ${ROOT_DIR}/node.mnemonic
+For convenience in setting up your node via the `fn` tool, store your 24 mnemonic keywords (located inside `tmp.gen.keypair`) into ${ROOT_DIR}/node.mnemonic.
+
+To accomplish this, open the `tmp.gen.keypair` file and copy all of the 24 mnemonic keywords specific to your node. Then paste these 24 mnemonic keywords into the command below.
+
+Note: the 24 mnemonic keywords in the example command below (repair, drink, action, brass...) are examples. Do not use them.
 
 ```shell
+# ex)
+# echo "repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame" > ${ROOT_DIR}/node.mnemonic
+echo <24 mnemonic keywords> > ${ROOT_DIR}/node.mnemonic
+```
+
+Configure your validator node to use your newly generated public and private keys:
+
+```shell
+# Link the fn client to the Findora Mainnet address
 fn setup -S https://prod-mainnet.prod.findora.org
 
-# example:
-#     echo "repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame" > ${LEDGER_DIR}/node.mnemonic
-#     fn setup -O ${LEDGER_DIR}/node.mnemonic
+# Connect your staking key (now stored inside `node.mnemonic`)
+# to fn. This allows fn to sign transactions on your behalf
+# ex)
+#     fn setup -O ${ROOT_DIR}/node.mnemonic
 fn setup -O <Path to the mnemonic of your node> || exit 1
-# example 
+
+# Connect your Node Key to fn
+# ex)
 #     fn setup -K ${HOME}/.tendermint/config/priv_validator_key.json
 fn setup -K <path to validator key> || exit 1
 ```
 
-#### Get FRA tokens
-
-There serveral ways to get FRAs:
-
-- propose an issue to https://github.com/FindoraNetwork/findora-wiki
-- trade [FRA](https://www.gate.io/coins/buy-FRA) tokens from exchange [Gate.io](https://www.gate.io/), which is one of the global top 10 cryptocurrency exchanges with authentic trading volume
-- ...
-
-#### Custom the config of your tendermint-core node
-
-> **Tips**:
-> - you should set up a cluster instead of using a raw node in your production environment
-> - cmdline tools like 'wget', 'curl', 'jq' and 'perl' should be installed in advance
+#### Start or Upgrade Local Node
 
 ```shell
-# Get the genesis config from an existing node of the mainnet
-curl https://prod-mainnet.prod.findora.org:26657/genesis \
-    | jq -c '.result.genesis' \
-    | jq > ~/.tendermint/config/genesis.json
-
-# Adjust the block interval
-perl -pi -e 's#(create_empty_blocks_interval = ).*#$1"15s"#' ~/.tendermint/config/config.toml
-
-# Config some existing nodes to your local node, so it can connect to the mainnet
-perl -pi -e \
-    's#(persistent_peers = )".*"#$1"b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@prod-mainnet-us-west-2-sentry-000-public.prod.findora.org:26656"#' \
-    ~/.tendermint/config/config.toml
+# Stop your local container if necessary
+docker rm -f findorad
+# Start your validator container
+docker run -d \
+    -v $HOME/.tendermint:/root/.tendermint \
+    -v $ROOT_DIR/findorad:/tmp/findora \
+    -p 8669:8669 \
+    -p 8668:8668 \
+    -p 8667:8667 \
+    -p 26657:26657 \
+    --name findorad \
+    findoranetwork/findorad:testnet-v0.2.0Sa-without-evm-compatible node \
+    --ledger-dir /tmp/findora \
+    --tendermint-host 0.0.0.0 \
+    --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
+    --enable-query-service
 ```
 
-#### Run your local node
+#### Logging for Node
 
 ```shell
-# Start your validator process
-nohup abci_validator_node 2>&1 > ${LEDGER_DIR}/abci/validator.log &
-
-# Start your tendermint process
-# Notes:
-#   If you want to access the tendermint node on another host,
-#   use option --rpc.laddr=tcp://0.0.0.0:26657 when starting the process
-nohup tendermint node 2>&1 > ${LEDGER_DIR}/tendermint/consensus.log &
+docker logs -f findorad
 ```
 
-#### Check the status of your local node
+#### Check Local Node Status
 
-If the following commands can return useful message without error, then your node is running well:
+If the following commands return status messages without any errors, then your node has been successfully configured and started:
 
 ```shell
-curl 'http://localhost:26657/status'; echo
-curl 'http://localhost:8669/version'; echo
-curl 'http://localhost:8668/version'; echo # Only if you set the 'ENABLE_LEDGER_SERVICE'
-curl 'http://localhost:8667/version'; echo # Only if you set the 'ENABLE_QUERY_SERVICE'
+curl 'http://localhost:26657/status'
+curl 'http://localhost:8669/version'
+curl 'http://localhost:8668/version' # Only if you set the 'ENABLE_LEDGER_SERVICE'
+curl 'http://localhost:8667/version' # Only if you set the 'ENABLE_QUERY_SERVICE'
 ```
 
-## Staking
+## Fund Your Validator
 
-For staking operations, you should use the `fn` tool.
+Validators must stake a minimum for 10,000 FRA to register as a validator. Before you can stake FRA to your validator, you must first transfer FRA to your the `Findora Address` (i.e. wallet address) of your validator.
+### Mainnet Funding
+First, locate the wallet address associated with your validator node. To do this, run `fn show` and locate the address under `Findora Address`
+
+An example of some of the information from `fn show` is below. `Findora Address` is the wallet address you will give out when requesting FRA mainnet tokens. Note: Do not use the example address below for your own node.
+
+![Docusaurus](/img/validator_setup_guide/fn_show.png)
+
+You can obtain Mainnet FRA tokens in two ways:
+* 1) Propose an issue to https://github.com/FindoraNetwork/findora-wiki OR
+* 2) Trade [FRA](https://www.gate.io/coins/buy-FRA) tokens from exchange [Gate.io](https://www.gate.io/), which is one of the global top 10 cryptocurrency exchanges with authentic trading volume
+
+### Mainnet Funding
+Transfer FRA from an existing Findora wallet to your `Findora Address` (if you don't own any FRA, you can buy from a crypto exchange that lists FRA first).
+
+
+## Node Operations
+
+Besides node setup, the `fn` tool is also used for general validator staking operations such as staking FRA into the validator, setting the commission rate the validator charges, and transferring FRA balance on the validator to another wallet address and claiming FRA rewards.
+
+To see all list of all sub-commands under `fn` use the `--help` flag:
+
+```shell
+fn --help
+```
+
+To get detailed info about a specific sub-command like `stake` use the `--help` flag.
 
 > Usage example:
 >
 > `fn stake --help`
 >
 > ```shell
+> fn-stake
+>   Stake tokens (i.e. bond tokens) from a Findora account to a Validator
+>
 > USAGE:
->     fn stake [FLAGS] [OPTIONS] --amount <Amount>
+>   fn stake [FLAGS] [OPTIONS] --amount <Amount>
 >
 > FLAGS:
 >     -a, --append     stake more FRAs to your node
+>         --force      ignore warning and stake FRAs to your target node
+>     -h, --help       Prints help information
+>     -V, --version    Prints version information
 >
 > OPTIONS:
->     -n, --amount <Amount>           how much `FRA unit`s you want to stake
->     -R, --commission-rate <Rate>    the commission rate for delegators, a float number from 0.0 to 1.0
->     -M, --validator-memo <Memo>     the description of your validator node, optional
+>     -n, --amount <Amount>                       how much `FRA unit`s you want to stake
+>     -R, --commission-rate <Rate>                the commission rate of your node, a float number from 0.0 to 1.0
+>     -S, --staker-priv-key <SecretKey>           the file which contains private key (in base64 format) of proposer
+>     -M, --validator-memo <Memo>                 the description of your node, optional
+>     -A, --validator-td-addr <TendermintAddr>    stake FRAs to a custom validator
 > ```
 >
-> Similar help information can be obtained through the `fn` tool itself:
+> Help information for each sub-commands can be obtained by typing --help after the specific subcommand:
 >
-> - `fn --help`
-> - `fn stake --help`
 > - `fn unstake --help`
 > - `fn claim --help`
 > - `fn transfer --help`
 > - ...
 
-### Stake into findora network
+### Stake Initial FRA and Set Commission Rate
+After receiving FRA to your validator's `Findora Address`, you must stake a minimum of 10,000 FRA to be a validator. Only the top 100 validators (with the most FRA staked) will earn FRA rewards.
+
 
 > **Tips**:
-> - you should wait for 100% completion of the data synchronization of your node
->     - Or you may be punished by the network because of 'validator node offline'
+> - Before staking, wait for 100% data synchronization of your validator node
+>     - Else, you may be charged a 'validator node offline' penatly fee.
 
 ```shell
-# The minimal amount of FRAs for a successful staking is 888888
-# example:
-# - your want to stake 1888888 FRAs
-# - that is 1888888 * 1000000 FRA units
-fn stake -n $((1888888 * 1000000)) -R 0.2 -M 'Node-A'
+# ex)
+# - To stake 999,999 FRAs with a commision rate of 2% (and validator name of Validator_Pool_A)
+# - Note: that is 999999 * 1000000 FRA units
+# - Your Staker Memo file should like this:
+cat staker_memo
+{
+  "name": "ExampleNode",
+  "desc": "I am just a example description, please change me.",
+  "website": "https://www.example.com",
+  "logo": "https://www.example.com/logo"
+}
+fn stake -n $((999999 * 1000000)) -R 0.02 -M "$(cat staker_memo)"
 ```
 
-### Append more power to your node
+### Stake Additional FRA
 
 ```shell
-# append 2 FRA units to your node,
-# the power of your node will be increased by 2 if all is well
-fn stake -a -n 2
+# Stake an additional 2,000 FRA to your validator
+fn stake -a -n $((2000 * 1000000))
 ```
 
-### Query infomations
+### View Node Information
+To find information about your validator node, use the `fn show` command. Sample output is below:
 
-```
-fn show
-```
+![Docusaurus](/img/validator_setup_guide/fn_show_full.png)
 
-### Claim rewards
+### Claim FRA Rewards
 
-Claim all your rewards:
+Top 100 validators will earn block rewards. If your validator is a top 100 validator, it will earn rewards which will show up in the `rewards:` section of `fn show`.
 
-```shell
-fn claim
-```
+![Docusaurus](/img/validator_setup_guide/reward_balance.png)
 
-Claim part of your rewards:
+If your reward balance is greater than 0, you can claim your earned rewards via the `fn claim` sub-command
 
 ```shell
 # fn claim -n <the amount of FRA units you want>
-# example:
-# - your want to claim 10 FRAs
-# - that is 10 * 1000000 FRA units
+# ex)
+#   If you have a reward balance of 20 FRA (i.e. "rewards: 20000000")
+#   and wish to claim 10 FRA (out of 20 FRA), issue the command below:
 fn claim -n $((10 * 1000000))
 ```
 
-### Unstake principals
+### Unstake FRA
 
-Unstake all your principals:
-
-> **NOTE**: this operation will make your node out of Findora Network (Mainnet).
-
-```shell
-fn unstake
-```
-
-Unstake part of your principals:
+#### Unstake Some of Your FRA
 
 ```shell
 # fn unstake -n <the amount of FRA units you want>
-# example:
-# - your want to unstake 900 FRAs
-# - that is 900 * 1000000 FRA units
+# ex)
+#   To unstake 900 FRA (ie. 900 * 1000000)
 fn unstake -n $((900 * 1000000))
+```
+
+#### Close Validator and Unstake All of Your FRA
+
+> **NOTE**: This operation will unstake all of your FRA and remove your node from the Findora Network.
+
+```shell
+fn unstake
 ```
