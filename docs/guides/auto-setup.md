@@ -2,16 +2,21 @@
 sidebar_position: 4
 ---
 
-# Validator Setup (Testnet)
+# Automated Setup
 ## Hardware Requirements
 
-* Requirements
+* Minimum Requirements:
   * Minimum: 8GB RAM, 2 Core CPU, 100GB Hard Disk
   * Recommended: 16GB RAM, 4 Core CPU, 300GB Hard Disk
 
+* Recommended Requirements:
+  * AWS T3 t3.2xlarge
+  * AliCloud g6 g6.2xlarge
+  * GCP n2 n2-standard-8
+  
 > **! NOTE !**
 >
-> If you have previously installed a Findora validator instance on your current machine, then you should first delete your all the contents from your ${ROOT_DIR} directory . If the ${ROOT_DIR} is not defined you can remove the contents in /tmp folder.
+> If you have previously installed a Findora validator instance on your current machine, then you should first delete all the contents from your /data directory.
 > 
 
 ## Automated Setup
@@ -20,166 +25,47 @@ Download and run the script below which automatically downloads the binaries and
 
 > **! IMPORTANT !**
 >
-> The node_init.sh script will remove all the validator and wallet information you have. If you just want keep your data. Use [safty clean](## Safety clean)
+> The node_init.sh script will remove all the validator and wallet information you have. If you just want to keep your data. Use [safety clean](## Safety clean)
+### Setup the Findora Node Tool
 
- Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `/data/findora/testnet/testnet_node.key`. If you don't have one, see the [**generate key section**](#generate-staking-key) to generate a new key file.
-
-- [**node_init.sh**](./node_init_testnet.sh)
-
-> **Tips**:
-> * example: `bash -x node_init.sh`
-
-## Manual Setup
-
-If you don't wish to run the automated setup script above, you can manually download binary files and configure your Testnet validator following the instructions below:
-
-### Download Validator Binaries and Pull Image
-
-Download the following files and pull image:
-
-- `findorad`: the node of findora network.
-    - `docker pull findoranetwork/findorad:testnet-v0.2.0h`
 - `fn`: Findora Node Setup (fn) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
     - [Linux version](https://wiki.findora.org/bin/linux/fn)
     - [MacOS version](https://wiki.findora.org/bin/macos/fn)
 
-> **Tips**:
-> - You can (optionally) run a Linux node via `Windows Subsystem for Linux`
-> - Check that binaries have executable permissions set correctly
->     - ex) `chmod +x fn`
-> - Check that binary files are placed into one of your `PATH` directories
->     - ex) `mv fn /usr/local/bin/`
-
-### Configure Local Node (for Testnet)
-
-#### Set Environment Path Variables
-
-```shell
-# ex)
-#     export ROOT_DIR=/data/findora/testnet
-export ROOT_DIR=<The data path of your node>
-```
-
-#### Initialize Findora Node and Create a Node Key
-
-Initializing Tendermint will create a node key (stored in a newly created `${ROOT_DIR}/tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
-
-```shell
-# Clean up old data that may exist, may need super privilege if necessary
-sudo rm -rf /data/findora/testnet/tendermint
-
-# Initialize the configuration of your Tendermint node
-# This command will create a .tendermint directory and priv_validator_key.json file needed later
-docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint findoranetwork/findorad:testnet-v0.2.0h init --test-net
-
-sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/config
-
-# Create ledger data directory, for example
-sudo rm -rf ${ROOT_DIR}
-sudo mkdir -p ${ROOT_DIR}
-```
-
-> **Tips**:
-> - If you encounter a security issue error when trying to initialize findora node , you may need to manually approve its security priveliges in you OS first. Then re-run the commands again.
-
-#### Generate Staking Key
-
+### Generate Key
 Generate a new, random pair of public and private keys for your node which will be used for FRA staking:
 
 ```shell
-fn genkey > ${ROOT_DIR}/tmp.gen.keypair
+fn genkey > tmp.gen.keypair
 ```
 
 View the contents of your `tmp.gen.keypair` file via the command below:
 
-```cat ${ROOT_DIR}/tmp.gen.keypair```
+```cat tmp.gen.keypair```
+ Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `/data/findora/testnet/{network_name}_node.key`. 
+ 
 
-An example of the file's content is below. Note: the `pub_key` and `sec_key` below are examples. Do not use them in your own node.
+- [**node_init_testnet.sh**](./node_init_testnet.sh)
+- [**node_init_mainnet.sh**](./node_init_mainnet.sh)
 
-```shell
-Wallet Address: fra1955hpj2xzkp4esd5928yhtp0l78ku8fkztvwcypvr8mk6x8tkn6sjsajun
-Mnemonic: repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame
-Key: {
-  "pub_key": "LSlwyUYVg1zBtCqOS6wv_49uHTYS2OwQLBn3bRjrtPU=",
-  "sec_key": "b0MGhK7xaRQHuhzFkaBhQ1o4GwTumJEWt1NQ7FChNwA="
-}
+> **Tips**:
+> * example: `bash -x node_init.sh`
+
+
+
+## Setup fn tools
+
+for testnet:
 ```
-
-> ** Tip **:
-> For convenience, you can import the `sec_key` (aka private key) into any Findora wallet (Win/Mac wallet, mobile wallet, CLI wallet tool, etc.), to more conveniently check and manage your FRA balances or to view historical transaction data for this wallet address.
-
-#### Store Mnemonic Words into ${ROOT_DIR}/node.mnemonic
-For convenience in setting up your node via the `fn` tool, store your 24 mnemonic keywords (located inside `tmp.gen.keypair`) into ${ROOT_DIR}/node.mnemonic.
-
-To accomplish this, open the `tmp.gen.keypair` file and copy all of the 24 mnemonic keywords specific to your node. Then paste these 24 mnemonic keywords into the command below.
-
-Note: the 24 mnemonic keywords in the example command below (repair, drink, action, brass...) are examples. Do not use them.
-
-```shell
-# ex)
-# echo "repair drink action brass term blur fat doll spoon thumb raise squirrel tornado engine tumble picnic approve elegant tube urge ghost secret seminar blame" > ${ROOT_DIR}/node.mnemonic
-echo <24 mnemonic keywords> > ${ROOT_DIR}/node.mnemonic
-```
-
-Configure your validator node to use your newly generated public and private keys:
-
-```shell
-# Link the fn client to the Findora Testnet address
 fn setup -S https://prod-testnet.prod.findora.org
-
-# Connect your staking key (now stored inside `node.mnemonic`)
-# to fn. This allows fn to sign transactions on your behalf
-# ex)
-#     fn setup -O ${ROOT_DIR}/node.mnemonic
-fn setup -O <Path to the mnemonic of your node> || exit 1
-
-# Connect your Node Key to fn
-# ex)
-#     fn setup -K ${HOME}/.tendermint/config/priv_validator_key.json
-fn setup -K <path to validator key> || exit 1
 ```
-
-#### Start or Upgrade Local Node
-
-```shell
-# Stop your local container if necessary
-docker rm -f findorad
-# Start your validator container
-docker run -d \
-    -v $HOME/.tendermint:/root/.tendermint \
-    -v $ROOT_DIR/findorad:/tmp/findora \
-    -p 8669:8669 \
-    -p 8668:8668 \
-    -p 8667:8667 \
-    -p 26657:26657 \
-    --name findorad \
-    findoranetwork/findorad:v0.2.1-release node \
-    --ledger-dir /tmp/findora \
-    --tendermint-host 0.0.0.0 \
-    --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
-    --enable-query-service
+for mainnet:
 ```
-
-#### Logging for Node
-
-```shell
-docker logs -f findorad
+fn setup -S https://prod-mainnet.prod.findora.org
 ```
-
-#### Check Local Node Status
-
-If the following commands return status messages without any errors, then your node has been successfully configured and started:
-
-```shell
-curl 'http://localhost:26657/status'
-curl 'http://localhost:8669/version'
-curl 'http://localhost:8668/version' # Only if you set the 'ENABLE_LEDGER_SERVICE'
-curl 'http://localhost:8667/version' # Only if you set the 'ENABLE_QUERY_SERVICE'
-```
-
 ## Fund Your Validator
 
-Validators must stake a minimum for 888,888 FRA to register as a validator. Before you can stake FRA to your validator, you must first transfer FRA to your the `Findora Address` (i.e. wallet address) of your validator.
+Validators must stake a minimum of 10,000 FRA to register as a validator. Before you can stake FRA to your validator, you must first transfer FRA to the `Findora Address` (i.e. wallet address) of your validator.
 ### Testnet Funding - Find Your Wallet Address
 On Testnet, you can request free Testnet FRA tokens. First, locate the wallet address associated with your validator node. To do this, run `fn show` and locate the address under `Findora Address`
 
@@ -205,7 +91,7 @@ Step 3: A discord bot will automatically detect commands requesting Testnet FRA 
 
 > **Tips**:
 > - All FRA token requests will be approved
-> - You can only ask FRA once so make sure your address correct.
+> - You can only ask for FRA tokens once so make sure your receiving wallet address is correct.
 
 ### Mainnet Funding
 Transfer FRA from an existing Findora wallet to your `Findora Address` (if you don't own any FRA, you can buy from a crypto exchange that lists FRA first). 
