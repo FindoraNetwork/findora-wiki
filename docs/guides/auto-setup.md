@@ -49,8 +49,9 @@ fn genkey > tmp.gen.keypair
 View the contents of your `tmp.gen.keypair` file via the command below:
 
 ```cat tmp.gen.keypair```
- Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `/data/findora/{network_name}/{network_name}_node.key`. You will need to create this directory if it doesn't exist.
+ Note: Before proceeding further, the staking private key should be stored in file `/data/findora/{network_name}/{network_name}_node.key`. This will be the `sec_key` in your `tmp.gen.keypair` file. You will need to create this directory if it doesn't exist.
  
+ ### Download and run the automated setup script
 
 - [**node_init_testnet.sh**](./node_init_testnet.sh)
 - [**node_init_mainnet.sh**](./node_init_mainnet.sh)
