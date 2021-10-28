@@ -42,7 +42,7 @@ fn genkey > tmp.gen.keypair
 View the contents of your `tmp.gen.keypair` file via the command below:
 
 ```cat tmp.gen.keypair```
- Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `/data/findora/testnet/{network_name}_node.key`. 
+ Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `/data/findora/{network_name}/{network_name}_node.key`. 
  
 
 - [**node_init_testnet.sh**](./node_init_testnet.sh)
