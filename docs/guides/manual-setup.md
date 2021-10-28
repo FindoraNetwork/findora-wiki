@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
-# Validator Setup (Testnet)
+# Manual Setup
 ## Hardware Requirements
 
 * Minimum Requirements:
@@ -21,14 +21,14 @@ sidebar_position: 4
 
 ## Manual Setup
 
-If you don't wish to run the automated setup script above, you can manually download binary files and configure your Testnet validator following the instructions below:
+If you don't wish to run the automated setup script above, you can manually download binary files and configure your validator following the instructions below:
 
 ### Download Validator Binaries and Pull Image
 
 Download the following files and pull image:
 
 - `findorad`: the node of findora network.
-    - `docker pull findoranetwork/findorad:testnet-v0.2.0h`
+    - `docker pull findoranetwork/findorad:v0.2.4-release`
 - `fn`: Findora Node Setup (fn) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
     - [Linux version](https://wiki.findora.org/bin/linux/fn)
     - [MacOS version](https://wiki.findora.org/bin/macos/fn)
@@ -40,13 +40,16 @@ Download the following files and pull image:
 > - Check that binary files are placed into one of your `PATH` directories
 >     - ex) `mv fn /usr/local/bin/`
 
-### Configure Local Node (for Testnet)
+### Configure Local Node 
 
 #### Set Environment Path Variables
 
 ```shell
 # ex)
-#     export ROOT_DIR=/data/findora/testnet
+# For testnet:
+# export ROOT_DIR=/data/findora/testnet
+# For mainnet:
+# export ROOT_DIR=/data/findora/mainnet
 export ROOT_DIR=<The data path of your node>
 ```
 
@@ -60,9 +63,14 @@ sudo rm -rf /data/findora/testnet/tendermint
 
 # Initialize the configuration of your Tendermint node
 # This command will create a .tendermint directory and priv_validator_key.json file needed later
-docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint findoranetwork/findorad:testnet-v0.2.0h init --test-net
 
-sudo chown -R `id -u`:`id -g` ${HOME}/.tendermint/config
+For testnet:
+docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint findoranetwork/findorad:v0.2.4-release init --testnet
+
+For mainnet:
+docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint findoranetwork/findorad:v0.2.4-release init --testnet
+
+sudo chown -R `id -u`:`id -g` ${ROOT_DIR}/tendermint/config
 
 # Create ledger data directory, for example
 sudo rm -rf ${ROOT_DIR}
@@ -114,8 +122,11 @@ echo <24 mnemonic keywords> > ${ROOT_DIR}/node.mnemonic
 Configure your validator node to use your newly generated public and private keys:
 
 ```shell
-# Link the fn client to the Findora Testnet address
+# Link the fn client to the Findora address
+For testnet:
 fn setup -S https://prod-testnet.prod.findora.org
+For mainnet:
+fn setup -S https://prod-mainnet.prod.findora.org
 
 # Connect your staking key (now stored inside `node.mnemonic`)
 # to fn. This allows fn to sign transactions on your behalf
@@ -125,7 +136,7 @@ fn setup -O <Path to the mnemonic of your node> || exit 1
 
 # Connect your Node Key to fn
 # ex)
-#     fn setup -K ${HOME}/.tendermint/config/priv_validator_key.json
+#     fn setup -K ${ROOT_DIR}/tendermint/config/priv_validator_key.json
 fn setup -K <path to validator key> || exit 1
 ```
 
@@ -136,14 +147,15 @@ fn setup -K <path to validator key> || exit 1
 docker rm -f findorad
 # Start your validator container
 docker run -d \
-    -v $HOME/.tendermint:/root/.tendermint \
-    -v $ROOT_DIR/findorad:/tmp/findora \
+    -v ${ROOT_DIR}/tendermint:/root/.tendermint \
+    -v ${ROOT_DIR}/findorad:/tmp/findora \
     -p 8669:8669 \
     -p 8668:8668 \
     -p 8667:8667 \
     -p 26657:26657 \
     --name findorad \
-    findoranetwork/findorad:v0.2.1-release node \
+    findoranetwork/findorad:v0.2.4-release node
+     \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
