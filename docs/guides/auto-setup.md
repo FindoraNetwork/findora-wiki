@@ -5,18 +5,18 @@ sidebar_position: 4
 # Automated Setup
 ## Hardware Requirements
 
-* Requirements
+* Minimum Requirements:
   * Minimum: 8GB RAM, 2 Core CPU, 100GB Hard Disk
   * Recommended: 16GB RAM, 4 Core CPU, 300GB Hard Disk
 
-* Recommand instance
+* Recommended Requirements:
   * AWS T3 t3.2xlarge
   * AliCloud g6 g6.2xlarge
   * GCP n2 n2-standard-8
   
 > **! NOTE !**
 >
-> If you have previously installed a Findora validator instance on your current machine, then you should first delete your all the contents from your /data directory.
+> If you have previously installed a Findora validator instance on your current machine, then you should first delete all the contents from your /data directory.
 > 
 
 ## Automated Setup
@@ -25,7 +25,7 @@ Download and run the script below which automatically downloads the binaries and
 
 > **! IMPORTANT !**
 >
-> The node_init.sh script will remove all the validator and wallet information you have. If you just want keep your data. Use [safty clean](## Safety clean)
+> The node_init.sh script will remove all the validator and wallet information you have. If you just want to keep your data. Use [safety clean](## Safety clean)
 ### Setup the Findora Node Tool
 
 - `fn`: Findora Node Setup (fn) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
@@ -73,7 +73,7 @@ fn setup -S https://prod-mainnet.prod.findora.org
 ```
 ## Fund Your Validator
 
-Validators must stake a minimum for 888,888 FRA to register as a validator. Before you can stake FRA to your validator, you must first transfer FRA to your the `Findora Address` (i.e. wallet address) of your validator.
+Validators must stake a minimum of 10,000 FRA to register as a validator. Before you can stake FRA to your validator, you must first transfer FRA to the `Findora Address` (i.e. wallet address) of your validator.
 ### Testnet Funding - Find Your Wallet Address
 On Testnet, you can request free Testnet FRA tokens. First, locate the wallet address associated with your validator node. To do this, run `fn show` and locate the address under `Findora Address`
 
@@ -99,7 +99,7 @@ Step 3: A discord bot will automatically detect commands requesting Testnet FRA 
 
 > **Tips**:
 > - All FRA token requests will be approved
-> - You can only ask FRA once so make sure your address correct.
+> - You can only ask for FRA tokens once so make sure your receiving wallet address is correct.
 
 ### Mainnet Funding
 Transfer FRA from an existing Findora wallet to your `Findora Address` (if you don't own any FRA, you can buy from a crypto exchange that lists FRA first). 
