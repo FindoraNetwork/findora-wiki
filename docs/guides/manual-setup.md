@@ -28,7 +28,7 @@ If you don't wish to run the automated setup script above, you can manually down
 Download the following files and pull image:
 
 - `findorad`: the node of findora network.
-    - `docker pull findoranetwork/findorad:v0.2.6-release`
+    - `docker pull findoranetwork/findorad:v0.2.4-release`
 - `fn`: Findora Node Setup (fn) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
     - [Linux version](https://wiki.findora.org/bin/linux/fn)
     - [MacOS version](https://wiki.findora.org/bin/macos/fn)
@@ -65,10 +65,10 @@ sudo rm -rf /data/findora/testnet/tendermint
 # This command will create a .tendermint directory and priv_validator_key.json file needed later
 
 For testnet:
-docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint findoranetwork/findorad:v0.2.6-release init --testnet
+docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint findoranetwork/findorad:v0.2.4-release init --testnet
 
 For mainnet:
-docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint findoranetwork/findorad:v0.2.6-release init --testnet
+docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint findoranetwork/findorad:v0.2.4-release init --testnet
 
 sudo chown -R `id -u`:`id -g` ${ROOT_DIR}/tendermint/config
 
@@ -154,7 +154,7 @@ docker run -d \
     -p 8667:8667 \
     -p 26657:26657 \
     --name findorad \
-    findoranetwork/findorad:v0.2.6-release node
+    findoranetwork/findorad:v0.2.4-release node
      \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
