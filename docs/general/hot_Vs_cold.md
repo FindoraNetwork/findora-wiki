@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Hot vs Cold Wallet
 
 ## Hot wallet

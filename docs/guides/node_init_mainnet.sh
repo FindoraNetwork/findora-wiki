@@ -1,93 +1,125 @@
 #!/usr/bin/env bash
-
-KEYPATH=$1
-SERV_URL=https://prod-mainnet.prod.findora.org
-SENTRY='b87304454c0a0a0c5ed6c483ac5adc487f3b21f6\@prod-mainnet-us-west-2-sentry-000-public.prod.findora.org:26656'
+ENV=prod
+NAMESPACE=mainnet
+SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
+FINDORAD_IMG=findoranetwork/findorad:v0.2.4-release
 
 check_env() {
-    for i in wget curl jq perl; do
+    for i in wget curl; do
         which $i >/dev/null 2>&1
         if [[ 0 -ne $? ]]; then
             echo -e "\n\033[31;01m${i}\033[00m has not been installed properly!\n"
             exit 1
         fi
     done
+
+    if ! [ -f "$keypath" ]; then
+        echo "The key file doesnot exist: $keypath"
+        exit 1
+    fi
 }
 
 set_binaries() {
     OS=$1
+    docker pull ${FINDORAD_IMG} || exit 1
+    wget -T 10 https://wiki.findora.org/bin/${OS}/fn || exit 1
 
-    wget -T 10 https://github.com/FindoraNetwork/downloads/releases/download/${OS}/tendermint || exit 1
-    wget -T 10 https://github.com/FindoraNetwork/downloads/releases/download/${OS}/abci_validator_node || exit 1
-    wget -T 10 https://github.com/FindoraNetwork/downloads/releases/download/${OS}/fn || exit 1
-
-    new_path=/tmp/findora_mainnet_bin
+    new_path=${ROOT_DIR}/bin
 
     rm -rf $new_path 2>/dev/null
     mkdir -p $new_path || exit 1
-    mv tendermint abci_validator_node fn $new_path || exit 1
-    chmod +x ${new_path}/* || exit 1
-
-    export PATH=${new_path}:${PATH}
+    mv fn $new_path || exit 1
+    chmod -R +x ${new_path} || exit 1
 }
+
+sudo mkdir -p /data/findora
+export ROOT_DIR=/data/findora/${NAMESPACE}
+keypath=${ROOT_DIR}/${NAMESPACE}_node.key
+FN=${ROOT_DIR}/bin/fn
 
 check_env
 
 if [[ "Linux" == `uname -s` ]]; then
     set_binaries linux
-else
+# elif [[ "FreeBSD" == `uname -s` ]]; then
+    # set_binaries freebsd
+elif [[ "Darwin" == `uname -s` ]]; then
     set_binaries macos
+else
+    echo "Unsupported system platform!"
+    exit 1
 fi
 
 ######################
 # Config local node #
 ######################
 
-export ROOT_DIR=${HOME}/findora_mainnet
-export TENDERMINT_NODE_KEY_CONFIG_PATH=${HOME}/.tendermint/config/priv_validator_key.json
-export ENABLE_LEDGER_SERVICE=true
-export ENABLE_QUERY_SERVICE=true
+node_mnemonic=$(cat ${keypath} | grep 'Mnemonic' | sed 's/^.*Mnemonic:[^ ]* //')
+xfr_pubkey="$(cat ${keypath} | grep 'pub_key' | sed 's/[",]//g' | sed 's/ *pub_key: *//')"
 
-node_mnemonic=$(cat ${KEYPATH} | grep 'Mnemonic' | sed 's/^.*Mnemonic:[^ ]* //')
-xfr_pubkey="$(cat ${KEYPATH} | grep 'pub_key' | sed 's/[",]//g' | sed 's/ \+pub_key: //')"
-
-fn setup -S ${SERV_URL} || exit 1
-fn setup -K ~/.tendermint/config/priv_validator_key.json || exit 1
-
-rm -rf ${ROOT_DIR}
-mkdir -p ${ROOT_DIR}
 echo $node_mnemonic > ${ROOT_DIR}/node.mnemonic || exit 1
-fn setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 
-pkill -9 tendermint
-rm -rf ~/.tendermint 2>/dev/null
+$FN setup -S ${SERV_URL} || exit 1
+$FN setup -K ${ROOT_DIR}/tendermint/config/priv_validator_key.json || exit 1
+$FN setup -O ${ROOT_DIR}/node.mnemonic || exit 1
 
-tendermint init || exit 1
+# clean old data and config files
+sudo rm -rf ${ROOT_DIR}/findorad || exit 1
+mkdir -p ${ROOT_DIR}/findorad || exit 1
 
-curl ${SERV_URL}:26657/genesis \
-    | jq -c '.result.genesis' \
-    | jq > ~/.tendermint/config/genesis.json || exit 1
 
-perl -pi -e 's#(create_empty_blocks_interval = ).*#$1"15s"#' ~/.tendermint/config/config.toml || exit 1
+docker run --rm -v ${ROOT_DIR}/tendermint:/root/.tendermint ${FINDORAD_IMG} init --${NAMESPACE} || exit 1
 
-perl -pi -e "s#(persistent_peers = )\".*\"#\$1\"${SENTRY}\"#" ~/.tendermint/config/config.toml || exit 1
+sudo chown -R `id -u`:`id -g` ${ROOT_DIR}/tendermint/
+
+###################
+# get snapshot    #
+###################
+
+# download latest link and get url
+wget -O "${ROOT_DIR}/latest" "https://${ENV}-${NAMESPACE}01-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest"
+CHAINDATA_URL=$(cut -d , -f 1 "${ROOT_DIR}/latest")
+echo $CHAINDATA_URL
+
+# remove old data 
+rm -rf "${ROOT_DIR}/findorad"
+rm -rf "${ROOT_DIR}/tendermint/data"
+rm -rf "${ROOT_DIR}/tendermint/config/addrbook.json"
+
+wget -O "${ROOT_DIR}/snapshot" "${CHAINDATA_URL}" 
+mkdir "${ROOT_DIR}/snapshot_data"
+tar zxvf "${ROOT_DIR}/snapshot" -C "${ROOT_DIR}/snapshot_data"
+
+mv "${ROOT_DIR}/snapshot_data/data/ledger" "${ROOT_DIR}/findorad"
+mv "${ROOT_DIR}/snapshot_data/data/tendermint/mainnet/node0/data" "${ROOT_DIR}/tendermint/data"
+
+rm -rf ${ROOT_DIR}/snapshot_data
+
 
 ###################
 # Run local node #
 ###################
 
-pkill -9 abci_validator_node
-mkdir -p ${ROOT_DIR}/{abci,tendermint}
+docker rm -f findorad || exit 1
+docker run -d \
+    -v ${ROOT_DIR}/tendermint:/root/.tendermint \
+    -v ${ROOT_DIR}/findorad:/tmp/findora \
+    -p 8669:8669 \
+    -p 8668:8668 \
+    -p 8667:8667 \
+    -p 26657:26657 \
+    --name findorad \
+    ${FINDORAD_IMG} node \
+    --ledger-dir /tmp/findora \
+    --tendermint-host 0.0.0.0 \
+    --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
+    --enable-query-service 
 
-cd ${ROOT_DIR}/abci
-nohup abci_validator_node &
-
-cd ${ROOT_DIR}/tendermint
-nohup tendermint node &
-
-sleep 5
+sleep 10
 
 curl 'http://localhost:26657/status'; echo
 curl 'http://localhost:8669/version'; echo
 curl 'http://localhost:8668/version'; echo
 curl 'http://localhost:8667/version'; echo
+
+echo "Local node initialized, please stake your FRA tokens after syncing is completed."

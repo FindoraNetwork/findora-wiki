@@ -44,4 +44,4 @@ jobs:
     - name: cloudfront invalidation
       shell: bash
       run: |
-        aws cloudfront create-invalidation --distribution-id E1H48R59LK4RSZ --paths "/"
+        aws cloudfront create-invalidation --distribution-id E1H48R59LK4RSZ --paths "/*"
