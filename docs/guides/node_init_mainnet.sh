@@ -32,8 +32,11 @@ set_binaries() {
     chmod -R +x ${new_path} || exit 1
 }
 
-sudo mkdir -p /data/findora
-export ROOT_DIR=/data/findora/${NAMESPACE}
+# ===========Comments==========================
+# mkdir in root is not allowed on latest OSX
+# That was the reason I chose $HOME/data instead of /data
+export ROOT_DIR=$HOME/data/findora/${NAMESPACE}
+mkdir -p $ROOT_DIR
 keypath=${ROOT_DIR}/${NAMESPACE}_node.key
 FN=${ROOT_DIR}/bin/fn
 
@@ -90,10 +93,15 @@ wget -O "${ROOT_DIR}/snapshot" "${CHAINDATA_URL}"
 mkdir "${ROOT_DIR}/snapshot_data"
 tar zxvf "${ROOT_DIR}/snapshot" -C "${ROOT_DIR}/snapshot_data"
 
-mv "${ROOT_DIR}/snapshot_data/data/ledger" "${ROOT_DIR}/findorad"
-mv "${ROOT_DIR}/snapshot_data/data/tendermint/mainnet/node0/data" "${ROOT_DIR}/tendermint/data"
+cp -r "${ROOT_DIR}/snapshot_data/data/ledger/" "${ROOT_DIR}/findorad"
+cp -r "${ROOT_DIR}/snapshot_data/data/tendermint/mainnet/node0/data/" "${ROOT_DIR}/tendermint/data"
 
-rm -rf ${ROOT_DIR}/snapshot_data
+# ===========Comments=========================================================================================
+# I didn’t setup very well the first time and spent extra long time to download the whole snapshot over again.
+# People usually won't be able to setup everything successfully in one shot. 
+# It’ll be perfect if the script to use existing snapshot by default(download only when it doesn’t exist, 
+# plus an option -f to force download(or overwrite existing with) a fresh snapshot
+#rm -rf ${ROOT_DIR}/snapshot_data
 
 
 ###################
