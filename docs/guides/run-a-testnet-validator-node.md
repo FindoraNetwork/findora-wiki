@@ -1,6 +1,6 @@
----
+<!-- ---
 sidebar_position: 4
----
+--- -->
 
 # Validator Setup (Testnet)
 ## Hardware Requirements
