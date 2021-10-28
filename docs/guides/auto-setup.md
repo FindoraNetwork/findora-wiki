@@ -21,7 +21,7 @@ sidebar_position: 4
 
 ## Automated Setup
 
-Download and run the script below which automatically downloads the binaries and configures your Testnet validator node: 
+Download and run the script below which automatically downloads the binaries and configures your validator node: 
 
 > **! IMPORTANT !**
 >
@@ -31,6 +31,13 @@ Download and run the script below which automatically downloads the binaries and
 - `fn`: Findora Node Setup (fn) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
     - [Linux version](https://wiki.findora.org/bin/linux/fn)
     - [MacOS version](https://wiki.findora.org/bin/macos/fn)
+
+```shell
+# download and move to your path
+wget https://wiki.findora.org/bin/linux/fn
+chmod +x fn
+mv fn /usr/local/bin/
+```
 
 ### Generate Key
 Generate a new, random pair of public and private keys for your node which will be used for FRA staking:
@@ -42,7 +49,7 @@ fn genkey > tmp.gen.keypair
 View the contents of your `tmp.gen.keypair` file via the command below:
 
 ```cat tmp.gen.keypair```
- Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `/data/findora/{network_name}/{network_name}_node.key`. 
+ Note: Before proceeding further, the stake key with enough FRA tokens should be stored in file `/data/findora/{network_name}/{network_name}_node.key`. You will need to create this directory if it doesn't exist.
  
 
 - [**node_init_testnet.sh**](./node_init_testnet.sh)
