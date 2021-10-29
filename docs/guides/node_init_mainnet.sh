@@ -108,12 +108,15 @@ docker run -d \
     -p 8668:8668 \
     -p 8667:8667 \
     -p 26657:26657 \
+    --network=host \
     --name findorad \
     ${FINDORAD_IMG} node \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
-    --enable-query-service 
+    --enable-query-service \
+    --enable-snapshot \
+    --snapshot-mode=external
 
 sleep 10
 
