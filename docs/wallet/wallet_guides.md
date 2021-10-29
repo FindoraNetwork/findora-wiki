@@ -1,8 +1,8 @@
 ---
-sidebar_position: 6
+sidebar_position: 1
 ---
 
-# Wallet
+# Wallet Guides
 The Findora wallet enables you to send and receive FRA tokens and even create your own custom assets.
 
 [Download Wallet For Mac](https://s3-us-west-2.amazonaws.com/wallet.findora.org/download/Findora_Wallet_Setup_0.2.1.dmg)

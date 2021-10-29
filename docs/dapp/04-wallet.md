@@ -5,6 +5,8 @@ The following versions of the wallet support `internal transfer` function, but o
 
 [Download Wallet For Windows](https://s3-us-west-2.amazonaws.com/wallet.findora.org/download/Findora_Wallet_Setup_0.2.1.exe)
 
+Goto the [Wallet Guides](/docs/wallet/wallet_guides) for details.
+
 ## Connect to Testnet
 Connet to the Forge (Findora Testnet), here is [Network Config](02-network.md#forge-testnet)
 
