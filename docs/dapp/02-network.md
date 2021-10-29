@@ -38,4 +38,4 @@ where
 ![Discord](/img/evm/direct_evm_faucet.png)
 
 ### Check Balance
-Check your ethereum type address balance on [MetamMask](03-metamask.md).
+Check your ethereum-like address balance on [MetaMask](03-metamask.md).
