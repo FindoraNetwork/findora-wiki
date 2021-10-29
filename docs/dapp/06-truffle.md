@@ -1,4 +1,4 @@
-# Truffle
+# Using Truffle
 ### Overview
    To help more developers deploy on Findora, this tutorial will guide you through the truffle box setting, and use Truffle to deploy contracts on independent Findora nodes.
    
@@ -64,8 +64,8 @@ npm install
 4.Configure Findora devnet under networks in truffle-config.js:
 ```
 findora: {
-      provider:()=> new HDWalletProvider(mnemonic, `https://dev-evm.dev.findora.org:8545`),
-      network_id: 523,       // findorad evnet's id
+      provider:()=> new HDWalletProvider(mnemonic, `https://prod-forge.prod.findora.org:8545`),
+      network_id: 525,       // findorad evnet's id
       skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
      }
 ```
@@ -163,3 +163,5 @@ This command will execute all migration scripts located in the migrations direct
 ![truffle-deploy](/img/evm/truffle-deploy.jpg)
 
 Congratulations, you have completed the basic truffle operation guide!
+
+Here is an example: https://github.com/tylerztl/findora-erc20-demo

@@ -1,4 +1,4 @@
-# Waffle & Mars
+# Using Waffle
 ### Overview
 Waffle is a library for compiling and testing smart contracts, and Mars is a deployment manager. Waffle and Mars can be used together to write, compile, test, and deploy Ethereum smart contracts. Due to the Ethereum compatibility of Findora, smart contracts can be deployed to the Findora Devnet testnet using Waffle and Mars。
 
@@ -131,7 +131,7 @@ use(solidity);
 
 describe ('MyContract', () => {
   // Use custom provider to connect to Moonbase Alpha
-  let provider: Provider = new ethers.providers.JsonRpcProvider('https://dev-evm.dev.findora.org:8545');
+  let provider: Provider = new ethers.providers.JsonRpcProvider('https://prod-forge.prod.findora.org:8545');
   let wallet: Wallet;
   let walletTo: Wallet;
   let contract: MyContract;
@@ -194,7 +194,7 @@ mkdir src && cd src && touch deploy.ts
 import { deploy } from 'ethereum-mars';
 
 const privateKey = "<insert-your-private-key-here>";
-deploy({network: 'https://dev-evm.dev.findora.org:8545', privateKey},(deployer) => {
+deploy({network: 'https://prod-forge.prod.findora.org:8545', privateKey},(deployer) => {
   // Deployment logic will go here
 });
 ```
@@ -204,7 +204,7 @@ import { deploy, contract } from 'ethereum-mars';
 import { MyToken } from '../build/artifacts';
 
 const privateKey = "<insert-your-private-key-here>";
-deploy({network: 'https://dev-evm.dev.findora.org:8545', privateKey}, () => {
+deploy({network: 'https://prod-forge.prod.findora.org:8545', privateKey}, () => {
   contract('myContract', MyContract);
 });
 ```

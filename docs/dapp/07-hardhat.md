@@ -1,4 +1,4 @@
-# Hardhat
+# Using Hardhat
 
 ### Overview
 Hardhat is an Ethereum development environment that helps developers manage and automate repetitive tasks for smart contract and DApp development, and can be used in the truffle project。
@@ -42,7 +42,7 @@ module.exports = {
     hardhat: {
     },
     findora: {
-      url: "https://dev-evm.dev.findora.org:8545",
+      url: "https://prod-forge.prod.findora.org:8545",
       chainId:523,
       accounts: [mnemonic]
     }

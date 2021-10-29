@@ -1,39 +1,10 @@
-# EVM Integration
+# Using Metamask
 
-## Networks
-EVM support is currently available on the following findora networks:
+### 1. Install metamask
+[Metamask](https://metamask.io/) download page.
 
-Network Type | Network Name | Chain ID | RPC URL | Currency Symbol (optional)
---- | --- | --- | --- | ---
-Devnet | Findora Devnet | 523 | https://dev-evm.dev.findora.org:8545 | FRA
-
-
-### 1. Setup Ethereum Account
-#### 1. Install [Metamask](https://metamask.io/) and create an account. 
-
-#### 2. (Optional) Setup account
-> If you already have an Ethereum address, skip step #2 and step #3
-> If you need to use the command `fn` in any of the steps, please refer to the section ["Setup Findora Account"](#setup-findora-account) below. 
-> Note: The `fn` generated account is only used for testing (unsafe),
-> recommend to use [Metamask](https://metamask.io/) or other ethereum wallet.
-> 
-
-```
-fn gen-eth-key  
-```
-output:
-```
-Mnemonic: lumber friend abstract swarm rifle inner syrup physical farm van urban cube
-PrivateKey: e0713a27b18115da437e4f981eb460be2a6bc0e88cd0dd24ed7f7d43ce6af876
-Address: 0xf5224110db945b54466d275cd224fed2dd110e67
-```
-
-### 3. (Optional) Import new account to metamask
-> If you already have an Ethereum address, skip this step.
-
-![Metamask](/img/evm/metamask_1.png)
-
-### 4. Connect to Findora Devnet
+### 2. Connect to Findora
+Connet to the Forge (Findora Testnet), here is [Network Config](02-network.md#forge-testnet)
 
 ![Metamask](/img/evm/metamask_4.png)
 
@@ -94,7 +65,7 @@ fn contract-withdraw --amount 10000000 --eth-key "lumber friend abstract swarm r
 ## Remix 
 
 ### Deploy and run a sample smart contract
-Use this  [document](06-integration-remix-2-EN.md). for a step by step process
+Use this  [document](05-remix.md). for a step by step process
 
 
 
