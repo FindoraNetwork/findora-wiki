@@ -66,11 +66,25 @@ View the contents of your `tmp.gen.keypair` file via the command below:
 for testnet:
 ```
 fn setup -S https://prod-testnet.prod.findora.org
-```
+
 for mainnet:
-```
+
 fn setup -S https://prod-mainnet.prod.findora.org
+
+# Connect your staking key (now stored inside `node.mnemonic`)
+# to fn. This allows fn to sign transactions on your behalf
+# ex)
+#     fn setup -O ${ROOT_DIR}/node.mnemonic
+fn setup -O <Path to the mnemonic of your node> || exit 1
+
+# Connect your Node Key to fn
+# ex)
+#     fn setup -K ${ROOT_DIR}/tendermint/config/priv_validator_key.json
+fn setup -K <path to validator key> || exit 1
 ```
+```
+
+
 ## Fund Your Validator
 
 Validators must stake a minimum of 10,000 FRA to register as a validator. Before you can stake FRA to your validator, you must first transfer FRA to the `Findora Address` (i.e. wallet address) of your validator.
