@@ -1,4 +1,4 @@
-# Remix IDE
+# Using Remix
 
 ### Overview
 Developers can also use Remix IDE to interact with Findora. Remix IDE is one of the most commonly used development environments for Ethereum smart contracts. It can provide network-based solutions to quickly compile and deploy Solidity and Vyper code on local VMs or external Web3 providers (such as MetaMask). By combining the two tools, developers can quickly start deployment on Findora。

@@ -1,4 +1,8 @@
-# Wallet Integration Guide
+---
+sidebar_position: 2
+---
+
+# SDK Integration
 
 This guide will enable developers to integrate Findora Protocol features into a their wallet and discusses two key parts of this process:
 * Setting Up the `Findora SDK`
