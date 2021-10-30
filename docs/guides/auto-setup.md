@@ -61,16 +61,19 @@ View the contents of your `tmp.gen.keypair` file via the command below:
 
 
 
-## Setup fn tools
+## Setup `fn` CLI tool
 
-for testnet:
+To configure `fn` for use on Testnet:
 ```
 fn setup -S https://prod-testnet.prod.findora.org
+```
 
-for mainnet:
-
+To configure `fn` for use on Mainnet:
+```
 fn setup -S https://prod-mainnet.prod.findora.org
+```
 
+```
 # Connect your staking key (now stored inside `node.mnemonic`)
 # to fn. This allows fn to sign transactions on your behalf
 # ex)
@@ -81,7 +84,6 @@ fn setup -O <Path to the mnemonic of your node> || exit 1
 # ex)
 #     fn setup -K ${ROOT_DIR}/tendermint/config/priv_validator_key.json
 fn setup -K <path to validator key> || exit 1
-```
 ```
 
 
@@ -164,7 +166,7 @@ To get detailed info about a specific sub-command like `stake` use the `--help` 
 > - ...
 
 ### Stake Initial FRA and Set Commission Rate
-After receiving FRA to your validator's `Findora Address`, you must stake a minimum of 888,888 FRA to be a validator. Only the top 100 validators (with the most FRA staked) will earn FRA rewards.
+After receiving FRA to your validator's `Findora Address`, you must stake a minimum of 10,000 FRA to be a validator. Only the top 100 validators (with the most FRA staked) will earn FRA rewards.
 
 
 > **Tips**:
