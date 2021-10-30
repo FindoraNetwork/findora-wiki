@@ -154,7 +154,7 @@ docker run -d \
     -p 8667:8667 \
     -p 26657:26657 \
     --name findorad \
-    findoranetwork/findorad:v0.2.4-release node
+    findoranetwork/findorad:v0.2.9-release node
      \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
