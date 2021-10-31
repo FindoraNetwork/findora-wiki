@@ -335,10 +335,4 @@ This script WILL NOT clean your validator id and wallet data. It just clean the 
 
 Please set `$ROOT_DIR` same as setup step.
 
-#### Auto clean
-
-- [**safety_clean.sh**](./safety_clean.sh)
-
-> **Tips**:
-> * example: `bash -x safety_clean.sh`
 

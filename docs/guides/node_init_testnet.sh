@@ -2,7 +2,7 @@
 ENV=prod
 NAMESPACE=testnet
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
-FINDORAD_IMG=findoranetwork/findorad:v0.2.4-release
+FINDORAD_IMG=findoranetwork/findorad:v0.2.9-release
 
 check_env() {
     for i in wget curl; do
@@ -99,8 +99,8 @@ rm -rf ${ROOT_DIR}/snapshot_data
 ###################
 # Run local node #
 ###################
-
-docker rm -f findorad || exit 1
+docker stop findorad
+docker rm findorad || exit 1
 docker run -d \
     -v ${ROOT_DIR}/tendermint:/root/.tendermint \
     -v ${ROOT_DIR}/findorad:/tmp/findora \

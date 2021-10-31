@@ -57,7 +57,7 @@ View the contents of your `tmp.gen.keypair` file via the command below:
 - [**node_init_mainnet.sh**](./node_init_mainnet.sh)
 
 > **Tips**:
-> * example: `bash -x node_init.sh`
+> * example: `bash -x node_init_testnet.sh`
 
 
 
@@ -243,10 +243,5 @@ This script WILL NOT clean your validator id and wallet data. It just clean the 
 
 Please set `$ROOT_DIR` same as setup step.
 
-#### Auto clean
 
-- [**safety_clean.sh**](./safety_clean.sh)
-
-> **Tips**:
-> * example: `bash -x safety_clean.sh`
 

@@ -2,7 +2,7 @@
 ENV=prod
 NAMESPACE=testnet
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
-FINDORAD_IMG=findoranetwork/findorad:v0.2.1-release
+FINDORAD_IMG=findoranetwork/findorad:v0.2.9-release
 
 if [ ! $ROOT_DIR ]; then
     echo 'Please set ROOT_DIR first.'
