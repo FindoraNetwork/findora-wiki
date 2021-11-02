@@ -43,7 +43,7 @@ module.exports = {
     },
     findora: {
       url: "https://prod-forge.prod.findora.org:8545",
-      chainId:523,
+      chainId:525,
       accounts: [mnemonic]
     }
   },
