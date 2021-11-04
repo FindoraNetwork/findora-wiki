@@ -61,7 +61,7 @@ Execute the following command to install dependencies
 npm install
 ```
      
-4.Configure Findora devnet under networks in truffle-config.js:
+4.Configure Findora Forge testnet under networks in truffle-config.js:
 ```
 findora: {
       provider:()=> new HDWalletProvider(mnemonic, `https://prod-forge.prod.findora.org:8545`),
