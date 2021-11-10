@@ -2,7 +2,7 @@
 ENV=prod
 NAMESPACE=mainnet
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
-FINDORAD_IMG=findoranetwork/findorad:v0.2.11a-release
+FINDORAD_IMG=findoranetwork/findorad:v0.2.12-release
 
 
 export ROOT_DIR=/data/findora/${NAMESPACE}
