@@ -2,7 +2,7 @@
 ENV=prod
 NAMESPACE=testnet
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
-FINDORAD_IMG=findoranetwork/findorad:v0.2.9-release
+FINDORAD_IMG=findoranetwork/findorad:testnet-evm-v0.2.5
 
 check_env() {
     for i in wget curl; do
