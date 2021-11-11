@@ -100,7 +100,7 @@ rm -rf ${ROOT_DIR}/snapshot_data
 # Run local node #
 ###################
 docker stop findorad
-docker rm findorad || exit 1
+docker rm findorad
 docker run -d \
     -v ${ROOT_DIR}/tendermint:/root/.tendermint \
     -v ${ROOT_DIR}/findorad:/tmp/findora \
