@@ -1,9 +1,9 @@
 # Using Findora Wallet
 The following versions of the wallet support `internal transfer` function, but only for the testnet, not the mainnet.
 
-[Download Wallet For Mac](https://s3-us-west-2.amazonaws.com/wallet.findora.org/download/Findora_Wallet_Setup_0.2.1.dmg)
+[Download Wallet For Mac](https://s3.us-west-2.amazonaws.com/testnet-wallet.findora.org/Findora_Wallet_Setup_0.3.0.dmg)
 
-[Download Wallet For Windows](https://s3-us-west-2.amazonaws.com/wallet.findora.org/download/Findora_Wallet_Setup_0.2.1.exe)
+[Download Wallet For Windows](https://s3.us-west-2.amazonaws.com/testnet-wallet.findora.org/Findora_Wallet_Setup_0.3.0.exe)
 
 Goto the [Wallet Guides](/docs/wallet/wallet_guides) for details.
 
