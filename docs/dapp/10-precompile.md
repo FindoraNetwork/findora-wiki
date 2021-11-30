@@ -9,7 +9,7 @@ Address | Name | Features
 0x6 | BN128Add | Elliptic curve addition
 0x7 | BN128Mul | Elliptic curve scalar multiplication
 0x8 | BN128Pair | Elliptic curve pairing check
-0x1000 | FRA (ERC20) | Implement native token FRA to support IERC20 interface
+0x1000 | FRA (FRC20) | Implement native token FRA to support IERC20 interface
 
 
 
