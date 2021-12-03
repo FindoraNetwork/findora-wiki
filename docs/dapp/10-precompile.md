@@ -1,19 +1,20 @@
 # Precompile Contracts
 Address | Name | Features
 --- | --- | ---
-0x1 | ECRecover | ECDSA public key recovery
-0x2 | SHA256 | SHA-2 256-bit hash function
-0x3 | RIPEMD160 | RIPEMD 160-bit hash function
-0x4 | Identity | Identity function
-0x5 | ModExp | Big integer modular exponentiation
-0x6 | BN128Add | Elliptic curve addition
-0x7 | BN128Mul | Elliptic curve scalar multiplication
-0x8 | BN128Pair | Elliptic curve pairing check
-0x1000 | FRA (FRC20) | Implement native token FRA to support IERC20 interface
+0x0000000000000000000000000000000000000001 | ECRecover | ECDSA public key recovery
+0x0000000000000000000000000000000000000002 | SHA256 | SHA-2 256-bit hash function
+0x0000000000000000000000000000000000000003 | RIPEMD160 | RIPEMD 160-bit hash function
+0x0000000000000000000000000000000000000004 | Identity | Identity function
+0x0000000000000000000000000000000000000005 | ModExp | Big integer modular exponentiation
+0x0000000000000000000000000000000000000006 | BN128Add | Elliptic curve addition
+0x0000000000000000000000000000000000000007 | BN128Mul | Elliptic curve scalar multiplication
+0x0000000000000000000000000000000000000008 | BN128Pair | Elliptic curve pairing check
+0x0000000000000000000000000000000000001000 | FRA (FRC20) | Implement native token FRA to support IERC20 interface
 
 
 
-
+## FRC20-FRA precompile address
+We have an ERC20 interface compatible implemenation of FRA. We can interact with this address within ERC20 interface to control your evm FRA as if it's an FRC20 token.
 
 
 
