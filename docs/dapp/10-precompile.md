@@ -13,7 +13,7 @@ Address | Name | Features
 
 
 
-## FRC20-FRA precompile address
+## FRC20-FRA precompile contract
 We have an ERC20 interface compatible implemenation of FRA. We can interact with this address within ERC20 interface to control your evm FRA as if it's an FRC20 token.
 
 
