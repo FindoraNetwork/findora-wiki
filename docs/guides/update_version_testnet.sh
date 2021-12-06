@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ENV=prod
-NAMESPACE=testnet
+NAMESPACE=mainnet
 FINDORAD_IMG=findoranetwork/findorad:latest
 
 

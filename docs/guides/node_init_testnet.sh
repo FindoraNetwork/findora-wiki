@@ -109,7 +109,7 @@ docker run -d \
     -p 8667:8667 \
     -p 8545:8545 \
     -p 26657:26657 \
-    -e EVM_CHAIN_ID=2152 \
+    -e EVM_CHAIN_ID=2153 \
     --name findorad \
     ${FINDORAD_IMG} node \
     --ledger-dir /tmp/findora \

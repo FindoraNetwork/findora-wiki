@@ -12,8 +12,9 @@ sidebar_position: 6
 
 
 
-- [**version_update.sh**](./update_version.sh)
-
+- For testnet: [**version_update_testnet.sh**](./update_version_testnet.sh)
+- For mainnet: [**version_update_mainnet.sh**](./update_version_mainnet.sh)
+  
 > **Tips**:
 > * You can use this script in any environment
 > * example: `bash -x update_version.sh`
@@ -32,8 +33,8 @@ Please set `$ROOT_DIR` same as setup step.
 
 #### Auto clean
 
-- [**safety_clean_testnet.sh**](./safety_clean_testnet.sh)
-- [**safety_clean_mainnet.sh**](./safety_clean_mainnet.sh)
+- For testnt: [**safety_clean_testnet.sh**](./safety_clean_testnet.sh)
+- For mainnet:[**safety_clean_mainnet.sh**](./safety_clean_mainnet.sh)
 
 > **Tips**:
 > * example: `bash -x safety_clean.sh`
