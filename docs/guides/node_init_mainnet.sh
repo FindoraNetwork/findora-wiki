@@ -2,7 +2,7 @@
 ENV=prod
 NAMESPACE=mainnet
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
-FINDORAD_IMG=findoranetwork/findorad:v0.2.12-release
+FINDORAD_IMG=findoranetwork/findorad:latest
 
 check_env() {
     for i in wget curl; do
@@ -107,16 +107,16 @@ docker run -d \
     -p 8669:8669 \
     -p 8668:8668 \
     -p 8667:8667 \
+    -p 8545:8545 \
     -p 26657:26657 \
-    --network=host \
+    -e EVM_CHAIN_ID=2152 \
     --name findorad \
     ${FINDORAD_IMG} node \
     --ledger-dir /tmp/findora \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
     --enable-query-service \
-    --enable-snapshot \
-    --snapshot-mode=external
+    --enable-eth-api-service
 
 sleep 10
 
