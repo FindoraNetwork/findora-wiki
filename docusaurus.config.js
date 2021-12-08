@@ -7,7 +7,7 @@ module.exports = {
   tagline: 'Tools, integrations and tutorials to start using and building on Findora.',
   url: 'https://wiki.findora.org/',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'FindoraNetwork', // Usually your GitHub org/user name.
