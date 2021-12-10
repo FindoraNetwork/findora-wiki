@@ -16,9 +16,9 @@ See the [Networks](02-network.md) guide for details.
 
 ### Writing and Deploying a Contract
 
-If you're an Ethereum developer, you can almost instantly write and deploy contracts on the Findora EVM. All the best tools available for deploying on Ethereum work just as well here with no hitches and Findora EVM supports most of them. 
+IF you're an ethereum developer, you almost instantly can write and deploy contracts on the Findora EVM. All the best tools available for deploying on Ethereum work just as well here with no hitches and Findora supports most of them. 
 
-Hardhat is an Ethereum development environment that helps developers manage and automate repetitive tasks for smart contract and DApp development. Truffle is like hardhat but on steroids. Leveraging Ganache, its local Ethereum blockchain for testing contracts, Truffle allows you to develop dApps with scriptable migration and deployment, network management, an interactive console, smart contract management and even some automated contract testing.
+Hardhat is an Ethereum development environment that helps developers manage and automate repetitive tasks for smart contract and DApp development. Truffle is like hardhat but on steroids. Leveraging Ganache, its local ethereum blockchain for testing contracts, Truffle allows you to develop dApps with scriptable migration and deployment, network management, an interactive console, smart contract management and even some automated contract testing.
 
 Please look at the [Truffle](06-truffle.md), [Hardhat](07-hardhat.md), [Remix IDE](05-remix.md) guides for details.
 
