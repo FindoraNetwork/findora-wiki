@@ -44,4 +44,4 @@ See the [Waffle & Mars](08-waffle-mars.md) guide for details.
 
 For developers who wish to move tokens from other Layer 1 blockchains, the Findora EVM Devnet support the [ChainSafe ChainBridge](https://github.com/ChainSafe/ChainBridge), an open source multi-directional blockchain bridge. ChainBridge enables an Ethereum Ropsten Testnet ERC-20 token to be moved to the Findora EVM Devnet as a FRC-20 token.
 
-See the [Chainbridge Integration](11-chainbridge.md) guide for details.
+See our home grown [Rialto bridge](11-chainbridge.md) and its guide for details.

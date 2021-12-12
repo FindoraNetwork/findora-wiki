@@ -19,31 +19,31 @@ Now we get to configuring Findora.
 
 In the Network name input field, copy and place this
 
-```jsx
+```
 Forge
 ```
 
 In the New RPC URL input field, copy and place this in 
 
-```jsx
+```
 https://prod-forge.prod.findora.org:8545
 ```
 
 Just below in the Chain ID input field, copy and place this
 
-```jsx
+```
 525
 ```
 
 Beside the chain id, currency symbol is 
 
-```jsx
+```
 FRA
 ```
 
 And at the end is the block explorer URL. If you're trying to go via the route of a UTXO explorer, please copy this in
 
-```jsx
+```
 https://forge.findorascan.io/
 ```
 
