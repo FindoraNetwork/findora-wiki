@@ -4,11 +4,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 If you have used Metamask for any sort of development work on the EVM, then setting up Findora for use is as simple as can be. All that is needed is taking the network details as shown [here](https://wiki.findora.org/docs/dapp/network/) and making use of them as Metamask requires. Let's jump right in!
 
-First step is to install Metamask if you don't have it before. Once you have Metamask installed, please prepare to configure findora
+First step is to install Metamask if you don't have it before. Once you have Metamask installed, please prepare to configure Metamask with the Findora EVM network.
 
 Next up, click on the bar that would typically show your last connected network. 
 
-<img src={useBaseUrl("/img/evm/metamask.png")} width="30%" height="30%"/>
+<img src={useBaseUrl("/img/evm/metamask.png")} width="45%" height="30%"/>
 
 
 You should get a drop-down and a button that shows "Add Network". Click on that and a new tab will open where you can place Findora's network configurations.
@@ -41,15 +41,9 @@ Beside the chain id, currency symbol is
 FRA
 ```
 
-And at the end is the block explorer URL. If you're trying to go via the route of a UTXO explorer, please copy this in
+And at the end is the block explorer URL. Please place this in
 
 ```
-https://forge.findorascan.io/
-```
-
-If a Dapp explorer is more to your liking, then this works
-
-```jsx
 http://blockscout.findorascan.io/
 ```
 
