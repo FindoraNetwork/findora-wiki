@@ -13,7 +13,7 @@ Next up, click on the bar that would typically show your last connected network.
 
 You should get a drop-down and a button that shows "Add Network". Click on that and a new tab will open where you can place Findora's network configurations.
 
-<img src={useBaseUrl("/img/evm/metamask-1.png")} width="70%" height="30%"/>
+<img src={useBaseUrl("/img/evm/metamask-1.png")} width="100%" height="100%"/>
 
 Now we get to configuring Findora. 
 
@@ -47,6 +47,13 @@ And at the end is the block explorer URL. Please place this in
 http://blockscout.findorascan.io/
 ```
 
+After everything, you should see this screen
+
+
+<img src={useBaseUrl("/img/evm/metamask-3.png")} width="100%" height="100%"/>
+
+
 Click on the 'Save' button and you should have a screen like this and be ready to go!
 
-<img src={useBaseUrl("/img/evm/metamask-2.png")} width="30%" height="30%"/>
+
+<img src={useBaseUrl("/img/evm/metamask-2.png")} width="45%" height="30%"/>
