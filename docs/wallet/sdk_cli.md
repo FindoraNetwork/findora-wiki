@@ -6,6 +6,55 @@ sidebar_position: 2
 
 This guide will enable developers to use `CLI commands` from the `Findora SDK`, which provides a quick **_shortcut_** to perform some, most frequently used, actions using one comand syntax.
 
+### **Installing and Setting Up the `Findora SDK`**
+
+To be able to use `Findora SDK CLI` we would need to clone its repo and install its dependencies.
+
+For that, first, we would need to run
+
+```bash
+git clone https://github.com/FindoraNetwork/findora-sdk.git
+```
+
+Then we are going to change the directory to the cloned version of the `Findora SDK` by running:
+
+```bash
+cd findora-sdk
+```
+
+After that, we would install all its dependencies:
+
+```bash
+yarn
+```
+
+Once it is done, we can check if `CLI` is ready to use and the easiest way to do that would be to run:
+
+```bash
+yarn cli
+```
+
+Here we should see smth like:
+
+```bash
+ ~/t/t/findora-sdk $ yarn cli
+yarn run v1.22.11
+$ yarn cli:build && yarn cli:run "$npm_config"
+$ tsc
+$ nodemon dist/cli.js --ignore cache/ "$npm_config" ''
+[nodemon] 2.0.15
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node dist/cli.js "" ""`
+"2021-12-14, 11:36:39 a.m." - please run as "yarn cli fund --address=fraXXX --amountToFund=1 "
+"2021-12-14, 11:36:39 a.m." - please run as "yarn cli createWallet"
+"2021-12-14, 11:36:39 a.m." - please run as "yarn cli restoreWallet --mnemonicString='XXX ... ... XXX'"
+[nodemon] clean exit - waiting for changes before restart
+```
+
+Adn that means we are all set and ready to use the `Findora SDK CLI`.
+
 ### **CLI Commands**
 
 **1.** **List of all Findora SDK CLI commands and its options**

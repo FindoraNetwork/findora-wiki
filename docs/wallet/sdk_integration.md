@@ -6,10 +6,19 @@ sidebar_position: 1
 
 This guide will enable developers to integrate Findora Protocol features into a their wallet and discusses two key parts of this process:
 
+- Installing the `Findora SDK`
 - Setting Up the `Findora SDK`
 - Using the most commonly called wallet features
 
 Developers should be able to integrate Findora features such as sending FRA to another wallet, checking the FRA balance, etc. into their crypto wallet, crypto exchange or Dapp by following this guide.
+
+## **Installing the `Findora SDK`**
+
+To install the `Findora SDK` we only need to run one single command:
+
+```bash
+yarn add @findora-network/findora-sdk.js
+```
 
 ## **Setting Up the `Findora SDK`**
 
@@ -17,7 +26,7 @@ Developers should be able to integrate Findora features such as sending FRA to a
 
   ```jsx
   // First, we need to import the findora sdk package
-  const findoraSdk = await import("findora-sdk");
+  const findoraSdk = await import("@findora-network/findora-sdk.js");
 
   // Before using the sdk, we need to configure it so it knows which server to connect to
   const sdkEnv = { hostUrl: "http://127.0.0.1" };
@@ -28,6 +37,8 @@ Developers should be able to integrate Findora features such as sending FRA to a
   ```
 
 ## **Using the most commonly called wallet features**
+
+**NOTE:** You can always find all the examples [here](https://github.com/FindoraNetwork/findora-sdk-examples).
 
 - **2. Create a Findora wallet**
 
