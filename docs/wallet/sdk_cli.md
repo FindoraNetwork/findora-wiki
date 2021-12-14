@@ -2,39 +2,40 @@
 sidebar_position: 2
 ---
 
-# SDK CLI
+# SDK CLI Overview
 
-This guide will enable developers to use `CLI commands` from the `Findora SDK`, which provides a quick **_shortcut_** to perform some, most frequently used, actions using one comand syntax.
+The `Findora SDK` contains a `CLI commands` tool which enables developers to quickly perform frequently used actions using a single comand syntax.
 
-### **Installing and Setting Up the `Findora SDK`**
 
-To be able to use `Findora SDK CLI` we would need to clone its repo and install its dependencies.
+### **Installing and Configuring the `Findora SDK`**
 
-For that, first, we would need to run
+To install the `Findora SDK CLI`, clone its Github repo and install its dependencies.
+
+First, run the command below in your terminal to download the repo:
 
 ```bash
 git clone https://github.com/FindoraNetwork/findora-sdk.git
 ```
 
-Then we are going to change the directory to the cloned version of the `Findora SDK` by running:
+Next, change the directory to the cloned version of the `Findora SDK:
 
 ```bash
 cd findora-sdk
 ```
 
-After that, we would install all its dependencies:
+Then, install all SDK dependencies:
 
 ```bash
 yarn
 ```
 
-Once it is done, we can check if `CLI` is ready to use and the easiest way to do that would be to run:
+Finally, check if the `CLI` tool is installed correctly by running:
 
 ```bash
 yarn cli
 ```
 
-Here we should see smth like:
+If installed correctly, you will see:
 
 ```bash
  ~/t/t/findora-sdk $ yarn cli
@@ -53,19 +54,17 @@ $ nodemon dist/cli.js --ignore cache/ "$npm_config" ''
 [nodemon] clean exit - waiting for changes before restart
 ```
 
-Adn that means we are all set and ready to use the `Findora SDK CLI`.
-
 ### **CLI Commands**
 
-**1.** **List of all Findora SDK CLI commands and its options**
+**1.** **View All Findora SDK CLI Commands (and Options) **
 
-To see a list of the currently implemented commands, as well as to get help of how to use those, plese run:
+To see a list of all commands (and usage instructions), run the following terminal command:
 
 ```bash
 yarn cli
 ```
 
-In the output you will see a list of all the available CLI commands and its options:
+In the output you will see a list of all available CLI commands and related options:
 
 ```bash
 "2021-12-08, 12:07:09 p.m." - please run as "yarn cli fund --address=fraXXX --amountToFund=1 "
@@ -79,11 +78,11 @@ As you can see, at the moment there are three available commands:
 - createWallet
 - runRestoreWallet
 
-**2.** **"fund" command**
+**2.** **"Fund" Command**
 
 By running `yarn cli fund --address=fraXXX --amountToFund=1` you would **fund** an address `fraXXX` with the amount of `1 FRA`.
 
-Please note, that the **source** of funding is **another account** that you have a private key for, which must have some funds in it. Like your own _faucet_.
+Please note, the **source** of funding is **another account** (whose private key your control) and must have some funds in it. Like your own _faucet_.
 
 This account would be restored from the **private key**, which needs to be provided in the `.env` file, using following format:
 
@@ -91,13 +90,13 @@ This account would be restored from the **private key**, which needs to be provi
 PKEY_LOCAL_FAUCET="XAsFsKosjY8J=XXXXXXXXXX";
 ```
 
-So, **prior** to running this command, you would need to create a `.env` file and put that information in there. After that, you would be able to perform a quick, one line command to send FRA to other addresses (to _fund_ them).
+So, **prior** to running this command, you would need to create a `.env` file and put the above information in there. After that, you would be able to perform a quick, one line command to send FRA to other addresses (to _fund_ them).
 
 **2.** **"createWallet" command**
 
 In case of a need to quickly create a new wallet, you can use `yarn cli createWallet` command to create a new wallet, as well as to get its mnemonic, address, private and public keys.
 
-This information would be displayed as a command output, and would look smth like:
+This information would be displayed as a command output (similar to the below):
 
 ```bash
 [nodemon] starting `node dist/cli.js "" "" createWallet`
@@ -125,13 +124,13 @@ This information would be displayed as a command output, and would look smth lik
 
 ```
 
-As you could see, you got a new mnemonic, which is:
+The output shows your new mnemonic (see below):
 
 ```
 output insect settle weather spray lava seven day rice swamp captain upgrade layer ocean century kitten feel crunch fly huge power divert amused fitness
 ```
 
-Also, here is the address, and both keys
+As well as, the address and both keys (see below):
 
 ```js
     publickey: 'C_0GxCvI8OBYZRO9mNZOhh8MykvOrOLx7F7U-ug8vUM=',
@@ -139,19 +138,19 @@ Also, here is the address, and both keys
     privateStr: 'epG6XtjssaZdyCyRwijTQM92ptqyScZRtMz1lpRC-O8='
 ```
 
-You could store these values for later use.
+Store these values for later use.
 
-**3.** **"restoreWallet" command**
+**3.** **"restoreWallet" Command**
 
-In case you need to **restore** a previously created wallet, (for example to use it as a **sender**, or to check its private key), the only thing you need to do, is to run `yarn restoreWallet --mnemonicString='XX XXXX"` and provide a valid mnemonic string.
+To **restore** a previously created wallet, (for example to use it as a **sender**, or to check its private key), run `yarn restoreWallet --mnemonicString='XX XXXX"` and provide a valid mnemonic string.
 
-For example, if we need to restore the wallet, which was created in the previous examples, we would've run it as:
+For example, to restore the wallet created in the previous example above, run the following:
 
 ```bash
 yarn restoreWallet --mnemonicString="output insect settle weather spray lava seven day rice swamp captain upgrade layer ocean century kitten feel crunch fly huge power divert amused fitness"
 ```
 
-This command could produce output similar to smth like this:
+This command's output appears below:
 
 ```bash
 [nodemon] starting `node dist/cli.js "" "" restoreWallet "--mnemonicString=output insect settle weather spray lava seven day rice swamp captain upgrade layer ocean century kitten feel crunch fly huge power divert amused fitness"`
@@ -180,4 +179,4 @@ This command could produce output similar to smth like this:
 
 ```
 
-Here you could see that data from the restored wallet (its address, private and public keys) are identical to the values from the `createWallet` command output, because we used the same menmonic, which was auto-generated and used to create a new wallet.
+Here you can verify that the data from the restored wallet (its address, private and public keys) are identical to the values from the `createWallet` command output -- since we used the same menmonic, which was auto-generated and used to create a new wallet.
