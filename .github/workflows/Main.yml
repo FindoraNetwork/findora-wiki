@@ -20,7 +20,7 @@ jobs:
       run: |
         tar -C ~/.ssh -zcf key.tar.gz ./
 
-        
+
     - name: Build
       shell: bash
       run: |
@@ -38,13 +38,10 @@ jobs:
         docker rmi findora-wiki || true
 
 
-
-
-
     - name: Build rust base image
       shell: bash
       run: |
-        make ci_build_binary_rust_base
+        make ci_build_rust_base
 
     - name: Build linux fn
       shell: bash
