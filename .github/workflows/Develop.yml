@@ -68,5 +68,5 @@ jobs:
       run: |
         rm -rf fn build
         docker stop fn
-        dpcker rm fn
+        docker rm fn
         docker rmi fn
