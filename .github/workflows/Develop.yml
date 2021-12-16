@@ -67,6 +67,3 @@ jobs:
       shell: bash
       run: |
         rm -rf fn build
-        docker stop fn
-        docker rm fn
-        docker rmi fn
