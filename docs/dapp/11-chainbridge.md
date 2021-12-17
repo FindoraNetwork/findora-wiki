@@ -1,12 +1,8 @@
-# Rialto Bridge
+# Chainbridge Integration
+findora forge and bsc testnet cross-chain.  
+testnet bridge: http://dev-chainbridge.s3-website-us-west-2.amazonaws.com/transfer
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
-Findora Forge and BSC testnet cross-chain.  
-
-Testnet bridge: http://dev-chainbridge.s3-website-us-west-2.amazonaws.com/transfer
-
-<img src={useBaseUrl("/img/evm/chainbridge.png")} width="50%" height="30%"/>
+![bridge](/img/evm/chainbridge.png)
 
 ## Frontend Config
 ```
@@ -63,9 +59,7 @@ window.__RUNTIME_CONFIG__ = {
 ## Lets test our bridge!
 
 ### cb-sol-cli
-
-We will be using the Rialto Bridge contract CLI to deploy and interact with the contracts. Grab and install the CLI by running:
-
+We will be using the ChainBridge contract CLI to deploy and interact with the contracts. Grab and install the CLI by running:
 ```
 git clone -b v1.0.0 --depth 1 https://github.com/ChainSafe/chainbridge-deploy \
 && cd chainbridge-deploy/cb-sol-cli \
@@ -73,7 +67,7 @@ git clone -b v1.0.0 --depth 1 https://github.com/ChainSafe/chainbridge-deploy \
 && make install
 ```
 
-### Rialto Bridge Vars
+### Chainbridge Vars
 ```
 SRC_GATEWAY=https://prod-forge.prod.findora.org:8545/
 DST_GATEWAY=https://data-seed-prebsc-1-s1.binance.org:8545/
@@ -113,7 +107,7 @@ cb-sol-cli --url $SRC_GATEWAY --privateKey $SRC_PK --gasPrice 10000000000 erc20 
     --recipient 0x5849771139978fe0B3D52303d71D222a347e7CaB \
     --resourceId $RESOURCE_ID
 ```
-The relayer will wait 3 block confirmations before submitting a request which may take a few minutes on the test network. Keep an eye on the target=XXXX output in the Rialto bridge relayer window.
+The relayer will wait 3 block confirmations before submitting a request which may take a few minutes on the test network. Keep an eye on the target=XXXX output in the chainbridge relayer window.
 The transfer will occur when this reaches the block height of the deposit transaction.
 
 #### BSC => Findora
