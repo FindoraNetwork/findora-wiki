@@ -17,31 +17,31 @@ You should get a drop-down and a button that shows "Add Network". Click on that 
 
 Now we get to configuring it to connect to the correct Findora EVM network. 
 
-For example, if you would like to connect to the Forge testnet, in the Network name input field, copy and place this
+For example, if you would like to connect to the Forge testnet, in the `Network Name` input field, copy and place this
 
 ```
 Forge
 ```
 
-In the New RPC URL input field, copy and place this in 
+In the New `RPC URL` input field, copy and place this in 
 
 ```
 https://prod-forge.prod.findora.org:8545
 ```
 
-Just below in the Chain ID input field, copy and place this
+Just below in the `Chain ID` input field, copy and place this
 
 ```
 525
 ```
 
-Beside the chain id, currency symbol is 
+Beside the Chain ID, `Currency Symbol` is 
 
 ```
 FRA
 ```
 
-And at the end is the block explorer URL. Please place this in
+And at the end is the `Block Explorer URL`. Please place this in
 
 ```
 http://blockscout.findorascan.io
