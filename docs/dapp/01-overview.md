@@ -14,13 +14,11 @@ Currently, developing on Findora EVM requires developers to connect to the Findo
 
 See the [Networks](02-network.md) guide for details.
 
-### Writing and Deploying a Contract
+### Deploying a Contract
 
-If you're an Ethereum developer, you can almost instantly write and deploy contracts on the Findora EVM. All the best tools available for deploying on Ethereum work just as well here with no hitches and Findora EVM supports most of them. 
+Generally speaking, Ethereum EVM-compatible tools will work on Findora EVM. Thus, the Truffle Development Suite, Remix IDE, Metamask Wallet and other EVM tools will be used to connect to and deploy smart contracts on Findora EVM. 
 
-Hardhat is an Ethereum development environment that helps developers manage and automate repetitive tasks for smart contract and DApp development. Truffle is like hardhat but on steroids. Leveraging Ganache, its local Ethereum blockchain for testing contracts, Truffle allows you to develop dApps with scriptable migration and deployment, network management, an interactive console, smart contract management and even some automated contract testing.
-
-Please look at the [Truffle](06-truffle.md), [Hardhat](07-hardhat.md), [Remix IDE](05-remix.md) guides for details.
+See the [Truffle](06-truffle.md) and  [Remix IDE](05-remix.md) guide for details.
 
 ### Testing and Automation
 
@@ -28,6 +26,9 @@ Waffle is a library for compiling and testing smart contracts and Mars is a depl
 
 See the [Waffle & Mars](08-waffle-mars.md) guide for details.
 
+Hardhat is an Ethereum development environment that helps developers manage and automate repetitive tasks for smart contract and DApp development, and can be used in the truffle project. 
+
+See the [Hardhat](07-hardhat.md) guide for details.
 
 ### Other Tools and Integrations
 
