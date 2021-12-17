@@ -15,9 +15,9 @@ You should get a drop-down and a button that shows "Add Network". Click on that 
 
 <img src={useBaseUrl("/img/evm/metamask-1.png")} width="100%" height="100%"/>
 
-Now we get to configuring Findora. 
+Now we get to configuring it to connect to the correct Findora EVM network. 
 
-In the Network name input field, copy and place this
+For example, if you would like to connect to the Forge testnet, in the Network name input field, copy and place this
 
 ```
 Forge
@@ -44,7 +44,7 @@ FRA
 And at the end is the block explorer URL. Please place this in
 
 ```
-http://blockscout.findorascan.io/
+http://blockscout.findorascan.io
 ```
 
 After everything, you should see this screen
