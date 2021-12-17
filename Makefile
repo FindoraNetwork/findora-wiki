@@ -1,4 +1,5 @@
 ci_build_rust_base:
+	docker rmi fn
 	docker build -t binary-rust-base -f container/Dockerfile-binary-rust-base .
 
 ci_build_fn:
