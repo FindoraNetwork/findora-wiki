@@ -2,7 +2,13 @@
 
 ## Overview
 
-The Findora EVM is a Ethereum compatibility layer. Therefore, smart contract programming languages (i.e. Solidity), tools (i.e. Remix IDE) and token specifications (i.e. ERC-20, ERC-721, etc.) from Ethereum's EVM platform are all compatible with the Findora EVM. 
+The Findora EVM is an Ethereum compatibility layer integrated with Findora's
+existing UTXO ledger. It features full EVM compatibility which means it does not only support smart contract
+programming languages such as Solidity, but also Web3 tools (e.g. Metamask, Truffle, Remix IDE, etc.) and token specifications (e.g. ERC-20, ERC-721, etc.).
+The two types of ledgers share the same consensus and storage layer. Additionally, a new type of atomic internal
+transfer was implemented to solve the address type incompatibility issue between the EVM addresses and the
+existing UTXO addresses. This allows users to own and control various assets on Findora with versatile approaches for programmable privacy.
+It is a more seamless experience for the users and helps to aggregate the liquidity to Findora.  
 
 The Findora EVM guides below will walk developers through setting up Findora EVM integration tools, deploying a Findora smart contract and launching FRC-20 tokens on Findora EVM.
 
