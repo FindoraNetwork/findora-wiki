@@ -29,8 +29,8 @@ Download and run the script below which automatically downloads the binaries and
 ### Setup the Findora Node Tool
 
 - `fn`: Findora Node Setup (fn) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
-    - [Linux version](/bin/linux/fn)
-    - [MacOS version](/bin/macos/fn)
+    - [Linux version](../../static/bin/linux/fn)
+    - [MacOS version](../../static/bin/macos/fn)
 
 ```shell
 # download and move to your path
