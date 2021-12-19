@@ -4,6 +4,7 @@ ci_build_fn:
 	docker build -t fn -f container/Dockerfile-fn-release .
 	docker run -d --rm --name fn fn sleep 99999
 	docker cp fn:/platform/target/release/fn ./build/bin/linux/fn
+	docker stop fn
 cleanup_image:
 	docker rmi binary-rust-base || true
 	docker rmi fn || true
