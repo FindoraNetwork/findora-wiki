@@ -61,7 +61,7 @@ wget -O "${ROOT_DIR}/latest" "https://prod-${NAMESPACE}-us-west-2-chain-data-bac
 
 # Mainnet
 export NAMESPACE=mainnet
-wget -O "${ROOT_DIR}/latest" "https://prod-${NAMESPACE}-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest"
+wget -O "${ROOT_DIR}/latest" "https://prod-${NAMESPACE}01-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest"
 ```
 
 ```
