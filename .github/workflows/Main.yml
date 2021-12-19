@@ -50,8 +50,8 @@ jobs:
     - name: Copy fn to build
       shell: bash
       run: |
-        cp target/release/fn build/bin/linux/fn
-
+        docker cp fn:/target/release/fn ./fn
+        cp fn build/bin/linux/fn
     - name: update S3
       shell: bash
       run: |
