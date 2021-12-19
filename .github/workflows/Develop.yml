@@ -49,7 +49,6 @@ jobs:
     - name: Copy fn to build
       shell: bash
       run: |
-        docker cp fn:/target/release/fn ./fn
         cp fn build/bin/linux/fn
 
     - name: update S3
