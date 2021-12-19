@@ -34,7 +34,6 @@ jobs:
         docker stop -t 0 findora-wiki && docker rm -f findora-wiki
         docker rm $(docker ps -a | awk '{print $1}') || true
         docker rmi -f $(docker images -f "dangling=true" -q) || true
-        docker rmi findora-wiki || true
 
 
     - name: Build rust base image
@@ -65,4 +64,4 @@ jobs:
     - name: Cleanup
       shell: bash
       run: |
-        rm -rf fn build
+        make cleanup_image

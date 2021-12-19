@@ -65,4 +65,4 @@ jobs:
     - name: Cleanup
       shell: bash
       run: |
-        rm -rf fn build
+        make cleanup_image
