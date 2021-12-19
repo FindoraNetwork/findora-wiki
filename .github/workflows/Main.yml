@@ -21,7 +21,7 @@ jobs:
       run: |
         tar -C ~/.ssh -zcf key.tar.gz ./
 
-    - name: Build
+    - name: Build wiki doc
       shell: bash
       run: |
         docker build -t findora-wiki -f .github/workflows/Dockerfile .
