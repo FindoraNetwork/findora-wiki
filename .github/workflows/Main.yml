@@ -1,10 +1,9 @@
 
-name: Deploy
+name: Main
 on:
   push:
     branches:
       - main
-      - ci
 jobs:
   build-and-deploy:
     strategy:
