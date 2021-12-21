@@ -38,7 +38,7 @@ yarn add @findora-network/findora-sdk.js
 
 ## **Using the most commonly called wallet features**
 
-**NOTE:** You can always find all the examples [here](https://github.com/FindoraNetwork/findora-sdk-examples).
+**NOTE:** You can always find more examples [here](https://github.com/FindoraNetwork/findora-sdk-examples).
 
 - **2. Create a Findora wallet**
 
@@ -53,7 +53,31 @@ yarn add @findora-network/findora-sdk.js
   const walletInfo = await KeypairApi.createKeypair(password);
   ```
 
-- **3. Send FRA to another wallet**
+- **3. Restore a previously created Findora wallet**
+
+  A previoulsy created **wallet** can be restored either using a mnemonic or a private key. Both examples are shown below.
+
+- Restore from a mnemonic
+
+  ```jsx
+  // Note: The SDK must be setup before you can proceed with the instructions below (i.e. see step #1)
+  const walletInfo = await KeypairApi.restoreFromMnemonic(
+    yourMnenomic,
+    password
+  );
+  ```
+
+- Restore from a private key
+
+  ```jsx
+  // Note: The SDK must be setup before you can proceed with the instructions below (i.e. see step #1)
+  const anotherWalletInfo = await KeypairApi.restoreFromPrivateKey(
+    pkey,
+    password
+  );
+  ```
+
+- **4. Send FRA to another wallet**
 
   ```jsx
   // Note: The SDK must be setup before you can proceed with the instructions below (i.e. see step #1)
@@ -94,7 +118,7 @@ yarn add @findora-network/findora-sdk.js
   );
   ```
 
-- **4. Send FRA to multiple wallets**
+- **5. Send FRA to multiple wallets**
 
   ```jsx
   // Note: The SDK must be setup before you can proceed with the instructions below (i.e. see step #1)
@@ -149,7 +173,7 @@ yarn add @findora-network/findora-sdk.js
   );
   ```
 
-- **5. Create a custom asset**
+- **6. Create a custom asset**
 
   ```jsx
   // Note: The SDK must be setup before you can proceed with the instructions below (i.e. see step #1)
@@ -184,7 +208,7 @@ yarn add @findora-network/findora-sdk.js
   const resultHandle = await TransactionApi.submitTransaction(assetBuilder);
   ```
 
-- **6. Issue Asset (Note: after creating a new asset, it has no balance. You must first "issue" the asset)**
+- **7. Issue Asset (Note: after creating a new asset, it has no balance. You must first "issue" the asset)**
 
   ```jsx
   // Note: The SDK must be setup before you can proceed with the instructions below (i.e. see step #1)
@@ -231,7 +255,7 @@ yarn add @findora-network/findora-sdk.js
   );
   ```
 
-- **7. Send custom asset to another wallet**
+- **8. Send custom asset to another wallet**
 
   ```jsx
   // Note: The SDK must be setup before you can proceed with the instructions below (i.e. see step #1)
@@ -277,7 +301,7 @@ yarn add @findora-network/findora-sdk.js
   );
   ```
 
-- **8. Send tokens confidentially**
+- **9. Send tokens confidentially**
 
   ```jsx
   // Note: The SDK must be setup before you can proceed with the instructions below (i.e. see step #1)
@@ -342,7 +366,7 @@ yarn add @findora-network/findora-sdk.js
   );
   ```
 
-- **9. Check token balance**
+- **10. Check token balance**
 
   ```jsx
   // Note: The SDK must be setup before you can proceed with the instructions below (i.e. see step #1)
