@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Findora EVM is the Ethereum layer that stands side by side with Findora’s UTXO ledger. With the power of Findora’s EVM, Developers have access to building fully compatible EVM apps with Solidity, web 3 tools like Metamask, Truffle, Remix  and all Ethereum’s token specifications (e.g. ERC-20, ERC-721, etc.) while they leverage the privacy that Findora offers. The marriage between Findora’s EVM and UTXO models ensures that they share the same consensus and storage layer, and even better, all incompatibility between address type are solved through a new atomic transfer model we created. This allows users to own and control various assets on Findora with versatile approaches for programmable privacy. This means that now, even more than ever, users will have an even more seamless experience transacting and aggregating their liquidity on Findora.
+The Findora EVM is the Ethereum layer that stands side by side with Findora’s UTXO ledger. With the power of Findora’s EVM, Developers have access to building apps fully compatable with EVM, Web 3 tools like Metamask, Truffle, Remix  and all Ethereum’s token specifications (e.g. ERC-20, ERC-721, etc.) while they leverage the privacy that Findora offers. The marriage between Findora’s EVM and UTXO models ensures that they share the same consensus and storage layer, and even better, all incompatibility between address type are solved through a new atomic transfer model we created. This allows users to own and control various assets on Findora with versatile approaches for programmable privacy. This means that now, even more than ever, users will have an even more seamless experience transacting and aggregating their liquidity on Findora.
 
 The Findora EVM guides below will walk developers through setting up Findora EVM integration tools, deploying a Findora smart contract and launching FRC-20 tokens on Findora EVM.
 
@@ -42,7 +42,8 @@ See the [Waffle & Mars](08-waffle-mars.md) guide for details.
 
 ### Blockchain Bridge
 
-For developers who wish to move tokens from other Layer 1 blockchains, all the Findora EVM networks will support the [ChainSafe ChainBridge](https://github.com/ChainSafe/ChainBridge), an open source multi-directional blockchain bridge. The bridge on our mainnet is called [Rialto bridge](11-chainbridge.md).
+For developers who wish to move tokens from other Layer 1 blockchains, the Findora EVM networks will support the [Rialto bridge](11-rialto.md). Rialto is an in-house implementation of the [ChainSafe ChainBridge](https://github.com/ChainSafe/ChainBridge) bridge, which itself is an open source multi-directional blockchain bridge. The [Rialto bridge](11-rialto.md) has backwards compatibility with ChainSafe's ChainBridge and is ready for you.
+
 Right now, we have deployed a testnet version of our ChainBridge on our Forge testnet enabling a Binance Smart Chain Testnet BEP-20 token to be moved to the Findora EVM Devnet as a FRC-20 token.
 
-See our home grown [Rialto bridge](11-chainbridge.md) and its guide for details.
+See our home grown [Rialto bridge](11-rialto.md) and its guide for details.
