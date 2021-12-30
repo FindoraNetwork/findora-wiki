@@ -4,7 +4,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Findora Forge and BSC testnet cross-chain.  
 
-Testnet bridge: http://dev-chainbridge.s3-website-us-west-2.amazonaws.com/transfer
+Testnet bridge: http://dev-chainbridge-new.s3-website-us-west-2.amazonaws.com/transfer
 
 <img src={useBaseUrl("/img/evm/chainbridge.png")} width="50%" height="30%"/>
 
@@ -67,7 +67,7 @@ window.__RUNTIME_CONFIG__ = {
 We will be using the Rialto Bridge contract CLI to deploy and interact with the contracts. Grab and install the CLI by running:
 
 ```
-git clone -b v1.0.0 --depth 1 https://github.com/ChainSafe/chainbridge-deploy \
+git clone -b v1.0.0 --depth 1 https://github.com/FindoraNetwork/chainbridge-tools \
 && cd chainbridge-deploy/cb-sol-cli \
 && npm install \
 && make install

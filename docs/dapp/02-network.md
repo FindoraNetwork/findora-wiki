@@ -12,8 +12,8 @@ Forge Testnet replicates the Findora Mainnet, which is to be used for testing.
   - ws://prod-forge-us-west-2-sentry-000-public.prod.findora.org:8546
   - ws://prod-forge-us-west-2-sentry-001-public.prod.findora.org:8546
 - Block Explorer:
-  - https://forge.findorascan.io/  (UTXO Explorer)
-  - http://blockscout.findorascan.io/  (Dapp Explorer)
+  - https://forge.findorascan.io  (UTXO Explorer)
+  - https://blockscout.findorascan.io  (Dapp Explorer)
   
 ### Forge Faucet
 
