@@ -133,8 +133,8 @@ output insect settle weather spray lava seven day rice swamp captain upgrade lay
 As well as, the address and both keys (see below):
 
 ```js
-    publickey: 'C_0GxCvI8OBYZRO9mNZOhh8MykvOrOLx7F7U-ug8vUM=',
-    address: 'fra1p07sd3ptercwqkr9zw7e34jwsc0sejjte6kw9u0vtm2046puh4pszj0rs4',
+    publickey: 'C_0GxCvI8OBYZRO9mNZOhh8MykvOrOLx7F7U-ug8vUM='
+    address: 'fra1p07sd3ptercwqkr9zw7e34jwsc0sejjte6kw9u0vtm2046puh4pszj0rs4'
     privateStr: 'epG6XtjssaZdyCyRwijTQM92ptqyScZRtMz1lpRC-O8='
 ```
 
