@@ -20,8 +20,8 @@ Download the following files and pull image:
 - `findorad`: the node of findora network.
   - `docker pull findoranetwork/findorad:latest`
 - `fn`: Findora Node Setup (fn) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
-  - [Linux version](https://wiki.findora.org/bin/linux/fn)
-  - [MacOS version](https://wiki.findora.org/bin/macos/fn)
+    - <a href="/bin/linux/fn" target="_blank">Linux version</a>
+    - <a href="/bin/macos/fn" target="_blank">MacOS version</a>
 > **Tips**:
 >
 > - You can (optionally) run a Linux node via `Windows Subsystem for Linux`
@@ -57,9 +57,14 @@ sudo chown -R `id -u`:`id -g` ${ROOT_DIR}/tendermint/
 ```shell
 # Testnet
 export NAMESPACE=testnet
+wget -O "${ROOT_DIR}/latest" "https://prod-${NAMESPACE}-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest"
+
 # Mainnet
 export NAMESPACE=mainnet
-wget -O "${ROOT_DIR}/latest" "https://prod-${NAMESPACE}-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest"
+wget -O "${ROOT_DIR}/latest" "https://prod-${NAMESPACE}01-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest"
+```
+
+```
 export CHAINDATA_URL=$(cut -d , -f 1 "${ROOT_DIR}/latest")
 wget -O "${ROOT_DIR}/snapshot" "${CHAINDATA_URL}"
 mkdir "${ROOT_DIR}/snapshot_data"
