@@ -27,11 +27,6 @@ jobs:
       shell: bash
       run: |
         make ci_build_fn
-    
-    - name: Copy fn to build
-      shell: bash
-      run: |
-        cp fn build/bin/linux/fn
 
     - name: Build wiki doc
       shell: bash
