@@ -1,0 +1,9 @@
+FROM binary-rust-base
+
+RUN git clone git@github.com:FindoraNetwork/platform.git
+ENV WORK_DIR /platform
+WORKDIR $WORK_DIR
+
+RUN cargo build --bin fn --release
+
+CMD ["sleep", "999999"]

@@ -3,7 +3,9 @@
 ENV=dev
 NAMESPACE=qa02
 SERV_URL=https://${ENV}-${NAMESPACE}.${ENV}.findora.org
-FINDORAD_IMG=public.ecr.aws/k6m5b6e2/release/findorad:testnet-v0.2.0-BETA
+LIVE_VERSION=$(curl -s https://${ENV}-${NAMESPACE}.${ENV}.findora.org:8668/version | awk -F\  '{print $2}')
+FINDORAD_IMG=findoranetwork/findorad:${LIVE_VERSION}
+
 
 
 check_env() {

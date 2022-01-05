@@ -1,4 +1,3 @@
-
 name: Main
 on:
   push:
@@ -14,33 +13,42 @@ jobs:
     - name: checkout
       uses: actions/checkout@v2
 
-    - name: Build
+    - name: Prepare key
       shell: bash
       run: |
-        docker build -t findora-wiki -f .github/workflows/Dockerfile .
-    - name: Copy code to local
+        tar -C ~/.ssh -zcf key.tar.gz ./
+
+    - name: Build rust base image
       shell: bash
       run: |
-        docker rm -f findora-wiki || true
-        docker run -d --rm --name findora-wiki findora-wiki sleep 99999
-        docker cp findora-wiki:/wiki/build ./build
-        docker stop -t 0 findora-wiki && docker rm -f findora-wiki
-        docker rm $(docker ps -a | awk '{print $1}') || true
-        docker rmi -f $(docker images -f "dangling=true" -q) || true
-        docker rmi findora-wiki || true
-    # - name: Install dependence 
-    #   shell: bash
-    #   run: |
-    #     yarn cache clean && yarn install
-    # - name: build
-    #   shell: bash
-    #   run: |
-    #     CI=false yarn build
+        make ci_build_rust_base
+
+    - name: Build linux fn
+      shell: bash
+      run: |
+        make ci_build_fn
+    
+    - name: Copy fn to build
+      shell: bash
+      run: |
+        cp fn build/bin/linux/fn
+
+    - name: Build wiki doc
+      shell: bash
+      run: |
+        make ci_build_wiki
+        
     - name: update S3
       shell: bash
       run: |
         aws s3 cp build s3://wiki.findora.org/ --recursive
+
     - name: cloudfront invalidation
       shell: bash
       run: |
         aws cloudfront create-invalidation --distribution-id E1H48R59LK4RSZ --paths "/*"
+
+    - name: Cleanup
+      shell: bash
+      run: |
+        make cleanup_image
