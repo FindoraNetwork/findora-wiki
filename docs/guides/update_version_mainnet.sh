@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
+set -ex
 ENV=prod
 NAMESPACE=mainnet
-FINDORAD_IMG=findoranetwork/findorad:latest
-
+LIVE_VERSION=$(curl -s https://${ENV}-${NAMESPACE}.${ENV}.findora.org:8668/version | awk -F\  '{print $2}')
+FINDORAD_IMG=findoranetwork/findorad:${LIVE_VERSION}
 
 export ROOT_DIR=/data/findora/${NAMESPACE}
-
 
 ###################
 # Run local node #

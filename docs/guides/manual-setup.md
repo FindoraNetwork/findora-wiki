@@ -222,23 +222,28 @@ After receiving FRA to your validator's `Findora Address`, you must stake a mini
 >
 > - Before staking, wait for 100% data synchronization of your validator node
 >   - Else, you may be charged a 'validator node offline' penatly fee.
+
+- To stake 999,999 FRAs with a commision rate of 2% (and validator name of Validator_Pool_A)
+- Note: that is 999999 * 1000000 FRA units
+- Your Staker Memo file should like this:
 ```shell
-# ex)
-# - To stake 999,999 FRAs with a commision rate of 2% (and validator name of Validator_Pool_A)
-# - Note: that is 999999 * 1000000 FRA units
-# - Your Staker Memo file should like this:
-cat staker_memo
 {
   "name": "ExampleNode",
   "desc": "I am just a example description, please change me.",
   "website": "https://www.example.com",
   "logo": "https://www.example.com/logo"
 }
+```
+
+After creating your staker_memo file as above, run the following command to stake. Change the value `999999` to the number of FRA you want to stake and `0.02` to the percentage commission you want to take. For example:
+ 
+```
 fn stake -n $((999999 * 1000000)) -R 0.02 -M "$(cat staker_memo)"
 ```
 ### Stake Additional FRA
+- Stake an additional 2,000 FRA to your validator
+ 
 ```shell
-# Stake an additional 2,000 FRA to your validator
 fn stake -a -n $((2000 * 1000000))
 ```
 ### View Node Information
