@@ -52,6 +52,12 @@ After everything, you should see this screen
 <img src={useBaseUrl("/img/evm/metamask-3.png")} width="100%" height="100%"/>
 
 
+After everything, you should see this screen
+
+
+<img src={useBaseUrl("/img/evm/metamask-3.png")} width="100%" height="100%"/>
+
+
 Click on the 'Save' button and you should have a screen like this and be ready to go!
 
 <img src={useBaseUrl("/img/evm/metamask-2.png")} width="45%" height="30%"/>
