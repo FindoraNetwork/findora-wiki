@@ -14,7 +14,7 @@ Connet to the Forge (Findora Testnet), here is [Network Config](02-network.md#fo
 
 ## Internal Transfer
 
-Within the Findora Wallet, you can perform what we call Internal Transfer. This is essentially our mechanism for swapping your `Native FRA` assets to `EVM-Compatible FRA` assets. As powerful as `Native FRA` is, `EVM-compatible FRA` tokens is best suited for paying gas fees, dApp development and other transactions on the Ethereum blockchain. The Native and EVM-Compatible FRA types are tokens of the chain and swapping between them happens on a 1:1 basis using the `burn-mint` function.
+Within the Findora Wallet, you can perform an Internal Transfer. This is our mechanism for swapping `Native FRA` assets to `EVM-Compatible FRA` assets. `EVM-compatible FRA` tokens are best suited for dApp development and transactions on the Findora EVM. The Native and EVM-Compatible FRA tokens are swapped in a 1:1 ratio using a `burn-mint` function.
 
 ### Swap from Native FRA to EVM-Compatible FRA Assets
 

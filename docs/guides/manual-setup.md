@@ -89,6 +89,9 @@ Key: {
 ```
 > ** Tip **:
 > For convenience, you can import the `sec_key` (aka private key) into any Findora wallet (Win/Mac wallet, mobile wallet, CLI wallet tool, etc.), to more conveniently check and manage your FRA balances or to view historical transaction data for this wallet address.
+> The private key or the mnemonic should never be shared with anyone , even people from the Findora community or development team . Our mods will never ask for this information .
+> It would be advisable to keep a backup of your mnemonic on a separate storage ,should you ever need to restore it .
+
 ### Store security key
 ```shell
 # For Testnet
