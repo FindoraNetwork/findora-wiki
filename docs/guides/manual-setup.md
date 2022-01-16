@@ -57,9 +57,12 @@ sudo chown -R `id -u`:`id -g` ${ROOT_DIR}/tendermint/
 ```shell
 # Testnet
 export NAMESPACE=testnet
+
 # Mainnet
 export NAMESPACE=mainnet
-wget -O "${ROOT_DIR}/latest" "https://prod-${NAMESPACE}-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest"
+export SNAPSHOT_VERSION=01
+
+wget -O "${ROOT_DIR}/latest" "https://prod-${NAMESPACE}${SNAPSHOT_VERSION}-us-west-2-chain-data-backup.s3.us-west-2.amazonaws.com/latest"
 export CHAINDATA_URL=$(cut -d , -f 1 "${ROOT_DIR}/latest")
 wget -O "${ROOT_DIR}/snapshot" "${CHAINDATA_URL}"
 mkdir "${ROOT_DIR}/snapshot_data"
