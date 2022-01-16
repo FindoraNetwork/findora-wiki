@@ -98,9 +98,9 @@ Key: {
 ### Store security key
 ```shell
 # For Testnet
-echo ${ROOT_DIR}/tmp.gen.keypair > ${ROOT_DIR}/testnet_node.key
+cat ${ROOT_DIR}/tmp.gen.keypair > ${ROOT_DIR}/testnet_node.key
 # For Mainnet
-echo ${ROOT_DIR}/tmp.gen.keypair > ${ROOT_DIR}/mainnet_node.key
+cat ${ROOT_DIR}/tmp.gen.keypair > ${ROOT_DIR}/mainnet_node.key
 ```
 #### Store Mnemonic Words into ${ROOT_DIR}/node.mnemonic
 For convenience in setting up your node via the `fn` tool, store your 24 mnemonic keywords (located inside `tmp.gen.keypair`) into ${ROOT_DIR}/node.mnemonic.
