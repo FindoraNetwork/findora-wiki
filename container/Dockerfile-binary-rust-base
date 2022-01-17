@@ -10,6 +10,7 @@ RUN mkdir -p /opt && \
     cd /opt && \
     wget https://golang.google.cn/dl/go1.15.7.linux-amd64.tar.gz && \
     tar -xpf go1.15.7.linux-amd64.tar.gz 
+RUN rustup target add x86_64-unknown-linux-musl
 ENV PATH=$PATH:/opt/go/bin
 
 COPY ./key.tar.gz /key.tar.gz
