@@ -4,6 +4,6 @@ RUN git clone git@github.com:FindoraNetwork/platform.git
 ENV WORK_DIR /platform
 WORKDIR $WORK_DIR
 
-RUN cargo build --bin fn --release
+RUN cargo build --bin fn --release --target x86_64-unknown-linux-musl
 
 CMD ["sleep", "999999"]
