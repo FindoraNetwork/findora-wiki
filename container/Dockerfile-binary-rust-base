@@ -1,5 +1,5 @@
 FROM ekidd/rust-musl-builder 
-ENV WORK_DIR /src/platform
+ENV WORK_DIR /platform
 ENV WASM_DIR /tmp/wasm-js-bindings
 
 # RUN apt update -y && \
