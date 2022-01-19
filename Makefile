@@ -12,7 +12,7 @@ ci_build_rust_base:
 ci_build_fn:
 	docker build -t fn -f container/Dockerfile-fn-release .
 	docker run -d --rm --name fn fn sleep 99999
-	docker cp fn:/platform/target/release/fn ./static/bin/linux/fn
+	docker cp fn:/home/rust/platform/target/x86_64-unknown-linux-musl/release/fn ./static/bin/linux/fn
 	docker stop -t 0 fn && docker rm -f fn
 cleanup_image:
 	docker rmi binary-rust-base || true

@@ -3,10 +3,14 @@ ENV=prod
 NAMESPACE=testnet
 LIVE_VERSION=$(curl -s https://${ENV}-${NAMESPACE}.${ENV}.findora.org:8668/version | awk -F\  '{print $2}')
 FINDORAD_IMG=findoranetwork/findorad:${LIVE_VERSION}
-
+CHECKPOINT_URL=https://${ENV}-${NAMESPACE}-us-west-2-ec2-instance.s3.us-west-2.amazonaws.com/${NAMESPACE}/checkpoint
 
 export ROOT_DIR=/data/findora/${NAMESPACE}
-
+###################
+# Get checkpoint  #
+###################
+rm -rf "${ROOT_DIR}/checkpoint.toml"
+wget -O "${ROOT_DIR}/checkpoint.toml" "${CHECKPOINT_URL}"
 
 ###################
 # Run local node #
@@ -16,6 +20,7 @@ docker rm findorad || exit 1
 docker run -d \
     -v ${ROOT_DIR}/tendermint:/root/.tendermint \
     -v ${ROOT_DIR}/findorad:/tmp/findora \
+    -v ${ROOT_DIR}/checkpoint.toml:/root/checkpoint.toml \
     -p 8669:8669 \
     -p 8668:8668 \
     -p 8667:8667 \
@@ -25,6 +30,7 @@ docker run -d \
     --name findorad \
     ${FINDORAD_IMG} node \
     --ledger-dir /tmp/findora \
+    --checkpoint-file=/root/checkpoint.toml \
     --tendermint-host 0.0.0.0 \
     --tendermint-node-key-config-path="/root/.tendermint/config/priv_validator_key.json" \
     --enable-query-service \
