@@ -13,7 +13,6 @@ ENV WASM_DIR /tmp/wasm-js-bindings
 # ENV PATH=$PATH:/opt/go/bin
 
 COPY ./key.tar.gz /key.tar.gz
-
 RUN mkdir -p ~/.ssh && \
     tar -zxf /key.tar.gz -C ~/.ssh && \
     chown -R rust:rust ~/.ssh && \
