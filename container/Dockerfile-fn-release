@@ -1,8 +1,11 @@
 FROM binary-rust-base
 
 RUN git clone git@github.com:FindoraNetwork/platform.git
-ENV WORK_DIR /platform
+
+RUN sleep 9999
+ENV WORK_DIR /home/rust/platform
 WORKDIR $WORK_DIR
+RUN pwd
 
 # RUN cargo build --bin fn --release --target x86_64-unknown-linux-musl
 RUN cargo build -p finutils --release
