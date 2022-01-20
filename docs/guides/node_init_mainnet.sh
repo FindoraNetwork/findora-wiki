@@ -103,6 +103,7 @@ rm -rf ${ROOT_DIR}/snapshot_data
 ###################
 docker stop findorad 
 docker rm findorad || exit 1
+rm -rf "${ROOT_DIR}/tendermint/config/addrbook.json"
 docker run -d \
     -v ${ROOT_DIR}/tendermint:/root/.tendermint \
     -v ${ROOT_DIR}/findorad:/tmp/findora \
