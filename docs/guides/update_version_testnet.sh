@@ -6,6 +6,7 @@ FINDORAD_IMG=findoranetwork/findorad:${LIVE_VERSION}
 CHECKPOINT_URL=https://${ENV}-${NAMESPACE}-us-west-2-ec2-instance.s3.us-west-2.amazonaws.com/${NAMESPACE}/checkpoint
 
 export ROOT_DIR=/data/findora/${NAMESPACE}
+rm -rf "${ROOT_DIR}/tendermint/config/addrbook.json"
 ###################
 # Get checkpoint  #
 ###################
