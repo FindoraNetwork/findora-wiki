@@ -11,7 +11,7 @@ export ROOT_DIR=/data/findora/${NAMESPACE}
 EOF
 
 
-
+rm -rf "${ROOT_DIR}/tendermint/config/addrbook.json"
 ###################
 # get snapshot    #
 ###################

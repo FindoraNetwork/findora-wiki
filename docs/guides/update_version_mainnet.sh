@@ -7,6 +7,8 @@ FINDORAD_IMG=findoranetwork/findorad:${LIVE_VERSION}
 
 export ROOT_DIR=/data/findora/${NAMESPACE}
 
+# remove the exist addrbook file
+rm -rf "${ROOT_DIR}/tendermint/config/addrbook.json"
 ###################
 # Run local node #
 ###################
