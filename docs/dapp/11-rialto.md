@@ -1,136 +1,35 @@
 # Rialto Bridge
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
+The Rialto bridge is Findora’s homegrown solution for moving assets between blockchains. Built on Chainsafe’s Chainbridge infrastructure, burnished and strengthened by Findora, it allows technological different chains communicate with each other, perform transactions against each other and settle balances at the end of a session. Let’s dive in.
 
-Findora Forge and BSC testnet cross-chain.  
+At a high level, Rialto’s architecture involves a source chain, a destination chain, and relayers, with the first two having smart contracts that handle the heavy lifting involved with communication between the chains. The relayer in this matrix of communication handles the message sending and only that. When the request hits the destination chain, then the equivalent value of the coins are minted and they’re ready for use. But there is more going on, let’s look at what this looks like at a lower level.
 
-Testnet bridge: http://dev-chainbridge-new.s3-website-us-west-2.amazonaws.com/transfer
+## Architecture and definitions
 
-<img src={useBaseUrl("/img/evm/chainbridge.png")} width="50%" height="30%"/>
+- Client - Where the Deposit and Approver requests come from
+Source Chain - The beginning of a transaction
+- Relayers - the message system for passing information from the south to the destination
+- Destination Chain - the end chain of the transaction
 
-## Frontend Config
-```
-window.__RUNTIME_CONFIG__ = {
-  CHAINBRIDGE: {
-    chains: [
-      {
-        chainId: 0,
-        networkId: 525,
-        name: "findora-forge",
-        decimals: 18,
-        bridgeAddress: "0x26925046a09d9AEfe6903eae0aD090be06186Bd9",
-        erc20HandlerAddress: "0xE75Fb7714B5098E20A2D224693A1c210ad0c1A42",
-        rpcUrl: "https://prod-forge.prod.findora.org:8545/",
-        type: "Ethereum",
-        nativeTokenSymbol: "FRA",
-        tokens: [
-          {
-            address: "0x0000000000000000000000000000000000001000",
-            name: "Findora",
-            symbol: "FRA",
-            imageUri: "FRAIcon",
-            resourceId:
-            "0x000000000000000000000000000000c76ebe4a02bbc34786d860b355f5a5ce00",
-          },
-        ],
-      },
-      {
-        chainId: 1,
-        networkId: 97,
-        name: "bsc-testnet",
-        decimals: 18,
-        bridgeAddress: "0xacB8C5D7be5B23644eCe55789Eb6aA6bd6C31e64",
-        erc20HandlerAddress: "0x3e1066Ea99f2934e728D85b03BD72d1BbD61D2D4",
-        rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545/",
-        type: "Ethereum",
-        nativeTokenSymbol: "BNB",
-        tokens: [
-          {
-            address: "0xa1238f3dE0A159Cd79d4f3Da4bA3a9627E48112e",
-            name: "FRA BEP20",
-            symbol: "FRA",
-            imageUri: "FRAIcon",
-            resourceId:
-            "0x000000000000000000000000000000c76ebe4a02bbc34786d860b355f5a5ce00",
-          },
-        ],
-      },
-    ],
-  },
-};
-```
+## Contracts and definition
 
-## Lets test our bridge!
 
-### cb-sol-cli
+- Bridge contract - The contract interacts with the client and the relayers. It takes receives calls from the client, and based on the type of call, delegates the locking or minting of the coin in the token contract through the Handler contract
+- Token contract - This contract token itsef
+- Handler contract - The contract that handles executing deposit or withdrawls
 
-We will be using the Rialto Bridge contract CLI to deploy and interact with the contracts. Grab and install the CLI by running:
 
-```
-git clone -b v1.0.0 --depth 1 https://github.com/FindoraNetwork/chainbridge-tools \
-&& cd chainbridge-deploy/cb-sol-cli \
-&& npm install \
-&& make install
-```
+## Stages for Relayer voting
+- Active	
+- Passed
+- Executed
 
-### Rialto Bridge Vars
-```
-SRC_GATEWAY=https://prod-forge.prod.findora.org:8545/
-DST_GATEWAY=https://data-seed-prebsc-1-s1.binance.org:8545/
 
-SRC_PK="<private key on Findora>"
-DST_PK="<private key on BSC>"
+## How does this work
+The Client makes two calls to the source chain, one to approve and the other to Deposit. The approval hits the bridge contract, and when that is passed, the next port of call is the Handler contract. This executes the deposit and then calls for the client to make the deposit into the token contract of the source chain
 
-SRC_TOKEN="0x0000000000000000000000000000000000001000"
-RESOURCE_ID="0x000000000000000000000000000000c76ebe4a02bbc34786d860b355f5a5ce00"
+After the deposit hits the Token contract, a deposit event is triggered that passes the message to the Relayer, and the Relayer itself broadcasts this information to the bridge contract of the Destination chain. And then a vote happens on the proposal.
 
-SRC_BRIDGE="0x26925046a09d9AEfe6903eae0aD090be06186Bd9"
-SRC_HANDLER="0xE75Fb7714B5098E20A2D224693A1c210ad0c1A42"
+Voting on the destination chain means that Relayers get the proposal and initiate a process where everyone of them votes. With every vote from a relayer, the broadcast status moves through the different stages form active to executed. 
 
-DST_BRIDGE="0xacB8C5D7be5B23644eCe55789Eb6aA6bd6C31e64"
-DST_HANDLER="0x3e1066Ea99f2934e728D85b03BD72d1BbD61D2D4"
-DST_TOKEN="0xa1238f3dE0A159Cd79d4f3Da4bA3a9627E48112e"
-```
-
-### Deposit token
-#### Findora => BSC
-Approve the handler to spend tokens on our behalf (to transfer them to the token safe).
-
-```
-cb-sol-cli --url $SRC_GATEWAY --privateKey $SRC_PK --gasPrice 10000000000 erc20 approve \
-    --amount 100 \
-    --erc20Address $SRC_TOKEN \
-    --recipient $SRC_HANDLER
-```
-Note: Most ERC20 contracts use 18 decimal places. The amount specified will be encoded with the necessary decimal places. This can be configured with --decimals on the erc20 command.
-
-##### Execute a deposit.
-```
-cb-sol-cli --url $SRC_GATEWAY --privateKey $SRC_PK --gasPrice 10000000000 erc20 deposit \
-    --amount 10 \
-    --dest 1 \
-    --bridge $SRC_BRIDGE \
-    --recipient 0x5849771139978fe0B3D52303d71D222a347e7CaB \
-    --resourceId $RESOURCE_ID
-```
-The relayer will wait 3 block confirmations before submitting a request which may take a few minutes on the test network. Keep an eye on the target=XXXX output in the Rialto bridge relayer window.
-The transfer will occur when this reaches the block height of the deposit transaction.
-
-#### BSC => Findora
-
-Approve the handler on the destination chain to move tokens on our behalf (to burn them).
-```
-cb-sol-cli --url $DST_GATEWAY --privateKey $DST_PK --gasPrice 10000000000 erc20 approve \
-    --amount 10 \
-    --erc20Address $DST_TOKEN \
-    --recipient $DST_HANDLER
-```
-Transfer the wrapped tokens back to the bridge. This should result in the locked tokens being freed on the source chain and returned to your account.
-```
-cb-sol-cli --url $DST_GATEWAY --privateKey $DST_PK --gasPrice 10000000000 erc20 deposit \
-    --amount 1 \
-    --dest 0 \
-    --bridge $DST_BRIDGE \
-    --recipient 0x91388a75f30065f6F1D679541C6aDc2c3ade08A8 \
-    --resourceId $RESOURCE_ID
-```
+The executed stage sis passed and finally the bridge calls the handler contract that eventually moves the data to the Token for minting
