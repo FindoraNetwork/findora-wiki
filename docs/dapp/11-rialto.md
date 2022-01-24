@@ -34,9 +34,10 @@ Source Chain - The beginning of a transaction
 - Executed
 - Cancelled
 
-<img src={useBaseUrl("/img/evm/rialto-bridge-3.png")} width="80%" height="40%"/>
-
 ## How does this work
+
+<img src={useBaseUrl("/img/evm/rialto-bridge-explainer.png")} width="80%" height="40%"/>
+
 
 The Client makes two calls to the source chain, one to approve and the other to Deposit. The approval hits the bridge contract, and when that is passed, the next port of call is the Handler contract. This executes the deposit and then calls for the client to make the deposit into the token contract of the source chain
 
