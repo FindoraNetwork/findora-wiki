@@ -44,7 +44,7 @@ FRA
 And at the end is the `Block Explorer URL`. Please place this in
 
 ```
-http://blockscout.findorascan.io
+http://evm.findorascan.io
 ```
 
 After everything, you should see this screen

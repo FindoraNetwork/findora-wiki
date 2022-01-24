@@ -9,7 +9,7 @@
 - Websocket:
   - ws://prod-mainnet01-us-west-2-sentry-001-public.prod.findora.org:8546
 - Block Explorer:
-  - https://prod-mainnet01-blockscout.prod.findora.org/ (EVM Explorer)
+  - https://evm.findorascan.io/ (EVM Explorer)
 
 ## Forge Testnet
 
