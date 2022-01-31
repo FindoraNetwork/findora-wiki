@@ -1,4 +1,4 @@
-# Rialto Bridge
+# Overview
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -25,24 +25,32 @@ Source Chain - The beginning of a transaction
 - Token contract - This contract token itsef
 - Handler contract - The contract that handles executing deposit or withdrawls
 
-
-## Stages for Relayer voting
-
-- Cancelled
-- Active	
-- Passed
-- Executed
-- Cancelled
-
-## How does this work
+## Schematics
 
 <img src={useBaseUrl("/img/evm/rialto-bridge-explainer.png")} width="80%" height="40%"/>
 
+## Source Chain
 
-The Client makes two calls to the source chain, one to approve and the other to Deposit. The approval hits the bridge contract, and when that is passed, the next port of call is the Handler contract. This executes the deposit and then calls for the client to make the deposit into the token contract of the source chain
+### Approvals and Depositing into the Source Chain
 
-After the deposit hits the Token contract, a deposit event is triggered that passes the message to the Relayer, and the Relayer itself broadcasts this information to the bridge contract of the Destination chain. And then a vote happens on the proposal.
+ - The Client makes two calls to the source chain, one to approve and the other to Deposit. The approval hits the bridge contract, and when that is passed, the next port of call is the Handler contract. 
 
-Voting on the destination chain means that Relayers get the proposal and initiate a process where everyone of them votes. With every vote from a relayer, the broadcast status moves through the different stages form active to executed. 
+ - This executes the deposit and then calls for the client to make the deposit into the token contract of the source chain
 
-The executed stage is passed and finally the bridge calls the handler contract that eventually moves the data to the Token for minting
+## Destination Chain
+
+### Stages for Relayer voting
+
+- Active - The proposal for getting assets minted on the destination chain is submited
+- Passed - Relayers overwhelmingly agree on proposal
+- Executed - Destination chain mints equvalent value of incoming message request from source chain
+- Cancelled -  The proposal is declined
+
+
+### Voting and Minting on the Destination Chain
+
+ - After the deposit hits the Token contract, a deposit event is triggered that passes the message to the Relayer, and the Relayer itself broadcasts this information to the bridge contract of the Destination chain. And then a vote happens on the proposal.
+
+ - Voting on the destination chain means that Relayers get the proposal and initiate a process where everyone of them votes. With every vote from a relayer, the broadcast status moves through the different stages form active to executed. 
+
+ - The executed stage is passed and finally the bridge calls the handler contract that eventually moves the data to the Token for minting
