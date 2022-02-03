@@ -2,14 +2,13 @@
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<img src={useBaseUrl("/img/evm/rialto-homepage.png")} width="80%" height="40%"/>
 
 
 The Rialto bridge is Findora’s homegrown solution for moving assets between blockchains. Built on Chainsafe’s Chainbridge infrastructure, burnished and strengthened by Findora, it allows technological different chains communicate with each other, perform transactions against each other and settle balances at the end of a session. Let’s dive in.
 
 At a high level, Rialto’s architecture involves a source chain, a destination chain, and relayers, with the first two having smart contracts that handle the heavy lifting involved with communication between the chains. The relayer in this matrix of communication handles the message sending and only that. When the request hits the destination chain, then the equivalent value of the coins are minted and they’re ready for use. There is more going on, let’s look at what this looks like at a lower level but first, connect your wallet
 
-<img src={useBaseUrl("/img/evm/rialto-bridge-2.png")} width="80%" height="40%"/>
+
 
 
 ## Architecture and definitions
