@@ -8,7 +8,7 @@ The following versions of the wallet support `internal transfer` function, but o
 Go to the [Wallet Guides](/docs/wallet/wallet_guides) for details.
 
 ## Connect to Testnet
-Connet to the Forge (Findora Testnet), here is [Network Config](02-network.md#forge-testnet)
+Connect to the Forge (Findora Testnet), here is [Network Config](02-network.md#forge-testnet)
 
 ![wallet.png](/img/wallet/wallet32.png)
 
