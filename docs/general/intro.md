@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Getting Started
+# What is Findora?
 
 Hello and welcome to the Findora Wiki! We will be adding much more content in the near future, so stay tuned! 
 

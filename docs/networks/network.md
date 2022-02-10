@@ -1,4 +1,4 @@
-# Networks Table
+# Networks 
 
 ## Mainnet
 
