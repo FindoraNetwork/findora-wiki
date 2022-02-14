@@ -49,9 +49,9 @@ Receiving funds to you ledger address would be the same process as any other tra
 
 - Setup the transfer and confirm
 
-<img src={useBaseUrl("/img/guides/ledger-7.png")} width="50%" height="40%"/>
+<img src={useBaseUrl("/img/guides/ledger-7.png")} width="60%" height="40%"/>
 
-<img src={useBaseUrl("/img/guides/ledger-8.png")} width="50%" height="40%"/>
+<img src={useBaseUrl("/img/guides/ledger-8.png")} width="60%" height="40%"/>
 
 - Check confirmed status on Metamask and Block Explorerr
 
@@ -79,13 +79,13 @@ Receiving funds to you ledger address would be the same process as any other tra
 
 - Verify the tx details
 
-<img src={useBaseUrl("/img/guides/ledger-15.png")} width="50%" height="40%"/>
+<img src={useBaseUrl("/img/guides/ledger-15.png")} width="60%" height="40%"/>
 
-<img src={useBaseUrl("/img/guides/ledger-16.png")} width="50%" height="40%"/>
+<img src={useBaseUrl("/img/guides/ledger-16.png")} width="60%" height="40%"/>
 
-<img src={useBaseUrl("/img/guides/ledger-17.png")} width="50%" height="40%"/>
+<img src={useBaseUrl("/img/guides/ledger-17.png")} width="60%" height="40%"/>
 
-<img src={useBaseUrl("/img/guides/ledger-18.png")} width="50%" height="40%"/>
+<img src={useBaseUrl("/img/guides/ledger-18.png")} width="60%" height="40%"/>
 
 :::note
 The amounts show up as ETH only becuase its the Ethereum app ,but the actuall transfer is in FRA
@@ -97,6 +97,6 @@ The amounts show up as ETH only becuase its the Ethereum app ,but the actuall tr
 
 - Check confirmed status on Metamask and Block Explorer
 
-<img src={useBaseUrl("/img/guides/ledger-20.png")} width="50%" height="40%"/>
+<img src={useBaseUrl("/img/guides/ledger-20.png")} width="60%" height="40%"/>
 
-<img src={useBaseUrl("/img/guides/ledger-21.png")} width="50%" height="40%"/>
+<img src={useBaseUrl("/img/guides/ledger-21.png")} width="100%" height="50%"/>
