@@ -237,7 +237,7 @@ After creating your staker_memo file as above, run the following command to stak
 ```
 fn stake -n $((999999 * 1000000)) -R 0.02 -M "$(cat staker_memo)"
 ```
-### Stake Additional FRA
+<!-- ### Stake Additional FRA
 - Stake an additional 2,000 FRA to your validator
  
 ```shell
@@ -269,4 +269,4 @@ fn unstake -n $((900 * 1000000))
 > **NOTE**: This operation will unstake all of your FRA and remove your node from the Findora Network.
 ```shell
 fn unstake
-```
+``` -->

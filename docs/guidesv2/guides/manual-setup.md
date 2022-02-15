@@ -243,36 +243,3 @@ After creating your staker_memo file as above, run the following command to stak
 ```
 fn stake -n $((999999 * 1000000)) -R 0.02 -M "$(cat staker_memo)"
 ```
-### Stake Additional FRA
-- Stake an additional 2,000 FRA to your validator
- 
-```shell
-fn stake -a -n $((2000 * 1000000))
-```
-### View Node Information
-To find information about your validator node, use the `fn show` command. Sample output is below:
-![Docusaurus](/img/validator_setup_guide/fn_show_full.png)
-### Claim FRA Rewards
-Top 100 validators will earn block rewards. If your validator is a top 100 validator, it will earn rewards which will show up in the `rewards:` section of `fn show`.
-![Docusaurus](/img/validator_setup_guide/reward_balance.png)
-If your reward balance is greater than 0, you can claim your earned rewards via the `fn claim` sub-command
-```shell
-# fn claim -n <the amount of FRA units you want>
-# ex)
-#   If you have a reward balance of 20 FRA (i.e. "rewards: 20000000")
-#   and wish to claim 10 FRA (out of 20 FRA), issue the command below:
-fn claim -n $((10 * 1000000))
-```
-### Unstake FRA
-#### Unstake Some of Your FRA
-```shell
-# fn unstake -n <the amount of FRA units you want>
-# ex)
-#   To unstake 900 FRA (ie. 900 * 1000000)
-fn unstake -n $((900 * 1000000))
-```
-#### Close Validator and Unstake All of Your FRA
-> **NOTE**: This operation will unstake all of your FRA and remove your node from the Findora Network.
-```shell
-fn unstake
-```
