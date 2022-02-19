@@ -27,3 +27,42 @@
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.docs-wrapper, .navbar__inner {
+  width:100%;
+  max-width: 1400px;
+  margin:0 auto;
+}
+
+.navbar__title {
+  font-size: 1.8rem;
+  font-family: poppins;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+* {
+  font-family: poppins;
+
+}
+
+.navbar__items svg {
+  display:none;
+}
+
+.h1Heading_node_modules-\@docusaurus-theme-classic-lib-next-theme-Heading-styles-module, h2, h3, h4 {
+  font-size: 1.6rem !important;
+  letter-spacing: -1px;
+  font-weight: 600;
+}
+
+aside .menu__list li.menu__list-item {
+  padding: 6px 0;
+  font-weight: 700;
+}
+
+aside .menu__list li.menu__list-item li.menu__list-item{
+  padding: 0;
+  font-size: .8rem;
+  font-weight: 500;
+}

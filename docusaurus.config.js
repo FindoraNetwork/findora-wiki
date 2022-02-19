@@ -21,10 +21,19 @@ module.exports = {
       },
       items: [
         {
-          type: 'doc',
-          docId: 'general/intro',
-          position: 'left',
-          label: 'Get Started',
+          href: 'https://discord.gg/dHhY5pte',
+          label: 'Discord',
+          position: 'right',
+        },
+        {
+          href: 'https://twitter.com/FindoraOfficial',
+          label: 'Twitter',
+          position: 'right',
+        },
+        {
+          href: 'https://t.me/findoraen',
+          label: 'Telegram',
+          position: 'right',
         },
         {
           href: 'https://github.com/findoraNetwork',
@@ -33,47 +42,7 @@ module.exports = {
         },
       ],
     },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Get Started',
-              to: '/docs/general/intro',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Discord',
-              href: 'https://discord.gg/dHhY5pte',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/FindoraOfficial',
-            },
-            {
-              label: "Telegram",
-              href: 'https://t.me/findoraen',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/FindoraNetwork/',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Findora Foundation. Built with Docusaurus.`,
-    },
+
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
