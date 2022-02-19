@@ -13,6 +13,7 @@ module.exports = {
   organizationName: 'FindoraNetwork', // Usually your GitHub org/user name.
   projectName: 'findora-wiki', // Usually your repo name.
   themeConfig: {
+
     navbar: {
       title: 'Findora Wiki',
       logo: {

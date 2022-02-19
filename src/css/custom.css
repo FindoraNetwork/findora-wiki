@@ -28,6 +28,9 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+main .container {
+  padding:2rem  ;
+}
 .docs-wrapper, .navbar__inner {
   width:100%;
   max-width: 1400px;
@@ -37,7 +40,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 .navbar__title {
   font-size: 1.8rem;
   font-family: poppins;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -1px;
 }
 
@@ -45,17 +48,19 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   font-family: poppins;
 
 }
-
 .navbar__items svg {
   display:none;
 }
 
 .h1Heading_node_modules-\@docusaurus-theme-classic-lib-next-theme-Heading-styles-module, h2, h3, h4 {
   font-size: 1.6rem !important;
-  letter-spacing: -1px;
+  letter-spacing: -.4px;
   font-weight: 600;
 }
 
+h2 {
+  font-size: 1.1rem !important;
+}
 aside .menu__list li.menu__list-item {
   padding: 6px 0;
   font-weight: 700;
@@ -66,3 +71,5 @@ aside .menu__list li.menu__list-item li.menu__list-item{
   font-size: .8rem;
   font-weight: 500;
 }
+
+
