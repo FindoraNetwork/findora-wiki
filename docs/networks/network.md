@@ -4,13 +4,15 @@ sidebar_position: 1
 
 # Network Details
 
-# Mainnet
+The Findora mainnet and testnet are now available to developers. Our testnet exists in two iterations, Forge and Anvil, and each environment has corresponding details for the RPC, WS, and public seed node endpoints. 
+
+## Mainnet
 Mainnet is the release environment. 
 - **Version**: https://prod-mainnet.prod.findora.org:8668/version
 - **Tendermint RPC** : https://prod-mainnet.prod.findora.org:26656
 - **Query server RPC** : https://prod-mainnet.prod.findora.org:8668
 - **Chain ID**: 
-  - ```js
+  ```
       2152
   ```
 - **EVM RPC** : https://prod-mainnet.prod.findora.org:8545
@@ -30,8 +32,8 @@ Mainnet is the release environment.
 - **EVM Explorer**: https://evm.findorascan.io
 
 
-# TEST NETWORKS
-## Testnet-anvil
+## Test Networks
+### Testnet-anvil
 
 - **Version**: https://prod-testnet.prod.findora.org:8668/version
 
@@ -41,7 +43,7 @@ Mainnet is the release environment.
 
 - **EVM RPC** : https://prod-testnet.prod.findora.org:8545
 
-  **Chain ID**: 
+- **Chain ID**: 
   ```js
   2153
   ```
