@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-# Hybrid Ledger Model (Account/UTXO)
+# Hybrid Ledger Model
 
 ## Introduction
 The following sections will cover the differences between the Account and UTXO models as well as Findora's

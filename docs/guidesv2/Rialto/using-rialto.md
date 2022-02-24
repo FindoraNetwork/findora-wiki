@@ -1,4 +1,8 @@
-# Using Rialto Bridge
+---
+sidebar_position: 1
+---
+
+# How to Use Rialto Guide
 
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -41,4 +45,5 @@ You can view the transfer status and FRA balance on
 ```
     https://testnet.bscscan.com/
 ```
+
 
