@@ -1,14 +1,11 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Confidential Transfers
 
-A confidential transfer is Findora’s engineered method of moving your assets between wallets with the privacy you need. Backed by industry-leading algorithms and safe from prying eyes, we are excited for what value this will provide for you.
-
-## How to make a confidential transfer
+# How to make a transparent transfer
 - Sign in into your Findora wallet then click on the wallet name you want to make a transfer out from
 
 <img src={useBaseUrl("/img/transfers/c-transfers-1.png")} width="60%" height="50%"/>
@@ -33,21 +30,21 @@ A confidential transfer is Findora’s engineered method of moving your assets b
 
 And now we get to the more important part. 
 
-- To effectively do a confidential transfer, click on the "Hide Amounts" radio button when you want to hide the amount, and click on the "Hide Asset Type" radio button when you want to hide the type of asset you're transferring. A prompt modal will appear, please read and be sure you want to proceeed
+- To effectively do a transparent transfer, click on the "Show Amounts" radio button when you want to hide the amount, and click on the "Show Asset Type" radio button when you want to show the type of asset you're transferring. 
 
  <img src={useBaseUrl("/img/transfers/c-transfers-5.png")} width="60%" height="50%"/>
 
 Click on "i understand" and you should get a confirmation screen. 
 
- <img src={useBaseUrl("/img/transfers/c-transfers-6.png")} width="60%" height="50%"/>
+ <img src={useBaseUrl("/img/transfers/t-transfers-1.png")} width="60%" height="50%"/>
 
 Confirm the details and the transaction is on its way.
 
- <img src={useBaseUrl("/img/transfers/c-transfers-7.png")} width="60%" height="50%"/>
+ <img src={useBaseUrl("/img/transfers/t-transfers-2.png")} width="60%" height="50%"/>
 
 Click on "View Transaction" to get a detailed view of the status of the transaction
 
- <img src={useBaseUrl("/img/transfers/c-transfers-8.png")} width="60%" height="50%"/>
+ <img src={useBaseUrl("/img/transfers/t-transfers-3.png")} width="60%" height="50%"/>
 
 
-That is how a confidential transfer is done. 
+That is how a transparent transfer is done. 
