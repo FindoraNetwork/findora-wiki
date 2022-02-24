@@ -4,8 +4,7 @@ sidebar_position: 1
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-
-# How to make a transparent transfer
+# Transparent Transfer
 - Sign in into your Findora wallet then click on the wallet name you want to make a transfer out from
 
 <img src={useBaseUrl("/img/transfers/c-transfers-1.png")} width="60%" height="50%"/>
