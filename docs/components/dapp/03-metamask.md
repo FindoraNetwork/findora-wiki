@@ -1,5 +1,6 @@
 # Using Metamask
 
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 If you have used Metamask for any sort of development work on the EVM, then setting up Findora for use is as simple as can be. All that is needed is taking the network details as shown [here](https://wiki.findora.org/docs/dapp/network/) and making use of them as Metamask requires. Let's jump right in!

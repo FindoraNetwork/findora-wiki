@@ -1,5 +1,12 @@
 # Networks
 
+| Network Name | Chain ID | RPC URL                                  | Websocket                                                                                                                                | Native Explorer               | Findora EVM Explorer              |
+|--------------|----------|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------|-----------------------------------|
+| Mainnet      | 2152     |                                          |                                                                                                                                          |                               |                                   |
+| Forge        | 525      | https://prod-forge.prod.findora.org:8545 | ws://prod-forge-us-west-2-sentry-000-public.prod.findora.org:8546<br /><br />ws://prod-forge-us-west-2-sentry-001-public.prod.findora.org:8546 | https://forge.findorascan.io/ | http://blockscout.findorascan.io/ |
+| Anvil        |          |                                          |                                                                                                                                          |                               |                                   |
+
+
 ## Mainnet
 
 - Network Name: Findora
