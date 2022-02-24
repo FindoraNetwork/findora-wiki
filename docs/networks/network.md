@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Networks 
+# Network Details
 
 ## Mainnet
 
@@ -405,7 +405,8 @@ Forge Testnet replicates the Findora Mainnet, which is to be used for testing.
       https://monitoring.prod.findora.org:9090/
     ```
 
-- `Testnet-anvil`
+## Test Networks
+### Testnet-anvil
 
     - Version
     ```
@@ -473,14 +474,7 @@ Forge Testnet replicates the Findora Mainnet, which is to be used for testing.
       https://monitoring.prod.findora.org/
     ```
 
-    username: 
-    ```js
-    grafana-viewer
-    ```
-    password: 
-    ```js
-    findora
-    ```
+- **Block Explorer**:
 
     Promethues
     ```
