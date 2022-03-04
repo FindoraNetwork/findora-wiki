@@ -3,9 +3,9 @@
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-If you have used Metamask for any sort of development work on the EVM, then setting up Findora for use is as simple as can be. All that is needed is taking the network details as shown [here](https://wiki.findora.org/docs/dapp/network/) and making use of them as Metamask requires. Let's jump right in!
+If you have used Metamask for any sort of development work on the EVM, then setting up Findora for use is as simple as can be. Simply take the network details as shown [here](https://wiki.findora.org/docs/dapp/network/) and make use of them as Metamask requires. Let's jump right in!
 
-First step is to install Metamask if you don't have it before. Once you have Metamask installed, please prepare to configure Metamask with the Findora EVM network.
+The first step is to install Metamask from [metamask.io](https://metamask.io). 
 
 Next up, click on the bar that would typically show your last connected network. 
 
@@ -16,7 +16,7 @@ You should get a drop-down and a button that shows "Add Network". Click on that 
 
 <img src={useBaseUrl("/img/evm/metamask-1.png")} width="100%" height="100%"/>
 
-Now we get to configuring it to connect to the correct Findora EVM network. 
+Next, configure Metamask to connect to Findora’s EVM network (aka Smart Chain).
 
 For example, if you would like to connect to the Forge testnet, in the `Network Name` input field, copy and place this
 
