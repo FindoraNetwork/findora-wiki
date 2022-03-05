@@ -8,7 +8,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Findora Forge and BSC testnet cross-chain.  
 
-Testnet bridge: http://dev-chainbridge-new.s3-website-us-west-2.amazonaws.com/transfer
+Rialto Bridge (Anvil Testnet): [anvil.rialtobridge.io](https://anvil.rialtobridge.io)
+
+Rialto Bridge (Mainnet): not released yet
 
 <img src={useBaseUrl("/img/evm/chainbridge.png")} width="50%" height="30%"/>
 
