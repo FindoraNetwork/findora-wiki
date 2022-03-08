@@ -8,17 +8,17 @@ The following versions of the wallet support `internal transfer` function, but o
 Go to the [Wallet Guides](/docs/wallet/wallet_guides) for details.
 
 ## Connect to Testnet
-Connect to the Forge (Findora Testnet), here is [Network Config](02-network.md#forge-testnet)
+Connect to the Anvil (Findora Testnet), here is [Network Config](02-network.md#forge-testnet)
 
 ![wallet.png](/img/wallet/wallet32.png)
 
-## Internal Transfer
+## Prism
 
-Within the Findora Wallet, you can perform an Internal Transfer. This is our mechanism for swapping `Native FRA` assets to `EVM-Compatible FRA` assets. `EVM-compatible FRA` tokens are best suited for dApp development and transactions on the Findora EVM. The Native and EVM-Compatible FRA tokens are swapped in a 1:1 ratio using a `burn-mint` function.
+Within the Findora Wallet, you can perform a swap between `Native FRA` assets to `EVM-Compatible FRA` assets. `EVM-compatible FRA` tokens are best suited for dApp development and transactions on the Findora EVM. The Native and EVM-Compatible FRA tokens are swapped in a 1:1 ratio using a `burn-mint` function.
 
 ### Swap from Native FRA to EVM-Compatible FRA Assets
 
-First step is to click on the Internal Transfer section of the sidebar. In the Native Wallet section then place the address of the wallet into the EVM-compatible wallet field. The amount goes right under too.
+First step is to click on the Prism section of the sidebar. In the Native Wallet section then place the address of the wallet into the EVM-compatible wallet field. The amount goes right under too.
 
 ![wallet.png](/img/wallet/wallet33.png)
 

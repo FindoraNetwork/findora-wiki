@@ -2,50 +2,8 @@
 sidebar_position: 1
 ---
 
-# Network Details
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+# Testnet
 
-<Tabs
-  defaultValue="mainnet"
-  values={[
-    { label: 'Findora Mainnet', value: 'mainnet', },
-    { label: 'Findora Testnet', value: 'testnet', },
-  ]
-}>
-
-<TabItem value="mainnet">
-
-The Findora mainnet and testnet are now available to developers. Our testnet exists in two iterations, Forge and Anvil, and each environment has corresponding details for the RPC, WS, and public seed node endpoints. 
-
-## Mainnet
-Mainnet is the release environment. 
-- **Version**: https://prod-mainnet.prod.findora.org:8668/version
-- **Tendermint RPC** : https://prod-mainnet.prod.findora.org:26656
-- **Query server RPC** : https://prod-mainnet.prod.findora.org:8668
-- **Chain ID**: `2152`
-- **EVM RPC** : https://prod-mainnet.prod.findora.org:8545
-- **EVM WS**:prod-mainnet-us-west-2-sentry-000-public.prod.findora.org:8546
-- **Public seed node endpoint**:
-  
-  prod-mainnet-us-west-2-seed-000-public.prod.findora.org
-    
-  prod-mainnet-us-west-2-seed-001-public.prod.findora.org
-    
-  prod-mainnet-us-west-2-seed-002-public.prod.findora.org
-    
-  prod-mainnet-us-west-2-seed-003-public.prod.findora.org
-    
-- **Block Explorer**: [Findora Explorer (findorascan.io)](https://findorascan.io/)
-    
-- **EVM Explorer**: https://evm.findorascan.io
-
-</TabItem>
-
-
-<TabItem value="testnet">
-
-## Test Networks
 ### Testnet-anvil (Primary Test Network)
 
 - **Version**: https://prod-testnet.prod.findora.org:8668/version
@@ -97,7 +55,7 @@ Mainnet is the release environment.
 - **EVM Explorer**: [Findora FRA Explorer](https://dev-mainnetmock-blockscout.dev.findora.org/)
 
 
-### Testnet - Forge - ( Not Functional )
+<!-- ### Testnet - Forge - ( Not Functional )
 - **Version**: https://prod-forge.prod.findora.org:8668/version
 - **Tendermint RPC** : https://prod-forge.prod.findora.org:26656
 - **Query server RPC** : https://prod-forge.prod.findora.org:8668
@@ -107,6 +65,4 @@ Mainnet is the release environment.
 - **Public seed node endpoint**:prod-forge-us-west-2-seed-000-public.prod.findora.org
 - **Block Explorer**: 
 - **EVM Explorer**:[https://testnet-forge.evm.findorascan.io](https://testnet-forge.evm.findorascan.io)
-
-</TabItem>
-</Tabs>
+ -->

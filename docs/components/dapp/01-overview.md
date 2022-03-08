@@ -11,7 +11,7 @@ Developers who deploy Ethereum's ERC-20 Solidity boilerplate code on the Findora
 
 ### Setting Up Findora Testnet
 
-Currently, developing on Findora EVM requires developers to connect to the Findora Forge Testnet.
+Currently, developing on Findora EVM requires developers to connect to the Findora Anvil Testnet.
 
 See the [Networks](02-network.md) guide for details.
 
