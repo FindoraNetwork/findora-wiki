@@ -42,7 +42,8 @@ main .container {
     max-width: 1400px;
     margin: 0 auto;
 }
-.link {color:#5c17e6 !important;}
+
+
 .navbar__title {
     font-size: 1.8rem;
     font-family: 'Poppins', arial, sans-serif;
@@ -57,7 +58,27 @@ main .container {
 .navbar__items svg {
     display: none;
 }
+.announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module {
+    height:auto !important;
+    min-height:50px;
+    display: flex;
+}
+.announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module div {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem !important;
+}
+.link {background:#fafbfc !important;
+    border-radius: 4px;
+    padding:2px 10px;
+    margin:8px 6px;
+    color:#5c17e6 !important;
+    font-weight: 700;
+    font-size: 1rem ;
 
+    text-decoration: none !important;
+    }
 .h1Heading_node_modules-\@docusaurus-theme-classic-lib-next-theme-Heading-styles-module,
 h2,
 h3,
@@ -81,3 +102,19 @@ aside .menu__list li.menu__list-item li.menu__list-item {
     font-size: .8rem;
     font-weight: 500;
 }
+@media only screen and (max-width: 600px) {
+    .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module div{
+        margin:auto;      
+  }
+    .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module div, .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module .link{
+    font-size: .8rem !important;}
+  }
+
+  @media only screen and (max-width: 315px) {
+    .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module div{
+  display: block;  
+  }
+  .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module .link {
+ display: block;
+  }
+  }

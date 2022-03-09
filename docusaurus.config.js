@@ -16,8 +16,8 @@ module.exports = {
     announcementBar: {
       id: 'announceBar',
       content:
-        'Get <strong>$100,000,000</strong> In Funding <a target="_blank" rel="noopener noreferrer" href="https://www.findora.foundation/grants/" target="_blank" class="link">View Grants</a>',
-      backgroundColor: '#000000',
+        '<strong>🎉 $100m in Ecosystem Grants</strong>  <a target="_blank" rel="noopener noreferrer" href="https://www.findora.foundation/grants/" target="_blank" class="link">Apply Now</a>',
+      backgroundColor: '#5c17e6',
       textColor: '#ffffff',
       isCloseable: true,
     },
