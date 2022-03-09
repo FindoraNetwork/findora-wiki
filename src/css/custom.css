@@ -42,7 +42,7 @@ main .container {
     max-width: 1400px;
     margin: 0 auto;
 }
-
+.link {color:#5c17e6 !important;}
 .navbar__title {
     font-size: 1.8rem;
     font-family: 'Poppins', arial, sans-serif;
