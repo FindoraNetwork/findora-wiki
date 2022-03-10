@@ -27,13 +27,13 @@ Anvil
 In the New `RPC URL` input field, copy and place this in 
 
 ```
-https://prod-forge.prod.findora.org:8545
+https://prod-testnet.prod.findora.org:8545
 ```
 
 Just below in the `Chain ID` input field, copy and place this
 
 ```
-525
+2153
 ```
 
 Beside the Chain ID, `Currency Symbol` is 

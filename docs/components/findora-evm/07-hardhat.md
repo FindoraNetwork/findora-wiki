@@ -42,8 +42,8 @@ module.exports = {
     hardhat: {
     },
     findora: {
-      url: "https://prod-forge.prod.findora.org:8545",
-      chainId:525,
+      url: "https://prod-testnet.prod.findora.org:8545",
+      chainId: 2153,
       accounts: [mnemonic]
     }
   },

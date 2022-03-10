@@ -1,7 +1,6 @@
-# Overview
+# Rialto Bridge
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
-
 
 
 The Rialto bridge is Findora’s homegrown solution for moving assets between blockchains. Built on Chainsafe’s Chainbridge infrastructure, burnished and strengthened by Findora, it allows technologically different chains to communicate with each other, perform transactions against each other and settle balances at the end of a session. Let’s dive in.

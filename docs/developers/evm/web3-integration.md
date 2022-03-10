@@ -2,4 +2,4 @@
 sidebar_position: 2
 ---
 
-# Staking
+# Web3 Integration
