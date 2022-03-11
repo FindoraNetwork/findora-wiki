@@ -1,18 +1,8 @@
-# Using Findora Wallet
-The following versions of the wallet support `internal transfer` function, but only for the testnet, not the mainnet.
+---
+sidebar_position: 1
+---
 
-[Download Wallet For Mac](https://s3.us-west-2.amazonaws.com/testnet-wallet.findora.org/Findora_Wallet_Setup_0.3.0.dmg)
-
-[Download Wallet For Windows](https://s3.us-west-2.amazonaws.com/testnet-wallet.findora.org/Findora_Wallet_Setup_0.3.0.exe)
-
-Go to the [Wallet Guides](/docs/wallet/wallet_guides) for details.
-
-## Connect to Testnet
-Connect to the Anvil (Findora Testnet), here is [Network Config](02-network.md#forge-testnet)
-
-![wallet.png](/img/wallet/wallet32.png)
-
-## Prism
+# Prism
 
 Within the Findora Wallet, you can perform a swap between `Native FRA` assets to `EVM-Compatible FRA` assets. `EVM-compatible FRA` tokens are best suited for dApp development and transactions on the Findora EVM. The Native and EVM-Compatible FRA tokens are swapped in a 1:1 ratio using a `burn-mint` function.
 
