@@ -8,7 +8,11 @@ The following versions of the wallet support `internal transfer` function, but o
 Go to the [Wallet Guides](/docs/wallet/wallet_guides) for details.
 
 ## Connect to Testnet
+<<<<<<< HEAD:docs/docs-v1/dapp/04-wallet.md
 Connect to the Anvil (Findora Testnet), here is [Network Config](02-network.md#forge-testnet)
+=======
+Connect to the Forge (Findora Testnet), here is [Network Config](02-network.md#forge-testnet)
+>>>>>>> main:docs/dapp/04-wallet.md
 
 ![wallet.png](/img/wallet/wallet32.png)
 
