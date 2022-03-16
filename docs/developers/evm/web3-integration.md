@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 21
 ---
 
 # Web3 Integration
