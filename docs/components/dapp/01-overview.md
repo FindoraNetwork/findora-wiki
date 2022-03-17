@@ -13,7 +13,7 @@ Developers who deploy Ethereum's ERC-20 Solidity boilerplate code on the Findora
 
 Currently, developing on Findora EVM requires developers to connect to the Findora Forge Testnet.
 
-See the [Networks](../../networks/network.mdx) guide for details.
+See the [Networks](02-network.md) guide for details.
 
 ### Writing and Deploying a Contract
 
