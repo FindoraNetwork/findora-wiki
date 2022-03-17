@@ -11,7 +11,8 @@ If you're an Ethereum developer then you're well on the path to being a Findora 
 
 ## How to use the Rialto Bridge
 
-Using the Rialto bridge is pretty simple. 
+The Rialto Bridge is composed of a set of contracts that help to move assets across protocols and blockchain safely and securely. Before you bridge, please make sure you have enough funds to cover the transaction and associated fees. The first step is to connect Rialto Bridge to your wallet
+The second step is where the bridging occurs, where you select amount of asset to bridge and the destination. Let's get into it.
 
 ### Connect Rialto Bridge to Wallet
 
