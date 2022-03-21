@@ -104,7 +104,7 @@ aside .menu__list li.menu__list-item li.menu__list-item {
 }
 @media only screen and (max-width: 600px) {
     .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module div{
-        margin:auto;      
+        margin:auto;
   }
     .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module div, .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module .link{
     font-size: .8rem !important;}
@@ -112,7 +112,7 @@ aside .menu__list li.menu__list-item li.menu__list-item {
 
   @media only screen and (max-width: 315px) {
     .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module div{
-  display: block;  
+  display: block;
   }
   .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module .link {
  display: block;
