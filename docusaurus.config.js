@@ -13,7 +13,14 @@ module.exports = {
   organizationName: 'FindoraNetwork', // Usually your GitHub org/user name.
   projectName: 'findora-wiki', // Usually your repo name.
   themeConfig: {
-
+    announcementBar: {
+      id: 'announceBar',
+      content:
+        '<strong>🎉 $100m in Ecosystem Grants</strong>  <a target="_blank" rel="noopener noreferrer" href="https://www.findora.foundation/grants/" target="_blank" class="link">Apply Now</a>',
+      backgroundColor: '#5c17e6',
+      textColor: '#ffffff',
+      isCloseable: true,
+    },
     navbar: {
       title: 'Findora Wiki',
       logo: {
