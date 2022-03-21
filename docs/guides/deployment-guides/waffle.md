@@ -136,7 +136,7 @@ use(solidity);
 
 describe ('MyContract', () => {
   // Use custom provider to connect to Moonbase Alpha
-  let provider: Provider = new ethers.providers.JsonRpcProvider('https://prod-forge.prod.findora.org:8545');
+  let provider: Provider = new ethers.providers.JsonRpcProvider('https://prod-testnet.prod.findora.org:8545');
   let wallet: Wallet;
   let walletTo: Wallet;
   let contract: MyContract;
@@ -199,7 +199,7 @@ mkdir src && cd src && touch deploy.ts
 import { deploy } from 'ethereum-mars';
 
 const privateKey = "<insert-your-private-key-here>";
-deploy({network: 'https://prod-forge.prod.findora.org:8545', privateKey},(deployer) => {
+deploy({network: 'https://prod-testnet.prod.findora.org:8545', privateKey},(deployer) => {
   // Deployment logic will go here
 });
 ```
@@ -209,7 +209,7 @@ import { deploy, contract } from 'ethereum-mars';
 import { MyToken } from '../build/artifacts';
 
 const privateKey = "<insert-your-private-key-here>";
-deploy({network: 'https://prod-forge.prod.findora.org:8545', privateKey}, () => {
+deploy({network: 'https://prod-testnet.prod.findora.org:8545', privateKey}, () => {
   contract('myContract', MyContract);
 });
 ```

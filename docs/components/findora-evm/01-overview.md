@@ -15,7 +15,7 @@ See the [Networks](02-network.md) guide for details.
 
 ### Writing and Deploying a Contract
 
-If you're an Ethereum developer, you can almost instantly write and deploy contracts on the Findora EVM. All the best tools available for deploying on Ethereum work just as well here with no hitches and Findora EVM supports most of them.
+All the best tools available for deploying on Ethereum work just as well here with no hitches and Findora EVM supports most of them.
 
 Hardhat is an Ethereum development environment that helps developers manage and automate repetitive tasks for smart contract and DApp development. Truffle is like Hardhat but on steroids. Leveraging Ganache, its local Ethereum blockchain for testing contracts, Truffle allows you to develop dApps with scriptable migration and deployment, network management, an interactive console, smart contract management and even some automated contract testing.
 
@@ -43,7 +43,7 @@ See the [Waffle & Mars](docs/guides/deployment-guides/waffle.md) guide for detai
 
 For developers who wish to move tokens from other Layer 1 blockchains, the Findora EVM network will support an open source multi-directional bridge(a fork of [ChainSafe ChainBridge]( https://github.com/ChainSafe/ChainBridge )) , called [Rialto bridge](../rialto-bridge/1-rialto-overview.md).
 
-We have deployed a testnet version of Rialto on our Forge testnet enabling a Binance Smart Chain Testnet BEP-20 token to be moved to the Findora EVM Devnet as a FRC-20 token.
+We have deployed a testnet version of Rialto on our Anvil testnet enabling a Binance Smart Chain Testnet BEP-20 token to be moved to the Findora EVM Devnet as a FRC-20 token.
 
 
 See our home grown [Rialto bridge](../rialto-bridge/1-rialto-overview.md) and its guide for details.

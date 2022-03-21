@@ -35,7 +35,7 @@ npm install truffle @truffle/hdwallet-provider
 ```
 truffle init
 ```
-Will generate the following directories and files:
+It should generate the following directories and files:
 
 ![truffle-init](/img/evm/truffle-init.jpg)
 
@@ -48,11 +48,11 @@ Will generate the following directories and files:
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 ```
-6.Configure Findora Forge testnet under networks in truffle-config.js:
+6. Configure Findora Anvil testnet under networks in truffle-config.js:
 ```
-findora_forge: {
-      provider:()=> new HDWalletProvider(mnemonic, `https://prod-forge.prod.findora.org:8545`),
-      network_id: 525,       // findorad evnet's id
+findora_anvil: {
+      provider:()=> new HDWalletProvider(mnemonic, `https://prod-testnet.prod.findora.org:8545`),
+      network_id: 2153,       // findorad evnet's id
       skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
      }
 ```

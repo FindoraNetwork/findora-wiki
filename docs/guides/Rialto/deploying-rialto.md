@@ -1,12 +1,12 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Deploy Rialto Guide 
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Findora Forge and BSC testnet cross-chain.  
+Findora Anvil and BSC testnet cross-chain.  
 
 Rialto Bridge (Anvil Testnet): [anvil.rialtobridge.io](https://anvil.rialtobridge.io)
 
@@ -22,11 +22,11 @@ window.__RUNTIME_CONFIG__ = {
       {
         chainId: 0,
         networkId: 525,
-        name: "findora-forge",
+        name: "findora-anvil",
         decimals: 18,
         bridgeAddress: "0x26925046a09d9AEfe6903eae0aD090be06186Bd9",
         erc20HandlerAddress: "0xE75Fb7714B5098E20A2D224693A1c210ad0c1A42",
-        rpcUrl: "https://prod-forge.prod.findora.org:8545/",
+        rpcUrl: "https://prod-testnet.prod.findora.org:8545/",
         type: "Ethereum",
         nativeTokenSymbol: "FRA",
         tokens: [
@@ -81,7 +81,7 @@ git clone -b v1.0.0 --depth 1 https://github.com/FindoraNetwork/chainbridge-tool
 
 ### Rialto Bridge Vars
 ```
-SRC_GATEWAY=https://prod-forge.prod.findora.org:8545/
+SRC_GATEWAY=https://prod-testnet.prod.findora.org:8545/
 DST_GATEWAY=https://data-seed-prebsc-1-s1.binance.org:8545/
 
 SRC_PK="<private key on Findora>"

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Testnet
@@ -53,16 +53,3 @@ sidebar_position: 2
 - **Block Explorer**:
 
 - **EVM Explorer**: [Findora FRA Explorer](https://dev-mainnetmock-blockscout.dev.findora.org/)
-
-
-<!-- ### Testnet - Forge - ( Not Functional )
-- **Version**: https://prod-forge.prod.findora.org:8668/version
-- **Tendermint RPC** : https://prod-forge.prod.findora.org:26656
-- **Query server RPC** : https://prod-forge.prod.findora.org:8668
-- **Chain ID**: ```525```
-- **EVM RPC** : https://prod-forge.prod.findora.org:8545
-- **EVM WS**:prod-forge-us-west-2-sentry-000-public.prod.findora.org:8546
-- **Public seed node endpoint**:prod-forge-us-west-2-seed-000-public.prod.findora.org
-- **Block Explorer**: 
-- **EVM Explorer**:[https://testnet-forge.evm.findorascan.io](https://testnet-forge.evm.findorascan.io)
- -->
