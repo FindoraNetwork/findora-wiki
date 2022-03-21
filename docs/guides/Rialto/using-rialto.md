@@ -15,7 +15,7 @@ The Rialto Bridge is composed of a set of contracts that help to move assets acr
 The second step is where the bridging occurs, where you select amount of asset to bridge and the destination. Let's get into it.
 ### Connect Rialto Bridge to Wallet
 
-First head to the Rialto bridge (on Anvil testnet) at [anvil.rialtobridge.io](https://anvil.rialtobridge.io/) and click on `Connect Wallet`. 
+First head to the Rialto bridge at https://bridge.findora.org/ and click on `Connect Wallet`. 
 
 <img src={useBaseUrl("/img/evm/rialto-explainer-1.png")} width="80%" height="40%"/>
 
