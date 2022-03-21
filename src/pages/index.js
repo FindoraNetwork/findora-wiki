@@ -3,5 +3,5 @@ import {Redirect} from '@docusaurus/router';
 
 
 export default function Home() {
-  return <Redirect to="/docs/findora-basics/intro" />;
+  return <Redirect to="/docs/introduction/intro" />;
 }

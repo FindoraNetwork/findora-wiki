@@ -1,14 +1,16 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Deploy Rialto Guide 
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Findora Forge and BSC testnet cross-chain.  
+Findora Anvil and BSC testnet cross-chain.  
 
-Testnet bridge: http://dev-chainbridge-new.s3-website-us-west-2.amazonaws.com/transfer
+Rialto Bridge (Anvil Testnet): [anvil.rialtobridge.io](https://anvil.rialtobridge.io)
+
+Rialto Bridge (Mainnet): not released yet
 
 <img src={useBaseUrl("/img/evm/chainbridge.png")} width="50%" height="30%"/>
 
@@ -20,7 +22,7 @@ window.__RUNTIME_CONFIG__ = {
       {
         chainId: 0,
         networkId: 525,
-        name: "findora-forge",
+        name: "findora-anvil",
         decimals: 18,
         bridgeAddress: "0x26925046a09d9AEfe6903eae0aD090be06186Bd9",
         erc20HandlerAddress: "0xE75Fb7714B5098E20A2D224693A1c210ad0c1A42",
