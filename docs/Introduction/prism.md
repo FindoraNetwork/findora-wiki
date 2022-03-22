@@ -2,11 +2,15 @@
 sidebar_position: 3
 ---
 
-# Multi-chain Architecture and Prism
+# Multi-layer Architecture and Prism
 
-The Findora blockchain is composed of two different blockchain architectures combined into a single model “multi-chain” model. These two architectures include a UTXO-based blockchain model (aka native chain) and an accounts-based blockchain model (aka smart chain). 
+The Findora blockchain is composed of two different blockchain layers combined under a single consensus mechanism. These two layers include:
+* <b><em>Findora Native Chain</em></b> - an UTXO-based blockchain layer
 
-Prism is the name of the feature that enables users to bridge (aka transfer) assets from the UTXO-based side to the accounts-based side (and vice-versa) of the Findora blockchain.
+
+* <b><em>Findora Smart Chain</em></b> - an accounts-based blockchain layer
+
+<b><em>Prism</em></b> is the name of the feature that enables users to bidirectionally transfer assets between the UTXO layer and accounts-based layer of the Findora blockchain.
 
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -18,7 +22,7 @@ UTXO stands for unspent transaction output. A UTXO model functions much like cas
 - all data necessary for the transaction are contained in the transaction itself
 - UTXO amounts cannot be changed
 
-For example, if you owed a store $22 but only had a $20 dollar bill and a $5 dollar bill, you’d need to give both bills to the store to pay for the transaction. Then, you’d then receive $3 back from the store as the spare change. In this example, the $20 bill and the $5 bill act like UTXO amounts.
+For example, if you owed a store $22 but only had a $20 dollar bill and a $5 dollar bill, you’d need to give both bills to the store to pay for the transaction. Then, you’d receive $3 back from the store as the spare change. In this example, the $20 bill and the $5 bill act like UTXO amounts.
 
 In a UTXO model, that $3 would become a new UTXO amount – i.e. unspent transaction output. Just as you can’t make bills smaller, you can’t make UTXOs smaller. New coins can come from mining or from the “leftovers” (i.e. spare change) from a transaction.
 
@@ -56,13 +60,16 @@ The Findora native chain layer functions exactly as a UTXO model blockchain woul
 ## Why Use the UTXO Model for the Native Chain? 
 
 Below are the key benefits of the UTXO model:
-- Zero-Knowledge Proofs - The UTXO model allows Findora native chain to support zero-knowledge proofs (ZKPs). ZKPs make it possible to publicly generate and verify cryptographic proofs that do not reveal transaction details.
+* <b><em>Zero-Knowledge Proofs</em></b> - The UTXO model allows Findora native chain to support zero-knowledge proofs (ZKPs). ZKPs make it possible to publicly generate and verify cryptographic proofs that do not reveal transaction details.
 
-- Privacy - Using the UTXO model, combined with ZKPs, provides users with privacy features, including confidential payments that can mask different fields, like the transaction amount, or the sender / receiver address, in the transaction body.
 
-- Scalability - The UTXO model means transactions can be easily verified in parallel. It is impossible for two transactions to affect the same UTXO. This is due to the stateless nature of UTXO transactions. Transactions do not refer to any input outside of the UTXOs consumed and the corresponding signatures.
+* <b><em>Privacy</em></b> - Using the UTXO model, combined with ZKPs, provides users with privacy features, including confidential payments that can mask different fields, like the transaction amount, or the sender / receiver address, in the transaction body.
 
-- Decentralization - The stateless nature of a UTXO format also allows for smaller storage requirements, which makes it less expensive for full nodes to be maintained, and thus increases the decentralization and fault tolerance of the network.
+
+* <b><em>Scalability</em></b> - The UTXO model means transactions can be easily verified in parallel. It is impossible for two transactions to affect the same UTXO. This is due to the stateless nature of UTXO transactions. Transactions do not refer to any input outside of the UTXOs consumed and the corresponding signatures.
+
+
+* <b><em>Decentralization</em></b> - The stateless nature of a UTXO format also allows for smaller storage requirements, which makes it less expensive for full nodes to be maintained, and thus increases the decentralization and fault tolerance of the network.
 
 
 
@@ -77,17 +84,16 @@ Findora smart chain fully supports the Ethereum Virtual Machine (EVM). This augm
 
 ## Why Use the Account Model for Smart Chain? 
 
-Compatibility
-- Developers can easily port existing Ethereum Dapps, DEXs and cross-chain bridges using the Ethereum tool chain and pre-compiled smart contract templates.
+* <b><em>Compatibility</em></b> - Developers can easily port existing Ethereum Dapps, DEXs and cross-chain bridges using the Ethereum tool chain and pre-compiled smart contract templates.
 
-Simplicity
-- The account model is more intuitive, especially for developers writing complex smart contracts that require stateful information, or involve multiple parties.
 
-Efficiency
-- The account model is more efficient as each transaction only needs to validate that the sending account has enough balance to pay for the transaction, which also makes indexing simpler.
+* <b><em>Simplicity</em></b> - The account model is more intuitive, especially for developers writing complex smart contracts that require stateful information, or involve multiple parties.
 
-Flexibility
-- The smart chain allows for more flexible transactions. Transactions on this layer will depend on the existing state and can interact with external inputs to achieve the desired results. This allows features like oracles and other logic to influence the resulting state of a transaction.
+
+* <b><em>Efficiency</em></b> - The account model is more efficient as each transaction only needs to validate that the sending account has enough balance to pay for the transaction, which also makes indexing simpler.
+
+
+* <b><em>Flexibility</em></b> - The smart chain allows for more flexible transactions. Transactions on this layer will depend on the existing state and can interact with external inputs to achieve the desired results. This allows features like oracles and other logic to influence the resulting state of a transaction.
 
 
 
@@ -119,7 +125,7 @@ On the smart chain, FRA tokens are called “FRA-smart tokens,” and are used t
 
 With Prism, users can atomically and trustlessly convert their FRA-native tokens on the native chain to FRA-smart tokens on the smart chain.  
 
-NOTE: Prism will soon support custom tokens ( i.e. any custom tokens issued on Findora native chain or Findora smart chain). Stay tuned! 
+NOTE: Prism will soon support custom tokens (i.e. any custom tokens issued on Findora native chain or Findora smart chain). Stay tuned! 
 
 Here is a general overview of how Prism works:
 
