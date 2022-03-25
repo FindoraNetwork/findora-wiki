@@ -2,27 +2,21 @@
 sidebar_position: 3
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Automated Setup
-  
-> **! NOTE !**
->
-> If you have previously installed a Findora validator instance on your current machine, then you should first delete all the contents from your /data directory.
-> 
 
-## Automated Setup
+Download and run the script below to configure your validator node and download the binaries automatically:
 
-Download and run the script below which automatically downloads the binaries and configures your validator node: 
-
-> **! IMPORTANT !**
->
-> The node_init.sh script will remove all the validator and wallet information you have. If you just want to keep your data. Use [safety clean](## Safety clean)
+:::note
+All validator and wallet information will be removed by the `node_init.sh` script. If all you want to do is keep your data. [safety clean](## Safety clean) should be used.
+:::
 ### Setup the Findora Node Tool
 
-- `fn`: Findora Node Setup (fn) is CLI tool with sub-commands necessary to setup a validator node and stake/unstake FRA
-    - <a href="/bin/linux/fn" target="_blank">Linux version</a>
-    - <a href="/bin/macos/fn" target="_blank">MacOS version</a>
-
-```shell
+`fn`: Findora Node Setup (fn) is a command-line (CLI) utility that allows you to set up a validator node and stake/unstake FRA.
+*    [Linux version](https://wiki.findora.org/bin/linux/fn)
+*   [MacOS version](https://wiki.findora.org/bin/macos/fn)
+```
 # download and move to your path
 wget https://wiki.findora.org/bin/linux/fn
 chmod +x fn
@@ -30,35 +24,34 @@ mv fn /usr/local/bin/
 ```
 
 ### Generate Key
-Generate a new, random pair of public and private keys for your node which will be used for FRA staking:
+For your node, generate a new, random pair of public and private keys that will be used for FRA staking:
 
-```shell
+```
 fn genkey > tmp.gen.keypair
 ```
 
-View the contents of your `tmp.gen.keypair` file via the command below:
-
-```cat tmp.gen.keypair```
- Note: Before proceeding further, the staking private key should be stored in file `/data/findora/{network_name}/{network_name}_node.key`. This will be the `sec_key` in your `tmp.gen.keypair` file. You will need to create this directory if it doesn't exist.
- 
- ### Download and run the automated setup script
-
-- [**node_init_testnet.sh**](./node_init_testnet.sh)
-- [**node_init_mainnet.sh**](./node_init_mainnet.sh)
-
-> **Tips**:
-> * example: `bash -x node_init_testnet.sh`
+`cat tmp.gen.keypair` Note: The staking private key should be saved in the file `/data/findora/{network_name}/{network_name}_node.key`before continuing. This will be the `sec_key` in your `tmp.gen.keypair` file. If this directory does not exist, you will need to create it.
 
 
+### Download and run the automated setup script
+* [node_init_testnet.sh](https://wiki.findora.org/docs/guides/node-setup/automated-setup/node_init_testnet.sh)
+* [node_init_mainnet.sh](https://wiki.findora.org/docs/guides/node-setup/automated-setup/node_init_mainnet.sh)
 
-## Setup `fn` CLI tool
 
-To configure `fn` for use on Testnet:
+```
+example: `bash -x node_init_testnet.sh`
+```
+
+### Setup fn CLI tool
+
+To set up `fn` for use on Testnet, follow these steps:
 ```
 fn setup -S https://prod-testnet.prod.findora.org
 ```
 
-To configure `fn` for use on Mainnet:
+
+To set up `fn` for use on Mainnet, follow these steps:
+
 ```
 fn setup -S https://prod-mainnet.prod.findora.org
 ```
@@ -76,94 +69,100 @@ fn setup -O <Path to the mnemonic of your node> || exit 1
 fn setup -K <path to validator key> || exit 1
 ```
 
+### Fund Your Validator
 
-## Fund Your Validator
+To register as a validator, validators must stake a minimum of 10,000 FRA. You must first send FRA to your validator's `Findora Address` (i.e. wallet address) before you can stake FRA to your validator.
 
-Validators must stake a minimum of 10,000 FRA to register as a validator. Before you can stake FRA to your validator, you must first transfer FRA to the `Findora Address` (i.e. wallet address) of your validator.
 ### Testnet Funding - Find Your Wallet Address
-On Testnet, you can request free Testnet FRA tokens. First, locate the wallet address associated with your validator node. To do this, run `fn show` and locate the address under `Findora Address`
 
-An example of some of the information from `fn show` is below. `Findora Address` is the wallet address you will give out when requesting FRA testnet tokens. Note: Do not use the example address below for your own node.
+You can get free Testnet FRA tokens by requesting them on Testnet. To begin, look up the wallet address for your validator node. To do so, type `fn show` and look for the address under `Findora Address`.
 
-![Docusaurus](/img/validator_setup_guide/fn_show.png)
+Below is an example of some of the data from the `fn show`. When requesting FRA testnet tokens, you'll need to provide your `Findora Address`. Note: When working with your own node, do not use the example address below.
+
+![](https://i.imgur.com/7SzbbAh.png)
+<img src={useBaseUrl("/img/validator_setup_guide/autosetup-1.png")} />
+
+
 
 ### Testnet Funding - Request Testnet FRA from Discord Bot
-Make a request for Testnet FRA be sent to you on the Findora Discord channel. The request will be processed by Findora's Discord bot.
 
-Step 1: Goto [Findora Discord](https://discord.gg/NXhZr6H2qt)
+Make a request on the Findora Discord channel for Testnet FRA to be provided to you. Findora's Discord bot will handle your request.
 
-Step 2: Goto the `#faucet-anvil` channel on Findora's Discord
+Step 1: Go to [Findora Discord](https://discord.gg/NXhZr6H2qt)
 
-Step 3: A discord bot will automatically detect commands requesting Testnet FRA faucet tokens on the `#faucet-anvil` channel. Enter a FRA request using the command format below (be sure to use your own receiving wallet address):
+Step 2: Go to `#faucet-anvil` channel on Findora's Discord
 
-```shell
+Step 3: On the `#faucet-anvil` channel, a discord bot will automatically detect commands requesting Testnet FRA faucet tokens. Specify the following command syntax to send a FRA request (be sure to use your own receiving wallet address):
+
+```
 # Bot Request Format:
 #   !faucet <\wallet address> <\Will you run a validator? yes/no> > <\Are you a developer? yes/no>
 !faucet fra19rtfg2g58x6jxxxxxxxxxxxxxxxxx example@gmail.com no no 
 ```
-![Docusaurus](/img/validator_setup_guide/discord_bot.png)
 
-> **Tips**:
-> - All FRA token requests will be approved
-> - You can only ask for FRA tokens once so make sure your receiving wallet address is correct.
+<img src={useBaseUrl("/img/validator_setup_guide/autosetup-2.png")} />
+
+:::note
+  All FRA token requests will be approved
+  You can only ask for FRA tokens once so make sure your receiving wallet address is correct.
+:::
 
 ### Mainnet Funding
-Transfer FRA from an existing Findora wallet to your `Findora Address` (if you don't own any FRA, you can buy from a crypto exchange that lists FRA first). 
+Transfer FRA from an existing Findora wallet to your Findora Address (if you don't have any, you can purchase FRA from a crypto exchange that FRA listed).
 
-
-## Node Operations
-
-Besides node setup, the `fn` tool is also used for general validator staking operations such as staking FRA into the validator, setting the commission rate the validator charges, and transferring FRA balance on the validator to another wallet address and claiming FRA rewards. 
+#### Node Operations
+Aside from node setup, the `fn` tool is used for common validator staking procedures such staking FRA into the validator, adjusting the validator's commission rate, transferring FRA balance on the validator to another wallet address, and claiming FRA rewards.
 
 To see all list of all sub-commands under `fn` use the `--help` flag:
 
-```shell
+```
 fn --help
 ```
 
 To get detailed info about a specific sub-command like `stake` use the `--help` flag.
 
-> Usage example:
->
+
+> Usage example
 > `fn stake --help`
 >
-> ```shell
-> fn-stake
->   Stake tokens (i.e. bond tokens) from a Findora account to a Validator
->
-> USAGE:
->   fn stake [FLAGS] [OPTIONS] --amount <Amount>
->
-> FLAGS:
->     -a, --append     stake more FRAs to your node
->         --force      ignore warning and stake FRAs to your target node
->     -h, --help       Prints help information
->     -V, --version    Prints version information
->
-> OPTIONS:
->     -n, --amount <Amount>                       how much `FRA unit`s you want to stake
->     -R, --commission-rate <Rate>                the commission rate of your node, a float number from 0.0 to 1.0
->     -S, --staker-priv-key <SecretKey>           the file which contains private key (in base64 format) of proposer
->     -M, --validator-memo <Memo>                 the description of your node, optional
->     -A, --validator-td-addr <TendermintAddr>    stake FRAs to a custom validator
+> 
 > ```
+> fn-stake
+ >   Stake tokens (i.e. bond tokens) from a Findora account to a Validator
 >
-> Help information for each sub-commands can be obtained by typing --help after the specific subcommand:
+>USAGE:
+  >fn stake [FLAGS] [OPTIONS] --amount <Amount>
 >
-> - `fn unstake --help`
-> - `fn claim --help`
-> - `fn transfer --help`
-> - ...
-
+>FLAGS:
+ >   -a, --append     stake more FRAs to your node
+ >       --force      ignore warning and stake FRAs to your target node
+ >   -h, --help       Prints help information
+  >  -V, --version    Prints version information
+>
+>OPTIONS:
+ >   -n, --amount <Amount>                       how much `FRA unit`s you want to stake
+ >   -R, --commission-rate <Rate>                the commission rate of your node, a float number from 0.0 to 1.0
+ >   -S, --staker-priv-key <SecretKey>           the file which contains private key (in base64 format) of proposer
+ >  -M, --validator-memo <Memo>                 the description of your node, optional
+ >  -A, --validator-td-addr <TendermintAddr>    stake FRAs to a custom validator
+>```
+>
+> Help information for each sub-commands can be obtained by typing `--help` after the specific subcommand:
+    >
+    >`fn unstake --help`
+    >`fn claim --help`
+    >`fn transfer --help`
+>
+    
 ### Stake Initial FRA and Set Commission Rate
-After receiving FRA to your validator's `Findora Address`, you must stake a minimum of 10,000 FRA to be a validator. Only the top 100 validators (with the most FRA staked) will earn FRA rewards.
 
-
-> **Tips**:
-> - Before staking, wait for 100% data synchronization of your validator node
->     - Else, you may be charged a 'validator node offline' penatly fee.
-
-```shell
+To be a validator, you must stake a minimum of 10,000 FRA after receiving FRA to your validator's `Findora Address`. Only the top 100 validators (those who have staked the most FRA) will receive FRA payouts.
+    
+:::note
+Before staking, wait for 100% data synchronization of your validator node. Else, you may be charged a 'validator node offline' penatly fee.
+::: 
+    
+```
 # ex)
 # - To stake 999,999 FRAs with a commision rate of 2% (and validator name of Validator_Pool_A)
 # - Note: that is 999999 * 1000000 FRA units
@@ -177,28 +176,29 @@ cat staker_memo
 }
 fn stake -n $((999999 * 1000000)) -R 0.02 -M "$(cat staker_memo)"
 ```
-
+    
 ### Stake Additional FRA
-
-```shell
+```
 # Stake an additional 2,000 FRA to your validator
 fn stake -a -n $((2000 * 1000000))
 ```
-
+    
 ### View Node Information
-To find information about your validator node, use the `fn show` command. Sample output is below:
+    
+```
+To find information about your validator node, use the fn show command. Sample output is below:
+```
 
-![Docusaurus](/img/validator_setup_guide/fn_show_full.png)
-
+<img src={useBaseUrl("/img/validator_setup_guide/autosetup-3.png")} />
 ### Claim FRA Rewards
 
-Top 100 validators will earn block rewards. If your validator is a top 100 validator, it will earn rewards which will show up in the `rewards:` section of `fn show`. 
+Block awards will be given to the top 100 validators. If your validator is in the top 100, it will receive rewards, which will appear in the `rewards:` a segment of the `fn show`    
+    
+<img src={useBaseUrl("/img/validator_setup_guide/autosetup-4.png")} />
 
-![Docusaurus](/img/validator_setup_guide/reward_balance.png)
-
-If your reward balance is greater than 0, you can claim your earned rewards via the `fn claim` sub-command
-
-```shell
+If your reward balance is greater than 0, use the `fn claim` subcommand to claim your earned rewards.    
+    
+```
 # fn claim -n <the amount of FRA units you want>
 # ex) 
 #   If you have a reward balance of 20 FRA (i.e. "rewards: 20000000") 
@@ -207,10 +207,8 @@ fn claim -n $((10 * 1000000))
 ```
 
 ### Unstake FRA
-
-#### Unstake Some of Your FRA
-
-```shell
+#### Unstake Some of Your FRA  
+```
 # fn unstake -n <the amount of FRA units you want>
 # ex)
 #   To unstake 900 FRA (ie. 900 * 1000000)
@@ -218,10 +216,6 @@ fn unstake -n $((900 * 1000000))
 ```
 
 #### Close Validator and Unstake All of Your FRA
-
-> **NOTE**: This operation will unstake all of your FRA and remove your node from the Findora Network.
-
-```shell
-fn unstake
-```
-
+:::note
+  This action will remove your node from the Findora Network and unstake all of your FRA.
+:::
