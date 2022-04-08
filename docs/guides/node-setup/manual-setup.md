@@ -14,10 +14,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 - Pull docker image 
 
-    Here, we are downloading the `findorad` which is the node of the findora network, for security and stability reasons, make sure that the `:lastest` flag which downloads the lastest version is present.
+    Here, we are downloading the `findorad` which is the node of the findora network, for security and stability reasons. Make sure to download version `0.3.19-release`
 
     ```
-      docker pull findoranetwork/findorad:latest
+      docker pull findoranetwork/findorad:v0.3.19-release
     ```
 
     <img src={useBaseUrl("/img/validator_setup_guide/manual-setup-1.png")} />
@@ -67,7 +67,11 @@ or by running the command below if you moved the fn file to home
    
 - Initialize Findora Node and Create a Node key
 
-Initializing Tendermint will create a node key (stored in a newly created `${ROOT_DIR}/tendermint/config/priv_validator_key.json `file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks.
+Initializing Tendermint will create a node key (stored in a newly created `${ROOT_DIR}/tendermint/config/priv_validator_key.json `file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks. 
+
+:::note
+We're going to clean up any old data you might have in the directory by removing the ROOT_DIR folder, but first check to be sure you have your backup keys - Validator, node and wallet key. Since the ROOT_DIR is the source of the connection to mainnet, you might lose your keys and funds if a mistake is made. 
+:::
 
    Clean up and old data 
        ```sudo rm -rf ${ROOT_DIR}```
@@ -114,6 +118,7 @@ Initializing Tendermint will create a node key (stored in a newly created `${ROO
     mkdir "${ROOT_DIR}/snapshot_data"
     tar zxvf "${ROOT_DIR}/snapshot" -C "${ROOT_DIR}/snapshot_data"
     mv "${ROOT_DIR}/snapshot_data/data/ledger" "${ROOT_DIR}/findorad"
+    rm -rf ${ROOT_DIR}/tendermint/data
     mv "${ROOT_DIR}/snapshot_data/data/tendermint/mainnet/node0/data" "${ROOT_DIR}/tendermint/data"
     rm -rf ${ROOT_DIR}/snapshot_data
 ```

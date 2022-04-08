@@ -16,8 +16,11 @@ All validator and wallet information will be removed by the `node_init.sh` scrip
 `fn`: Findora Node Setup (fn) is a command-line (CLI) utility that allows you to set up a validator node and stake/unstake FRA.
 *    [Linux version](https://wiki.findora.org/bin/linux/fn)
 *   [MacOS version](https://wiki.findora.org/bin/macos/fn)
+
+
+download and move to your path
+
 ```
-# download and move to your path
 wget https://wiki.findora.org/bin/linux/fn
 chmod +x fn
 mv fn /usr/local/bin/
