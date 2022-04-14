@@ -4,10 +4,10 @@ sidebar_position: 3
 
 # Abar to Bar
 
-Below you can see an example of how to perform `bar to abar` operation.
+Below you can see an example of how to perform `abar to bar` operation.
 
 ```ts
-// An instance of the Anonymous wallet, where `bar to abar` would be sent to
+// An instance of the Anonymous wallet, where `abar to bar` would be sent from
 const anonKeysSender = {
   axfrPublicKey: "-Gdf_hulMdWPeC2dG3RG-Hjo8yLTdWnPfB5csEGkbmg=",
   axfrSecretKey:

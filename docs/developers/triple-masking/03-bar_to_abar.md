@@ -17,8 +17,8 @@ const myAnonWallet = {
 };
 
 const barToAbar = async () => {
-  // First, we would create an instance of a Findora Wallet using given password
-  // and wallet private key. This object would be our "sender" wallet
+  // First, we create an instance of a Findora Wallet using given password
+  // and wallet private key. This object will be our "sender" wallet
   const password = "1234qwe!weUR^";
   const pkey = "YOUR_WALLET_PRIVATE_KEY";
   const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
