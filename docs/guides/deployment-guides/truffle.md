@@ -142,9 +142,9 @@ Note that the file name starts with a number and ends with a descriptive suffix.
 
 To perform deployment, use the following command：
 ```
-truffle migrate --network findora_forge
+truffle migrate --network findora_anvil
 ```
-This command will execute all migration scripts located in the migrations directory. If your previous migration was performed successfully. truffle migrate will only perform newly created migrations. If there is no new migration script, this command does not perform any operation. You can use the option `--reset` to execute the migration script from the beginning。You can also use `truffle migrate -f 2 --network findora_forge` to start execution from the file with the number prefix 2.
+This command will execute all migration scripts located in the migrations directory. If your previous migration was performed successfully. truffle migrate will only perform newly created migrations. If there is no new migration script, this command does not perform any operation. You can use the option `--reset` to execute the migration script from the beginning。You can also use `truffle migrate -f 2 --network findora_anvil` to start execution from the file with the number prefix 2.
 
 
 ![truffle-deploy](/img/evm/truffle-deploy.jpg)

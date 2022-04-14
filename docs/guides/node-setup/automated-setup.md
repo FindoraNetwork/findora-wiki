@@ -43,8 +43,8 @@ View the contents of your `tmp.gen.keypair` file via the command below:
  
  ### Download and run the automated setup script
 
-- [**node_init_testnet.sh**](./node_init_testnet.sh)
-- [**node_init_mainnet.sh**](./node_init_mainnet.sh)
+- [**node_init_testnet.sh**](../validator-guides/node_init_testnet.sh)
+- [**node_init_mainnet.sh**](../validator-guides/node_init_mainnet.sh)
 
 > **Tips**:
 > * example: `bash -x node_init_testnet.sh`

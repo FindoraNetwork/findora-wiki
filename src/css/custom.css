@@ -58,12 +58,14 @@ main .container {
 .navbar__items svg {
     display: none;
 }
-.announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module {
+
+
+div[role=banner]{
     height:auto !important;
     min-height:50px;
     display: flex;
 }
-.announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module div {
+div[role=banner] div {
     display:flex;
     justify-content: center;
     align-items: center;
@@ -103,18 +105,18 @@ aside .menu__list li.menu__list-item li.menu__list-item {
     font-weight: 500;
 }
 @media only screen and (max-width: 600px) {
-    .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module div{
-        margin:auto;
+    div[role=banner] div{
+        margin:auto;      
   }
-    .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module div, .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module .link{
+  div[role=banner] div, div[role=banner] .link{
     font-size: .8rem !important;}
   }
 
   @media only screen and (max-width: 315px) {
-    .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module div{
-  display: block;
+    div[role=banner] div{
+  display: block;  
   }
-  .announcementBar_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module .link {
+  div[role=banner] .link {
  display: block;
   }
   }
