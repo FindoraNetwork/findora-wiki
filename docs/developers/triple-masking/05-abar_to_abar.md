@@ -26,40 +26,40 @@ const anonKeysReceiver = {
 };
 
 const abarToAbar = async () => {
-  // First we need to provide a randomizer string for the abar which we would `transfer` to another anonymous wallet
-  const givenRandomizerToTransfer =
+  // First we need to provide a commitment string for the abar which we would `transfer` to another anonymous wallet
+  const givenCommitmentToTransfer =
     "FRghJ4uC3E4yJ4a9pFydogXRNLt2nvRZrrKd6woDMFQs";
 
-  // `abar to abar` fee is also paid using an abar data, so to cover the fee for the operation
-  // we need to provide another randomizer (there might be more than one).
-  // It would be used solely to pay the fee for the operation
-  const givenRandomizersToPayFee = [
+  // `abar to abar` fee is paid using an abar data, so to cover the fee for the operation
+  // we need to provide another commitment (there might be more than one).
+  // It would be used solely to pay the fee for the operation amd must be in FRA
+  const givenCommitmentsToPayFee = [
     "CdhXbHX1Fb22LH4mNcw1es8rA2RnmA9Xjmb1hmPuQAmu",
   ];
 
-  // Just a helper varibale to keep all the randomizers which belong to a sender in one place
-  // It would be updated with a new randomizer later
-  const givenRandomizersListSender = [
-    givenRandomizerToTransfer,
-    ...givenRandomizersToPayFee,
+  // Just a helper varibale to keep all the commitments which belong to a sender in one place
+  // It would be updated with a new commitment later
+  const givenCommitmentsListSender = [
+    givenCommitmentToTransfer,
+    ...givenCommitmentsToPayFee,
   ];
 
   // Abars data, which would be used to pay the fee, is also stored in a container for convenience purposes
   const additionalOwnedAbarItems = [];
 
   // Transfer operation would require instances of abars, which will be created (restored)
-  // using given randomizer strings
+  // using given commitment strings
   const ownedAbarsResponseOne = await TripleMasking.getOwnedAbars(
     anonKeysSender.axfrPublicKey,
-    givenRandomizerToTransfer
+    givenCommitmentToTransfer
   );
 
   const [ownedAbarToUseAsSource] = ownedAbarsResponseOne;
 
-  for (let givenRandomizerToPayFee of givenRandomizersToPayFee) {
+  for (let givenCommitmentToPayFee of givenCommitmentsToPayFee) {
     const ownedAbarsResponseTwo = await TripleMasking.getOwnedAbars(
       anonKeysSender.axfrPublicKey,
-      givenRandomizerToPayFee
+      givenCommitmentToPayFee
     );
 
     const [additionalOwnedAbarItem] = ownedAbarsResponseTwo;
@@ -72,7 +72,7 @@ const abarToAbar = async () => {
 
   // Next is a key method, which returns 2 things:
   // - an instance of the anonTransferOperationBuilder, which would be used to submit the generated tx to the network
-  // - an object with the information about the mapping for the new randomizers, which contains remanined funds after paying the fee, as well as the receiver randomizer inforamtion
+  // - an object with the information about the mapping for the new commitments, which contains remanined funds after paying the fee, as well as the receiver commitment inforamtion
   const { anonTransferOperationBuilder, abarToAbarData } =
     await TripleMasking.abarToAbar(
       anonKeysSender,
@@ -91,24 +91,24 @@ const abarToAbar = async () => {
   // Here we simply wait for 17s until next block is produced by the network
   await sleep(17000);
 
-  // Now we are processing the randomizers mapping returned by the `abar to abar` operation
-  // to update a `givenRandomizersListSender` list of randomizers with the randomizers which belong to the sender
+  // Now we are processing the commitments mapping returned by the `abar to abar` operation
+  // to update a `givenCommitmentsListSender` list of commitments with the commitments which belong to the sender
   // and vice versa for the receiver.
   // It is very important to preserve this data and have it properly processed, otherwise both receiver and sender
   // will lose their funds
-  const { randomizersMap } = abarToAbarData;
+  const { commitmentsMap } = abarToAbarData;
 
   const retrivedRandomizersListReceiver = [];
 
-  for (const randomizersMapEntry of randomizersMap) {
-    const { radomizerKey, randomizerAxfrPublicKey } = randomizersMapEntry;
+  for (const commitmentsMapEntry of commitmentsMap) {
+    const { commitmentKey, commitmentAxfrPublicKey } = commitmentsMapEntry;
 
-    if (randomizerAxfrPublicKey === anonKeysSender.axfrPublicKey) {
-      givenRandomizersListSender.push(radomizerKey);
+    if (commitmentAxfrPublicKey === anonKeysSender.axfrPublicKey) {
+      givenCommitmentsListSender.push(commitmentKey);
     }
 
-    if (randomizerAxfrPublicKey === anonKeysReceiver.axfrPublicKey) {
-      retrivedRandomizersListReceiver.push(radomizerKey);
+    if (commitmentAxfrPublicKey === anonKeysReceiver.axfrPublicKey) {
+      retrivedRandomizersListReceiver.push(commitmentKey);
     }
   }
 };

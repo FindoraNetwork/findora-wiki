@@ -23,20 +23,16 @@ const abarToBar = async () => {
   const pkey = "YOUR_WALLET_PRIVATE_KEY";
   const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
 
-  // Next we need to provide a randomizer string which we would `transfer` to our wallet
-  const givenRandomizerOne = "7TVrrpvFgH5C5jSYXxfyYZVS5ZGLVH7oWMuAMSjH8Nsg";
-
-  // `bar to abar` fee is also paid using an abar data, so to cover the fee for `bar to abar`
-  // we need to provide another randomizer. It would be used solely to pay the fee for the operation
-  const givenRandomizerTwo = "CGqNmoGkLT2zJm56suUaP8iXWMaeRqGZ9eeZgYRXMi5N";
+  // Next we need to provide a commitment string which we would `transfer` to our wallet
+  const givenCommitmentOne = "7TVrrpvFgH5C5jSYXxfyYZVS5ZGLVH7oWMuAMSjH8Nsg";
 
   // `abarToBar` operation would require instances of abars, which will be created (restored)
-  // using given randomizer strings
+  // using given commitment strings
   // In the lines below we create `ownedAbarToUseAsSource` and `ownedAbarToUseAsFee` which
-  // represents two abars, created from the given randomizers
+  // represents two abars, created from the given commitments
   const ownedAbarsResponseOne = await TripleMasking.getOwnedAbars(
     anonKeysSender.axfrPublicKey,
-    givenRandomizerOne
+    givenCommitmentOne
   );
 
   // This abar would be sent to the user wallet
@@ -44,23 +40,19 @@ const abarToBar = async () => {
 
   const ownedAbarsResponseTwo = await TripleMasking.getOwnedAbars(
     anonKeysSender.axfrPublicKey,
-    givenRandomizerTwo
+    givenCommitmentTwo
   );
-
-  // This abar would be used to pay the fee
-  const [ownedAbarToUseAsFee] = ownedAbarsResponseTwo;
 
   // Next is a key method, which returns 2 things:
   // - an instance of the transactionBuilder, which would be used to submit the generated tx to the network
-  // - an object with the information about the new randomizer, which contains remanined funds after paying the fee
+  // - an object with the information about the new commitment, which contains remanined funds after paying the fee
   // NOTE: since the abar which was used to pay the fee is being decoded and used, and its amount might be way
   // more then it was needed to cover the fee, in order to NOT lose the remained balance of that abar,
-  // user must save the new randomizer, available in abarToBarData.randomizers property
+  // user must save the new commitment, available in abarToBarData.commitments property
   const { transactionBuilder, abarToBarData } = await TripleMasking.abarToBar(
     anonKeysSender,
     walletInfo,
-    ownedAbarToUseAsSource,
-    ownedAbarToUseAsFee
+    ownedAbarToUseAsSource
   );
 
   // Then we submut the transaction to the network to finalize the `bar to abar operation`

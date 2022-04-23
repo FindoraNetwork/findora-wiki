@@ -30,7 +30,7 @@ const barToAbar = async () => {
 
   // Next is a key method, which returns 3 things:
   // - an instance of the transactionBuilder, which would be used to submit the generated tx to the network
-  // - an object with the information about the unique hash (a randomizer)
+  // - an object with the information about the unique hash (a commitment)
   // - a number representing the UTXO sid, which was used for the `bar to abar` operation
   const {
     transactionBuilder,
@@ -45,19 +45,19 @@ const barToAbar = async () => {
   const { axfrPublicKey: formattedAxfrPublicKey } =
     barToAbarData.anonKeysFormatted;
 
-  // The only way to get access to the funds from the `abar` is to ensure that randomizer is saved
+  // The only way to get access to the funds from the `abar` is to ensure that commitment is saved
   // after the operation is completed and transaction is broadcasted.
-  // `givenRandomizer` MUST be saved in order to get access to the funds later.
-  const [givenRandomizer] = barToAbarData.randomizers;
+  // `givenCommitment` MUST be saved in order to get access to the funds later.
+  const [givenCommitment] = barToAbarData.commitments;
 
   // Here we simply wait for 17s until next block is produced by the network
   await sleep(17000);
 
-  // Optionally, we can check `owned` abars using a retirived randomizer
+  // Optionally, we can check `owned` abars using a retirived commitment
   // and a unique key of the anonymous wallet
   const ownedAbarsResponse = await TripleMasking.getOwnedAbars(
     formattedAxfrPublicKey,
-    givenRandomizer
+    givenCommitment
   );
 };
 ```
