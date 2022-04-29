@@ -35,11 +35,9 @@ fn genkey > tmp.gen.keypair
 
 `cat tmp.gen.keypair` Note: The staking private key should be saved in the file `/data/findora/{network_name}/{network_name}_node.key`before continuing. This will be the `sec_key` in your `tmp.gen.keypair` file. If this directory does not exist, you will need to create it.
 
-
 ### Download and run the automated setup script
-* [node_init_testnet.sh](https://wiki.findora.org/docs/guides/node-setup/automated-setup/node_init_testnet.sh)
-* [node_init_mainnet.sh](https://wiki.findora.org/docs/guides/node-setup/automated-setup/node_init_mainnet.sh)
-
+- [**node_init_testnet.sh**](../validator-guides/node_init_testnet.sh)
+- [**node_init_mainnet.sh**](../validator-guides/node_init_mainnet.sh)
 
 ```
 example: `bash -x node_init_testnet.sh`
