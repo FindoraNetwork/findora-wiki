@@ -61,22 +61,27 @@ or by running the command below if you moved the fn file to home
 
 - Set Environment Path Variables
 
+    ```
     export ROOT_DIR=< The data path of your node >
-
+    ```
    <img src={useBaseUrl("/img/validator_setup_guide/manual-setup-5.png")} />
    
 - Initialize Findora Node and Create a Node key
 
-Initializing Tendermint will create a node key (stored in a newly created `${ROOT_DIR}/tendermint/config/priv_validator_key.json `file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks. 
+Initializing Tendermint will create a node key (stored in a newly created `${ROOT_DIR}/tendermint/config/priv_validator_key.json` file). The node key will be used to identity your node, sign blocks and perform other tendermint consensus-related tasks. 
 
 :::note
 We're going to clean up any old data you might have in the directory by removing the ROOT_DIR folder, but first check to be sure you have your backup keys - Validator, node and wallet key. Since the ROOT_DIR is the source of the connection to mainnet, you might lose your keys and funds if a mistake is made. 
 :::
 
-   Clean up and old data 
-       ```sudo rm -rf ${ROOT_DIR}```
+    
+    sudo rm -rf ${ROOT_DIR}
+    
+
    Make ledge data directory 
-       ```sudo mkdir -p ${ROOT_DIR}```
+    
+    sudo mkdir -p ${ROOT_DIR}
+
    Initialize tendermint
    ```
     # For testnet
@@ -87,7 +92,7 @@ We're going to clean up any old data you might have in the directory by removing
   Set correct permission
   ```sudo chown -R `id -u`:`id -g` ${ROOT_DIR}/tendermint/```
   
-- Download Latest link and get url
+- Download latest link and get URL
 
 * set your namespace to the current environment you are working on
 
@@ -118,7 +123,7 @@ We're going to clean up any old data you might have in the directory by removing
     mkdir "${ROOT_DIR}/snapshot_data"
     tar zxvf "${ROOT_DIR}/snapshot" -C "${ROOT_DIR}/snapshot_data"
     mv "${ROOT_DIR}/snapshot_data/data/ledger" "${ROOT_DIR}/findorad"
-    rm -rf ${ROOT_DIR}/tendermint/data
+    rm -rf ${ROOT_DIR}/tendermint/data 
     mv "${ROOT_DIR}/snapshot_data/data/tendermint/mainnet/node0/data" "${ROOT_DIR}/tendermint/data"
     rm -rf ${ROOT_DIR}/snapshot_data
 ```
@@ -128,10 +133,17 @@ We're going to clean up any old data you might have in the directory by removing
 :::
 
 ### Generate Staking Key
-   Up next is to generate a new, random pair of public and private keys for your new node which will be used for FRA staking:
-    ```fn genkey > ${ROOT_DIR}/tmp.gen.keypair```
+   Up next is to generate a new, random pair of public and private keys for your new node which will be used for FRA staking.
+
+   First step is this command
+
+    fn genkey > ${ROOT_DIR}/tmp.gen.keypair
     
-   View the contents of your `tmp.gen.keypair` file via the command below: `cat ${ROOT_DIR}/tmp.gen.keypair` An example of the file's content is below. Note: the `pub_key` and `sec_key` below are examples. Do not use them in your own node.
+   View the contents of your `tmp.gen.keypair` file with this command: 
+   
+   `cat ${ROOT_DIR}/tmp.gen.keypair` 
+   
+   An example of the file's content is below. Note: the `pub_key` and `sec_key` below are examples. Do not use them in your own node.
     
    ```
    Wallet Address: fra1955hpj2xzkp4esd5928yhtp0l78ku8fkztvwcypvr8mk6x8tkn6sjsajun
@@ -144,19 +156,17 @@ Key: {
 
 ```
 :::note
- For convenience, you can import the `sec_key` (aka private key) into any Findora wallet (Win/Mac wallet, mobile wallet, CLI wallet tool, etc.), to more conveniently check and manage your FRA balances or to view historical transaction data for this wallet address. The private key or the mnemonic should never be shared with anyone , even people from the Findora community or development team . Our mods will never ask for this information . It would be advisable to keep a backup of your mnemonic on a separate storage ,should you ever need to restore it.
+ For convenience, you can import the `sec_key` (aka private key) into any Findora wallet (Win/Mac wallet, mobile wallet, CLI wallet tool, etc.), to more conveniently check and manage your FRA balances or to view historical transaction data for this wallet address. The private key or the mnemonic should never be shared with anyone, even with people from the Findora community or development team. Our mods will never ask for this information. It would be advisable to keep a backup of your mnemonic on a separate storage, should you ever need to restore it.
 :::
 ## Store security key
 Store your security key by running the following command
-    ```
     # For Testnet
     echo ${ROOT_DIR}/tmp.gen.keypair > ${ROOT_DIR}/testnet_node.key
     # For Mainnet
     echo ${ROOT_DIR}/tmp.gen.keypair > ${ROOT_DIR}/mainnet_node.key
-    ```
 
-### Store Mnemonic Words into ${ROOT_DIR}/node.mnemonic
-For convenience in setting up your node via the fn tool, store your 24 mnemonic keywords (located inside tmp.gen.keypair) into ${ROOT_DIR}/node.mnemonic. To accomplish this, open the tmp.gen.keypair file and copy all of the 24 mnemonic keywords specific to your node. Then paste these 24 mnemonic keywords into the command below. Note: the 24 mnemonic keywords in the example command below (repair, drink, action, brass...) are examples. **Do not use them**
+## Store Mnemonic Words into ${ROOT_DIR}/node.mnemonic
+For convenience in setting up your node via the `fn` tool, store your 24 mnemonic keywords (located inside tmp.gen.keypair) into `${ROOT_DIR}/node.mnemonic`. To accomplish this, open the `tmp.gen.keypair` file and copy all of the 24 mnemonic keywords specific to your node. Then paste these 24 mnemonic keywords into the command below. Note: the 24 mnemonic keywords in the example command below (repair, drink, action, brass...) are examples. **Do not use them.**
 
 ```
 # ex)
@@ -187,7 +197,7 @@ Configure your validator node to use your newly generated public and private key
 
 ```
 # Stop your local container if necessary
-docker rm -f findorad || exit 1
+    docker rm -f findorad || exit 1
 # Start your validator container
 docker run -d \
     -v ${ROOT_DIR}/tendermint:/root/.tendermint \
