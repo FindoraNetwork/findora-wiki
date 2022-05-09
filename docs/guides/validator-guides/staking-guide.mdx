@@ -1,0 +1,101 @@
+---
+sidebar_position: 1
+---
+# Staking on Findora
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+
+Findora is an open, permissionless blockchain featuring programmable privacy features secured by a decentralized network of validators run by organizations and economically incentivized parties located throughout the globe. Just like other Proof of Stake blockchains, at the core of understanding the mechanism for securing and participating in the system is `Staking`. With staking, holders of FRA pool together (ergo: stake) their cryptocurrency to create validator nodes. These validators nodes provide a distributed consensus mechanism for proposing, reviewing and then adding new blocks. Rewards exist for adding the right information, and malicious actors (validators that engage in double signing, are unavailable et.al) will be punished. Validators are a crucial part of Findora, and we welcome you to enter this new, permissionless and privacy driven world with us.
+
+### Forming a Consensus 
+
+A consensus has to be formed from the active participation of 67% of the validators on the network. Nodes with staked FRA announce to the network that they seek to join a consensus, the network then checks the list for the top 100 nodes and these come together to form the next set of validators. The network randomly assigns the validators the chance to propose and vote on new `Blocks`. Blocks have to run through the `pre-vote` and `pre-commit` process where 2/3rds of validators must all agree on the information present in the block before they are committed at a `Height`. 
+
+ A proposed addition of a new `Block` to the blockchain may fail if the proposing validator is offline, the network is slow, et.al. If this is the case, the network moves to another validator and gives them the chance to propose a block. To ensure that all validators get a chance at writing blocks and earning rewards, the voting power of the last block writer reduces by the cummulative number of points available for all validators.
+ 
+
+
+<img src={useBaseUrl("/img/guides/consensus-image.png")} />
+
+
+
+### Staking
+
+Findora considers bonding FRA as the same as staking, and it means actors are willing to accept the rules and regulations of working on the network. Because of this, nodes with bonded FRA can participate in staking and consensus voting. This also means they are subject to penalties (i.e Slashing). 
+
+Unbonding is a process of asking users to take on some risk for the process of removing their tokens from the network. In Findora, our process involves unbonding for 21 days. As is on other Proof of Stake blockchains, the unbonding period ensures that users cannot engage in malicious activities and get away like pooling together into one node and attacking the network, engaging in long range attacks, forking the Findora blockchain et.al. During this unboding period, FRA staking does not eaern rewards, but it can unfortunately suffer penalties. 
+
+### Hardware Requirements to be a Validatator
+
+Findora asks that potential nodes have the following hardware requirements: 
+
+## Minimum Requirements
+
+RAM - 8GB
+CPU - 2 core
+Disk - 100GB
+
+## Recommended Requirements
+
+RAM - 16gb
+CPU - 4 core
+Disk - 300GB
+
+
+### Rewards
+
+Staking your FRA to become an active member of the Findora protocol comes with responsibility and rewards. By design, Findora rewards are non-inflationary and the protocol allocates a 2% (420 million FRA) of its total circulating supply to fund incentives. This ensures that the network is grounded well enough until transaction fees gain traction. These rewards are primarily meant to jump-start the network - the network will in the long run sustain itself and reward validators via transaction fees.
+
+
+The Findora network has two set of incentives - the block rewards and the block proposer rewards. 
+
+Block rewards are incentives given to validators that successfully write a block to the network but they come with certain cavaets. A pro-rata share in the amount of FRA staked is equivalent to the chance of being selected to write a new block. This means if a validator has more FRA staked that other validators, they automatically have more chances of writing the next block than other validators ergo more of a chance to earn the block reward. Also, the validator that proposes the block gets all the reward. This means that the node doesn't have to share their rewards with other validators in the network. 
+
+Block Proposer Rewards are secondary rewards paid out not only to the validator that proposes a block but every validator that participates in the process of prevoting and pre-commiting a block, and they are smaller in size. 
+
+## Rewards Calculations
+
+The amount of FRA paid out per block for the a) **Block Reward** and b) **Block Proposer Bonus Reward** is described below.
+
+**a) Block Reward Calculation**
+
+The (annual) block reward calculation follows the formula below:
+
+Y = 1 / x * [Rate Modifier Constant]
+
+
+With x and y defined as:
+
+y = Annualized Block Reward Rate
+
+x = % Circulating Supply Staked (i.e. FRA staked / unlocked FRA)
+
+The Rate Modifier Constant is set at `0.0536` (as of 5/1/2022) and is responsible for determining the reward rate for each value of % circulating supply staked. In the future, this rate modifier may be changed based on governance voting by FRA holders.
+
+<img src={useBaseUrl("/img/guides/annualized-rewards.png")} />
+
+The above formula describes the *annual* block reward payout rate. However, since the reward is paid out per block, the formula above must be de-annualized down to a per block reward rate. This is done via using the continuous compounding formula in reverse. The block reward rate is recalculated every block.
+
+Block Reward Rate (per block) = (1 + y)^(1/1,855,059)-1
+
+Where 1,855,059 is the number of blocks Findora generates based on a 17s average block time (60*60*24*365/17). 
+
+**b) Block Proposer Bonus Reward Calculation**
+
+Unlike, the *block reward* described above, which will always be paid out every block, the *block proposer bonus reward* will only be paid out if certain pre-commit voting conditions among the validators are met. More information about the Tendermint-based consensus pre-voting process can be found [here](https://docs.tendermint.com/master/spec/consensus/).
+
+The table below describes the FRA bonus reward that will paid out to the proposing validator if enough validators send pre-commit votes for the block being proposed. Thus, if less than 66.7% of eligible validators participate in pre-voting, then no bonus reward is paid out for that block.
+
+
+<img src={useBaseUrl("/img/guides/bonus-rewards.png")} />
+
+### Penalties
+
+As rewards go to validators for the work in securing the system, penalties exist to act as safeguards from malicious nodes. Right now, Findora engages in punitive mesaures when validators engage in two major malicious activites: Double signing and Unavailability. 
+
+While it is understood that errors can happen due to node configuration to prevent downtime, validators that engage in double signing will have their FRA tokens unbonded, with the implication that the assets cannot be rebonded for 21 days. The offending validator will also have 5% of their FRA burned, and most severely - especially in time where it is understood to be delibrately malicious, the violating validator will be jailed forever. This means they're barred from staking on the Findora network forever.
+
+Like other proof of stake blockchains, validators are needed to keep the network healthy and transactions churning through. If a validator is not available, there is a lot that goes wrong. Therefore, unavailablity/unresponsiveness to compute a consensus attracts a 0.1% burn of staked FRA. Because the network understands that unavailablilty can be beyond the power of the validator (for a myriad of reasons - electricity downtime et.al), Findora has an unavailability threshold. The unavailability threshold is crossed when a validator misses 95% of the last 10k blocks within 16 hours. When this happens, the penalty for unavailability kicks in
+
+
