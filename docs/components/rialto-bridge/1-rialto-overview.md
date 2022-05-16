@@ -16,14 +16,14 @@ At a high level, Rialto’s architecture involves a source chain, a destination 
 
 - Client - Where the Deposit and Approver requests come from
 Source Chain - The beginning of a transaction
-- Relayers - the message system for passing information from the south to the destination
+- Relayers - the message system for passing information from the source to the destination
 - Destination Chain - the end chain of the transaction
 
 ## Contracts and definition
 
 - Bridge contract - The contract interacts with the client and the relayers. It receives calls from the client, and based on the type of call, delegates the locking or minting of the coin in the token contract through the Handler contract
 - Token contract - This contract token itsef
-- Handler contract - The contract that handles executing deposit or withdrawls
+- Handler contract - The contract that handles executing deposits or withdrawals
 
 ## Schematics
 
