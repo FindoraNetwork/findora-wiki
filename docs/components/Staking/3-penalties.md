@@ -1,4 +1,4 @@
-## Penalties
+# Penalties
 
 As rewards go to validators for the work in securing the system, penalties exist to act as safeguards from malicious nodes. Right now, Findora engages in punitive mesaures when validators engage in two major malicious activites: Double signing and Unavailability.
 
