@@ -1,0 +1,7 @@
+## Penalties
+
+As rewards go to validators for the work in securing the system, penalties exist to act as safeguards from malicious nodes. Right now, Findora engages in punitive mesaures when validators engage in two major malicious activites: Double signing and Unavailability.
+
+While it is understood that errors can happen due to node configuration to prevent downtime, validators that engage in double signing will have their FRA tokens unbonded, with the implication that the assets cannot be rebonded for 21 days. The offending validator will also have 5% of their FRA burned, and most severely - especially in time where it is understood to be delibrately malicious, the violating validator will be jailed forever. This means they're barred from staking on the Findora network forever.
+
+Like other proof of stake blockchains, validators are needed to keep the network healthy and transactions churning through. If a validator is not available, there is a lot that goes wrong. Therefore, unavailablity/unresponsiveness to compute a consensus attracts a 0.1% burn of staked FRA. Because the network understands that unavailablilty can be beyond the power of the validator (for a myriad of reasons - electricity downtime et.al), Findora has an unavailability threshold. The unavailability threshold is crossed when a validator misses 95% of the last 10k blocks within 16 hours. When this happens, the penalty for unavailability kicks in
