@@ -82,11 +82,13 @@ const abarToAbar = async () => {
       additionalOwnedAbarItems
     );
 
-  // Then we submut the transaction to the network to finalize the operation
+  // Then we retrieve transaction data (to be broadcasted)
+  const submitData = anonTransferOperationBuilder.transaction();
+
+  // Finally, we submut the transaction to the network to finalize the `abar to bar` operation
   // and, as a result we receive a transaction hash
-  const resultHandle = await Transaction.submitAbarTransaction(
-    anonTransferOperationBuilder
-  );
+  const result = await Network.submitTransaction(submitData);
+  const { response: resultHandle } = result;
 
   // Here we simply wait for 17s until next block is produced by the network
   await sleep(17000);
