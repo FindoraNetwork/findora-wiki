@@ -112,10 +112,12 @@ yarn add @findora-network/findora-sdk.js
     assetBlindRules
   );
 
-  // Finally, we will broadcasting this transaction to the network
-  const resultHandle = await TransactionApi.submitTransaction(
-    transactionBuilder
-  );
+  // Then we retrieve transaction data (to be broadcasted)
+  const submitData = transactionBuilder.transaction();
+
+  // Finally, we will be broadcasting this transaction to the network
+  const result = await Network.submitTransaction(submitData);
+  const { response: resultHandle } = result;
   ```
 
 - **5. Send FRA to multiple wallets**
@@ -167,10 +169,12 @@ yarn add @findora-network/findora-sdk.js
     assetBlindRules
   );
 
-  // Finally, broadcast this transaction to the network
-  const resultHandle = await TransactionApi.submitTransaction(
-    transactionBuilder
-  );
+  // Then we retrieve transaction data (to be broadcasted)
+  const submitData = transactionBuilder.transaction();
+
+  // Finally, we will be broadcasting this transaction to the network
+  const result = await Network.submitTransaction(submitData);
+  const { response: resultHandle } = result;
   ```
 
 - **6. Create a custom asset**
@@ -204,8 +208,12 @@ yarn add @findora-network/findora-sdk.js
   // Then we create an instance of the transaction builder - that is what is going to be broadcast to the network
   const assetBuilder = await AssetApi.defineAsset(walletInfo, tokenCode);
 
-  // Finally, broadcast this transaction to the network
-  const resultHandle = await TransactionApi.submitTransaction(assetBuilder);
+  // Then we retrieve transaction data (to be broadcasted)
+  const submitData = assetBuilder.transaction();
+
+  // Finally, we will be broadcasting this transaction to the network
+  const result = await Network.submitTransaction(submitData);
+  const { response: resultHandle } = result;
   ```
 
 - **7. Issue Asset (Note: after creating a new asset, it has no balance. You must first "issue" the asset)**
@@ -249,10 +257,12 @@ yarn add @findora-network/findora-sdk.js
     assetBlindRules
   );
 
-  // Finally, broadcasting the transaction to the network
-  const resultHandle = await TransactionApi.submitTransaction(
-    issueAssetBuilder
-  );
+  // Then we retrieve transaction data (to be broadcasted)
+  const submitData = issueAssetBuilder.transaction();
+
+  // Finally, we will be broadcasting this transaction to the network
+  const result = await Network.submitTransaction(submitData);
+  const { response: resultHandle } = result;
   ```
 
 - **8. Send custom asset to another wallet**
@@ -295,10 +305,12 @@ yarn add @findora-network/findora-sdk.js
     assetBlindRules
   );
 
-  // Finally, broadcasting this transaction to the network
-  const resultHandle = await TransactionApi.submitTransaction(
-    transactionBuilder
-  );
+  // Then we retrieve transaction data (to be broadcasted)
+  const submitData = transactionBuilder.transaction();
+
+  // Finally, we will be broadcasting this transaction to the network
+  const result = await Network.submitTransaction(submitData);
+  const { response: resultHandle } = result;
   ```
 
 - **9. Send tokens confidentially**
@@ -360,10 +372,12 @@ yarn add @findora-network/findora-sdk.js
     assetBlindRules
   );
 
-  // Finally, broadcast this transaction to the network
-  const resultHandle = await TransactionApi.submitTransaction(
-    transactionBuilder
-  );
+  // Then we retrieve transaction data (to be broadcasted)
+  const submitData = transactionBuilder.transaction();
+
+  // Finally, we will be broadcasting this transaction to the network
+  const result = await Network.submitTransaction(submitData);
+  const { response: resultHandle } = result;
   ```
 
 - **10. Check token balance**
