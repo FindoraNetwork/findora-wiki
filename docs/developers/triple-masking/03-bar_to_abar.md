@@ -38,9 +38,13 @@ const barToAbar = async () => {
     sid: usedSid,
   } = await TripleMasking.barToAbar(walletInfo, sid, myAnonWallet);
 
-  // Then we submut the transaction to the network to finalize the `bar to abar operation`
+  // Then we retrieve transaction data (to be broadcasted)
+  const submitData = transactionBuilder.transaction();
+
+  // Finally, we submut the transaction to the network to finalize the `bar to abar` operation
   // and, as a result we receive a transaction hash
-  const resultHandle = await Transaction.submitTransaction(transactionBuilder);
+  const result = await Network.submitTransaction(submitData);
+  const { response: resultHandle } = result;
 
   const { axfrPublicKey: formattedAxfrPublicKey } =
     barToAbarData.anonKeysFormatted;
