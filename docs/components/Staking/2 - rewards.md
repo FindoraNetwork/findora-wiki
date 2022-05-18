@@ -13,7 +13,7 @@ Block Proposer Rewards are secondary rewards paid out not only to the validator 
 
 The amount of FRA paid out per block for the a) **Block Reward** and b) **Block Proposer Bonus Reward** is described below.
 
-**a) Block Reward Calculation**
+### Block Reward Calculation
 
 The (annual) block reward calculation follows the formula below:
 
@@ -36,10 +36,13 @@ Block Reward Rate (per block) = (1 + y)^(1/1,855,059)-1
 
 Where 1,855,059 is the number of blocks Findora generates based on a 17s average block time (60*60*24*365/17).
 
-**b) Block Proposer Bonus Reward Calculation**
+### Block Proposer Bonus Reward
 
-Unlike, the *block reward* described above, which will always be paid out every block, the *block proposer bonus reward* will only be paid out if certain pre-commit voting conditions among the validators are met. More information about the Tendermint-based consensus pre-voting process can be found [here](https://docs.tendermint.com/master/spec/consensus/).
-
-The table below describes the FRA bonus reward that will paid out to the proposing validator if enough validators send pre-commit votes for the block being proposed. Thus, if less than 66.7% of eligible validators participate in pre-voting, then no bonus reward is paid out for that block.
+The bonus rewards for the block proposer are calculated based on the following table . These calculations are independant of Block Rewards .
+The Bonus reward is payed out to further incentives the block proposing validator.
 
 ![](https://i.imgur.com/ik5xJp3.png)
+
+## Rewards Distribution 
+
+Block rewards calculated based on the above formulae , Both **Block Reward** and **Block Proposer Bonus Reward** are awarded to the block proposer .
