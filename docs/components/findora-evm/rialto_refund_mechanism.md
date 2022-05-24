@@ -43,7 +43,7 @@ Using BUSD <-> BUSD.b (Incoming Bridge) as an example
   We refund 1 BNB = $640 i.e  $640/$0.04 FRA  = 16,000 FRA
 
 - Note
-    - A calculation like this might benefit from using a oracle price feed, but we can also do this calculation offchain. The reason being
+    - A calculation like this might benefit from using a oracle price feed, but we can also do this calculation offchain.
     - The gas usage for `Approve` and `Deposit` transactions is almost constant .
     - Although the gas price might vary , we can account for that by keeping this distribution value easily configurable. ( More details on this on the Techinical implementation section)
     - Integrating with a price feed oracle will be a bigger developemt effort and would definitly delay the launch a little bit.
