@@ -1,10 +1,10 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Manual Guide
+# Manual Setup
 
 ### Pull the latest Findora docker image
 
