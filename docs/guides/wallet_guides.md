@@ -1,15 +1,22 @@
 ---
 sidebar_position: 1
 ---
+# Findora Wallet Guide
 
-# Mac/Windows Wallet
-The Findora wallet enables you to send and receive FRA tokens and even create your own custom assets.
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-[Download Wallet For Mac](https://s3-us-west-2.amazonaws.com/wallet.findora.org/download/Findora_Wallet_Setup_0.2.1.dmg)
+## Installing the Mac/Windows Wallet
+The Findora wallet enables you to send and receive FRA tokens and even create your own custom assets. Findora provides wallet application for most of the popular operating systems across desktop and mobile. Currently, you can download and install Findora wallet on Mac, Windows, iOS and Android.
 
-[Download Wallet For Windows](https://s3-us-west-2.amazonaws.com/wallet.findora.org/download/Findora_Wallet_Setup_0.2.1.exe)
+[Download the latest version of Findora Wallet](https://wallet.findora.org/)
 
-## My Wallet
+[Download Wallet v0.3.2 for Mac](https://s3-us-west-2.amazonaws.com/wallet.findora.org/download/Findora_Wallet_Setup_0.3.2.dmg)
+
+[Download Wallet v0.3.2 for Windows](https://s3-us-west-2.amazonaws.com/wallet.findora.org/download/Findora_Wallet_Setup_0.3.2.exe)
+
+[Download Wallet Android APK](https://wallet.findora.org/download/FindoraWallet.apk)
+
+## Wallet Basics
 
 ### Create Wallet
 
@@ -17,7 +24,7 @@ The Findora wallet enables you to send and receive FRA tokens and even create yo
 
 Click the `Create Wallet` button and the app will display mnemonic "seed words" for you to write down and save for your own safe keeping — offline ideally.  
 These mnemonic seed words are linked to a unique `private key` and wallet that the app will create and store for you inside the app.  
-Store these "seed words" securely as they will never be shown again and there is no way to recover them.
+> Note: Store these "seed words" securely as they will never be shown again and there is no way to recover them.
                 
 ![wallet1.png](/img/wallet/wallet1.png)
                 
@@ -144,13 +151,14 @@ Below are the two steps needed to create a new asset:
                     
 - `Transferability Type` - You can prevent your custom asset from being transferred to another user. This is an early feature that is designed to work with our upcoming timed lockup features.  
 
-    For example, in the future you will be able to set a custom asset as "non-transferrable" and specify a non-transferrable time period of 90 days — essentially creating a 90 lockup to support a vesting schedule for the asset.
+    For example, in the future you will be able to set a custom asset as "non-transferrable" and specify a non-transferrable time period of 90 days — essentially creating a 90 day lockup to support a vesting schedule for the asset.
                     
    - Click `Define New Asset` and then `Confirm` to complete this part of the process
                     
-![wallet23.png](/img/wallet/wallet23.png)
-                    
-![wallet24.png](/img/wallet/wallet24.png)
+<p align="center"><img src={useBaseUrl("/img/wallet/wallet23.png")} width="50%" height="50%"/></p>
+
+<p align="center"><img src={useBaseUrl("/img/wallet/wallet24.png")} width="50%" height="50%"/></p>
+
                     
 2. Goto `Manage Assets` ⇒ `Issue Asset`
    - Fill out the input fields on the `Issue Asset` page
@@ -163,9 +171,9 @@ Below are the two steps needed to create a new asset:
 - `Show or Hide Amounts on Ledger?`  - choose whether the amounts will be shown or hidden for the assets to be issued
 - Click `Confirm` to complete the process
                     
-![wallet26.png](/img/wallet/wallet26.png)
-                    
-![wallet27.png](/img/wallet/wallet27.png)
+<p align="center"><img src={useBaseUrl("/img/wallet/wallet26.png")} width="50%" height="50%"/></p>
+
+<p align="center"><img src={useBaseUrl("/img/wallet/wallet27.png")} width="50%" height="50%"/></p>
 
 ### Manage Custom Assets
 - If you created your own custom assets earlier, you can manage these custom assets via the `Manage Assets` ⇒ `Manage` page

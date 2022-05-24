@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Overview
 
 Rialto bridge is a fork of Chainbridge open-source project built by [ChainSafe](https://chainsafe.io/) and polished to support Findora's EVM implementation. Rialto bridge is an extensible cross-chain communication protocol. It currently supports bridging between only EVM based chains.

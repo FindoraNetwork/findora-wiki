@@ -2,52 +2,50 @@
 sidebar_position: 2
 ---
 
+# Confidential Transfer Guide
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Confidential Transfers
+A confidential transfer is Findora’s engineered method of moving your assets between wallets with the privacy you need. Backed by industry-leading algorithms and safe from prying eyes, we are excited for what value this will provide for you. Below is a guide on how to do a confidential transfer using Findora Wallet application to hide the amount and/or asset type.
 
-A confidential transfer is Findora’s engineered method of moving your assets between wallets with the privacy you need. Backed by industry-leading algorithms and safe from prying eyes, we are excited for what value this will provide for you.
+## How to make a Confidential Transfer
+Step 1: Sign in into your Findora wallet then click on the wallet name you want to make a transfer from.
 
-## How to make a confidential transfer
-- Sign in into your Findora wallet then click on the wallet name you want to make a transfer out from
+<img src={useBaseUrl("/img/transfers/c-transfers-1.png")} width="100%" height="50%"/>
 
-<img src={useBaseUrl("/img/transfers/c-transfers-1.png")} width="60%" height="50%"/>
+Step 2: Make sure you have enough balance for your transfer, then click on "Send".
 
-- Make sure you have enough balance to conduct your transfer, and then click on the "Send" button.
+<img src={useBaseUrl("/img/transfers/c-transfers-2.png")} width="100%" height="50%"/>
 
-<img src={useBaseUrl("/img/transfers/c-transfers-2.png")} width="60%" height="50%"/>
-
-
--  In here, you should see a couple of input fields. 
+Step 3: In the next step, you should see a few input fields. 
     - The "From" input field designates the wallet you're transferring from. 
-    - The "To" input field is where you enter the recipients wallet address
-    - "Asset Type" refers to the asset that is being transfered and what protocol it's a part of.
+    - The "To" input field is where you enter the recipient's wallet address.
+    - "Asset Type" refers to the asset that is being transferred
+    - "Privacy Options" to choose whether to hide the asset type and amount.
     
-<img src={useBaseUrl("/img/transfers/c-transfers-3.png")} width="60%" height="50%"/>
+<img src={useBaseUrl("/img/transfers/c-transfers-3.png")} width="100%" height="50%"/>
 
--  In the "To" input field, copy and paste the recipient's address and please make sure that you have this correct. As a bonus, if you're simply moving assets from one wallet name to another on the Findora wallet, you can click on the "Wallet Address" drop down on the side of the "To" input field and the input field will be filled with the right wallet address.
+Step 4: In the "To" input field, copy and paste the recipient's address and please make sure that you have this correct
+> Tip: If you are moving assets among different wallets saved on your Findora wallet application, you can click on the "Wallet Address" drop down on the side, and it will be automatically filled with the corresponding wallet address
 
- - Enter the amount 
+Step 5: Enter the amount you want to transfer
 
- <img src={useBaseUrl("/img/transfers/c-transfers-4.png")} width="60%" height="50%"/>
+ <img src={useBaseUrl("/img/transfers/c-transfers-4.png")} width="100%" height="50%"/>
 
-And now we get to the more important part. 
+Step 6: Now we get to the more important part. Select the appropriate choices for showing or hiding the amount and asset type based on your need of privacy for your transfer.
 
-- To effectively do a confidential transfer, click on the "Hide Amounts" radio button when you want to hide the amount, and click on the "Hide Asset Type" radio button when you want to hide the type of asset you're transferring. A prompt modal will appear, please read and be sure you want to proceeed
+Step 7: Read the warning carefully and click on `I understand`
 
- <img src={useBaseUrl("/img/transfers/c-transfers-5.png")} width="60%" height="50%"/>
+ <img src={useBaseUrl("/img/transfers/c-transfers-5.png")} width="100%" height="50%"/>
 
-Click on "i understand" and you should get a confirmation screen. 
+Step 8: Review the transaction details and click on `Submit`
 
- <img src={useBaseUrl("/img/transfers/c-transfers-6.png")} width="60%" height="50%"/>
+ <img src={useBaseUrl("/img/transfers/c-transfers-6.png")} width="100%" height="50%"/>
 
-Confirm the details and the transaction is on its way.
+Step 9: Click on "View Transaction" to get a detailed view of the status of the transaction
 
- <img src={useBaseUrl("/img/transfers/c-transfers-7.png")} width="60%" height="50%"/>
+ <img src={useBaseUrl("/img/transfers/c-transfers-7.png")} width="100%" height="50%"/>
 
-Click on "View Transaction" to get a detailed view of the status of the transaction
+Step 10: You can verify on the block explorer that the amount and asset type for this transaction are hidden as per your choice of inputs
 
- <img src={useBaseUrl("/img/transfers/c-transfers-8.png")} width="60%" height="50%"/>
-
-
-That is how a confidential transfer is done. 
+ <img src={useBaseUrl("/img/transfers/c-transfers-8.png")} width="100%" height="50%"/>
