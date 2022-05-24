@@ -1,23 +1,23 @@
 # Rialto Refund Mechanism
 
-## Context
+## Overview
 
-Rialto is a software program which provides connectivity between two EVM compatible chains. It achives this by providing event realaying across both the chains .
+Rialto is a bridge application which provides connectivity between two EVM compatible chains. It achieves this by providing event relaying across chains.
 ### Types of bridges
 
 Rialto has two types of bridges
 
-- Incoming Bridges : These are all the bridges that bring liquidity to our system , from foreign L1 chains. For these bridges the source chain for tokens is `not` Findora EVM .
-    - Example : BUSD Bridge
-      BUSD(Existing on BSC) <-> BUSD.b (Existing on FRA)
-      Use case : Bring TVL to our network
+- Incoming Bridges : These are all bridges that bring liquidity to our system from foreign L1 chains. For these bridges, the source chain for tokens is `not` Findora EVM.
+    - Example: BUSD Bridge  
+      BUSD(Existing on BSC) <-> BUSD.b (Existing on FRA)  
+      Use Case: Bring TVL to our network  
 
-- Outgoing Bridges : THese bridges move liquidity away from our system, to other L1 chains. FRA EVM is the source chain for all of them .
-    - Example : FRA Bridge
-      FRA(existing on FRA EVM) <-> FRA.f (Existing on BSC)
-      Usecase : enable us to create LPs in dex's like pancake swap.
+- Outgoing Bridges : These bridges move liquidity out of our ecosystem to other L1 chains. FRA EVM is the source chain for all of them.
+    - Example : FRA Bridge  
+      FRA(existing on FRA EVM) <-> FRA.f (Existing on BSC)  
+      Use Case: Enables us to create LPs in DEX's like Pancake Swap.
 
-Note : Both the bridges are bidectional
+Note : Both the bridges are bidirectional
 
 ### How a bridge functions
 
@@ -31,20 +31,19 @@ Using BUSD <-> BUSD.b (Incoming Bridge) as an example
 
 ### Why we need a refund mechanism
 
-- A user has to pay gas twice in step 1 and step 2 above , in the source chain . Although the value of the gas usage might not be much in terms of USD for chains like BSC , but this amount can be substantial for the Ethereum network . We plan to subsidise the users in some way. .
-- Provide a user with FRA , as soon as they bring their tokens to our chain . Obtaining which might be difficult for users since they would have to buy it from exchanges like gate.io
-- This can also be used for marketing .The idea of getting gas refunded is appeling to most defi users .
-- The refund mechanism is required only for Incoming chains , We do not need a one for Outgoing as FRA itself is quite cheap
-
+- A user has to pay gas twice in step 1 and step 2 above, in the source chain. Although the value of the gas usage might not be much in terms of USD for chains like BSC, but this amount can be substantial for the Ethereum network. We plan to subsidise the users in some way.
+- Provide a user with FRA , as soon as they bring their tokens to our chain. Obtaining which might be difficult for users since they would have to buy it from exchanges like gate.io
+- This can also be used for marketing. The idea of getting gas refunded is appeling to most defi users.
+- The refund mechanism is required only for Incoming chains. We do not need a one for outgoing as tx at the moment since FRA fees are currently very low.
 
 ## Refund Mechanism
 
-- The main idea is to refund the users in FRA equivalent for what they spend in the source chain .
-  Example  :  If a user spends 1 BNB in gas (hypothetical).
+- The main idea is to refund the users in FRA equivalent for what they spend in the source chain.
+  Example:  If a user spends 1 BNB in gas (hypothetical).
   We refund 1 BNB = $640 i.e  $640/$0.04 FRA  = 16,000 FRA
 
 - Note
-    - A calculation like this might benifit from using a oracle price feed  , But we can also do this calculation offchain . The reason being
+    - A calculation like this might benefit from using a oracle price feed, but we can also do this calculation offchain. The reason being
     - The gas usage for `Approve` and `Deposit` transactions is almost constant .
     - Although the gas price might vary , we can account for that by keeping this distribution value easily configurable. ( More details on this on the Techinical implementation section)
     - Integrating with a price feed oracle will be a bigger developemt effort and would definitly delay the launch a little bit.
@@ -98,5 +97,5 @@ DistributionList : [
 - The sender of this tx can be a Foundation controlled address (Need inputs here)
 
 ### Additional points to note
-- The refund amount should be at max equivalent to the USD amount the user spend in the orginal chain ( Preferably we keep the reducing_factor less than 1). This will prevent users from spamming the TX , to burn out the relayer balances . ( the relayers pay to vote for every trasfer).
-- For outgoing chains , we should set a relayer-fee , for the same purpose as above. The vote txs would cost us quite a bit on L1 chains like ethereum.
+- The refund amount should be at max equivalent to the USD amount the user spend in the orginal chain ( Preferably we keep the reducing_factor less than 1). This will prevent users from spamming transactions and burning out the relayer balances. ( the relayers pay to vote for every transfer).
+- For outgoing chains, we should set a relayer-fee for the same purpose as above. The vote txs would cost us quite a bit on L1 chains like Ethereum.
