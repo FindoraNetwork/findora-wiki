@@ -1,0 +1,1312 @@
+---
+sidebar_position: 3
+---
+# SDK API Reference
+
+import TOCInline from "@theme/TOCInline";
+
+<TOCInline toc={toc} />
+
+## Account
+
+### create
+
+**_- Creates an instance of WalletKeypar using password._**  
+This method is used to create a WalletKeypar using password. The Keypair contains some essential information, such as:
+
+- &nbsp; address
+- &nbsp; public key
+- &nbsp; key store
+
+and so on, and it is used for pretty much any personalized operation that user can do using FindoraSdk
+
+##### Parameters:
+
+- &nbsp; `<string>` - Password of account
+
+##### Results:
+
+- &nbsp; `Promise<WalletKeypar>` - An instance of `WalletKeypar`
+
+##### Example:
+
+```jsx
+const password = "qsjEI%123";
+
+// Create a wallet info object using given password
+const walletInfo = await Account.create(password);
+```
+
+### getBalance
+
+**_- Get the balance of the specific asset for the given user_**
+
+Using this function user can retrieve the balance for the specific asset code, which could be either custom asset or an FRA asset
+
+##### Parameters:
+
+- &nbsp; `<WalletKeypar>` - An instance of WalletKeypar
+- &nbsp; `<string>` - (optional) Asset Code which could be either custom asset or an FRA asset.
+
+##### Results:
+
+- &nbsp; `Promise<string>` - The balance of the specific asset for the given user.
+
+##### Example:
+
+```jsx
+const pkey = "lfyd1234!";
+const password = "uuicnf!34";
+
+// Restore Wallet
+const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+
+// Get balance
+const balance = await Account.getBalance(walletInfo, customAssetCode);
+```
+
+### getBalanceInWei
+
+**_- Get the balance of the specific asset for the given user in Wei format_**
+
+Using this function user can retrieve the balance for the specific asset code, which could be either custom asset or an FRA asset
+
+##### Parameters:
+
+- &nbsp; `<WalletKeypar>` - An instance of WalletKeypar
+- &nbsp; `<string>` - (optional) Asset Code which could be either custom asset or an FRA asset.
+
+##### Results:
+
+- &nbsp; `Promise<BigNumberValue>` - The balance of the specific asset for the given user in Wei format.
+
+##### Example:
+
+```jsx
+const pkey = "lfyd1234!";
+const password = "uuicnf!34";
+
+// Restore Wallet
+const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+
+// Get balance in Wei format
+const balance = await Account.getBalanceInWei(walletInfo, customAssetCode);
+```
+
+### getCreatedAssets
+
+**_- Get an array of instances of ProcessedIssuedRecord using wallet address._**
+
+This method is used to get created Assets. The ProcessedIssuedRecord contains some essential information, such as:
+
+- &nbsp; code
+- &nbsp; record
+- &nbsp; id
+- &nbsp; ownerMemo
+
+and so on. It's the issued asset.
+
+##### Parameters:
+
+- &nbsp; `<string>` - Wallet address.
+
+##### Results:
+
+- &nbsp; `Promise<ProcessedIssuedRecord[]>` - an array of `ProcessedIssuedRecord` instances.
+
+##### Example:
+
+```jsx
+const pkey = "lfyd1234!";
+const password = "uuicnf!34";
+
+// Restore Wallet
+const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+
+// Get balance in Wei format
+const balance = await Account.getBalanceInWei(walletInfo, customAssetCode);
+```
+
+## KeyPair
+
+### createKeypair
+
+**_- Creates an instance of `WalletKeypar` using password._**  
+This method is used to restore a wallet keypair. The Keypair contains some essential information, such as:
+
+- &nbsp; address
+- &nbsp; public key
+- &nbsp; key store
+
+and so on, and it is used for pretty much any personalized operation that user can do using FindoraSdk
+
+##### Parameters:
+
+- &nbsp; `<string>` - Password to be used to generate an encrypted KeyStore
+
+##### Results:
+
+- &nbsp; `Promise<WalletKeypar>` - An instance of `WalletKeypar`
+
+##### Example:
+
+```jsx
+const password = "qsjEI%123";
+
+// Create a wallet info object using given password
+const walletPair = await Keypair.createKeypair(password);
+```
+
+### getAddressByPublicKey
+
+**_- Get wallet address by given public key_**  
+Using this function user can retreive the wallet address by given public key
+
+##### Parameters:
+
+- &nbsp; `<string>` - Public key
+
+##### Results:
+
+- &nbsp; `Promise<string>` - A wallet address.
+
+##### Example:
+
+```jsx
+const pubkey = "qsjEI%123";
+// Get wallet address by public key
+const walletAddress = await Keypair.getAddressByPublicKey(pubkey);
+```
+
+### getAddressPublicAndKey
+
+**_- Create an instance of `LightWalletKeypair` using given wallet address._**  
+This method is used to create a light version of the WalletKeypar using given wallet address.The LightWalletKeypair contains two essential information:
+
+- &nbsp; address
+- &nbsp; public key
+
+It's a light version of the WalletKeypar, containing only address and publickey
+
+##### Parameters:
+
+- &nbsp; `<string>` - Wallet address
+
+##### Results:
+
+- &nbsp; `Promise<LightWalletKeypair>` - An instance of `LightWalletKeypair`.
+
+##### Example:
+
+```jsx
+const address = "fra234xfde4";
+
+// Create a LightWalletKeypair object using given address
+const lightWalletKeypair = await Keypair.getAddressPublicAndKey(address);
+```
+
+### getMnemonic
+
+**_- Creates an array of Mnemonic phrases._**  
+This method is used to creates an array of Mnemonic phrases.
+
+##### Parameters:
+
+- &nbsp; `<number>` - Desired length of mnemonic phrases. It can only be 12/15/18/21/24.
+- &nbsp; `<string>` - (optional) Default is `en`.
+
+##### Results:
+
+- &nbsp; `Promise<LightWalletKeypair>` - An instance of `LightWalletKeypair`.
+
+##### Example:
+
+```jsx
+const desiredLength = 24;
+
+// Create a wallet info object using given password
+const mnemonic = await Keypair.getMnemonic(desiredLength);
+```
+
+### restoreFromMnemonic
+
+**_- Creates an instance of `WalletKeypar` using Mnemonic and password._**  
+This method is used to restore a wallet keypair. The Keypair contains some essential information, such as:
+
+- &nbsp; address
+- &nbsp; public key
+- &nbsp; key store
+
+and so on, and it is used for pretty much any personalized operation that user can do using FindoraSdk
+
+##### Parameters:
+
+- &nbsp; `<string[]>` - mnemonic words
+- &nbsp; `<string>` - Password to be used to generate an encrypted KeyStore
+
+##### Results:
+
+- &nbsp; `Promise<WalletKeypar>` - An instance of `WalletKeypar`.
+
+##### Example:
+
+```jsx
+const password = "qsjEI%123";
+const mnemonic = ["Apple", "Orange", "Banana"];
+
+// Create a wallet info object using given Mnemonic and password
+const walletPair = await Keypair.restoreFromMnemonic(mnemonic, password);
+```
+
+### restoreFromPrivateKey
+
+**_- Creates an instance of `WalletKeypar` using given private key and password._**  
+This method is used to restore a wallet keypair. The Keypair contains some essential information, such as:
+
+- &nbsp; address
+- &nbsp; public key
+- &nbsp; key store
+
+and so on, and it is used for pretty much any personalized operation that user can do using FindoraSdk
+
+##### Parameters:
+
+- &nbsp; `<string>` - Private key
+- &nbsp; `<string>` - Password to be used to generate an encrypted KeyStore
+
+##### Results:
+
+- &nbsp; `Promise<WalletKeypar>` - An instance of `WalletKeypar`.
+
+##### Example:
+
+```jsx
+const password = "qsjEI%123";
+const pkey = "XXXXXXXXXX";
+
+// Create a wallet info object using given private key and password
+const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+```
+
+## Network
+
+### getAbciInfo
+
+**_- Get ABCI information_**  
+This method is used to get ABCI information.
+
+##### Parameters:
+
+- &nbsp; `<string>` - a wallet address
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<AbciInfoResult>` - An instance of `AbciInfoResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const data = "0x12345d";
+
+// Get ABCI information
+const acbiInfo = await Network.getAbciInfo(data);
+```
+
+### getAbciNoce
+
+**_- Get ABCI Noce_**  
+This method is used to get ABCI Noce.
+
+##### Parameters:
+
+- &nbsp; `<string>` - a wallet address
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<AbciNoceResult>` - An instance of `AbciNoceResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const data = "0x12345d";
+
+// Get ABCI Noce
+const acbiNoce = await Network.getAbciNoce(data);
+```
+
+### getAssetToken
+
+**_- Get information of given type of asset token_**  
+This method is used to get information of given type of asset token
+
+##### Parameters:
+
+- &nbsp; `<string>` - asset code
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<AssetTokenDataResult>` - An instance of `AssetTokenDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const data = "0x12345d";
+
+// Get ABCI Noce
+const acbiNoce = await Network.getAbciNoce(data);
+```
+
+### getBlock
+
+**_- Get datails of given block_**  
+This method is used to get details of given block.
+
+##### Parameters:
+
+- &nbsp; `<number>` - block Height
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<BlockDetailsDataResult>` - An instance of `BlockDetailsDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const blockHeight = 1432;
+
+// Get block #1432 details
+const blockDetail = await Network.getBlock(blockHeight);
+```
+
+### getDelegateInfo
+
+**_- Get the delegation information_**  
+This method is used to get the delegation information.
+
+##### Parameters:
+
+- &nbsp; `<string>` - public key
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<DelegateInfoDataResult>` - An instance of `DelegateInfoDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const publickey = "qsedx23rtgds";
+
+// Get the delegation information
+const blockDetail = await Network.getDelegateInfo(publickey);
+```
+
+### getHashSwap
+
+**_- Get transaction details_**  
+This method is used to get details of transaction with given hash
+
+##### Parameters:
+
+- &nbsp; `<string>` - transaction hash
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<HashSwapDataResult>` - An instance of `HashSwapDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const hash = `YOUR_TX_HASH`;
+
+// Get transaction details of given hash
+const txDetail = await Network.getHashSwap(hash);
+```
+
+### getIssuedRecords
+
+**_- Get information of issued records for given public key_**  
+This method is used to get information of issued records for given public key
+
+##### Parameters:
+
+- &nbsp; `<string>` - public key
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<IssuedRecordDataResult>` - An instance of `IssuedRecordDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const publickey = `publickeyexample`;
+
+// Get issed records information
+const issuedRecords = await Network.getIssuedRecords(publickey);
+```
+
+### getOwnedSids
+
+**_- Get Sids owned by given address_**  
+This method is used to get Sids owned by given address
+
+##### Parameters:
+
+- &nbsp; `<string>` - wallet address
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<OwnedSidsDataResult>` - An instance of `OwnedSidsDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const address = `frabhhjsswerf`;
+
+// Get Sids' information
+const ownedSids = await Network.getOwnedSids(address);
+```
+
+### getOwnerMemo
+
+**_- Get the owner memo by given UTXO sid_**  
+This method is used to get owner memo by given UTXO sid
+
+##### Parameters:
+
+- &nbsp; `<number>` - UTXO sid
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<OwnerMemoDataResult>` - An instance of `OwnerMemoDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const utxoSid = 143;
+
+// Get owner memo
+const ownerMemo = await Network.getOwnerMemo(utxoSid);
+```
+
+### getStateCommitment
+
+**_- Returns state commitment_**  
+An important property of a Findora ledger is the ability to authenticate transactions. Users can authenticate transactions against a small tag called the state commitment. The state commitment is a commitment to the current state of the ledger. The state commitment response is a tuple containing the state commitment and the state commitment version.
+
+##### Parameters:
+
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<StateCommitmentDataResult>` - An instance of `StateCommitmentDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+// Get state commitment
+const stateCommitment = await Network.getStateCommitment();
+```
+
+### getTransactionStatus
+
+**_- Returns transaction status_**  
+Using the transaction handle, user can fetch the status of the transaction from the query server.
+
+##### Parameters:
+
+- &nbsp; `<string>` - transaction handle (hash)
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<TransactionStatusDataResult>` - An instance of `TransactionStatusDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const handle = `YOUR_TX_HASH`;
+
+// Get transaction status
+const transactionStatus = await Network.getTransactionStatus(handle);
+```
+
+### getTransactionDetails
+
+**_- Returns transaction details_**  
+Using the transaction handle, user can fetch the details of the transaction from the query server.
+
+##### Parameters:
+
+- &nbsp; `<string>` - transaction handle (hash)
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<TxDetailsDataResult>` - An instance of `TxDetailsDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const handle = `YOUR_TX_HASH`;
+
+// Get transaction details
+const transactionDetails = await Network.getTransactionDetails(handle);
+```
+
+### getTxList
+
+**_- Get a list of transactions for given wallet address_**  
+This method is used to get a list of transactions for given wallet address
+
+##### Parameters:
+
+- &nbsp; `<string>` - wallet address
+- &nbsp; `<"to"|"from">` - transaction type. it can only be "to" or "from"
+- &nbsp; `<number>` - pagination. Default is 1.
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<TxListDataResult>` - An instance of `TxListDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const address = `fra000xxsr`;
+const type = "to";
+
+// Get list of `to` transaction of given address
+const txDetail = await Network.getTxList(address, type);
+```
+
+### getUtxo
+
+**_- Get UTXO ledger for given utxo sid_**  
+This method is used to get UTXO ledger for given UTXO sid
+
+##### Parameters:
+
+- &nbsp; `<number>` - UTXO SID
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<UtxoDataResult>` - An instance of `UtxoDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const utxoSid = 143;
+
+// Get UTXO details
+const utxoData = await Network.getUtxo(utxoSid);
+```
+
+### getValidatorList
+
+**_- Get validator list_**  
+This method is used to get the list of validators.
+
+##### Parameters:
+
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<ValidatorListDataResult>` - An instance of `ValidatorListDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+// Get validator list
+const acbiInfo = await Network.getValidatorList();
+```
+
+### sendRpcCall
+
+**_- Send RPC call_**  
+This method is used to send RPC call.
+
+##### Parameters:
+
+- &nbsp; `<string>` - RPC url
+- &nbsp; `<{[key: string]: any}>` - payload
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<T>` - The response object from RPC call.
+
+##### Example:
+
+```jsx
+cont url = `https://prod-testnet.prod.findora.org:8545`;
+const payload = {
+  method: `eth_getBlockByHash`,
+  params: ['0x1af723767d06...',true],
+};
+
+// Send the RPC call to get block details by hash
+const response = await Network.sendRpcCall(url,payload);
+```
+
+### submitEvmTx
+
+**_- Submit EVM transaction_**  
+This method is used to submit a EVM transaction.
+
+##### Parameters:
+
+- &nbsp; `<string>` - transaction hash
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<SubmitEvmTxResult>` - An instance of `SubmitEvmTxResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const tx = "Your_TX_Hash";
+
+// Submit a EVM transaction
+const result = await Network.submitEvmTx(tx);
+```
+
+### submitTransaction
+
+**_- Submit transation_**  
+This method is used to submit a transaction
+
+##### Parameters:
+
+- &nbsp; `<TransactionData>` - (optinal) transaction data
+- &nbsp; `<NetworkAxiosConfig>` - (optinal) network config
+
+##### Results:
+
+- &nbsp; `Promise<SubmitTransactionDataResult>` - An instance of `SubmitTransactionDataResult` containing the response and error.
+
+##### Example:
+
+```jsx
+const data = `Your_Transaction_Data`;
+
+// Submit transaction
+const txResult = await Network.submitTransaction(data);
+```
+
+## sdkAsset
+
+### defineAsset
+
+**_- Defines a custom asset_**  
+An asset definition operation registers an asset with the Findora ledger. An asset is a digital resource that can be issued and transferred.  
+An asset has an issuer and a unique code. The DefineAsset operation must provide an unused token code. The transaction containing the DefineAsset operation will fail if there is already another asset on the ledger with the same code.
+
+##### Parameters:
+
+- &nbsp; `<WalletKeypar>` - Wallet keypair
+- &nbsp; `<string>` - asset name
+- &nbsp; `<string>` - (optinal) asset memo
+- &nbsp; `<string>` - (optinal) A set of rules (options) for the new asset.
+
+##### Results:
+
+- &nbsp; `Promise<TransactionBuilder>` - An instance of `TransactionBuilder` from `Ledger`
+
+##### Example:
+
+```jsx
+const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+
+// First, we create a transaction builder
+const assetBuilder = await Asset.defineAsset(walletInfo, assetCode);
+
+// Then, we submit a transaction
+const handle = await Transaction.submitTransaction(assetBuilder);
+```
+
+### getAssetCode
+
+**_- Return Asset Code_**  
+This method returns Asset Code by given asset type
+
+##### Parameters:
+
+- &nbsp; `<number[]>` - asset type
+
+##### Results:
+
+- &nbsp; `Promise<string>` - asset code.
+
+##### Example:
+
+```jsx
+const assetType = [1, 2];
+
+// Get the decrypted Asset code
+const assetCode = await Asset.getAssetCode(assetType);
+```
+
+### getAssetDetails
+
+**_- Get Asset Details_**  
+This method returns Asset details by given asset code
+
+##### Parameters:
+
+- &nbsp; `<string>` - asset code
+
+##### Results:
+
+- &nbsp; `Promise<IAsset>` - An instance of `FindoraWallet.IAsset`
+
+##### Example:
+
+```jsx
+const assetCode = "Your_Asset_Code";
+
+// Get asset details
+const assetDetails = await getAssetDetails(assetCode);
+```
+
+### getFraAssetCode
+
+**_- Returns the pre-defined FRA asset code_**  
+FRA asset code can not be re-defined, as well as it can not be used in the `DefineAset` or `IssueAsset` operations.  
+This is the main asset code, which is used when user needs to create a transaction, or calculate the fee and so on.
+
+##### Results:
+
+- &nbsp; `Promise<string>` - Findora Asset code
+
+##### Example:
+
+```jsx
+// Get the FRA Asset code
+const fraAssetCode = await Asset.getFraAssetCode();
+```
+
+### getFraPublicKey
+
+**_- Return Destination's Public Key_**  
+This method returns the public key of destination
+
+##### Results:
+
+- &nbsp; `Promise<XfrPublicKey>` - An instance of `XfrPublicKey`.
+
+##### Example:
+
+```jsx
+// Get the public key of destination
+const pubKey = await Asset.getFraPublicKey();
+```
+
+### getMinimalFee
+
+**_- Return Minimal Fee for transaction_**  
+This method returns the required minimal fee for transaction
+
+##### Results:
+
+- &nbsp; `Promise<BigInt>` - An instance of `BigInt`.
+
+##### Example:
+
+```jsx
+// Get the minimal fee for transaction
+const minFee = await Asset.getMinimalFee();
+```
+
+### getRandomAssetCode
+
+**_- Returns a random asset code_**  
+Using `Ledger`, it generates and returns a random custom asset code
+
+##### Results:
+
+- &nbsp; `Promise<string>` - Asset code.
+
+##### Example:
+
+```jsx
+// Get a random asset code
+const assetCode = await Asset.getRandomAssetCode();
+```
+
+### issueAsset
+
+**_- Issue some amount of a custom asset_**  
+Asset issuers can use the `IssueAsset` operation to mint units of an asset that they have created. Concretely, the `IssueAsset` operation creates asset records that represent ownership by a public key of a certain amount of an asset. These asset records are stored in a structure called a transaction output (TXO).
+
+##### Parameters:
+
+- &nbsp; `<WalletKeypar>` - wallet keypair
+- &nbsp; `<string>` - asset name
+- &nbsp; `<string>` - amount to be issued
+- &nbsp; `<AssetBlindRules>` - asset blind rules
+- &nbsp; `<number>` - (optional) asset decimals. This parameter can define how many numbers after the comma would this asset have
+
+##### Results:
+
+- &nbsp; `Promise<TransactionBuilder>` - An instance of `TransactionBuilder` from `Ledger`
+
+##### Example:
+
+```jsx
+const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+
+// Define the new asset parameters (rules)
+const assetBlindRules = { isAmountBlind: false };
+
+// First, we create a transaction builder
+const assetBuilder = await Asset.issueAsset(
+  walletInfo,
+  customAssetCode,
+  amountToIssue,
+  assetBlindRules
+);
+
+// Then, we submit a transaction
+const handle = await Transaction.submitTransaction(assetBuilder);
+```
+
+## Staking
+
+### claim
+
+**_- Claim FRA Token Rewards_**  
+This function enables users to claim rewards earned from staking FRA tokens.
+
+##### Parameters:
+
+- &nbsp; `<WalletKeypar>` - Wallet keypair
+- &nbsp; `<string>` - the amout of rewards which users wants to claim
+
+##### Results:
+
+- &nbsp; `Promise<TransactionBuilder>` - TransactionBuilder which should be used in `Transaction.submitTransaction`.
+
+##### Example:
+
+```jsx
+const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+
+// First, we create a transaction builder
+const assetBuilder = await Asset.defineAsset(walletInfo, assetCode);
+
+// Then, we submit a transaction
+const handle = await Transaction.submitTransaction(assetBuilder);
+```
+
+### delegate
+
+**_- Delegates FRA tokens_**  
+This function allows users to delegate FRA tokens to a validator.  
+This functionality is nearly identical to Transaction.sendToAddress except it adds one additional operation (i.e. add_operation_delegate) to the transaction builder.
+
+##### Parameters:
+
+- &nbsp; `<WalletKeypar>` - Wallet keypair
+- &nbsp; `<string>` - Target address for delegation
+- &nbsp; `<string>` - delegation amout
+- &nbsp; `<string>` - Asset Code
+- &nbsp; `<string>` - Target validator Address
+- &nbsp; `<AssetBlindRules>` - (optional) Confidential options for blind rule
+
+##### Results:
+
+- &nbsp; `Promise<TransactionBuilder>` - TransactionBuilder which should be used in `Transaction.submitTransaction`.
+
+##### Example:
+
+```jsx
+const ledger = await getLedger();
+
+// This is the address funds are sent to.
+// Actual `transfer to validator` process would be handled via added `add_operation_delegate` operation
+
+const delegationTargetPublicKey = Ledger.get_delegation_target_address();
+const delegationTargetAddress = await Keypair.getAddressByPublicKey(
+  delegationTargetPublicKey
+);
+
+const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+
+const assetCode = await Asset.getFraAssetCode();
+
+const assetBlindRules: Asset.AssetBlindRules = {
+  isTypeBlind: false,
+  isAmountBlind: false,
+};
+
+const transactionBuilder = await StakingApi.delegate(
+  walletInfo,
+  delegationTargetAddress,
+  amount,
+  assetCode,
+  validatorAddress,
+  assetBlindRules
+);
+
+const resultHandle = await Transaction.submitTransaction(transactionBuilder);
+```
+
+### getDelegateInfo
+
+**_- Get the delegation information_**  
+This method is used to get the delegation information
+
+##### Parameters:
+
+- &nbsp; `<string>` - wallet address
+
+##### Results:
+
+- &nbsp; `Promise<DelegateInfoResponse>` - An instance of `DelegateInfoDataResult` containing the response and error..
+
+##### Example:
+
+```jsx
+const address = "fra123sxde";
+
+// Get the delegation information
+const delegateInfo = await StakingApi.getDelegateInfo(address);
+```
+
+### getValidatorList
+
+**_- Get validator list_**  
+This method is used to get the list of validators.
+
+##### Results:
+
+- &nbsp; `Promise<validatorListResponse>` - An instance of `validatorListResponse` containing the response and error..
+
+##### Example:
+
+```jsx
+// Get validator list
+const validatorList = await StakingApi.getValidatorList();
+```
+
+### unStake
+
+**_- Unstake FRA tokens_**  
+This function allows users to unstake (aka unbond) FRA tokens.
+
+##### Parameters:
+
+- &nbsp; `<WalletKeypar>` - Wallet keypair
+- &nbsp; `<string>` - the amount users wants to unstake
+- &nbsp; `<string>` - validator's address
+- &nbsp; `<boolean>` - fully unstake option. Default is `false`
+
+##### Results:
+
+- &nbsp; `Promise<TransactionBuilder>` - TransactionBuilder which should be used in `Transaction.submitTransaction`.
+
+##### Example:
+
+```jsx
+const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+
+// Define whether or not user desires to unstake all the tokens, or only part of the staked amount
+const isFullUnstake = false;
+
+const transactionBuilder = await StakingApi.unStake(
+  walletInfo,
+  amount,
+  validator,
+  isFullUnstake
+);
+
+const resultHandle = await Transaction.submitTransaction(transactionBuilder);
+```
+
+## Transaction
+
+### getTransactionBuilder
+
+**_- Create an instance of `TransactionBuilder`_**  
+This method is used to create a transaction builder
+
+##### Results:
+
+- &nbsp; `Promise<TransactionBuilder>` - TransactionBuilder which should be used in `Transaction.submitTransaction`.
+
+##### Example:
+
+```jsx
+// Create a TransactionBuilder object
+const transactionBuilder = await Transaction.getTransactionBuilder();
+```
+
+### getTxList
+
+**_- Get a list of transactions for given wallet address_**  
+This method is used to get a list of transactions for given wallet address
+
+##### Parameters:
+
+- &nbsp; `<string>` - wallet address
+- &nbsp; `<"to" | "from">` - transaction type. it can only be 'to' or 'from'
+- &nbsp; `<number>` - pagination. The defaul value is 1.
+
+##### Results:
+
+- &nbsp; `Promise<ProcessedTxListResponseResult>` - An instance of `ProcessedTxListResponseResult` containing the total count and transactions.
+
+##### Example:
+
+```jsx
+const address = `fra000xxsr`;
+const type = "to";
+
+// Get list of `to` transaction of given address
+const txDetail = await Transaction.getTxList(address, type);
+```
+
+### sendToAddress
+
+**_- Send some asset to an address_**  
+Using this function, user can transfer some amount of given asset to another address
+
+##### Parameters:
+
+- &nbsp; `<WalletKeypar>` - wallet keypair
+- &nbsp; `<string>` - target wallet address
+- &nbsp; `<string>` - amount to be sent
+- &nbsp; `<string>` - asset code
+- &nbsp; `<AssetBlindRules>` - (optional) confidential options for blind rule
+
+##### Results:
+
+- &nbsp; `Promise<TransactionBuilder>` - A TransactionBuilder which should be used in Transaction.submitTransaction
+
+##### Example:
+
+```jsx
+const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+const toWalletInfo = await Keypair.restoreFromPrivateKey(toPkeyMine2, password);
+
+const assetCode = await Asset.getFraAssetCode();
+
+const assetBlindRules: Asset.AssetBlindRules = {
+  isTypeBlind: false,
+  isAmountBlind: false,
+};
+
+const transactionBuilder = await Transaction.sendToAddress(
+  walletInfo,
+  toWalletInfo.address,
+  "2",
+  assetCode,
+  assetBlindRules
+);
+
+const resultHandle = await Transaction.submitTransaction(transactionBuilder);
+```
+
+### sendToMany
+
+**_- Send some asset to multiple receivers_**  
+Using this function, user can transfer perform multiple transfers of the same asset to multiple receivers using different amounts
+
+##### Parameters:
+
+- &nbsp; `<WalletKeypar>` - wallet keypair
+- &nbsp; `<TransferReciever[]>` - the list of target wallet addresses and amount
+- &nbsp; `<string>` - asset code
+- &nbsp; `<AssetBlindRules>` - (optional) confidential options for blind rule
+
+##### Results:
+
+- &nbsp; `Promise<TransactionBuilder>` - A TransactionBuilder which should be used in Transaction.submitTransaction
+
+##### Example:
+
+```jsx
+const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+const toWalletInfoMine2 = await Keypair.restoreFromPrivateKey(
+  toPkeyMine2,
+  password
+);
+const toWalletInfoMine3 = await Keypair.restoreFromPrivateKey(
+  toPkeyMine3,
+  password
+);
+
+const assetCode = await Asset.getFraAssetCode();
+
+const assetBlindRules: Asset.AssetBlindRules = {
+  isTypeBlind: false,
+  isAmountBlind: false,
+};
+
+const recieversInfo = [
+  { reciverWalletInfo: toWalletInfoMine2, amount: "2" },
+  { reciverWalletInfo: toWalletInfoMine3, amount: "3" },
+];
+
+const transactionBuilder = await Transaction.sendToMany(
+  walletInfo,
+  recieversInfo,
+  assetCode,
+  assetBlindRules
+);
+
+const resultHandle = await Transaction.submitTransaction(transactionBuilder);
+```
+
+### sendToPublicKey
+
+**_- Send some asset to a wallet by public key_**  
+Using this function, user can transfer some amount of given asset to another wallet by target's public key
+
+##### Parameters:
+
+- &nbsp; `<WalletKeypar>` - wallet keypair
+- &nbsp; `<string>` - target's public key
+- &nbsp; `<string>` - amount to be sent
+- &nbsp; `<string>` - asset code
+- &nbsp; `<AssetBlindRules>` - (optional) confidential options for blind rule
+
+##### Results:
+
+- &nbsp; `Promise<TransactionBuilder>` - A TransactionBuilder which should be used in Transaction.submitTransaction
+
+##### Example:
+
+```jsx
+const walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+const toWalletPublicKey = `tgshauuy213`;
+
+const assetCode = await Asset.getFraAssetCode();
+
+const assetBlindRules: Asset.AssetBlindRules = {
+  isTypeBlind: false,
+  isAmountBlind: false,
+};
+
+const transactionBuilder = await Transaction.sendToPublicKey(
+  walletInfo,
+  toWalletPublicKey,
+  "2",
+  assetCode,
+  assetBlindRules
+);
+
+const resultHandle = await Transaction.submitTransaction(transactionBuilder);
+```
+
+### submitTransaction
+
+**_- Submits a transaction_**  
+The next step after creating a transaction is submitting it to the ledger, and, as a response, we retrieve the transaction handle.
+
+##### Parameters:
+
+- &nbsp; `<TransactionBuilder>` - an instance of `TransactionBuilder`
+
+##### Results:
+
+- &nbsp; `Promise<string>` - Transaction status handle
+
+##### Example:
+
+```jsx
+onst walletInfo = await Keypair.restoreFromPrivateKey(pkey, password);
+
+// First, we create a transaction builder
+const assetBuilder = await Asset.defineAsset(walletInfo, assetCode);
+
+// Then, we submit a transaction
+// If succcesful, the response of the submit transaction request will return a handle that can be used the query the status of the transaction.
+const handle = await Transaction.submitTransaction(assetBuilder);
+```
+
+## Helpers
+
+### getBlockTime
+
+**_- Get Block Time by given block height._**  
+Using this function, user can get block time by given block height
+
+##### Parameters:
+
+- &nbsp; `<number>` - block height
+
+##### Results:
+
+- &nbsp; `Promise<undefined | string>` - Block time
+
+##### Example:
+
+```jsx
+const blockHeight = 2341;
+// Get block time at Block #2341
+const blockTime = await helpers.getBlockTime(blockHeight);
+```
+
+### getTxListFromResponse
+
+**_- Get Transaction List by given transaction data response._**  
+Using this function, user can Get Transaction List by given transaction data response
+
+##### Parameters:
+
+- &nbsp; `<TxListDataResult>` - transaction data response
+
+##### Results:
+
+- &nbsp; `Promise<null | TxInfo[]>` - transaction list
+
+##### Example:
+
+```jsx
+const address = "fra12dsfew";
+const type = "to";
+const dataResult = await Network.getTxList(address, type);
+// Get tx list
+const txList = await helpers.getTxListFromResponse();
+```
+
+### getTxOperationsList
+
+**_- Get Operation List by given parsed transaction_**  
+Using this function, user can Get Transaction List by given parsed transaction
+
+##### Parameters:
+
+- &nbsp; `<ParsedTx>` - parsed tx info
+
+##### Results:
+
+- &nbsp; `TxOperation[]>` - transaction operation list
+
+##### Example:
+
+```jsx
+const address = "fra12dsfew";
+const type = "to";
+const dataResult = await Network.getTxList(address, type);
+// Get tx list
+const txList = await helpers.getTxListFromResponse();
+// Get one parsed tx
+parsedTx = JSON.parse(Base64.decode(txList[0].tx));
+// Get operation Lsit
+opList = helpers.getTxOperationsList(parsedTx);
+```
