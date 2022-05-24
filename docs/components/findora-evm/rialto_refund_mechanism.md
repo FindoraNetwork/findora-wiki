@@ -2,10 +2,10 @@
 
 ## Context
 
-Railto is a software program which provides connectivity between two EVM compatible chains. It achives this by providing event realaying across both the chains .
+Rialto is a software program which provides connectivity between two EVM compatible chains. It achives this by providing event realaying across both the chains .
 ### Types of bridges
 
-Railto has two types of bridges
+Rialto has two types of bridges
 
 - Incoming Bridges : These are all the bridges that bring liquidity to our system , from foreign L1 chains. For these bridges the source chain for tokens is `not` Findora EVM .
     - Example : BUSD Bridge
@@ -23,7 +23,7 @@ Note : Both the bridges are bidectional
 
 Using BUSD <-> BUSD.b (Incoming Bridge) as an example
 
-1. Railto deployes a locking contract on `BSC` , and a minting contract on `FRA EVM`
+1. Rialto deployes a locking contract on `BSC` , and a minting contract on `FRA EVM`
 2. User approves locking Smart contract on BSC -   Uses pays gas in BNB (BSC)
 3. User deposits to locking smart contract - User pays gas in BNB (BSC)
 4. Relayers relay locking event and Vote to mint Busd.b -  Relayers pay in FRA (funded by operators)
