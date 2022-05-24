@@ -81,18 +81,6 @@ div[role=banner] div {
 
     text-decoration: none !important;
     }
-.h1Heading_node_modules-\@docusaurus-theme-classic-lib-next-theme-Heading-styles-module,
-h2,
-h3,
-h4 {
-    font-size: 1.6rem !important;
-    letter-spacing: -.4px;
-    font-weight: 600;
-}
-
-h2 {
-    font-size: 1.1rem !important;
-}
 
 aside .menu__list li.menu__list-item {
     padding: 6px 0;
