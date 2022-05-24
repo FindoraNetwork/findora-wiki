@@ -1,4 +1,4 @@
-## Overview
+# Overview
 
 Public blockchain networks such as Bitcoin and Ethereum are transparent and offer pseudonymity rather than total anonymity. One of the most important design goals for Findora Network is that anyone can join and use the network. But an innate feature of this design is that everyone is able to scrutinize every single transaction recorded in the ledger. Transactions store information about pseudonymous identities (sender and receiver) of the participants in the transaction. They also store information about the amounts being sent. In the case of multi-asset chains, this also entails information about the assets being traded in the transactions.
 

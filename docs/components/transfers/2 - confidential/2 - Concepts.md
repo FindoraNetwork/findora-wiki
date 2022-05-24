@@ -1,4 +1,4 @@
-## Concepts
+# Concepts
 
 ### Generation of Proofs
 

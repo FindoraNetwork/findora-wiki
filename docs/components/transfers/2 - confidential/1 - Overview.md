@@ -1,4 +1,4 @@
-## Overview
+# Overview
 
 In public blockchain transactions, there is near-total transparency in the system. All of the important information in a transaction - such as the amount transferred, the pseudonymous identities of the sender and the receiver are public. Thus, these transactions are neither confidential nor anonymous. This can be problematic for many real-world applications.
 
