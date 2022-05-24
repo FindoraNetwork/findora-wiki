@@ -1,10 +1,9 @@
 ---
 sidebar_position: 3
 ---
+# Ledger Hardware Wallet Guide
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
-
-# Using Ledger device on Findora EVM
 
 Hardware Wallets (also known as cold storage) are physical devices that are not connected your computer or to the internet directly and hence allows you to store private keys securely while also allowing you to access funds or do transactions with convenience. The Findora Smart Chain allows you to use a ledger device for storing and transferring the assets on the chain. Follow this demo below to understand how to do this. The device used in this demo is Nanoledger X, but any hardware wallet should work fine with similar steps.
   

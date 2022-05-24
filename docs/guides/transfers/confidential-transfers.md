@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
+# Confidential Transfer Guide
 
-# Confidential Transfer
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 A confidential transfer is Findora’s engineered method of moving your assets between wallets with the privacy you need. Backed by industry-leading algorithms and safe from prying eyes, we are excited for what value this will provide for you. Below is a guide on how to do a confidential transfer using Findora Wallet application to hide the amount and/or asset type.
 

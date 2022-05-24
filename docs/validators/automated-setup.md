@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
 # Automated Setup
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Download and run the script below to configure your validator node and download the binaries automatically:
 

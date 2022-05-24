@@ -2,9 +2,10 @@
 sidebar_position: 1
 ---
 
+# Transparent Transfer Guide
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Transparent Transfer
 Step 1: Sign in into your Findora wallet then click on the wallet name you want to make a transfer from.
 
 <img src={useBaseUrl("/img/transfers/c-transfers-1.png")} width="100%" height="50%"/>

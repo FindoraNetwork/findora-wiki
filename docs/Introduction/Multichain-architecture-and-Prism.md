@@ -1,7 +1,10 @@
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
+---
+sidebar_position: 2
+---
 
 # Multi-chain Architecture and Prism
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 The Findora blockchain is composed of two different blockchain architectures combined into a single model “multi-chain” model. These two architectures include a UTXO-based blockchain model (aka native chain) and an accounts-based blockchain model (aka smart chain).
 
