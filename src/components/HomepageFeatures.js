@@ -1,62 +1,204 @@
-import React from 'react';
-import clsx from 'clsx';
-import styles from './HomepageFeatures.module.css';
+import React from "react";
+import clsx from "clsx";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Link from "@docusaurus/Link";
+
+import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
-  // {
-  //   title: 'Easy to Use',
-  //   Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
-  //   description: (
-  //     <>
-  //       Docusaurus was designed from the ground up to be easily installed and
-  //       used to get your website up and running quickly.
-  //     </>
-  //   ),
-  // },
-  // {
-  //   title: 'Focus on What Matters',
-  //   Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
-  //   description: (
-  //     <>
-  //       Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-  //       ahead and move your docs into the <code>docs</code> directory.
-  //     </>
-  //   ),
-  // },
-  // {
-  //   title: 'Powered by React',
-  //   Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
-  //   description: (
-  //     <>
-  //       Extend or customize your website layout by reusing React. Docusaurus can
-  //       be extended while reusing the same header and footer.
-  //     </>
-  //   ),
-  // },
+  {
+    title: "Learn",
+    Svg: require("../../static/img/landing/feature_learn.svg").default,
+    description: (
+      <>
+        Findora is a decentralized, privacy-preserving smart contract platform.
+        Build the next privacy dApp for any EVM-chain with the world’s leading
+        zero-knowledge technology
+      </>
+    ),
+    to: "/docs/introduction/intro",
+  },
+  {
+    title: "Build",
+    Svg: require("../../static/img/landing/feature_build.svg").default,
+    description: (
+      <>
+        Most up-to-date information on the status of the development tools in
+        the Findora blockchain.
+      </>
+    ),
+    to: "/docs/introduction/intro",
+  },
 ];
 
-function Feature({Svg, title, description}) {
+const SubFeatureList = [
+  {
+    title: "USE Guide",
+    Svg: require("../../static/img/landing/feature_use_guide.svg").default,
+    description: <>Findora is a decentralized, privacy-preserving</>,
+    to: "/docs/introduction/intro",
+  },
+  {
+    title: "Components",
+    Svg: require("../../static/img/landing/feature_components.svg").default,
+    description: <>Findora is a decentralized, privacy-preserving</>,
+    to: "/docs/introduction/intro",
+  },
+  {
+    title: "Validate",
+    Svg: require("../../static/img/landing/feature_validate.svg").default,
+    description: <>Findora is a decentralized, privacy-preserving</>,
+    to: "/docs/introduction/intro",
+  },
+];
+
+const SocialList = [
+  {
+    Url: "https://twitter.com/FindoraOfficial",
+    buttonClassName: "twitterLogoSocial",
+  },
+  {
+    Url: "https://t.me/findoraen",
+    buttonClassName: "telegramLogoSocial",
+  },
+  {
+    Url: "https://discord.gg/dHhY5pte",
+    buttonClassName: "discordLogoSocial",
+  },
+  {
+    Url: "https://discord.gg/dHhY5pte",
+    buttonClassName: "mediumLogoSocial",
+  },
+];
+
+function Feature({ Svg, title, description, to }) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
+    <div className={clsx("col col--6 padding--sm")}>
+      <Link
+        className={clsx("shadow--lw padding-vert--md", styles.featureCard)}
+        to="/docs/introduction/intro"
+      >
+        <div
+          className={clsx(
+            "text--center",
+            styles.featureSvgContainer,
+            styles.flexCentered
+          )}
+        >
+          <Svg className={styles.featureSvg} alt={title} />
+        </div>
+        <div className={clsx("padding-horiz--md", styles.infoContainer)}>
+          <h3 className={clsx(styles.featureTitle)}>{title}</h3>
+          <p className={clsx(styles.featureContent)}>{description}</p>
+        </div>
+      </Link>
+    </div>
+  );
+}
+
+function SubFeature({ Svg, title, description }) {
+  return (
+    <div className={clsx("col col--4 padding--sm")}>
+      <Link
+        className={clsx(
+          "shadow--lw padding-vert--md",
+          styles.featureCard,
+          styles.subFeatureCard
+        )}
+        to="/docs/introduction/intro"
+      >
+        <div
+          className={clsx(
+            "text--center",
+            styles.subFeatureSvgContainer,
+            styles.flexCentered
+          )}
+        >
+          <Svg className={styles.subFeatureSvg} alt={title} />
+        </div>
+        <div className={clsx("padding-horiz--md", styles.infoContainer)}>
+          <h3 className={clsx(styles.subFeatureTitle)}>{title}</h3>
+          <p className={clsx(styles.subFeatureContent)}>{description}</p>
+        </div>
+      </Link>
+    </div>
+  );
+}
+
+function SocialItem({ Svg, Url, buttonClassName }) {
+  console.log("buttonClassName", buttonClassName);
+  return (
+    <div className={clsx("padding--sm")}>
+      <div
+        className={clsx(
+          styles.flexCentered,
+          styles.socialSvgContainer,
+          styles[buttonClassName]
+        )}
+      >
+        <Link className={clsx(styles.socialButton)} to={Url}></Link>
       </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
+    </div>
+  );
+}
+
+function SubscribeSection() {
+  return (
+    <div className={clsx(styles.flexCentered, styles.subscribeContainer)}>
+      <div className={clsx(styles.subscribeLabel)}>Subscribe to our news</div>
+      <div className={clsx(styles.subscribeInputRow)}>
+        <div className={clsx(styles.subscribeInputContainer)}>
+          <input className={clsx(styles.subscribeInput)} />
+        </div>
+        <div>
+          <button
+            className={clsx(
+              "button button--outline button--primary",
+              styles.subcribeButton
+            )}
+          >
+            Subscribe
+          </button>
+        </div>
+      </div>
+      <div className={clsx(styles.socialContainer)}>
+        {SocialList.map((props, idx) => (
+          <SocialItem key={idx} {...props} />
+        ))}
       </div>
     </div>
   );
 }
 
 export default function HomepageFeatures() {
+  const { siteConfig } = useDocusaurusContext();
+
   return (
     <section className={styles.features}>
-      <div className="container">
+      <div className={clsx("container", styles.contentContainer)}>
+        <div
+          className={clsx(
+            "row",
+            styles.flexCentered,
+            styles.welcomeTitleContainer
+          )}
+        >
+          <h1 className={clsx("text--center", styles.welcomeTitle)}>
+            {siteConfig.customFields.welcomeToDocs}
+          </h1>
+        </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
+        </div>
+        <div className="row">
+          {SubFeatureList.map((props, idx) => (
+            <SubFeature key={idx} {...props} />
+          ))}
+        </div>
+        <div className={clsx("row", styles.flexCentered, styles.bottomRow)}>
+          <SubscribeSection />
         </div>
       </div>
     </section>
