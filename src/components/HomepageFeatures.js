@@ -9,20 +9,20 @@ const FeatureList = [
   {
     title: "Learn",
     Svg: require("../../static/img/landing/feature_learn.svg").default,
-    description: <>Learn the architecture and key concepts of the platform.</>,
+    description: <>Learn the architecture and key concepts of the platform</>,
     to: "/docs/introduction/intro",
   },
   {
     title: "Build",
     Svg: require("../../static/img/landing/feature_build.svg").default,
-    description: <>Build blockchain applications with Findora SDK tools.</>,
+    description: <>Build blockchain applications with Findora SDK tools</>,
     to: "/docs/introduction/intro",
   },
 ];
 
 const SubFeatureList = [
   {
-    title: "Use Guide",
+    title: "Use",
     Svg: require("../../static/img/landing/feature_use_guide.svg").default,
     description: <>Use Findora dApps (bridges, wallets, etc.)</>,
     to: "/docs/introduction/intro",
@@ -36,7 +36,7 @@ const SubFeatureList = [
   {
     title: "Validate",
     Svg: require("../../static/img/landing/feature_validate.svg").default,
-    description: <>Setup your own Findora validator.</>,
+    description: <>Setup your own Findora validator</>,
     to: "/docs/introduction/intro",
   },
 ];
