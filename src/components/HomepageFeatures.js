@@ -9,45 +9,34 @@ const FeatureList = [
   {
     title: "Learn",
     Svg: require("../../static/img/landing/feature_learn.svg").default,
-    description: (
-      <>
-        Findora is a decentralized, privacy-preserving smart contract platform.
-        Build the next privacy dApp for any EVM-chain with the world’s leading
-        zero-knowledge technology
-      </>
-    ),
+    description: <>Learn the architecture and key concepts of the platform.</>,
     to: "/docs/introduction/intro",
   },
   {
     title: "Build",
     Svg: require("../../static/img/landing/feature_build.svg").default,
-    description: (
-      <>
-        Most up-to-date information on the status of the development tools in
-        the Findora blockchain.
-      </>
-    ),
+    description: <>Build blockchain applications with Findora SDK tools.</>,
     to: "/docs/introduction/intro",
   },
 ];
 
 const SubFeatureList = [
   {
-    title: "USE Guide",
+    title: "Use Guide",
     Svg: require("../../static/img/landing/feature_use_guide.svg").default,
-    description: <>Findora is a decentralized, privacy-preserving</>,
+    description: <>Use Findora dApps (bridges, wallets, etc.)</>,
     to: "/docs/introduction/intro",
   },
   {
     title: "Components",
     Svg: require("../../static/img/landing/feature_components.svg").default,
-    description: <>Findora is a decentralized, privacy-preserving</>,
+    description: <>Read in-depth explanations of key Findora components</>,
     to: "/docs/introduction/intro",
   },
   {
     title: "Validate",
     Svg: require("../../static/img/landing/feature_validate.svg").default,
-    description: <>Findora is a decentralized, privacy-preserving</>,
+    description: <>Setup your own Findora validator.</>,
     to: "/docs/introduction/intro",
   },
 ];
