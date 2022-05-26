@@ -51,11 +51,11 @@ const SocialList = [
     buttonClassName: "telegramLogoSocial",
   },
   {
-    Url: "https://discord.gg/dHhY5pte",
+    Url: "https://discord.com/invite/aPuyZd8mBJ",
     buttonClassName: "discordLogoSocial",
   },
   {
-    Url: "https://discord.gg/dHhY5pte",
+    Url: "https://medium.com/findorafoundation",
     buttonClassName: "mediumLogoSocial",
   },
 ];
