@@ -18,7 +18,7 @@ Below are the key steps to move assets over from a source network (such as BSC) 
 Goto Metamask’s “Add Network” screen and configure Metamask to connect with BSC using the settings below:
 
 ![Docusaurus](/img/guides/rialto-guide/metamask-1.png)
-<!-- <img src={useBaseUrl("/img/guides/rialto-guide/metamask-1.png")} width="80%" height="40%"/>  -->
+<!-- # <img src={useBaseUrl("/img/guides/rialto-guide/metamask-1.png")} width="80%" height="40%"/>  -->
 <em>BSC Network Settings on Metamask</em>
 
 <br/><br/><br/>
