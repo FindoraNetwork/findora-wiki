@@ -85,7 +85,7 @@ function Feature({ Svg, title, description, to }) {
   );
 }
 
-function SubFeature({ Svg, title, description }) {
+function SubFeature({ Svg, title, description, to }) {
   return (
     <div className={clsx("col col--4 padding--sm")}>
       <Link
@@ -94,7 +94,7 @@ function SubFeature({ Svg, title, description }) {
           styles.featureCard,
           styles.subFeatureCard
         )}
-        to="/docs/introduction/intro"
+        to={to}
       >
         <div
           className={clsx(
