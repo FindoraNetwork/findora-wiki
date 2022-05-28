@@ -1,4 +1,4 @@
-## Technical Specifications
+# Technical Specifications
 
 ### BLS12-381
 

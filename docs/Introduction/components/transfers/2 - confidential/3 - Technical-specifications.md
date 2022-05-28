@@ -1,4 +1,4 @@
-## Technical Specifications
+# Technical Specifications
 
 Findora uses the *Ristretto* group, which is a quotient group built from the elliptic curve group on Curve25519. Thhis group has order $8p$ for the prime: $$p =2^{252} +27742317777372353535851937790883648493.$$ The Ristretto quotient group is the unique quotient group of order $p$.
 

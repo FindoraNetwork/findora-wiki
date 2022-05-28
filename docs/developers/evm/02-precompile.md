@@ -1,4 +1,10 @@
-# Precompile Contracts
+# Precompiled Contracts
+
+## Introduction
+Similar to Ethereum, in addition to standard opcodes, the EVM offers more advanced functionalities in the form of precompiled smart contracts. These contracts are bundled with the EVM at fixed addresses and can be called like a standard contract. 
+
+## Precompiled Contracts
+
 Address | Name | Features
 --- | --- | ---
 0x0000000000000000000000000000000000000001 | ECRecover | ECDSA public key recovery

@@ -1,4 +1,4 @@
-## Rewards
+# Rewards
 
 Staking your FRA to become an active member of the Findora protocol comes with responsibility and rewards. By design, Findora rewards are non-inflationary and the protocol allocates a 2% (420 million FRA) of its total circulating supply to fund incentives. This ensures that the network is grounded well enough until transaction fees gain traction. These rewards are primarily meant to jump-start the network - the network will in the long run sustain itself and reward validators via transaction fees.
 
