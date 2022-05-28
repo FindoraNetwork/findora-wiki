@@ -1,10 +1,11 @@
 ---
 sidebar_position: 1
 ---
+# Validators Get started
 
-# Minimum System Requirements
+## Minimum System Requirements
 
-## Hardware Requirements
+### Hardware Requirements
 
 * Minimum Requirements:
   * Minimum: 8GB RAM, 2 Core CPU, 100GB Hard Disk

@@ -4,12 +4,23 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
+.mainContainer {
+  height: 95vh;
+}
 
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+
+  color: #000000;
+  padding: 0;
 }
 
 @media screen and (max-width: 966px) {
