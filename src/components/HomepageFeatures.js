@@ -16,7 +16,7 @@ const FeatureList = [
     title: "Build",
     Svg: require("../../static/img/landing/feature_build.svg").default,
     description: <>Build with Findora SDK tools</>,
-    to: "/docs/introduction/intro",
+    to: "/docs/developers/developers-get-started",
   },
 ];
 
@@ -25,19 +25,19 @@ const SubFeatureList = [
     title: "Use",
     Svg: require("../../static/img/landing/feature_use_guide.svg").default,
     description: <>Use Findora dApps (bridges, wallets, etc.)</>,
-    to: "/docs/introduction/intro",
+    to: "docs/guides/use-get-started",
   },
   {
     title: "Components",
     Svg: require("../../static/img/landing/feature_components.svg").default,
     description: <>Read in-depth info about key components</>,
-    to: "/docs/introduction/intro",
+    to: "docs/Introduction/components/components-overview",
   },
   {
     title: "Validate",
     Svg: require("../../static/img/landing/feature_validate.svg").default,
     description: <>Setup a Findora validator</>,
-    to: "/docs/introduction/intro",
+    to: "/docs/validators/validators-get-started",
   },
 ];
 
@@ -65,7 +65,7 @@ function Feature({ Svg, title, description, to }) {
     <div className={clsx("col col--6 padding--sm")}>
       <Link
         className={clsx("shadow--lw padding-vert--md", styles.featureCard)}
-        to="/docs/introduction/intro"
+        to={to}
       >
         <div
           className={clsx(
