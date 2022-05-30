@@ -115,7 +115,6 @@ function SubFeature({ Svg, title, description, to }) {
 }
 
 function SocialItem({ Svg, Url, buttonClassName }) {
-  console.log("buttonClassName", buttonClassName);
   return (
     <div className={clsx("padding--sm")}>
       <div
