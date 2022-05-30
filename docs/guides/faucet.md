@@ -42,10 +42,13 @@ Step 2: Go to `#faucet` channel on Findora's Discord
 
 Step 3: FindoraBot will automatically detect commands requesting Testnet FRA EVM tokens. Specify the following command to send a request:
 
-```
 Bot Request Format:
+```
 !faucet <\wallet address> <\Will you run a validator? yes/no> > <\Are you a developer? yes/no>
-Example: !faucet fra19rtfg2g58x6jxxxxxxxxxxxxxxxxx example@gmail.com no no
+```
+Example:
+```
+!faucet fra19rtfg2g58x6jxxxxxxxxxxxxxxxxx example@gmail.com no no
 ```
 
 > Note: You can only ask for FRA tokens once so make sure your receiving wallet address is correct.
