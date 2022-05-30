@@ -6,45 +6,41 @@ sidebar_position: 3
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
-### Pull the latest Findora docker image
+## Step 1: Pull Findora docker image
 
- 
- Navigate to your project folder and do the following:
- 
+Navigate to your project folder and pull docker image. Here, we are downloading the `findorad` which is the node of the Findora Network. For security and stability reasons, make sure to download version `0.3.19-release`
 
-- Pull docker image 
+```
+docker pull findoranetwork/findorad:v0.3.19-release
+```
 
-    Here, we are downloading the `findorad` which is the node of the findora network, for security and stability reasons. Make sure to download version `0.3.19-release`
-
-    ```
-      docker pull findoranetwork/findorad:v0.3.19-release
-    ```
-
-    <img src={useBaseUrl("/img/validator_setup_guide/manual-setup-1.png")} />
+<img src={useBaseUrl("/img/validator_setup_guide/manual-setup-1.png")} />
 
 
-- Check to confirm that you have the lastest version by checking for the `latest` tag as seen in the picture below
+Verify you have the latest version by checking for the `latest` tag as seen in the picture below
 
-    ```
-    docker image ls
-    ```
-    <img src={useBaseUrl("/img/validator_setup_guide/manual-setup-2.png")} />
+```
+docker image ls
+```
+<img src={useBaseUrl("/img/validator_setup_guide/manual-setup-2.png")} />
 
+## Step 2: Setup fn CLI
 
-- You will need the Findora Node Setup (fn) CLI tool that contains the neccessary sub-commands to setup a validator node and stake/unstake FRA.
-    Download according to your operating system
+1. You will need the Findora Node Setup (fn) CLI tool that contains the neccessary sub-commands to setup a validator node and stake/unstake FRA.
+    
+    Download according to your operating system:
     * [Linux](https://wiki.findora.org/bin/linux/fn)
     * [MacOS](https://wiki.findora.org/bin/macos/fn)
  
     You can also run a node on windows via *Windows Subsystem for Linux*
 
-- Move your downloaded `fn` to your path directory by either running
+2. Move your downloaded `fn` to your path directory by either running
 
     ```
     mv fn /usr/local/bin/
     ```
 
-or by running the command below if you moved the fn file to home
+    or by running the command below if you moved the fn file to HOME
 
     ```
     cp $HOME/fn /user/local/bin/
@@ -52,12 +48,12 @@ or by running the command below if you moved the fn file to home
 
     <img src={useBaseUrl("/img/validator_setup_guide/manual-setup-3.png")} />
 
-- Ensure that binaries have executable permisions set correctly 
+3. Ensure that binaries have executable permisions set correctly 
 
     <img src={useBaseUrl("/img/validator_setup_guide/manual-setup-4.png")} />
 
 
-### Configure Local Node
+## Step 3: Configure Local Node
 
 - Set Environment Path Variables
 
@@ -132,7 +128,7 @@ We're going to clean up any old data you might have in the directory by removing
  If you encounter a security issue error when trying to initialize findora node, you may need to manually approve its security privileges in your OS first. Then re-run the command again.
 :::
 
-### Generate Staking Key
+## Step 4: Generate Staking Key
    Up next is to generate a new, random pair of public and private keys for your new node which will be used for FRA staking.
 
    First step is this command
@@ -158,14 +154,14 @@ Key: {
 :::note
  For convenience, you can import the `sec_key` (aka private key) into any Findora wallet (Win/Mac wallet, mobile wallet, CLI wallet tool, etc.), to more conveniently check and manage your FRA balances or to view historical transaction data for this wallet address. The private key or the mnemonic should never be shared with anyone, even with people from the Findora community or development team. Our mods will never ask for this information. It would be advisable to keep a backup of your mnemonic on a separate storage, should you ever need to restore it.
 :::
-## Store security key
+## Step 5: Store security key
 Store your security key by running the following command
     # For Testnet
     echo ${ROOT_DIR}/tmp.gen.keypair > ${ROOT_DIR}/testnet_node.key
     # For Mainnet
     echo ${ROOT_DIR}/tmp.gen.keypair > ${ROOT_DIR}/mainnet_node.key
 
-## Store Mnemonic Words into ${ROOT_DIR}/node.mnemonic
+## Step 6: Store Mnemonic Words
 For convenience in setting up your node via the `fn` tool, store your 24 mnemonic keywords (located inside tmp.gen.keypair) into `${ROOT_DIR}/node.mnemonic`. To accomplish this, open the `tmp.gen.keypair` file and copy all of the 24 mnemonic keywords specific to your node. Then paste these 24 mnemonic keywords into the command below. Note: the 24 mnemonic keywords in the example command below (repair, drink, action, brass...) are examples. **Do not use them.**
 
 ```
@@ -193,7 +189,7 @@ Configure your validator node to use your newly generated public and private key
     fn setup -K <path to validator key> || exit 1
 ```
 
-### Start or Upgrade Local Node
+## Step 7: Start or Upgrade Local Node
 
 ```
 # Stop your local container if necessary
@@ -221,7 +217,7 @@ Logging for Node
 docker logs -f findorad
 ```
 
-### Check Local Node Status
+## Step 8: Check Local Node Status
 If the following commands return status messages without any errors, then your node has been successfully configured and started:
 
 ```
