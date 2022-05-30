@@ -41,7 +41,7 @@ const barToAbar = async () => {
   // Then we retrieve transaction data (to be broadcasted)
   const submitData = transactionBuilder.transaction();
 
-  // Finally, we submut the transaction to the network to finalize the `bar to abar` operation
+  // Finally, we submit the transaction to the network to finalize the `bar to abar` operation
   // and, as a result we receive a transaction hash
   const result = await Network.submitTransaction(submitData);
   const { response: resultHandle } = result;

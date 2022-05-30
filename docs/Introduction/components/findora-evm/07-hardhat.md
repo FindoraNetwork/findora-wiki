@@ -1,7 +1,7 @@
 # Using Hardhat
 
 ### Overview
-Hardhat is an Ethereum development environment that helps developers manage and automate repetitive tasks for smart contract and DApp development, and can be used in the truffle project。
+Hardhat is an Ethereum development environment that helps developers manage and automate repetitive tasks for smart contract and DApp development, and can be used in the truffle project.
 #### Prerequisites
    This tutorial requires Node.js to be installed. You can download it through [Node.js](https://nodejs.org/) or run the following code to complete the installation.
     You can verify the correct installation by requesting the version of each installation package：
@@ -27,7 +27,7 @@ Need to reinstall dependencies
 ```
 npm install
 ```
-This will create a Hardhat config file (hardhat.config.js) in our project directory, and create a .secret in the project root directory to store the wallet address private key we need to use when operating the contract。
+This will create a Hardhat config file (hardhat.config.js) in our project directory, and create a .secret in the project root directory to store the wallet address private key we need to use when operating the contract.
 ```
 import '@nomiclabs/hardhat-ethers';
 import '@nomiclabs/hardhat-etherscan';
@@ -77,7 +77,7 @@ module.exports = {
 }
 ```
 ### Create Hardhat script file
-Create a script directory at the same level as contract to store Hardhat script files (example: deploy.ts), and then use ethers to write deployment scripts. First, create a local instance of the contract through the getContractFactory() method. Next, use the deploy() method included in the instance to initiate a smart contract. Finally, use deployed() to wait for the deployment to complete. After the contract is deployed, the contract address can be obtained in the MyContract instance. The script is a simplified version used in this tutorial。
+Create a script directory at the same level as contract to store Hardhat script files (example: deploy.ts), and then use ethers to write deployment scripts. First, create a local instance of the contract through the getContractFactory() method. Next, use the deploy() method included in the instance to initiate a smart contract. Finally, use deployed() to wait for the deployment to complete. After the contract is deployed, the contract address can be obtained in the MyContract instance. The script is a simplified version used in this tutorial.
 ```
 import { network, ethers} from 'hardhat';
 
@@ -113,7 +113,7 @@ The contract can be deployed in a few seconds, and then you can see the contract
 ![hardhat-deploy](/img/evm/hardhat-deploy.jpg)
 
 ### Interact with the contract
-Create a local instance of the MyContract.sol contract, and then enter the address obtained when deploying the contract, connect this instance to an existing instance, and interact with it after connecting to the contract. When the console command is still running, call the method in the contract and pass in the correct parameters (If the method involves ERC20 type transfer, please authorize first)。
+Create a local instance of the MyContract.sol contract, and then enter the address obtained when deploying the contract, connect this instance to an existing instance, and interact with it after connecting to the contract. When the console command is still running, call the method in the contract and pass in the correct parameters (If the method involves ERC20 type transfer, please authorize first).
 ```
 const myContract = await ethers.getContractAt('MyContract', '0x8D94133ddF3A6Cc451653Cd4B21Dc8b65c3383B0');
    const tx = await myContract.connect(operator).setValue(88, override);
