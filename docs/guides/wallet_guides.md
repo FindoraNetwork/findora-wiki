@@ -16,26 +16,6 @@ The Findora wallet enables you to send and receive FRA tokens and even create yo
 
 [Download Wallet Android APK](https://wallet.findora.org/download/FindoraWallet.apk)
 
-The current Findora Web Wallet version only supports wallet generation and wallet access.[wallet.findora.org](https://wallet.findora.org/)  can be accessed both on a desktop computer or a mobile device (not recommended on iOS), so long as you save your Keystore file and password securely (make sure to always do this!).
-
-###
-
-Step 1. Navigate to  [wallet.findora.org](https://wallet.findora.org/). Create New Wallet.
-
-![](https://lh5.googleusercontent.com/-YYUQQAB7xdwzcy4VFsDkyYeppqWiIV4fP91jJbuMGGpS-9AgFkayr7szpsphaEMXd5u1vMmSM0QMB_Va0vXU537jPwrSmhTbKrXv-AN6ejplc5Y8Iwzo5qhqzxjWMA-0oPE5K8X)
-
-###
-
-Step 2. Select a wallet name and a strong password. >> Create Keystore File.
-
-Please check and agree to the Terms of Use. Make sure you back up and store your password securely as Findora cannot recover or reset your password for you.
-
-![](https://lh6.googleusercontent.com/jqiKH2FdSrc-38O7CWkxR4L6wtgmaAQf4w5e3ynduvoXm_OGKi10ZoWGwtsit-97xm8FmGaBMY56mXMCWo0HHuvwZLZXp5ZFBjMjzQYzqR-jBLXiVDoEAwqNPWNAVRt6Yw3ZsN-o)
-
-###
-
-Step 3: Download Keystore file >> Unlock Wallet.
-
 ## Wallet Basics
 
 ### Create Wallet

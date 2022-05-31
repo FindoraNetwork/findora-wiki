@@ -8,26 +8,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## User Guide to Prism on Findora
 
-1.Go to the `Prism` page, and choose a transfer direction from EVM-compatible Wallet to Native Wallet by clicking the arrow icon.
+1. Go to the `Prism` page on Wallet, and choose a transfer direction by clicking the arrow icon. In this guide we show how to transfer from EVM-compatible Wallet to Native Wallet. You can adjust the arrow direction according to your needs.
 
-Here is a demonstration of transferring assets from EVM-compatible Wallet to Native Wallet, please adjust the arrow direction according to your needs.
+    ![](https://miro.medium.com/max/1400/0*lluDOL4k_37ocXei)
 
-![](https://miro.medium.com/max/1400/0*lluDOL4k_37ocXei)
+2. Click the EVM-compatible Wallet and add your MetaMask wallet by private key
 
-EVM-compatible Wallet to Native Wallet
+    ![](https://miro.medium.com/max/1400/0*qPKhiAU4UksuqwWD)
 
-2.Click the EVM-compatible Wallet and add your MetaMask wallet by private key
+3. Input the amount and the destination wallet address, and click on `Next`
 
-![](https://miro.medium.com/max/1400/0*qPKhiAU4UksuqwWD)
+    ![](https://miro.medium.com/max/1400/0*m6S74SYolZkVLMg1)
 
-Add EVM-compatible Wallet (MetaMask)
+4. Your Smart FRA will be converted to Native FRA after the transaction is confirmed.
 
-3.Input the amount and the destination wallet address, and click the next
-
-![](https://miro.medium.com/max/1400/0*m6S74SYolZkVLMg1)
-
-Add Native Wallet
-
-4.Your smart FRA will be converted to Native FRA after the transaction is confirmed.
-
-![](https://miro.medium.com/max/1400/0*tClDO9ArNPZRrb6m)
+     <p align="center"><img src={useBaseUrl("https://miro.medium.com/max/1400/0*tClDO9ArNPZRrb6m")} width="50%" height="50%"/></p>
