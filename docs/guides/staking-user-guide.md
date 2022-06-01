@@ -25,7 +25,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 3. Transfer FRA (Smart) to EVM-compatible Wallet: [Guide of Withdraw from KuCoin to Findora Smart Chain](https://medium.com/findorafoundation/tutorial-2-how-to-withdraw-smart-fra-from-kucoin-to-metamask-beneficial-to-findora-66dfa7c92dee)​
 
-    -   Config Metamask for Findora Mainnet. [Check this guide](/docs/Introduction/components/findora-evm/metamask) on how to use MetaMask. [Visit this page](/docs/networks/Mainnet) for the latest Mainnet Network Info.
+    -   Config Metamask for Findora Mainnet. [Check this guide](/docs/components/findora-evm/metamask) on how to use MetaMask. [Visit this page](/docs/networks/Mainnet) for the latest Mainnet Network Info.
 
     -   To hold (Smart) FRA privately (i.e. off-exchange), you can use BitKeep (mobile) and choose Findora Smart Chain in the menu
 

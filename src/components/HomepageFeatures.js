@@ -31,7 +31,7 @@ const SubFeatureList = [
     title: "Components",
     Svg: require("../../static/img/landing/feature_components.svg").default,
     description: <>Read in-depth info about key components</>,
-    to: "docs/Introduction/components/components-overview",
+    to: "docs/components/components-overview",
   },
   {
     title: "Validate",
