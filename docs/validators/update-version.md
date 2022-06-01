@@ -1,41 +1,30 @@
 ---
-sidebar_position: 6
+sidebar_position: 4
 ---
 
 # Version Update
 ## Update Image Version
 
-> **! NOTE !**
->
-> If you just want to update the image version. use this script.
-> 
+The following scripts can be used in any environment to update the image version.
 
-
-
-- For testnet: [**version_update_testnet.sh**](./scripts/update_version_testnet.sh)
-- For mainnet: [**version_update_mainnet.sh**](./scripts/update_version_mainnet.sh)
+- For Testnet: [**version_update_testnet.sh**](./scripts/update_version_testnet.sh)
+- For Mainnet: [**version_update_mainnet.sh**](./scripts/update_version_mainnet.sh)
   
-> **Tips**:
-> * You can use this script in any environment
-> * example: `bash -x update_version.sh`
+Example:
+```
+bash -x version_update_testnet.sh
+```
 
-## Safety clean
+## Auto Safety Clean
 
-> **! NOTE !**
->
-> This script WILL NOT clean your validator id and wallet data. It just clean the data and restart the validator.
+Use the following scripts to clean the data and restart the validator. Please note that this script WILL NOT clean your validator ID and wallet data. 
 
-> 
+Before running the script, make sure to set Environment Path Variables. Set `$ROOT_DIR` to the same path as used in the setup.
 
-#### Set Environment Path Variables
+- For Testnet: [**safety_clean_testnet.sh**](./scripts/safety_clean_testnet.sh)
+- For Mainnet:[**safety_clean_mainnet.sh**](./scripts/safety_clean_mainnet.sh)
 
-Please set `$ROOT_DIR` same as setup step.
-
-#### Auto clean
-
-- For testnt: [**safety_clean_testnet.sh**](./scripts/safety_clean_testnet.sh)
-- For mainnet:[**safety_clean_mainnet.sh**](./scripts/safety_clean_mainnet.sh)
-
-> **Tips**:
-> * example: `bash -x safety_clean.sh`
-
+Example:
+```
+bash -x safety_clean_testnet.sh
+```
