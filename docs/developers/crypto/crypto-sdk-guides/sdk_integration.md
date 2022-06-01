@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# SDK Integration
+# Crypto SDK Guide
 
 
 This guide will show you how `Yellow Submarine` allows users to convert an asset to a private asset and transfer it to a brand new wallet address by `Findora Triple Masking`.
