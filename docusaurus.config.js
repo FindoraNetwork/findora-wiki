@@ -17,6 +17,10 @@ module.exports = {
     welcomeToDocs: "Welcome to the Findora Docs",
   },
   themeConfig: {
+    colorMode: {
+      defaultMode: "light",
+      disableSwitch: true,
+    },
     announcementBar: {
       id: "announceBar",
       content:
@@ -33,23 +37,43 @@ module.exports = {
       },
       items: [
         {
-          href: "https://discord.gg/dHhY5pte",
-          label: "Discord",
-          position: "right",
+          type: "docSidebar",
+          position: "left",
+          sidebarId: "tutorialSidebar",
+          label: "All Docs",
         },
         {
-          href: "https://twitter.com/FindoraOfficial",
-          label: "Twitter",
+          type: "dropdown",
+          label: "Community",
           position: "right",
+          items: [
+            {
+              href: "https://twitter.com/FindoraOfficial",
+              label: "Twitter",
+            },
+            {
+              href: "https://t.me/findoraen",
+              label: "Telegram",
+            },
+            {
+              href: "https://discord.gg/dHhY5pte",
+              label: "Discord",
+            },
+            {
+              href: "https://medium.com/findorafoundation",
+              label: "Medium",
+            },
+            {
+              href: "https://github.com/findoraNetwork",
+              label: "GitHub",
+            },
+
+            // { to: "docs/introduction/intro", label: "Learn" },
+          ],
         },
+
         {
-          href: "https://t.me/findoraen",
-          label: "Telegram",
-          position: "right",
-        },
-        {
-          href: "https://github.com/findoraNetwork",
-          label: "GitHub",
+          type: "localeDropdown",
           position: "right",
         },
       ],

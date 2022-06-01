@@ -54,7 +54,7 @@ main .container {
 }
 
 .navbar__items svg {
-  display: none;
+  /* display: none; */
 }
 
 div[role="banner"] {
