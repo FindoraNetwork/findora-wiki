@@ -28,6 +28,16 @@ jobs:
       run: |
         make ci_build_fn
 
+    - name: Generate env file
+      env: 
+        REACT_APP_MAILCHIMP_U: ${{ secrets.REACT_APP_MAILCHIMP_U }}
+        REACT_APP_MAILCHIMP_ID: ${{ secrets.REACT_APP_MAILCHIMP_ID }}
+      shell: bash
+      run: |
+        touch .env
+        echo REACT_APP_MAILCHIMP_U="$REACT_APP_MAILCHIMP_U" >> .env
+        echo REACT_APP_MAILCHIMP_ID="$REACT_APP_MAILCHIMP_ID" >> .env
+
     - name: Build wiki doc
       shell: bash
       run: |
