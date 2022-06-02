@@ -31,7 +31,7 @@ Alternatively, you can also send a private message to the `FindoraBot` if you do
 ### Check FRA EVM Balance
 You will receive a message from the FindoraBot with the link to the transaction on the [Findora EVM block explorer for Anvil](https://testnet-anvil.evm.findorascan.io/). You can input your 0x address in the block explorer to check the balance and transaction history.
 
-Alternatively, you can also check your FRA balance on the Findora Smart Chain using MetaMask. [Check this guide](/docs/Introduction/components/findora-evm/metamask) on how to use MetaMask to connect to the Findora Anvil Testnet.
+Alternatively, you can also check your FRA balance on the Findora Smart Chain using MetaMask. [Check this guide](/docs/components/findora-evm/metamask) on how to use MetaMask to connect to the Findora Anvil Testnet.
 
 ## Request on Findora Native Chain
 Below are the steps to request Anvil testnet FRA tokens on the UTXO Chain.

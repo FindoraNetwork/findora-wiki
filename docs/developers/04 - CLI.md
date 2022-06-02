@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 ---
 
-# SDK CLI Overview
+# CLI Overview
 
 The `Findora SDK` contains a `CLI commands` tool which enables developers to quickly perform frequently used actions using a single comand syntax.
 
