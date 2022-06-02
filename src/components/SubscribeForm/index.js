@@ -23,6 +23,7 @@ function SubscribeForm(props) {
       email.indexOf("@") > -1 &&
       onValidated({
         MERGE0: email,
+        MERGE6: "English",
       });
   };
 
