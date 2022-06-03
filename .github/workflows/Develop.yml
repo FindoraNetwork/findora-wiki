@@ -37,10 +37,15 @@ jobs:
         REACT_APP_MAILCHIMP_ID: ${{ secrets.REACT_APP_MAILCHIMP_ID }}
       shell: bash
       run: |
+        cat <<EOF > .env
         touch .env
-        echo REACT_APP_MAILCHIMP_U="$REACT_APP_MAILCHIMP_U" >> .env
-        echo REACT_APP_MAILCHIMP_ID="$REACT_APP_MAILCHIMP_ID" >> .env
-        echo REACT_APP_MAILCHIMP_URL="https://findora.us3.list-manage.com/subscribe/post" >> .env
+        REACT_APP_MAILCHIMP_U="$REACT_APP_MAILCHIMP_U"
+        REACT_APP_MAILCHIMP_ID="$REACT_APP_MAILCHIMP_ID"
+        REACT_APP_MAILCHIMP_URL="https://findora.us3.list-manage.com/subscribe/post"
+        EOF
+
+        echo "cat .env"
+        cat .env
 
     - name: Build wiki doc
       shell: bash
