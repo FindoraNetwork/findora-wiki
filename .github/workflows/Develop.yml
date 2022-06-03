@@ -31,7 +31,6 @@ jobs:
       run: |
         make ci_build_fn
 
-
     - name: Generate env file
       env: 
         REACT_APP_MAILCHIMP_U: ${{ secrets.REACT_APP_MAILCHIMP_U }}
