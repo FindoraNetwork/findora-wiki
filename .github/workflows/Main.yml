@@ -30,8 +30,8 @@ jobs:
 
     - name: Generate env file
       env: 
-        REACT_APP_MAILCHIMP_U: ${{ secrets.REACT_APP_MAILCHIMP_U }}
-        REACT_APP_MAILCHIMP_ID: ${{ secrets.REACT_APP_MAILCHIMP_ID }}
+        REACT_APP_MAILCHIMP_U: ${{ secrets.MAILCHIMP_U }}
+        REACT_APP_MAILCHIMP_ID: ${{ secrets.MAILCHIMP_ID }}
       shell: bash
       run: |
         touch .env
