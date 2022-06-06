@@ -1,12 +1,13 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
-# Ledger Hardware Wallet Guide
+
+# Ledger Hardware Wallet
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Hardware Wallets (also known as cold storage) are physical devices that are not connected your computer or to the internet directly and hence allows you to store private keys securely while also allowing you to access funds or do transactions with convenience. The Findora Smart Chain allows you to use a ledger device for storing and transferring the assets on the chain. Follow this demo below to understand how to do this. The device used in this demo is Nanoledger X, but any hardware wallet should work fine with similar steps.
-  
+
 ## Connect your ledger to Metamask
 
 Step 1: Select `Connect hardware wallet` in your Metamask settings dropdown
@@ -17,16 +18,17 @@ Step 2: Select your device type. We will use ledger for this demo.
 
 <p align="center"><img src={useBaseUrl("/img/guides/ledger-2.png")} width="50%" height="40%"/></p>
 
-:::note 
+:::note
 Follow the onscreen instructions to unlock the ledger device and open the Ethereum application
 :::
+
 <p align="center"><img src={useBaseUrl("/img/guides/ledger-3.png")} width="50%" height="40%"/></p>
 
 Step 3: Allow Metamask to connect to you hardware device
 
 <p align="center"><img src={useBaseUrl("/img/guides/ledger-4.png")} width="50%" height="40%"/></p>
 
-:::note 
+:::note
 Make sure that any other applications (such as Ledger Live) which might be connected to your hardware wallet are closed
 :::
 
@@ -34,14 +36,13 @@ Step 4: Once connected, unlock your account.
 
 <p align="center"><img src={useBaseUrl("/img/guides/ledger-5.png")} width="50%" height="40%"/></p>
 
-:::note 
+:::note
 The unit shows up as ETH because we are using the Ethereum app, but this will not affect the actual transfers with the ledger
 :::
 
 Step 5: Verify your new Hardware wallet account on Findorascan
 
 <p align="center"><img src={useBaseUrl("/img/guides/ledger-6.png")} width="50%" height="40%"/></p>
-
 
 ## Receive funds to your Ledger Address
 
