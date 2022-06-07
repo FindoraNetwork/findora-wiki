@@ -40,8 +40,8 @@ Before continuing, the staking private key (`sec_key` in your `tmp.gen.keypair` 
 Note: If this directory does not exist, you will need to create it.
 
 ### Download and run the automated setup script
-- For Testnet: [**node_init_testnet.sh**](../validator-guides/scripts/node_init_testnet.sh)
-- For Mainnet: [**node_init_mainnet.sh**](../validator-guides/scripts/node_init_mainnet.sh)
+- For Testnet: [**node_init_testnet.sh**](scripts/node_init_testnet.sh)
+- For Mainnet: [**node_init_mainnet.sh**](scripts/node_init_mainnet.sh)
 
 Example:
 ```
