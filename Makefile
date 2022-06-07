@@ -17,7 +17,7 @@ ci_build_wiki:
 
 
 build_musl_fn:
-	docker build -t musl_fn -f container/Dockerfile-fn-musl-base .
+	docker build -t musl_fn -f container/Dockerfile-fn-musl-linux .
 	docker run -d --rm --name fn musl_fn
 	docker cp fn:/volume/target/x86_64-unknown-linux-musl/release/fn ./static/bin/linux/fn
 	docker stop -t 0 fn && docker rm -f fn
