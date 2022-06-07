@@ -6,7 +6,6 @@ import Link from "@docusaurus/Link";
 import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
-
   {
     title: "Introduction",
     Svg: require("../../static/img/landing/feature_learn.svg").default,
@@ -19,7 +18,6 @@ const FeatureList = [
     description: <>Read in-depth info about key components</>,
     to: "docs/components/transfers/confidential/Overview",
   },
-
 ];
 
 const SubFeatureList = [

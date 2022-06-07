@@ -92,6 +92,7 @@
 
 .subFeatureCard {
   min-height: 10rem;
+  max-height: 10rem;
 }
 
 .subFeatureSvgContainer {
