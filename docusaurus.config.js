@@ -23,8 +23,9 @@ module.exports = {
     },
     announcementBar: {
       id: "announceBar",
-      content:
-        '<div className="announce-bar"><strong>🎉 $100m in Ecosystem Grants</strong>  <a target="_blank" rel="noopener noreferrer" href="https://www.findora.foundation/grants/" target="_blank" className="link">Apply Now</a></div>',
+      content: `<div className="announce-bar"><strong>🎉 $100m in Ecosystem Grants</strong>&nbsp;
+        <a target="_blank" rel="noopener noreferrer" href="https://www.findora.foundation/grants/" target="_blank" class="link">Apply Now</a>
+        </div> `,
       backgroundColor: "#5c17e6",
       textColor: "#ffffff",
       isCloseable: true,
