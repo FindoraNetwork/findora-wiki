@@ -6,18 +6,20 @@ import Link from "@docusaurus/Link";
 import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
+
   {
-    title: "Learn",
+    title: "Introduction",
     Svg: require("../../static/img/landing/feature_learn.svg").default,
     description: <>Learn the Findora architecture and key concepts</>,
     to: "/docs/introduction/intro",
   },
   {
-    title: "Build",
-    Svg: require("../../static/img/landing/feature_build.svg").default,
-    description: <>Build with Findora SDK tools</>,
-    to: "/docs/developers/developers-get-started",
+    title: "Modules",
+    Svg: require("../../static/img/landing/feature_components.svg").default,
+    description: <>Read in-depth info about key components</>,
+    to: "docs/components/transfers/confidential/Overview",
   },
+
 ];
 
 const SubFeatureList = [
@@ -25,13 +27,13 @@ const SubFeatureList = [
     title: "Use",
     Svg: require("../../static/img/landing/feature_use_guide.svg").default,
     description: <>Use Findora dApps (bridges, wallets, etc.)</>,
-    to: "docs/guides/use-get-started",
+    to: "docs/guides/get_fra/buy_fra",
   },
   {
-    title: "Components",
-    Svg: require("../../static/img/landing/feature_components.svg").default,
-    description: <>Read in-depth info about key components</>,
-    to: "docs/Introduction/components/components-overview",
+    title: "Build",
+    Svg: require("../../static/img/landing/feature_build.svg").default,
+    description: <>Build with Findora SDK tools</>,
+    to: "docs/developers/evm/web3",
   },
   {
     title: "Validate",
