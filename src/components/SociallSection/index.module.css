@@ -1,0 +1,58 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+.flexCentered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.socialContainer {
+  display: flex;
+}
+
+.socialSvgContainer {
+  background-size: 24px;
+  background-repeat: no-repeat;
+}
+
+.socialSvgContainer:hover {
+  transform: scale(1.2);
+}
+
+.twitterLogoSocial {
+  background-image: url("../../../static/img/landing/twitter_logo.svg");
+}
+
+.twitterLogoSocial:hover {
+  background-image: url("../../../static/img/landing/twitter_logo_hover.svg");
+}
+
+.telegramLogoSocial {
+  background-image: url("../../../static/img/landing/telegram_logo.svg");
+}
+
+.telegramLogoSocial:hover {
+  background-image: url("../../../static/img/landing/telegram_logo_hover.svg");
+}
+
+.mediumLogoSocial {
+  background-image: url("../../../static/img/landing/medium_logo.svg");
+}
+
+.mediumLogoSocial:hover {
+  background-image: url("../../../static/img/landing/medium_logo_hover.svg");
+}
+
+.discordLogoSocial {
+  background-image: url("../../../static/img/landing/discord_logo.svg");
+}
+
+.discordLogoSocial:hover {
+  background-image: url("../../../static/img/landing/discord_logo_hover.svg");
+}
+
+.socialButton {
+  height: 24px;
+  width: 24px;
+}
