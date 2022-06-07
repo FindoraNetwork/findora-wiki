@@ -11,7 +11,7 @@ Developers who deploy Ethereum's ERC-20 Solidity boilerplate code on the Findora
 
 Currently, developing on Findora EVM requires developers to connect to the Findora Anvil Testnet.
 
-See the [Networks](../docs/networks/Testnet.md) guide for details.
+See the [Networks](/docs/network) guide for details.
 
 ### Writing and Deploying a Contract
 
@@ -19,13 +19,13 @@ All the best tools available for deploying on Ethereum work just as well here wi
 
 Hardhat is an Ethereum development environment that helps developers manage and automate repetitive tasks for smart contract and DApp development. Truffle is like Hardhat but on steroids. Leveraging Ganache, its local Ethereum blockchain for testing contracts, Truffle allows you to develop dApps with scriptable migration and deployment, network management, an interactive console, smart contract management and even some automated contract testing.
 
-Please look at the [Truffle](../docs/guides/deployment-guides/truffle.md), [Hardhat](07-hardhat.md), [Remix IDE](../docs/guides/deployment-guides/remix.md) guides for details.
+Please look at the [Truffle](/docs/developers/evm/deployment-guides/truffle), [Hardhat](07-hardhat.md), [Remix IDE](/docs/developers/evm/deployment-guides/remix) guides for details.
 
 ### Testing and Automation
 
 Waffle is a library for compiling and testing smart contracts and Mars is a deployment manager. Waffle and Mars can be used together to write, compile, test, and deploy Ethereum smart contracts.
 
-See the [Waffle & Mars](../docs/guides/deployment-guides/waffle.md) guide for details.
+See the [Waffle & Mars](docs/developers/evm/deployment-guides/waffle) guide for details.
 
 
 ### Other Tools and Integrations
