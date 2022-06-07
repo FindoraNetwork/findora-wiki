@@ -29,7 +29,7 @@ We will show how to use Remix to deploy smart contracts on Findora through the f
 
 2. You need to use the provider imported by MetaMask, and deploy the contract to the network connected to it through the provider. In this example, it is the Findora Devnet test network.
 
-3. We will use a MetaMask account with an asset balance to deploy the contract. It can be funded through our testnet faucet ([refer to this guide](/docs/guides/faucet/#request-on-findora-native-chain)) and then deployed on Findora Devnet.
+3. We will use a MetaMask account with an asset balance to deploy the contract. It can be funded through our testnet faucet ([refer to this guide](/docs/guides/get_fra/faucet)) and then deployed on Findora Devnet.
 
 4. Next, enter Test Contract in the constructor and click "Deploy".
 
