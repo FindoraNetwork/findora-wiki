@@ -23,7 +23,7 @@ In this tutorial, you need to create a TypeScript project first, then use Waffle
    npm -v
 ```
 ### Step 1: Use Waffle to create a TypeScript project
-Here we use the truffle project (please refer to the first 3 steps in [the truffle document](/docs/developers/evm/deployment-guides/truffle#use-truffle-to-create-a-project) to create a project module using Truffle), then configure the package.json file, and add dependencies in devDependencies:
+Here we use the truffle project (please refer to the first 3 steps in [the truffle document](/docs/developers/evm/evm-guides/deployment-guides/truffle) to create a project module using Truffle), then configure the package.json file, and add dependencies in devDependencies:
 ```json
 "devDependencies": {
    "@types/chai": "^4.2.21",

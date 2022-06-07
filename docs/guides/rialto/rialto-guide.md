@@ -36,7 +36,7 @@ Next, goto Metamask’s “Add Network” screen again and configure Metamask to
 <em>Findora Network Settings on Metamask</em>
 <br/><br/>
 
-[Check this link](/docs/networks/Mainnet) for more details on Findora Mainnet network configuration
+[Check this link](/docs/network) for more details on Findora Mainnet network configuration
 
 ### Step 2: Fund Metamask with BNB Tokens
 

@@ -11,7 +11,7 @@ Developers who deploy Ethereum's ERC-20 Solidity boilerplate code on the Findora
 
 Currently, developing on Findora EVM requires developers to connect to the Findora Anvil Testnet.
 
-See the [Networks](../docs/networks/Testnet.md) guide for details.
+See the [Networks](/docs/network) guide for details.
 
 ### Writing and Deploying a Contract
 
@@ -19,13 +19,13 @@ All the best tools available for deploying on Ethereum work just as well here wi
 
 Hardhat is an Ethereum development environment that helps developers manage and automate repetitive tasks for smart contract and DApp development. Truffle is like Hardhat but on steroids. Leveraging Ganache, its local Ethereum blockchain for testing contracts, Truffle allows you to develop dApps with scriptable migration and deployment, network management, an interactive console, smart contract management and even some automated contract testing.
 
-Please look at the [Truffle](../docs/guides/deployment-guides/truffle.md), [Hardhat](07-hardhat.md), [Remix IDE](../docs/guides/deployment-guides/remix.md) guides for details.
+Please look at the [Truffle](/docs/developers/evm/evm-guides/deployment-guides/truffle), [Hardhat](/docs/developers/evm/evm-guides/hardhat), [Remix IDE](/docs/developers/evm/evm-guides/deployment-guides/remix) guides for details.
 
 ### Testing and Automation
 
 Waffle is a library for compiling and testing smart contracts and Mars is a deployment manager. Waffle and Mars can be used together to write, compile, test, and deploy Ethereum smart contracts.
 
-See the [Waffle & Mars](../docs/guides/deployment-guides/waffle.md) guide for details.
+See the [Waffle & Mars](/docs/developers/evm/evm-guides/deployment-guides/waffle) guide for details.
 
 
 ### Other Tools and Integrations
@@ -41,9 +41,9 @@ See the [Waffle & Mars](../docs/guides/deployment-guides/waffle.md) guide for de
 
 ### Blockchain Bridge
 
-For developers who wish to move tokens from other Layer 1 blockchains, the Findora EVM network will support an open source multi-directional bridge(a fork of [ChainSafe ChainBridge]( https://github.com/ChainSafe/ChainBridge )) , called [Rialto bridge](../rialto-bridge/1-rialto-overview.md).
+For developers who wish to move tokens from other Layer 1 blockchains, the Findora EVM network will support an open source multi-directional bridge(a fork of [ChainSafe ChainBridge]( https://github.com/ChainSafe/ChainBridge )) , called [Rialto bridge](/docs/Reference-Dapps/rialto-bridge/rialto-overview).
 
 We have deployed a testnet version of Rialto on our Anvil testnet enabling a Binance Smart Chain Testnet BEP-20 token to be moved to the Findora EVM Devnet as a FRC-20 token.
 
 
-See our home grown [Rialto bridge](../rialto-bridge/1-rialto-overview.md) and its guide for details.
+See our home grown [Rialto bridge](/docs/Reference-Dapps/rialto-bridge/rialto-overview) and its guide for details.
