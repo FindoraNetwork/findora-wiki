@@ -40,4 +40,4 @@ Then, install all SDK dependencies:
 yarn
 ```
 
-**NOTE:** For more details about configuring and integrating `Findora SDK` please refer to the [SDK integration page](../utxo/sdk_integration).
+**NOTE:** For more details about configuring and integrating `Findora SDK` please refer to the [SDK integration page](/docs/developers/utxo/utxo-guides/sdk_setup).
