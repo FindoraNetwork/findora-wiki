@@ -21,15 +21,16 @@ jobs:
       run: |
         tar -C ~/.ssh -zcf key.tar.gz ./
 
-    - name: Build rust base image
-      shell: bash
-      run: |
-        make ci_build_rust_base
+    # - name: Build rust base image
+    #   shell: bash
+    #   run: |
+    #     make ci_build_rust_base
 
-    - name: Build linux fn
-      shell: bash
-      run: |
-        make ci_build_fn
+    # - name: Build linux fn
+    #   shell: bash
+    #   run: |
+    #     make ci_build_fn
+    
     
     - name: Generate env file
       env: 
@@ -46,7 +47,12 @@ jobs:
 
         echo "cat .env"
         cat .env
-
+        
+    - name: Build fn
+      shell: bash
+      run: |
+        make build_musl_fn
+        
     - name: Build wiki doc
       shell: bash
       run: |
