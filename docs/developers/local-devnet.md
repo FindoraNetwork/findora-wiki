@@ -6,9 +6,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Personal Devnet
+# Personal Findora Blockchain
 
-This guides shows how to run a Ganache-like personal local Findora blockchain in local environment for development and testing.
+This guides shows how to run a Ganache-like personal Findora blockchain in local environment for development and testing.
 
 ## General Prerequisites
 
