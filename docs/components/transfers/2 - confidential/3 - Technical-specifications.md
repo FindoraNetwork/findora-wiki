@@ -1,6 +1,21 @@
 # Technical Specifications
 
-Findora uses the *Ristretto* group, which is a quotient group built from the elliptic curve group on Curve25519. Thhis group has order $8p$ for the prime: $$p =2^{252} +27742317777372353535851937790883648493.$$ The Ristretto quotient group is the unique quotient group of order $p$.
+Let us take a deep dive into some of the concepts involving the cryptography under the hood which enables the confidential transfers.
+
+## Concepts
+
+### Schnorr's protocol
+
+Schnorr's protocol is a zero-knowledge protocol that allows a Prover to prove that he knows the discrete logarithm between two group elements. It is instantiated with groups such as elliptic curve groups where the discrete logarithm problem is believed to be hard.
+
+Given commitments to pairs representing asset-types and amounts, this protocol can be used to prove that two commitments are to the same asset-type. With minor modifications, the protocol can also be used to prove that the commitments are to distinct asset types if necessary.
+
+
+### Bulletproofs
+
+The range proofs are derived from a zero-knowledge proof scheme called *Bulletproofs*. This is an instantiation of a special class of range proofs where the sender proves in zero-knowledge (i.e. without revealing any other information about the transaction) that the masked (or committed) amount falls within a certain range. In particular, a sender can use this scheme to prove that the amount he sent is non-negative and does not exceed his balance, which is necessary to prevent double-spending on the chain. This is a *transparent* scheme, meaning it does not require any preprocessing phase or trusted setup. The security of Bulletproofs relies on the hardness of the discrete logarithm problem in elliptic curves, which is one of the oldest and most battle-tested assumptions in cryptography.
+
+We first describe a straightforward albeit inefficient way to create a range proof. The Prover decomposes the integer representing the amount into its binary representation. He then creates commitments to each of those bits and then sends a proof attesting to the claim that each of these commitments is to a bit and that the amount is the aggregation of these bits. But this proof size is linear in the bit length of the amount, which is quite inefficient in practice. Bulletproofs is an efficient range proof which is logarithmic in the size of the amount. The core of the bulletproof protocol hinges on a technique called the *recursive inner product argument*. 
 
 ### Pedersen commitments
 
@@ -8,59 +23,17 @@ The cryptographic commitments are *perfectly hiding*, which makes them distinct 
 
 As before, let $\mathbb{G}$ denote the Ristretto group, i.e. the group of points on the Ristretto curve. Let $p$ be the order of this group. For independent group generators $g_1,g_2,h\in \mathbb{G}$ and a pair $(a,b)\in \mathbb{F}_p^2$ representing the asset type and amount, the commitment to this pair is given by $g_1^{a}g_2^{b}h^r$ where $r$ is a random element in $\mathbb{F}_p$.
 
-### Proof Generation
+Findora uses the *Ristretto* group, which is a quotient group built from the elliptic curve group on Curve25519. This group has order $8p$ for the prime: $$p =2^{252} +27742317777372353535851937790883648493.$$ The Ristretto quotient group is the unique quotient group of order $p$.
 
-In order to explain how the most basic confidential transfers work in Findora, let us take a closer look at the anatomy of a Findora asset transfer transaction.
+## Proof Generation
 
-An asset transfer is executed simply by posting a transfer note to the Findora ledger, denoted *XfrNote* for short.
-
-```rust
-pub struct XfrNote {
-    pub body: XfrBody,
-    pub multisig: XfrMultiSig,
-}
-```
-
-The XfrBody contains a list of input asset records and output asset records. For confidentiality these asset records are blinded, using cryptographic commitments. These are implemented using Pedersen commitments over the “Ristretto” elliptic curve.
-```rust
-pub struct XfrBody {
-    pub inputs: Vec<BlindAssetRecord>,
-    pub outputs: Vec<BlindAssetRecord>,
-    pub proofs: XfrProofs,
-    pub asset_tracing_memos: Vec<Vec<TracerMemo>>, // each input or output can have a set of tracing memos
-    pub owners_memos: Vec<Option<OwnerMemo>>, // If confidential amount or asset type, lock the amount and/or asset type to the public key in asset_record
-}
-
-```
-
-We call the blinded record data structure a BlindAssetRecord to distinguish it from a plain AssetRecord.
-
-```rust
-pub struct AssetRecord {
-    pub open_asset_record: OpenAssetRecord,
-    pub tracing_policies: TracingPolicies,
-    pub identity_proofs: Vec<Option<ACConfidentialRevealProof>>,
-    pub asset_tracers_memos: Vec<TracerMemo>,
-    pub owner_memo: Option<OwnerMemo>,
-}
-```
-
-```rust
-pub struct BlindAssetRecord {
-    pub amount: XfrAmount,        // Amount being transferred
-    pub asset_type: XfrAssetType, // Asset type being transferred
-    pub public_key: XfrPublicKey, // ownership address
-}
-```  
-
-It contains a zero-knowledge proof that the blinded output records are valid with respect to the blinded input records. Since the fees are denominated in the FRA token, it is necessary to prove in zero-knowledge that:
+The `XfrProofs` structure contains a zero-knowledge proof that the blinded output records are valid with respect to the blinded input records. Since the fees are denominated in the FRA token, it is necessary to prove in zero-knowledge that:
 
 - for every asset type other than FRA, the sum of the inputs is the same as the sum of the outputs
 - the sum of the inputs corresponding to the FRA asset is the same as the sum of the outputs plus the fees for the transaction.
 
-This proof is contained in the XfrProofs structure.
 
-(Note that for some particular asset types, there might be fees, thus for that cases it proves that sum of output amounts for that asset type in the output asset records plus fees equals the sum of input amounts for the same asset type in the input records). To be more precise, if there are n $(n \geq 1)$ inputs records and m $(m \geq 1)$ output records,
+Note that for some particular asset types, there might be fees, thus for that cases it proves that sum of output amounts for that asset type in the output asset records plus fees equals the sum of input amounts for the same asset type in the input records). To be more precise, if there are n $(n \geq 1)$ inputs records and m $(m \geq 1)$ output records,
 
 - $\alpha_i$ is the amount in the $i$th input record
 - $\beta_j$ is the amount in the $j$th output record
@@ -79,11 +52,11 @@ $\sum_{i \in Input[FRA]} \alpha_i = \sum_{j \in Output[FRA]} \beta_j + Fees$
 The randomness in the Pedersen commitments is communicated to the receiver in the form of text encrypted with the receiver's public key. The receiver then decrypts this text using his private key. The security of this scheme hinges on the hardness of the Discrete logarithm problem (DLP). The proof of the amount-sum equality relies on the homomorphic property of Pedersen commitments.
 
 
-#### Proving Commitment Equality
+### Proving Commitment Equality
 
 A confidential transaction can - and usually does - have multiple associated Pedersen commitments to (asset type, amount) pairs. To prove the so-called *amount-sum equality*, it is necessary to *verifiably* reveal which of the commitments correspond to the same asset type, without actually revealing this asset type. To show that two Pedersen commitments $C_1 = g_1^{a_1}g_2^{b_1}h^{r_1}$, $C_2 = g_1^{a_2}g_2^{b_2}h^{r_2}$ are such that $a_1 = a_2$, it suffices to show that the quotient $C_1\cdot C_2^{-1}$ is of the form $g_2^{x}h^y$ for some $x,y$ known to the Prover. Using an aggregation trick, this proof can be kept constant-sized when the Prover needs to show that the asset type committed in $C_1$ is the same as the asset type committed in $C_2,\cdots,C_n$.
 
-#### Proving the Amount-Sum Equality
+### Proving the Amount-Sum Equality
 
 Given input commitments $C_1^{\mathrm{in}},\cdots, C_m^{\mathrm{in}}$ and output commitments $C_1^{\mathrm{out}},\cdots, C_n^{\mathrm{out}}$ verifiably corresponding to the same asset type, a Prover shows that the input and output amounts sum up to the same value by proving in zero-knowledge that the element $\widetilde{C}:= (\prod_{i=1}^m C_i^{\mathrm{in}})\cdot (\prod_{j=1}^n C_j^{\mathrm{out}})^{-1}$ is of the form $g_1^{a(m-n)}h^{r}$ (or $g_1^{a(m-n)}g_2^{\mathrm{fees}}h^{r}$ in case the asset_type is FRA) where $r$ is some integer known to the Prover and $a$ is the common asset-type committed in the commitments $C_i^{\mathrm{in}}$, $C_j^{\mathrm{out}}$.
 
@@ -91,7 +64,7 @@ To prevent double-spends on the blockchain in tandem with maintaining confidenti
 
 Bulletproofs are particularly suited for range proofs on small ranges: the proof for a $64$-bit range is less than 1KB and takes only milliseconds to both create and verify. Bulletproofs have a batching mode where a range proof from $m$ points is only $64\log(m)$ bytes larger than a range proof for a single point (e.g. a batch proof for 100 points is less than 500 bytes larger). Bulletproofs also have a batch verification mode where the amortized time to verify many range proofs is approximately 0.34 ms per proof.
 
-#### Range proofs via inner product arguments
+### Range proofs via inner product arguments
 
 Let $C_v = g^{v} h^r$ be a commitment to a value $v$. To show that $v$ lies in the range $[0,2^{n}-1]$, it suffices for the Prover to show that he knows a vector $\mathbf{a}_L = (a_0,\cdots,a_{n-1})$ such that:
 
@@ -100,30 +73,33 @@ Let $C_v = g^{v} h^r$ be a commitment to a value $v$. To show that $v$ lies in t
 
 In other words, this shows that the $n$ entries of $\mathbb{a}_L$ represent the bit decomposition of $v$.
 
-For randomly generated challenges $y, z\in \mathbb{F}_p$, it suffices to show that $z^2 \cdot \langle \mathbf {a}_L \mspace{3mu} ,
-\mspace{3mu} \mathbf {2}^n \rangle + z \cdot \langle \mathbf {a}_L - \mathbf {1}^n - \mathbf {a}_R \mspace{3mu} ,
-\mspace{3mu} \mathbf {y}^n \rangle + \langle \mathbf {a}_L \mspace{3mu} ,
-\mspace{3mu} \mathbf {a}_R \circ \mathbf {y}^n \rangle = z^2 \cdot v \mspace{20mu}$
+For randomly generated challenges $y, z\in \mathbb{F}_p$, it suffices to show that,
+
+$z^2 \cdot \langle \mathbf {a}_L \hspace{3pt} ,
+\hspace{3pt} \mathbf {2}^n \rangle + z \cdot \langle \mathbf {a}_L - \mathbf {1}^n - \mathbf {a}_R \hspace{3pt} ,
+\hspace{3pt} \mathbf {y}^n \rangle + \langle \mathbf {a}_L \hspace{3pt} ,
+\hspace{3pt} \mathbf {a}_R \circ \mathbf {y}^n \rangle = z^2 \cdot v \hspace{20pt}$
 
 where  $\mathbf {a}_R = \mathbf{1}^n - \mathbf{a}_L$
 
 
-### Proof Verification
+## Proof Verification
 
-The verification of *XFR Note* data structure starts from the verify_xfr_note function which performs the verification according to the parameters and policies.
+<!--- The verification of *XFR Note* data structure starts from the verify_xfr_note function which performs the verification according to the parameters and policies.
 
-<!---
+
 pub fn verify_xfr_note<R: CryptoRng + RngCore>(
     prng: &mut R,
     params: &mut PublicParams,
     xfr_note: &XfrNote,
     policies: &XfrNotePoliciesRef,
 ) -> Result<()> {
--->
+
 ```
 batch_verify_xfr_notes(prng, params, &[&xfr_note], &[&policies]).c(d!())
 }
 ```
+-->
 
 The verification process actually happens in batches for increasing the efficiency.
 <!---
