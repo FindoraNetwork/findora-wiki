@@ -37,14 +37,14 @@ The Jubjub curve is an elliptic curve defined over the scalar field $\mathbb{F}_
 A downside to the Jubjub curve is that its endomorphism algebra is an imaginary quadratic field with a large discriminant. This makes it difficult to speed up scalar multiplications by exploiting the endomorphisms. We are considering replacing Jubjub with the newly discovered curve *Bandersnatch*. This is an elliptic curve over the field $\mathbb{F} _p$ and is endowed with an endomorphism ring with a small discriminant ($-3$) and hence, supports faster scalar multiplications.
 
 
-### The common reference string
+### Common Reference String
 
 The common reference string (CRS) of PLONK consists of a vector of points on the BLS12-381 elliptic curve and is linear in the size of the circuit. In our case, the most complex of the statements is the zero-knowledge Merkle membership proof in the ABAR commitment tree. This boils down to proving in zero knowledge that the Prover possesses a sequence of Rescue hashes that forms a Merkle path for a certain ABAR.
 
 The CRS is universal, i.e. the same CRS can be used to prove all necessary statements. It is also updateable, i.e. a new user can update the CRS using his privately generated randomness without having to perform a multi-party computation with the participants in the existing CRS. Thus, the CRS can be updated periodically.
 
 
-## The statements to be proven
+## Statements to be Proven
 
 Broadly, the Prover's work boils down to proving the following in zero-knowledge.
 
@@ -110,7 +110,7 @@ let outputs: Vec<(VarIndex, VarIndex)> = payees_secrets
 asset_mixing(&mut cs, &inputs, &outputs, fee_type, fee_calculating_func);
 ```
 
-### The Merkle membership proof
+### Merkle Membership Proof
 
 As described earlier, the ABAR commitments are stored using an append-only tree, which we call the *ABAR tree*. This is a $3$-ary Merkle tree built using the Rescue hashing algorithm, i.e. each non-leaf is the Rescue hash of the concatenation of its three children.
 
@@ -134,7 +134,7 @@ if let Some(root) = root_var {
 }
 ```
 
-### The nullifier tree
+### Nullifier Tree
 
 Unlike the ABAR tree, the nullifier tree does not need to support efficient zero-knowledge membership proofs. Hence, the hashing algorithm does not need to be Snark-friendly. The nullifier tree is built using the SHA-256 hashing algorithm.
 
@@ -172,7 +172,7 @@ cs.prepare_io_variable(nullifier_var);
 ```
 
 
-### The validity of the ciphertexts
+### Validity of the Ciphertexts
 
 The sender proves in zero-knowledge - via a TurboPlonk proof - that he possesses the plaintext corresponding to the the ElGamal ciphertext that is stored on the ledger. The sender encrypts the ABAR plaintext using the public key sent by the receiver. The receiver decrypts the ciphertext using his private key, thus retrieving the ABAR plaintext. The receiver is now in possession of the ABAR and becomes a potential sender for that ABAR in the future.
 
@@ -215,7 +215,7 @@ fn elgamal_hybrid_encrypt(
 ```
 
 
-### Knowledge of the secret keys
+### Knowledge of Secret Keys
 
 The sender proves his identity by providing an argument of knowledge for his secret keys and the diversifiers corresponding to his diversified public keys and the corresponding nullifier stored on the ledger.
 
