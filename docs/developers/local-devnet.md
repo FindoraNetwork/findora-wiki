@@ -16,7 +16,7 @@ This guides shows how to run a Ganache-like personal local Findora blockchain in
 https://go.dev/doc/install
 
 #### Tips for Linux (Ubuntu)
-```
+```bash
 # first command needs to be run as root, rest as your normal user
 wget https://go.dev/dl/go1.18.3.linux-amd64.tar.gz
 sudo su
@@ -41,7 +41,7 @@ https://rustup.rs/
 <Tabs>
   <TabItem value="Ubuntu" label="Ubuntu" default>
 
-```
+```bash
 sudo apt update && \
 sudo apt upgrade -y && \
 sudo apt install -y build-essential libleveldb-dev libssl-dev pkg-config clang libclang-dev librocksdb-dev
@@ -62,13 +62,13 @@ sudo apt install -y build-essential libleveldb-dev libssl-dev pkg-config clang l
 
 Findora blockchain can run on both MacOS or Linux. Below command will build all required binaries to start a personal Findora blockchain. 
 
-```
+```bash
 git clone -b v0.3.19-release https://github.com/FindoraNetwork/platform && \
 cd platform && \
 make build_release
 ```
 
-Please make sure to add all below 3 binaries to your $PATH.
+Please make sure to add all below 3 binaries to your $PATH. By default they will be copied to ~/.cargo/bin/ which should already be in your $PATH.
 
 `stt`: The tool to initialize Findora blockchain.
 
@@ -76,22 +76,15 @@ Please make sure to add all below 3 binaries to your $PATH.
 
 `tendermint`: Tendermint consensus engine.
 
-```
-mv stt /usr/local/bin/
-mv abcid /usr/local/bin/
-mv tendermint /usr/local/bin/
-
-```
-
 
 ## Install Python3 and toml-cli
 
 Findora devnet tools are written in Python3 and uses `toml-cli` to manipulate configuration files. [Install Python3](https://www.python.org/downloads/) if you don't have one. Also install `toml-cli` using below command
-```
+```bash
 pip3 install toml-cli
 ```
 and then copy newly installed `toml` cli tool to `/usr/local/bin` to make it visiable
-```
+```bash
 cp /Library/Python/3.x/site-packages/toml /usr/local/bin
 ```
 
