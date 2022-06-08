@@ -35,6 +35,11 @@ go version
 ### Install Rust
 https://rustup.rs/
 
+If already installed please update to 1.59 or newer
+```bash
+rustup update
+```
+
 
 ### Install System Specific Dependencies
 
@@ -51,7 +56,9 @@ sudo apt install -y build-essential libleveldb-dev libssl-dev pkg-config clang l
   <TabItem value="Mac" label="Mac">
 
 ```
-#
+
+brew install openssl leveldb
+
 ```
 
   </TabItem>
@@ -122,3 +129,12 @@ URL | Purpose
 http://127.0.0.1 | For [Findora Electron Wallet](https://wallet.findora.org/) connection
 http://127.0.0.1:8545 | Web3 HTTP connection
 http://127.0.0.1:8546 | Web3 WebSocket connection
+
+
+## Troubleshooting
+
+### make build_release fails with go:linkname must refer to declared function or variable
+
+```bash title="Update your golang.org/x/sys"
+# go to platform/tools/tendermint run following to update
+go get -u golang.org/x/sys
