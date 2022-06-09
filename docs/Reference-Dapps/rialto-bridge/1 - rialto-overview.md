@@ -53,4 +53,4 @@ Source Chain - The beginning of a transaction
 
 - After the deposit hits the token contract, a deposit event is triggered that passes the message to the relayer, and the relayer itself broadcasts this information to the bridge contract of the destination chain. Then a vote happens on the proposal.
 - Voting on the destination chain means that relayers get the proposal and initiate a process where every one of them votes. With every vote from a relayer, the broadcast status moves through the different stages from active to executed.
-- The executed stage is passed and finally the bridge calls the handler contract that eventually moves the data to the tToken for minting
+- The executed stage is passed and finally the bridge calls the handler contract that eventually moves the data to the token contract for minting
