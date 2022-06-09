@@ -11,7 +11,7 @@ Block Proposer Rewards are secondary rewards paid out not only to the validator 
 
 ## Rewards Calculations
 
-The amount of FRA paid out per block for the a) **Block Reward** and b) **Block Proposer Bonus Reward** is described below.
+The amount of FRA paid out per block for the a) `Block Reward` and b) `Block Proposer Bonus Reward` is described below.
 
 ### Block Reward Calculation
 
@@ -45,4 +45,4 @@ The Bonus reward is payed out to further incentives the block proposing validato
 
 ## Rewards Distribution 
 
-Block rewards calculated based on the above formulae , Both **Block Reward** and **Block Proposer Bonus Reward** are awarded to the block proposer .
+Block rewards calculated based on the above formulae , Both `Block Reward` and `Block Proposer Bonus Reward` are awarded to the block proposer .

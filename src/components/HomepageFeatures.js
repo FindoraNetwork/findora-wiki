@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Link from "@docusaurus/Link";
-
+import BottomSection from "../components/BottomSection";
 import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
@@ -40,25 +40,6 @@ const SubFeatureList = [
     Svg: require("../../static/img/landing/feature_validate.svg").default,
     description: <>Setup a Findora validator</>,
     to: "/docs/validators/validators-get-started",
-  },
-];
-
-const SocialList = [
-  {
-    Url: "https://twitter.com/FindoraOfficial",
-    buttonClassName: "twitterLogoSocial",
-  },
-  {
-    Url: "https://t.me/findoraen",
-    buttonClassName: "telegramLogoSocial",
-  },
-  {
-    Url: "https://discord.com/invite/aPuyZd8mBJ",
-    buttonClassName: "discordLogoSocial",
-  },
-  {
-    Url: "https://medium.com/findorafoundation",
-    buttonClassName: "mediumLogoSocial",
   },
 ];
 
@@ -116,50 +97,6 @@ function SubFeature({ Svg, title, description, to }) {
   );
 }
 
-function SocialItem({ Svg, Url, buttonClassName }) {
-  return (
-    <div className={clsx("padding--sm")}>
-      <div
-        className={clsx(
-          styles.flexCentered,
-          styles.socialSvgContainer,
-          styles[buttonClassName]
-        )}
-      >
-        <Link className={clsx(styles.socialButton)} to={Url}></Link>
-      </div>
-    </div>
-  );
-}
-
-function SubscribeSection() {
-  return (
-    <div className={clsx(styles.flexCentered, styles.subscribeContainer)}>
-      <div className={clsx(styles.subscribeLabel)}>Subscribe to our news</div>
-      <div className={clsx(styles.subscribeInputRow)}>
-        <div className={clsx(styles.subscribeInputContainer)}>
-          <input className={clsx(styles.subscribeInput)} />
-        </div>
-        <div>
-          <button
-            className={clsx(
-              "button button--outline button--primary",
-              styles.subcribeButton
-            )}
-          >
-            Subscribe
-          </button>
-        </div>
-      </div>
-      <div className={clsx(styles.socialContainer)}>
-        {SocialList.map((props, idx) => (
-          <SocialItem key={idx} {...props} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function HomepageFeatures() {
   const { siteConfig } = useDocusaurusContext();
 
@@ -188,7 +125,7 @@ export default function HomepageFeatures() {
           ))}
         </div>
         <div className={clsx("row", styles.flexCentered, styles.bottomRow)}>
-          <SubscribeSection />
+          <BottomSection />
         </div>
       </div>
     </section>

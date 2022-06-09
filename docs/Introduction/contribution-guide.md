@@ -8,11 +8,11 @@ This wiki is an open source project and is maintained by the Findora Foundation.
 
 ## How to Contribute
 
-To contribute, you will need a Github account and basic knowledge of MarkDown. 
+To contribute, you will need a Github account and basic knowledge of Markdown. 
 
-First, find the page you would like to propose edits to and click the "Edit" button at the bottom of the page. You will be taken to GitHub, which will ask you to Fork the respository in order to propose changes. This creates a copy of the repository in your own Github account.
+First, find the page you would like to propose edits to and click the "Edit" button at the bottom of the page. You will be taken to GitHub, which will ask you to fork the respository in order to propose changes. This creates a copy of the repository in your own Github account.
 
-After you fork, you will be directed to the document that you chose to edit in a text editor. From here, you can make your changes. When you are done, write a detailed comment about what was changed and click "Propose changes."
+After you fork, you will be directed to the document that you chose to edit in a text editor. From here, you can make your changes. When you are done, write a detailed comment about what was changed and click "propose changes."
 
 Github will create a new branch in your fork.
 

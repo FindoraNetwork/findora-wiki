@@ -37,8 +37,7 @@ pub struct AnonKeys {
 }
 ```
 
-![](https://i.imgur.com/fnFWUh3.jpeg)
-
+![](../../../images/bar_to_abar.jpg)
 The BAR to ABAR operation generates an ABAR along with a transaction id (called ATxoSID) which similar to TxoSID for BAR. This operation returns the commitment which should be securely stored to spend the newly generated ABAR in future. The Findora wallet application shows the updated balance in the anonymous wallet, but if CLI is used, the ownership of the ABAR can be confirmed by "opening" the ABAR, which is essentially opening the commitment with the AXfr Secret Key and Decryption Key. This opened ABAR consists of amount, asset type, axfr public key, owner memo and the merkle root value.
 
 ```rust
@@ -62,8 +61,8 @@ This spending of the ABAR is similar to that of an Anonymous Transfer i.e., a ze
 
 The existence and ownership of ABAR is proved with the knowledge of the secret key and the correctness of the merkle path of ABAR in the commitment tree. The network verifies the proof with the merkle root and the exact spending of the ABAR remains a secret. To ensure that there is no double spending involved, the spender creates an HMAC like nullifier hash from the amount, asset type and the public key, with the HMAC secret derived from the secret key of the owner. The Nullifier Hash cannot be correlated to any ABAR in the commitment tree. The nullifier hash is stored in another tree (called the nullifier set) to track the common set of nullifiers, signifying all the spent ABARs in the network. The correctness of the nullifier hash is proved in zero knowledge to not allow anybody to forge a Nullifier.
 
-![](https://i.imgur.com/OkZGIdU.png)
 
+![](../../../images/abar_to_bar.jpg)
 This operation returns a new BAR with the same amount as that of the ABAR. Optionally, the amount and asset type could be made confidential while generating the new BAR. However the public key of the BAR is not anonymous anymore, hence the ABAR to BAR conversion assumes a loss in anonymity for the transfers made any further using the newly generated BAR.
 
 ## Anonymous (ABAR) Transfer
@@ -86,9 +85,8 @@ For each new ABAR output:
 * The ABAR commitment is computed correctly
 * It is infeasible to cause the nullifier of the ABAR output to collide with the nullifier of any other ABAR
 
-![](https://i.imgur.com/wQnXExC.png)
 
-
+![](../../../images/abar_transfer.jpg)
 ### Sequence of steps in ABAR Transfer
 
 1. The Receiver generates Axfr Secret Key and the Decryption Key as part of the Anon Keys.

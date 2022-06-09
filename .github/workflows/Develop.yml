@@ -21,16 +21,38 @@ jobs:
       run: |
         tar -C ~/.ssh -zcf key.tar.gz ./
 
-    - name: Build rust base image
-      shell: bash
-      run: |
-        make ci_build_rust_base
+    # - name: Build rust base image
+    #   shell: bash
+    #   run: |
+    #     make ci_build_rust_base
 
-    - name: Build linux fn
+    # - name: Build linux fn
+    #   shell: bash
+    #   run: |
+    #     make ci_build_fn
+    
+    
+    - name: Generate env file
+      env: 
+        REACT_APP_MAILCHIMP_U: ${{ secrets.MAILCHIMP_U }}
+        REACT_APP_MAILCHIMP_ID: ${{ secrets.MAILCHIMP_ID }}
       shell: bash
       run: |
-        make ci_build_fn
-    
+        cat <<EOF > .env
+        touch .env
+        REACT_APP_MAILCHIMP_U="$REACT_APP_MAILCHIMP_U"
+        REACT_APP_MAILCHIMP_ID="$REACT_APP_MAILCHIMP_ID"
+        REACT_APP_MAILCHIMP_URL="https://findora.us3.list-manage.com/subscribe/post"
+        EOF
+
+        echo "cat .env"
+        cat .env
+        
+    - name: Build fn
+      shell: bash
+      run: |
+        make build_musl_fn
+        
     - name: Build wiki doc
       shell: bash
       run: |

@@ -3,6 +3,6 @@ sidebar_position: 2
 ---
 # Change Log
 
-[Click link to view Changelog](https://github.com/FindoraNetwork/platform/blob/main/docs/CHANGELOG.md)
+Click [here](https://github.com/FindoraNetwork/platform/blob/main/docs/CHANGELOG.md) to view the change log on Github.
 
 

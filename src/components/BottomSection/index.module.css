@@ -1,0 +1,12 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+.flexCentered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.subscribeContainer {
+  justify-content: flex-start;
+}

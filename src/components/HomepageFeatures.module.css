@@ -22,9 +22,6 @@
   justify-content: space-between;
 }
 
-.bottomRow {
-}
-
 .welcomeTitleContainer {
   height: 5rem;
 }
@@ -124,105 +121,4 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-}
-
-.subscribeContainer {
-  justify-content: flex-start;
-}
-
-.subscribeLabel {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 14px;
-  color: #000000;
-  opacity: 0.6;
-}
-
-.subscribeInputRow {
-  margin-top: 1rem;
-  width: 25rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.subscribeInputContainer {
-  flex: 1;
-  height: 100%;
-  display: flex;
-}
-
-.subscribeInput {
-  width: 98%;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding-left: 10px;
-}
-
-.subscribeInput:focus {
-  outline: none !important;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 5px #7733ff;
-}
-
-.socialContainer {
-  display: flex;
-}
-
-.socialSvgContainer {
-  background-size: 24px;
-  background-repeat: no-repeat;
-}
-
-.socialSvgContainer:hover {
-  transform: scale(1.2);
-}
-
-.twitterLogoSocial {
-  background-image: url("../../static/img/landing/twitter_logo.svg");
-}
-
-.twitterLogoSocial:hover {
-  background-image: url("../../static/img/landing/twitter_logo_hover.svg");
-}
-
-.telegramLogoSocial {
-  background-image: url("../../static/img/landing/telegram_logo.svg");
-}
-
-.telegramLogoSocial:hover {
-  background-image: url("../../static/img/landing/telegram_logo_hover.svg");
-}
-
-.mediumLogoSocial {
-  background-image: url("../../static/img/landing/medium_logo.svg");
-}
-
-.mediumLogoSocial:hover {
-  background-image: url("../../static/img/landing/medium_logo_hover.svg");
-}
-
-.discordLogoSocial {
-  background-image: url("../../static/img/landing/discord_logo.svg");
-}
-
-.discordLogoSocial:hover {
-  background-image: url("../../static/img/landing/discord_logo_hover.svg");
-}
-
-.socialButton {
-  height: 24px;
-  width: 24px;
-}
-
-.subcribeButton {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 14px;
 }
