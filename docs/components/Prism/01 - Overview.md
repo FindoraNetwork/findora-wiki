@@ -6,7 +6,7 @@ These two blockchain layers include:
 
 **Prism** is the feature that enables users to bridge (aka transfer) assets from the UTXO-based side to the accounts-based side (and vice-versa) of the Findora blockchain. Users can initiate a Prism transfer via the Findora wallet. Developers can integrate PRISM transfers into their application via the SDK.
 
-![](https://i.imgur.com/aiWvIU7.png)
+![](../../images/Consensus.jpg)
 
 ### Why Prism?
 Most blockchains follow one of two record-keeping models: the UTXO model or the account model. Blockchains such as Bitcoin and ZCash use a UTXO model and others, such as Ethereum and Polkadot, use an account model.
