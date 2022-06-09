@@ -17,7 +17,7 @@ Even in the less regulated niches of these industries where blockchain apps have
 Findora’s blockchain technology solves many of these privacy-related issues as Findora was built from the ground up to support confidential transactions and to store and compute confidential data. With the Findora SDK, key primitives to confidentially transfer, store and process data provide developers with the key building blocks to pioneer the development of privacy-focused Dapps to disrupt many real-world industries and business models.
 
 ### Architecture and Key Components
-![](../../Images/Architecture and Key Component.jpg)
+![](../images/Architecture.jpg)
 
 Findora consists of the following key modules:
 

@@ -27,7 +27,7 @@ Source Chain - The beginning of a transaction
 
 ## Schematics
 
-![](../../../Images/Schematics.jpg)
+![](../../images/Schematics.jpg)
 
 ## Source Chain
 
