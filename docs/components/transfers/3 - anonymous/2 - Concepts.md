@@ -37,8 +37,7 @@ pub struct AnonKeys {
 }
 ```
 
-![](https://i.imgur.com/fnFWUh3.jpeg)
-
+![](../../../../Images/BAR TO ABAR.jpg)
 The BAR to ABAR operation generates an ABAR along with a transaction id (called ATxoSID) which similar to TxoSID for BAR. This operation returns the commitment which should be securely stored to spend the newly generated ABAR in future. The Findora wallet application shows the updated balance in the anonymous wallet, but if CLI is used, the ownership of the ABAR can be confirmed by "opening" the ABAR, which is essentially opening the commitment with the AXfr Secret Key and Decryption Key. This opened ABAR consists of amount, asset type, axfr public key, owner memo and the merkle root value.
 
 ```rust

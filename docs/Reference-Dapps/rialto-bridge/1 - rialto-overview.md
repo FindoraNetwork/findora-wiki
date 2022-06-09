@@ -27,7 +27,7 @@ Source Chain - The beginning of a transaction
 
 ## Schematics
 
-<img src={useBaseUrl("/img/evm/rialto-bridge-explainer.png")} width="80%" height="40%"/>
+![](../../../Images/Schematics.jpg)
 
 ## Source Chain
 

@@ -49,8 +49,7 @@ For confidential transfers, the primary parameter that should be hidden is the a
 The raw amount is stored into a data structure called the *Asset Record*. Initially, a Pedersen commitment to the amount is computed and recorded on the ledger. This is stored into a data structure called the *Blind Asset Record* or *BAR* for short. Using the information stored in the Blind Asset Record and via the Bulletproofs scheme, the sender constructs the transfer proof known as the *XFR Proof* for short. Using this XFR Proof along with the inputs and outputs of the transaction, the *XFR Body* is constructed. Finally, using this XFR Body along with the multi signatures of the participants, the *XFR Note* is constructed.
 
 
-![](https://i.imgur.com/4TnJRir.png)
-
+![](../../../../Images/Generation of Proofs.jpg)
 
 ### Verification of Proofs
 
@@ -67,4 +66,4 @@ For verifying the asset records, there are broadly 3 steps:
 
 This last function contains the batch verify function which performs main proof verification inside the R1CS circuit.
 
-![](https://i.imgur.com/CHcWudd.png)
+![](../../../../Images/Verification of Proofs.jpg)
