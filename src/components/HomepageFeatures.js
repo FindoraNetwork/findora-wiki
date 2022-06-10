@@ -8,13 +8,14 @@ import styles from "./HomepageFeatures.module.css";
 const FeatureList = [
   {
     title: "Introduction",
-    Svg: require("../../static/img/landing/feature_learn.svg").default,
+    featureImg: require("../../static/img/landing/feature_learn.png").default,
     description: <>Learn the Findora architecture and key concepts</>,
     to: "/docs/introduction/intro",
   },
   {
     title: "Modules",
-    Svg: require("../../static/img/landing/feature_components.svg").default,
+    featureImg: require("../../static/img/landing/feature_components.png")
+      .default,
     description: <>Read in-depth info about key components</>,
     to: "docs/components/transfers/confidential/Overview",
   },
@@ -23,25 +24,27 @@ const FeatureList = [
 const SubFeatureList = [
   {
     title: "Use",
-    Svg: require("../../static/img/landing/feature_use_guide.svg").default,
+    featureImg: require("../../static/img/landing/feature_use_guide.png")
+      .default,
     description: <>Use Findora dApps (bridges, wallets, etc.)</>,
     to: "docs/guides/get_fra/buy_fra",
   },
   {
     title: "Build",
-    Svg: require("../../static/img/landing/feature_build.svg").default,
+    featureImg: require("../../static/img/landing/feature_build.png").default,
     description: <>Build with Findora SDK tools</>,
     to: "docs/developers/evm/web3",
   },
   {
     title: "Validate",
-    Svg: require("../../static/img/landing/feature_validate.svg").default,
+    featureImg: require("../../static/img/landing/feature_validate.png")
+      .default,
     description: <>Setup a Findora validator</>,
     to: "/docs/validators/validators-get-started",
   },
 ];
 
-function Feature({ Svg, title, description, to }) {
+function Feature({ featureImg, title, description, to }) {
   return (
     <div className={clsx("col col--6 padding--sm")}>
       <Link
@@ -55,7 +58,7 @@ function Feature({ Svg, title, description, to }) {
             styles.flexCentered
           )}
         >
-          <Svg className={styles.featureSvg} alt={title} />
+          <img className={styles.featureSvg} src={featureImg} alt={title} />
         </div>
         <div className={clsx("padding-horiz--md", styles.infoContainer)}>
           <h3 className={clsx(styles.featureTitle)}>{title}</h3>
@@ -66,7 +69,7 @@ function Feature({ Svg, title, description, to }) {
   );
 }
 
-function SubFeature({ Svg, title, description, to }) {
+function SubFeature({ featureImg, title, description, to }) {
   return (
     <div className={clsx("col col--4 padding--sm")}>
       <Link
@@ -84,7 +87,7 @@ function SubFeature({ Svg, title, description, to }) {
             styles.subFeatureSvgContainer
           )}
         >
-          <Svg className={styles.subFeatureSvg} alt={title} />
+          <img className={styles.subFeatureSvg} src={featureImg} alt={title} />
         </div>
         <div className={clsx("padding-horiz--md", styles.infoContainer)}>
           <h3 className={clsx(styles.subFeatureTitle)}>{title}</h3>

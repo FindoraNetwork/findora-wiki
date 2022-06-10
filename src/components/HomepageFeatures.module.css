@@ -15,15 +15,20 @@
   height: 100%;
 }
 
+@media screen and (max-width: 966px) {
+  .features {
+    padding: 0;
+  }
+}
+
 .contentContainer {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .welcomeTitleContainer {
-  height: 5rem;
+  flex: 1;
 }
 
 .welcomeTitle {
@@ -33,6 +38,8 @@
   font-size: 3rem;
   line-height: 4rem;
   width: 100%;
+
+  margin: 2rem 0;
 }
 
 @media screen and (max-width: 966px) {
@@ -48,13 +55,21 @@
   flex-direction: row;
   display: flex;
   background: #ffffff;
-  min-height: 15rem;
+  min-height: 12rem;
   transition: all 0.2s;
   position: relative;
   top: 0px;
 
   text-decoration: none !important;
   color: #000;
+  padding-left: 1rem;
+}
+
+@media screen and (max-width: 966px) {
+  .featureCard {
+    min-height: 10rem;
+    padding-left: 0.5rem;
+  }
 }
 
 .featureCard:hover {
@@ -67,58 +82,96 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 36px;
-  line-height: 36px;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+@media screen and (max-width: 966px) {
+  .featureTitle {
+    font-size: 1.8rem;
+    line-height: 2rem;
+  }
 }
 
 .featureContent {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  opacity: 0.6;
 }
 
 .featureSvgContainer {
-  margin-left: 1rem;
+  width: 100px;
+  min-width: 100px;
 }
 
 .featureSvg {
-  width: 150px;
+  width: 100px;
+}
+
+@media screen and (min-width: 966px) {
+  .featureSvgContainer {
+    width: 200px;
+    min-width: 200px;
+  }
+
+  .featureSvg {
+    width: 150px;
+  }
 }
 
 .subFeatureCard {
-  min-height: 10rem;
-  max-height: 10rem;
+  /* min-height: 10rem; */
+  /* max-height: 10rem; */
 }
 
 .subFeatureSvgContainer {
-  margin-left: 1.5rem;
+  width: 100px;
+  min-width: 100px;
 }
 
-.subFeatureSvg {
-  width: 75px;
+.subfeatureSvg {
+  width: 100px;
+}
+
+@media screen and (min-width: 966px) {
+  .subFeatureSvgContainer {
+    width: 120px;
+    min-width: 120px;
+  }
+
+  .subfeatureSvg {
+    width: 120px;
+  }
 }
 
 .subFeatureTitle {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .subFeatureContent {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
 
-  line-height: 22px;
+  font-size: 1rem;
+  line-height: 1.4rem;
+
+  opacity: 0.6;
 }
 
 .infoContainer {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.bottomRow {
+  flex: 2;
 }
