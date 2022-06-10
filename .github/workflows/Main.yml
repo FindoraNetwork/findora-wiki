@@ -50,12 +50,12 @@ jobs:
     - name: update S3
       shell: bash
       run: |
-        aws s3 cp build s3://dev-wiki.findora.org/ --recursive
+        aws s3 cp build s3://wiki.findora.org/ --recursive
     
     - name: cloudfront invalidation
       shell: bash
       run: |
-        aws cloudfront create-invalidation --distribution-id E3920I9CO27CE0 --paths "/*"
+        aws cloudfront create-invalidation --distribution-id E1H48R59LK4RSZ --paths "/*"
 
     - name: Cleanup
       shell: bash
