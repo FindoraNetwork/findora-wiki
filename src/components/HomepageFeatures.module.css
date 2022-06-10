@@ -88,16 +88,12 @@
 }
 
 .subFeatureCard {
-  min-height: 10rem;
-  max-height: 10rem;
+  /* min-height: 10rem; */
+  /* max-height: 10rem; */
 }
 
 .subFeatureSvgContainer {
   margin-left: 1.5rem;
-}
-
-.subFeatureSvg {
-  width: 75px;
 }
 
 .subFeatureTitle {
