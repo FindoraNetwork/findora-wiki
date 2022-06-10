@@ -13,51 +13,51 @@ jobs:
         platform: [aws]
     runs-on: ${{matrix.platform}}
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+    - name: checkout
+      uses: actions/checkout@v2
 
-      - name: Prepare key
-        shell: bash
-        run: |
-          tar -C ~/.ssh -zcf key.tar.gz ./
+    - name: Prepare key
+      shell: bash
+      run: |
+        tar -C ~/.ssh -zcf key.tar.gz ./
+    
+    - name: Generate env file
+      env: 
+        REACT_APP_MAILCHIMP_U: ${{ secrets.MAILCHIMP_U }}
+        REACT_APP_MAILCHIMP_ID: ${{ secrets.MAILCHIMP_ID }}
+      shell: bash
+      run: |
+        cat <<EOF > .env
+        touch .env
+        REACT_APP_MAILCHIMP_U="$REACT_APP_MAILCHIMP_U"
+        REACT_APP_MAILCHIMP_ID="$REACT_APP_MAILCHIMP_ID"
+        REACT_APP_MAILCHIMP_URL="https://findora.us3.list-manage.com/subscribe/post"
+        EOF
 
-      - name: Generate env file
-        env:
-          REACT_APP_MAILCHIMP_U: ${{ secrets.MAILCHIMP_U }}
-          REACT_APP_MAILCHIMP_ID: ${{ secrets.MAILCHIMP_ID }}
-        shell: bash
-        run: |
-          cat <<EOF > .env
-          touch .env
-          REACT_APP_MAILCHIMP_U="$REACT_APP_MAILCHIMP_U"
-          REACT_APP_MAILCHIMP_ID="$REACT_APP_MAILCHIMP_ID"
-          REACT_APP_MAILCHIMP_URL="https://findora.us3.list-manage.com/subscribe/post"
-          EOF
+        echo "cat .env"
+        cat .env
+        
+    - name: Build fn
+      shell: bash
+      run: |
+        make build_musl_fn
+        
+    - name: Build wiki doc
+      shell: bash
+      run: |
+        make ci_build_wiki
 
-          echo "cat .env"
-          cat .env
+    - name: update S3
+      shell: bash
+      run: |
+        aws s3 cp build s3://dev-wiki.findora.org/ --recursive
+    
+    - name: cloudfront invalidation
+      shell: bash
+      run: |
+        aws cloudfront create-invalidation --distribution-id E3920I9CO27CE0 --paths "/*"
 
-      - name: Build fn
-        shell: bash
-        run: |
-          make build_musl_fn
-
-      - name: Build wiki doc
-        shell: bash
-        run: |
-          make ci_build_wiki
-
-      - name: update S3
-        shell: bash
-        run: |
-          aws s3 cp build s3://dev-wiki.findora.org/ --recursive
-
-      - name: cloudfront invalidation
-        shell: bash
-        run: |
-          aws cloudfront create-invalidation --distribution-id E3920I9CO27CE0 --paths "/*"
-
-      - name: Cleanup
-        shell: bash
-        run: |
-          make cleanup_image
+    - name: Cleanup
+      shell: bash
+      run: |
+        make cleanup_image
