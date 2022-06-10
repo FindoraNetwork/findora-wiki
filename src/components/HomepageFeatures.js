@@ -87,7 +87,7 @@ function SubFeature({ featureImg, title, description, to }) {
             styles.subFeatureSvgContainer
           )}
         >
-          <img className={styles.featureSvg} src={featureImg} alt={title} />
+          <img className={styles.subFeatureSvg} src={featureImg} alt={title} />
         </div>
         <div className={clsx("padding-horiz--md", styles.infoContainer)}>
           <h3 className={clsx(styles.subFeatureTitle)}>{title}</h3>
