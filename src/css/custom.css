@@ -53,8 +53,41 @@ main .container {
   font-family: "Poppins", arial, sans-serif;
 }
 
-.navbar__items svg {
-  /* display: none; */
+.navbar__item {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #5e5a66;
+}
+
+.navbar__item .navbar__link {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+
+  color: #5e5a66;
+}
+
+.navbar__items .navbar__item .earth-container {
+  display: flex;
+  justify-content: center;
+  margin-right: -1rem;
+}
+
+.navbar__items .navbar__item .navbar__link svg {
+  display: none;
+}
+
+.menu__list-item a svg {
+  display: none;
+}
+
+.menu__list-item .earth-container {
+  display: none;
 }
 
 div[role="banner"] {

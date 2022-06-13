@@ -1,7 +1,7 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-const math = require('remark-math');
-const katex = require('rehype-katex');
+const math = require("remark-math");
+const katex = require("rehype-katex");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -33,7 +33,7 @@ module.exports = {
       isCloseable: true,
     },
     navbar: {
-      title: "Findora Wiki",
+      title: "Findora",
       logo: {
         alt: "Findora Logo",
         src: "img/logo-findora.svg",
@@ -43,38 +43,75 @@ module.exports = {
           type: "docSidebar",
           position: "left",
           sidebarId: "tutorialSidebar",
-          label: "All Docs",
+          label: "Home",
         },
         {
-          type: "dropdown",
-          label: "Community",
-          position: "right",
-          items: [
-            {
-              href: "https://twitter.com/FindoraOfficial",
-              label: "Twitter",
-            },
-            {
-              href: "https://t.me/findoraen",
-              label: "Telegram",
-            },
-            {
-              href: "https://discord.gg/dHhY5pte",
-              label: "Discord",
-            },
-            {
-              href: "https://medium.com/findorafoundation",
-              label: "Medium",
-            },
-            {
-              href: "https://github.com/findoraNetwork",
-              label: "GitHub",
-            },
-
-            // { to: "docs/introduction/intro", label: "Learn" },
-          ],
+          type: "docsVersion",
+          position: "left",
+          to: "docs/introduction/intro",
+          label: "Introduction",
         },
+        {
+          type: "docsVersion",
+          position: "left",
+          to: "docs/components/transfers/confidential/Overview",
+          label: "Modules",
+        },
+        {
+          type: "docsVersion",
+          position: "left",
+          to: "docs/guides/get_fra/buy_fra",
+          label: "Use",
+        },
+        {
+          type: "docsVersion",
+          position: "left",
+          to: "docs/developers/evm/web3",
+          label: "Build",
+        },
+        {
+          type: "docsVersion",
+          position: "left",
+          to: "docs/validators/validators-get-started",
+          label: "Validate",
+        },
+        // {
+        //   type: "dropdown",
+        //   label: "Community",
+        //   position: "right",
+        //   items: [
+        //     {
+        //       href: "https://twitter.com/FindoraOfficial",
+        //       label: "Twitter",
+        //     },
+        //     {
+        //       href: "https://t.me/findoraen",
+        //       label: "Telegram",
+        //     },
+        //     {
+        //       href: "https://discord.gg/dHhY5pte",
+        //       label: "Discord",
+        //     },
+        //     {
+        //       href: "https://medium.com/findorafoundation",
+        //       label: "Medium",
+        //     },
+        //     {
+        //       href: "https://github.com/findoraNetwork",
+        //       label: "GitHub",
+        //     },
 
+        //     // { to: "docs/introduction/intro", label: "Learn" },
+        //   ],
+        // },
+        {
+          type: "html",
+          position: "right",
+          value: `
+            <div class="earth-container">
+              <img src="/img/earth_icon.png" class="earth-logo" />
+            </div>`,
+        },
         {
           type: "localeDropdown",
           position: "right",
@@ -124,11 +161,11 @@ module.exports = {
   ],
   stylesheets: [
     {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-      type: 'text/css',
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+      type: "text/css",
       integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-      crossorigin: 'anonymous',
+        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+      crossorigin: "anonymous",
     },
   ],
 };
