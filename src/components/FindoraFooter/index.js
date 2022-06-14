@@ -6,21 +6,21 @@ import styles from "./index.module.css";
 
 // import Footer from "@theme-original/Footer";
 
-// export default function FooterWrapper(props) {
+// function FooterWrapperO(props) {
 //   return (
-//     <>
-//       <section>
-//         <h2>Extra section A</h2>
-//         <p>This is an extra section that appears above the original footer</p>
-//       </section>
-//       {/* <Footer {...props} /> */}
-//       <section>
-//         <h2>Extra section B</h2>
-//         <p>This is an extra section that appears below the original footer</p>
-//       </section>
-//     </>
+//     // <>
+//     //   <section>
+//     //     <h2>Extra section A</h2>
+//     //     <p>This is an extra section that appears above the original footer</p>
+//     //   </section>
+//     <Footer {...props} />
+//     // </>
 //   );
 // }
+
+const copyrightLine = `© Findora ${new Date().getFullYear()}`;
+const privacyPolicyUrl = "https://findora.org";
+const termOfUseUrl = "https://findora.org";
 
 const footerContentColumns = [
   {
@@ -171,25 +171,62 @@ function FooterColumn({
 function FooterWrapper(props) {
   return (
     <>
-      <div className={clsx("container", styles.container)}>
-        <div className={clsx("row")}>
-          <div
-            className={clsx(
-              "col col--4 ",
-              styles.footerColumn,
-              styles.footerColumnOne
-            )}
-          >
-            <BottomSection />
-          </div>
+      <section className={clsx(styles.footerSection)}>
+        <div className={clsx("container", styles.container)}>
+          <div className={clsx("row")}>
+            <div
+              className={clsx(
+                "col col--4 ",
+                styles.footerColumn,
+                styles.footerColumnOne
+              )}
+            >
+              <BottomSection />
+            </div>
 
-          {footerContentColumns.map((footerColumn) =>
-            FooterColumn(footerColumn)
-          )}
+            {footerContentColumns.map((footerColumn) =>
+              FooterColumn(footerColumn)
+            )}
+          </div>
         </div>
-      </div>
-      <section>
-        <p>&nbsp;</p>
+      </section>
+      <section className={clsx(styles.footerSection)}>
+        <div className={clsx("row")}>
+          <div className={clsx(styles.footerCopyright)}>
+            <div className={clsx(styles.footerCopyrightLabel)}>
+              {copyrightLine}
+            </div>
+            <div
+              className={clsx(
+                styles.footerCopyrightLabel,
+                styles.footerCopyrightDivider
+              )}
+            >
+              |
+            </div>
+            <div className={clsx(styles.footerCopyrightLabel)}>
+              <Link className={clsx(styles.footerLink)} to={privacyPolicyUrl}>
+                Privacy Policy
+              </Link>
+            </div>
+            <div
+              className={clsx(
+                styles.footerCopyrightLabel,
+                styles.footerCopyrightDivider
+              )}
+            >
+              |
+            </div>
+            <div className={clsx(styles.footerCopyrightLabel)}>
+              <Link className={clsx(styles.footerLink)} to={termOfUseUrl}>
+                Terms of Use
+              </Link>
+            </div>
+          </div>
+        </div>
+        <section>
+          <p>&nbsp;</p>
+        </section>
       </section>
     </>
   );

@@ -36,6 +36,11 @@
   max-width: 15rem;
 }
 
+@media screen and (max-width: 966px) {
+  .subscribeInputContainer {
+    max-width: 20rem;
+  }
+}
 .subscribeInput {
   background: #ffffff;
   border: 1px solid transparent;
