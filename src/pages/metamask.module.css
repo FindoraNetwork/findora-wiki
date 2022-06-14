@@ -1,9 +1,0 @@
-.btn {
-    border: 2px solid rgb(92, 23, 230);
-    color: rgb(92, 23, 230);
-    border-radius: 10px;
-    padding: 10px 20px 10px 60px;
-    cursor: pointer;
-    background: url(../img/matemask.png) no-repeat 10px center;
-    background-size: 40px auto;
-}
