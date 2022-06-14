@@ -32,3 +32,4 @@ website/i18n/**/*
 
 .netlify
 .env
+.history
