@@ -2,7 +2,6 @@ import React from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Link from "@docusaurus/Link";
-import BottomSection from "../components/BottomSection";
 import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
@@ -124,9 +123,6 @@ export default function HomepageFeatures() {
           {SubFeatureList.map((props, idx) => (
             <SubFeature key={idx} {...props} />
           ))}
-        </div>
-        <div className={clsx("row", styles.flexCentered, styles.bottomRow)}>
-          <BottomSection />
         </div>
       </div>
     </section>

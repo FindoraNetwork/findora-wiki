@@ -20,6 +20,16 @@ const InputField = (props) => {
       />
     );
   }
+  if (props.type === "imgButton") {
+    return (
+      <button
+        className={props.inputClassName}
+        disabled={validateInput(props.formValues)}
+      >
+        <props.buttonImg className={props.buttonImgClassName} alt={""} />{" "}
+      </button>
+    );
+  }
 
   return (
     <input

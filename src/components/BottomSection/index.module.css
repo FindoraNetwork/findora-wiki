@@ -10,3 +10,28 @@
 .subscribeContainer {
   justify-content: flex-start;
 }
+
+.subscribeTitleContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.subscribeTitle {
+  font-size: 1.8rem;
+  font-family: "Poppins", arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+.featureSvgContainer {
+  min-width: 2.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.featureSvg {
+  /* width: 100px; */
+  /* width: 100%; */
+}

@@ -9,6 +9,17 @@
 
 .socialContainer {
   display: flex;
+  max-width: 15rem;
+
+  padding: 0;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.socialItem {
+  padding: 0.5rem;
+  padding-left: 0;
+  padding-right: 1rem;
 }
 
 .socialSvgContainer {
@@ -50,6 +61,14 @@
 
 .discordLogoSocial:hover {
   background-image: url("../../../static/img/landing/discord_logo_hover.svg");
+}
+
+.githubLogoSocial {
+  background-image: url("../../../static/img/landing/github_logo.svg");
+}
+
+.githubLogoSocial:hover {
+  background-image: url("../../../static/img/landing/github_logo_hover.svg");
 }
 
 .socialButton {

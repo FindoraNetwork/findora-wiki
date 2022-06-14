@@ -13,18 +13,22 @@ const SocialList = [
     buttonClassName: "telegramLogoSocial",
   },
   {
+    Url: "https://medium.com/findorafoundation",
+    buttonClassName: "mediumLogoSocial",
+  },
+  {
     Url: "https://discord.com/invite/aPuyZd8mBJ",
     buttonClassName: "discordLogoSocial",
   },
   {
-    Url: "https://medium.com/findorafoundation",
-    buttonClassName: "mediumLogoSocial",
+    Url: "https://github.com/FindoraNetwork",
+    buttonClassName: "githubLogoSocial",
   },
 ];
 
-function SocialItem({ Svg, Url, buttonClassName }) {
+function SocialItem({ Url, buttonClassName }) {
   return (
-    <div className={clsx("padding--sm")}>
+    <div className={clsx(styles.socialItem)}>
       <div
         className={clsx(
           styles.flexCentered,

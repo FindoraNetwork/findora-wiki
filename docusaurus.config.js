@@ -118,6 +118,187 @@ module.exports = {
         },
       ],
     },
+    footer: {
+      // logo: {
+      //   alt: "Facebook Open Source Logo",
+      //   src: "img/oss_logo.png",
+      //   href: "https://opensource.facebook.com",
+      //   width: 160,
+      //   height: 51,
+      // },
+      // links: [
+      //   {
+      //     title: "Technology",
+      //     items: [
+      //       {
+      //         label: "Findora OG",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "FINDORA X",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "FINDORA ZK",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "FINDORA CR",
+      //         to: "docs/",
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     title: "Developers",
+      //     items: [
+      //       {
+      //         label: "Get Started",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "Github",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "Mainnet",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "Testnet",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "Technical documentation",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "Whitepaper",
+      //         to: "docs/",
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     title: "Use Findora",
+      //     items: [
+      //       {
+      //         label: "Wallet",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "Native Chain Explorer",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "Smart Chain Explorer",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "Bridge",
+      //         to: "docs/",
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     title: "General",
+      //     items: [
+      //       {
+      //         label: "About us",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "Staking",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "Blog",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "Career",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "News",
+      //         to: "docs/",
+      //       },
+      //       {
+      //         label: "FAQ",
+      //         to: "docs/",
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     items: [
+      //       {
+      //         html: `
+      //           <div class="flexCentered_src-components-BottomSection-index-module subscribeContainer_src-components-BottomSection-index-module">
+      //             <form class="mc__form">
+      //               <div class="subscribeLabel_src-components-SubscribeForm-index-module">
+      //                 Subscribe to our news
+      //               </div>
+      //               <div class="subscribeInputRow_src-components-SubscribeForm-index-module">
+      //                 <div class="subscribeInputContainer_src-components-SubscribeForm-index-module">
+      //                   <input type="email" placeholder="your@email.com" required="" class="subscribeInput_src-components-SubscribeForm-index-module" value="">
+      //                 </div>
+      //                 <div>
+      //                   <input class="button button--outline button--primary subcribeButton_src-components-SubscribeForm-index-module" type="submit" disabled="" value="Subscribe">
+      //                 </div>
+      //               </div>
+      //             </form>
+      //             <div class="socialContainer_src-components-SociallSection-index-module">
+      //               <div class="padding--sm">
+      //                 <div class="flexCentered_src-components-SociallSection-index-module socialSvgContainer_src-components-SociallSection-index-module twitterLogoSocial_src-components-SociallSection-index-module">
+      //                   <a href="https://twitter.com/FindoraOfficial" target="_blank" rel="noopener noreferrer" class="socialButton_src-components-SociallSection-index-module"></a>
+      //                 </div>
+      //               </div>
+      //               <div class="padding--sm">
+      //                 <div class="flexCentered_src-components-SociallSection-index-module socialSvgContainer_src-components-SociallSection-index-module telegramLogoSocial_src-components-SociallSection-index-module">
+      //                   <a href="https://t.me/findoraen" target="_blank" rel="noopener noreferrer" class="socialButton_src-components-SociallSection-index-module"></a>
+      //                 </div>
+      //               </div>
+      //               <div class="padding--sm">
+      //                 <div class="flexCentered_src-components-SociallSection-index-module socialSvgContainer_src-components-SociallSection-index-module discordLogoSocial_src-components-SociallSection-index-module">
+      //                   <a href="https://discord.com/invite/aPuyZd8mBJ" target="_blank" rel="noopener noreferrer" class="socialButton_src-components-SociallSection-index-module"></a>
+      //                 </div>
+      //               </div>
+      //               <div class="padding--sm">
+      //                 <div class="flexCentered_src-components-SociallSection-index-module socialSvgContainer_src-components-SociallSection-index-module mediumLogoSocial_src-components-SociallSection-index-module">
+      //                   <a href="https://medium.com/findorafoundation" target="_blank" rel="noopener noreferrer" class="socialButton_src-components-SociallSection-index-module"></a>
+      //                 </div>
+      //               </div>
+      //             </div>
+      //           </div>
+      //         `,
+      //       },
+      //     ],
+      //   },
+      //   // {
+      //   //   title: "Community",
+      //   //   items: [
+      //   //     {
+      //   //       label: "Stack Overflow",
+      //   //       href: "https://stackoverflow.com/questions/tagged/docusaurus",
+      //   //     },
+      //   //     {
+      //   //       label: "Discord",
+      //   //       href: "https://discordapp.com/invite/docusaurus",
+      //   //     },
+      //   //     {
+      //   //       label: "Twitter",
+      //   //       href: "https://twitter.com/docusaurus",
+      //   //     },
+      //   //     {
+      //   //       html: `
+      //   //           <a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify">
+      //   //             <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51" />
+      //   //           </a>
+      //   //         `,
+      //   //     },
+      //   //   ],
+      //   // },
+      // ],
+      copyright: `Copyright © ${new Date().getFullYear()} Findora. Built with Docusaurus.`,
+    },
 
     prism: {
       theme: lightCodeTheme,

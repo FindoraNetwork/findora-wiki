@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import InputField from "../InputField/InputField";
+const SubscribeImg =
+  require("../../../static/img/landing/subscribe_button.svg").default;
 
 import styles from "./index.module.css";
 
@@ -60,23 +62,19 @@ function SubscribeForm(props) {
               onChangeHandler={setEmail}
               type="email"
               value={email}
-              placeholder="your@email.com"
+              placeholder="Email Address"
               inputClassName={clsx(styles.subscribeInput)}
               isRequired
             />
-          </div>
-        ) : null}
-
-        {status !== "success" ? (
-          <div>
             <InputField
               inputClassName={clsx(
-                "button button--outline button--primary",
+                "button  button--primary",
                 styles.subcribeButton
               )}
-              label="Subscribe"
-              type="submit"
+              type="imgButton"
               formValues={[email]}
+              buttonImg={SubscribeImg}
+              buttonImgClassName={clsx(styles.featureSvg)}
             />
           </div>
         ) : null}

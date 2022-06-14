@@ -1,0 +1,54 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+.flexCentered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container {
+}
+
+.footerColumn {
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+.footerColumnOne {
+  padding: 2px;
+}
+
+.footerColumnTwo {
+}
+
+.footerColumnThree {
+}
+
+.footerColumnFour {
+}
+
+.footerColumnFive {
+}
+
+.columnTitle {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.columnItemLabel {
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 2rem;
+  opacity: 0.6;
+}
+
+.columnItemLink {
+  color: black;
+  opacity: 0.8;
+}
