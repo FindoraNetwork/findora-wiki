@@ -19,8 +19,9 @@ import styles from "./index.module.css";
 // }
 
 const copyrightLine = `© Findora ${new Date().getFullYear()}`;
-const privacyPolicyUrl = "https://findora.org";
-const termOfUseUrl = "https://findora.org";
+
+const privacyPolicyUrl = "https://findora.org"; // ?
+const termOfUseUrl = "https://findora.org"; // ?
 
 const footerContentColumns = [
   {
@@ -29,73 +30,71 @@ const footerContentColumns = [
     items: [
       {
         label: "Findora OG",
-        to: "docs/",
+        to: "https://findora.org/findora-og/",
       },
       {
         label: "FINDORA X",
-        to: "docs/",
+        to: "https://findora.org/findora-x/",
       },
       {
         label: "FINDORA ZK",
-        to: "docs/",
+        to: "https://findora.org/findora-zk/",
       },
       {
         label: "FINDORA CR",
-        to: "docs/",
+        to: "https://findora.org/findora-cr/",
       },
     ],
   },
   {
     title: "Developers",
     columnStyle: styles.footerColumnThree,
-    // columnClassOverwrite: " col--3 ",
     items: [
       {
-        label: "Get Started",
+        label: "Get Started", // ?
         to: "docs/",
       },
       {
         label: "Github",
+        to: "https://github.com/FindoraNetwork",
+      },
+      {
+        label: "Mainnet", // ?
         to: "docs/",
       },
       {
-        label: "Mainnet",
+        label: "Testnet", // ?
         to: "docs/",
       },
       {
-        label: "Testnet",
-        to: "docs/",
-      },
-      {
-        label: "Technical documentation",
+        label: "Technical Docs", // ?
         to: "docs/",
       },
       {
         label: "Whitepaper",
-        to: "docs/",
+        to: "https://findora.org/wp-content/uploads/2020/12/Findora_Litepaper_3.2_Final_Clean.pdf",
       },
     ],
   },
   {
     title: "Use Findora",
     columnStyle: styles.footerColumnFour,
-
     items: [
       {
         label: "Wallet",
-        to: "docs/",
+        to: "https://wallet.findora.org",
       },
       {
         label: "Native Chain Explorer",
-        to: "docs/",
+        to: "https://findorascan.io",
       },
       {
         label: "Smart Chain Explorer",
-        to: "docs/",
+        to: "https://evm.findorascan.io",
       },
       {
         label: "Bridge",
-        to: "docs/",
+        to: "https://rialtobridge.io",
       },
     ],
   },
@@ -105,27 +104,27 @@ const footerContentColumns = [
 
     items: [
       {
-        label: "About us",
-        to: "docs/",
+        label: "About us", // ?
+        to: "https://findora.org",
       },
       {
         label: "Staking",
-        to: "docs/",
+        to: "docs/validators/staking-guide/",
       },
       {
-        label: "Blog",
+        label: "Blog", // ?
         to: "docs/",
       },
       {
         label: "Career",
-        to: "docs/",
+        to: "https://boards.greenhouse.io/findora",
       },
       {
         label: "News",
-        to: "docs/",
+        to: "https://medium.com/findorafoundation",
       },
       {
-        label: "FAQ",
+        label: "FAQ", // ?
         to: "docs/",
       },
     ],
