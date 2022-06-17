@@ -20,8 +20,8 @@ import styles from "./index.module.css";
 
 const copyrightLine = `© Findora ${new Date().getFullYear()}`;
 
-const privacyPolicyUrl = "https://findora.org"; // ?
-const termOfUseUrl = "https://findora.org"; // ?
+const privacyPolicyUrl = "https://findora.org/privacy-policy/";
+const termOfUseUrl = "https://findora.org/terms-of-use/";
 
 const footerContentColumns = [
   {
@@ -51,24 +51,24 @@ const footerContentColumns = [
     columnStyle: styles.footerColumnThree,
     items: [
       {
-        label: "Get Started", // ?
-        to: "docs/",
+        label: "Get Started",
+        to: "https://findora.org/developer/",
       },
       {
         label: "Github",
         to: "https://github.com/FindoraNetwork",
       },
       {
-        label: "Mainnet", // ?
-        to: "docs/",
+        label: "Mainnet",
+        to: "https://wiki.dev.findora.org/docs/network",
       },
       {
-        label: "Testnet", // ?
-        to: "docs/",
+        label: "Testnet",
+        to: "https://wiki.dev.findora.org/docs/network",
       },
       {
-        label: "Technical Docs", // ?
-        to: "docs/",
+        label: "Technical Docs",
+        to: "https://wiki.findora.org/docs/introduction/intro",
       },
       {
         label: "Whitepaper",
@@ -104,16 +104,16 @@ const footerContentColumns = [
 
     items: [
       {
-        label: "About us", // ?
-        to: "https://findora.org",
+        label: "About us",
+        to: "https://findora.org/team/",
       },
       {
         label: "Staking",
         to: "docs/validators/staking-guide/",
       },
       {
-        label: "Blog", // ?
-        to: "docs/",
+        label: "Blog",
+        to: "https://medium.com/findorafoundation",
       },
       {
         label: "Career",
@@ -124,8 +124,8 @@ const footerContentColumns = [
         to: "https://medium.com/findorafoundation",
       },
       {
-        label: "FAQ", // ?
-        to: "docs/",
+        label: "Tokenomic",
+        to: "https://medium.com/findorafoundation/findora-network-tokenomics-921bea47cbfd",
       },
     ],
   },
