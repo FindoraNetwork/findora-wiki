@@ -35,6 +35,10 @@ main .container {
   padding: 2rem;
 }
 
+.main-wrapper {
+  overflow-y: scroll;
+}
+
 .docs-wrapper,
 .navbar__inner {
   width: 100%;

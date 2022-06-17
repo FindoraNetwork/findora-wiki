@@ -75,35 +75,6 @@ module.exports = {
           to: "docs/validators/validators-get-started",
           label: "Validate",
         },
-        // {
-        //   type: "dropdown",
-        //   label: "Community",
-        //   position: "right",
-        //   items: [
-        //     {
-        //       href: "https://twitter.com/FindoraOfficial",
-        //       label: "Twitter",
-        //     },
-        //     {
-        //       href: "https://t.me/findoraen",
-        //       label: "Telegram",
-        //     },
-        //     {
-        //       href: "https://discord.gg/dHhY5pte",
-        //       label: "Discord",
-        //     },
-        //     {
-        //       href: "https://medium.com/findorafoundation",
-        //       label: "Medium",
-        //     },
-        //     {
-        //       href: "https://github.com/findoraNetwork",
-        //       label: "GitHub",
-        //     },
-
-        //     // { to: "docs/introduction/intro", label: "Learn" },
-        //   ],
-        // },
         {
           type: "html",
           position: "right",
@@ -118,7 +89,6 @@ module.exports = {
         },
       ],
     },
-
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
