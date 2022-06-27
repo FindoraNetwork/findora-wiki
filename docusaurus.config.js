@@ -48,25 +48,25 @@ module.exports = {
         {
           type: "docsVersion",
           position: "left",
-          to: "docs/introduction/intro",
+          to: "docs/findora_basics/introduction",
           label: "Introduction",
         },
         {
           type: "docsVersion",
           position: "left",
-          to: "docs/components/transfers/confidential/Overview",
+          to: "docs/modules/UTXO/confidential/Overview",
           label: "Modules",
         },
         {
           type: "docsVersion",
           position: "left",
-          to: "docs/guides/get_fra/buy_fra",
+          to: "docs/evm_guides/get_fra/buy_fra",
           label: "Use",
         },
         {
           type: "docsVersion",
           position: "left",
-          to: "docs/developers/evm/web3",
+          to: "docs/developers/evm_smart_chain/web3",
           label: "Build",
         },
         {

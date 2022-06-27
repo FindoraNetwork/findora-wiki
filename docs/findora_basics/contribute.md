@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Contributing
+# Contribute
 
 This wiki is an open source project and is maintained by the Findora Foundation. Pull Requests and contributions from the community are encouraged!
 
