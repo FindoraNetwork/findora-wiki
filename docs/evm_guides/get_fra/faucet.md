@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Request FRA Tokens Guide
+# Request Testnet FRA
 
 To test the Findora suite of applications or get started with building on the Findora network, you can request to receive testnet tokens via our `Discord` bot: `FindoraBot`.
 

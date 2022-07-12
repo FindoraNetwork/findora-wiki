@@ -1,6 +1,6 @@
-# Website
+# Findora Wiki
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+Findora Wiki is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
 ## Installation
 

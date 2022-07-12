@@ -9,14 +9,14 @@ const FeatureList = [
     title: "Introduction",
     featureImg: require("../../static/img/landing/feature_learn.png").default,
     description: <>Learn the Findora architecture and key concepts</>,
-    to: "/docs/introduction/intro",
+    to: "/docs/findora_basics/introduction",
   },
   {
     title: "Modules",
     featureImg: require("../../static/img/landing/feature_components.png")
       .default,
     description: <>Read in-depth info about key components</>,
-    to: "docs/components/transfers/confidential/Overview",
+    to: "docs/modules/UTXO/confidential/Overview",
   },
 ];
 
@@ -26,13 +26,13 @@ const SubFeatureList = [
     featureImg: require("../../static/img/landing/feature_use_guide.png")
       .default,
     description: <>Use Findora dApps (bridges, wallets, etc.)</>,
-    to: "docs/guides/get_fra/buy_fra",
+    to: "docs/evm_guides/get_fra/buy_fra",
   },
   {
     title: "Build",
     featureImg: require("../../static/img/landing/feature_build.png").default,
     description: <>Build with Findora SDK tools</>,
-    to: "docs/developers/evm/web3",
+    to: "docs/developers/development_network",
   },
   {
     title: "Validate",

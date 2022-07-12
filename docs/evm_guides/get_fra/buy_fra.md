@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# How to Buy FRA Tokens
+# Buy FRA
 
 One of the easiest ways to get FRA is on <a href="https://www.kucoin.com/">Kucoin </a>or <a href="https://gate.io/">Gate.io</a>, some of the top exchanges in the world. We’ll use <b>Kucoin</b> as an example here.
 

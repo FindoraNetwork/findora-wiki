@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Transfer FRA From Metamask to Findora Native
+# Prism Transfer (Metamask to Findora Wallet)
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
