@@ -32,7 +32,7 @@ const SubFeatureList = [
     title: "Build",
     featureImg: require("../../static/img/landing/feature_build.png").default,
     description: <>Build with Findora SDK tools</>,
-    to: "docs/developers/evm_smart_chain/web3",
+    to: "docs/developers/development_network",
   },
   {
     title: "Validate",
