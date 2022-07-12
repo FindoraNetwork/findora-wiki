@@ -66,7 +66,7 @@ module.exports = {
         {
           type: "docsVersion",
           position: "left",
-          to: "docs/developers/evm_smart_chain/web3",
+          to: "docs/developers/development_network",
           label: "Build",
         },
         {
