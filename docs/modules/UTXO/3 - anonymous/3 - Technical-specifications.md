@@ -178,7 +178,7 @@ pub struct AXfrNote {
 
 ## Proof Verification
 
-The Snark proof that is generated as seen in the above step, has to be verified by the verifier for the transaction to be a success. Here is a snippet of the code that executes on the verification side which calls the `verify_xfr` function along with the proof, public inputs and system parameters including KZG params.
+The Snark proof that is generated as seen in the above step, has to be verified by the verifier for the transaction to be a success. Here is a snippet of the code that executes on the verification side which calls the verification function along with the proof, public inputs and system parameters including KZG params.
 
 ```rust
 // Verification error if there is a merkle root mismatch
@@ -201,35 +201,3 @@ let pub_inputs = AMultiXfrPubInputs {
 verify_xfr(params, &pub_inputs, &body.proof.snark_proof)
     .c(d!(ZeiError::AXfrVerificationError))
 ```
-
-<!--- The `verify_xfr` function checks the successful verification of the Plonk proof.
-
-```rust
-pub(crate) fn verify_xfr(
-    params: &VerifierParams,
-    pub_inputs: &AMultiXfrPubInputs,
-    proof: &AXfrPlonkPf,
-    hash: &BLSScalar,
-    non_malleability_tag: &BLSScalar,
-) -> Result<()> {
-    let mut transcript = Transcript::new(ANON_XFR_TRANSCRIPT);
-    transcript.append_u64(N_INPUTS_TRANSCRIPT, pub_inputs.payers_inputs.len() as u64);
-    transcript.append_u64(
-        N_OUTPUTS_TRANSCRIPT,
-        pub_inputs.payees_commitments.len() as u64,
-    );
-    let mut online_inputs = pub_inputs.to_vec();
-    online_inputs.push(*hash);
-    online_inputs.push(*non_malleability_tag);
-
-    verifier(
-        &mut transcript,
-        &params.pcs,
-        &params.cs,
-        &params.verifier_params,
-        &online_inputs,
-        proof,
-    )
-    .c(d!(ZeiError::ZKProofVerificationError))
-}
-```-->
