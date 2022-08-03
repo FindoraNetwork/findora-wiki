@@ -97,7 +97,7 @@ To find information about your validator node, use the `fn show` command. Sample
 
 ### Claim FRA Rewards
 
-Top 100 validators will earn block rewards. If your validator is a top 100 validator, it will earn rewards which will show up in the `rewards` section on `fn show`. 
+Long-term, the top 100 validators will earn block rewards (currently, only the top 58 will participate in consensus voting and earn rewards). If your validator contributes to consensus voting, it will earn rewards which will show up in the `rewards` section on `fn show`. 
 
 ![Docusaurus](/img/validator_setup_guide/reward_balance.png)
 
