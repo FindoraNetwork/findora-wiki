@@ -7,7 +7,7 @@ on:
     branches:
       - develop
 jobs:
-  build-and-deploy:
+  build:
     strategy:
       matrix:
         platform: [aws]
@@ -20,17 +20,6 @@ jobs:
       shell: bash
       run: |
         tar -C ~/.ssh -zcf key.tar.gz ./
-
-    # - name: Build rust base image
-    #   shell: bash
-    #   run: |
-    #     make ci_build_rust_base
-
-    # - name: Build linux fn
-    #   shell: bash
-    #   run: |
-    #     make ci_build_fn
-    
     
     - name: Generate env file
       env: 
@@ -48,16 +37,17 @@ jobs:
         echo "cat .env"
         cat .env
         
-    - name: Build fn
-      shell: bash
-      run: |
-        make build_musl_fn
-        
     - name: Build wiki doc
       shell: bash
       run: |
         make ci_build_wiki
 
+  deploy:
+    strategy:
+      matrix:
+        platform: [aws]
+    runs-on: ${{matrix.platform}}
+    steps:
     - name: update S3
       shell: bash
       run: |

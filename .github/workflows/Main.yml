@@ -7,7 +7,7 @@ on:
     branches:
       - main
 jobs:
-  build-and-deploy:
+  build:
     strategy:
       matrix:
         platform: [aws]
@@ -37,15 +37,17 @@ jobs:
         echo "cat .env"
         cat .env
         
-    - name: Build fn
-      shell: bash
-      run: |
-        make build_musl_fn
-        
     - name: Build wiki doc
       shell: bash
       run: |
         make ci_build_wiki
+        
+  deploy:
+    strategy:
+      matrix:
+        platform: [aws]
+    runs-on: ${{matrix.platform}}    
+    steps:
 
     - name: update S3
       shell: bash
