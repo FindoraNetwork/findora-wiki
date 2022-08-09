@@ -18,9 +18,9 @@ $$
 
 $$
 \begin{array}{l}
-    q_b(X)\cdot w_2(X) \cdot (1 - w_2(X)) = 0~~~\text{// boolean testing on the second wire}\\
-    q_b(X)\cdot w_3(X) \cdot (1 - w_3(X)) = 0~~~\text{// boolean testing on the third wire}\\
-    q_b(X)\cdot w_4(X) \cdot (1 - w_4(X)) = 0~~~\text{// boolean testing on the fourth wire}
+    q_b(X)\cdot w_2(X) \cdot (w_2(X) - 1) = 0~~~\text{// boolean testing on the second wire}\\
+    q_b(X)\cdot w_3(X) \cdot (w_3(X) - 1) = 0~~~\text{// boolean testing on the third wire}\\
+    q_b(X)\cdot w_4(X) \cdot (w_4(X) - 1) = 0~~~\text{// boolean testing on the fourth wire}
 \end{array}
 $$
 
@@ -222,9 +222,9 @@ $$
 and
 $$
 \begin{aligned}
-t_{b1}(X) &= q_b(X)\cdot \widetilde{w_2}(X) \cdot (1 - \widetilde{w_2}(X))\\
-t_{b2}(X) &= q_b(X)\cdot \widetilde{w_3}(X) \cdot (1 - \widetilde{w_3}(X))\\
-t_{b3}(X) &= q_b(X)\cdot \widetilde{w_4}(X) \cdot (1 - \widetilde{w_4}(X))
+t_{b1}(X) &= q_b(X)\cdot \widetilde{w_2}(X) \cdot (\widetilde{w_2}(X) - 1)\\
+t_{b2}(X) &= q_b(X)\cdot \widetilde{w_3}(X) \cdot (\widetilde{w_3}(X) - 1)\\
+t_{b3}(X) &= q_b(X)\cdot \widetilde{w_4}(X) \cdot (\widetilde{w_4}(X) - 1)
 \end{aligned}
 $$
 Then, in the coefficient representations, we split the polynomial into five parts: $t_1(X)$, $t_2(X)$, $t_3(X)$, $t_4(X)$, and $t_5(X)$, where the first four polynomials have degree $n+2$, and the last polynomial has degree $n-1$. This is because $t(X)$ is expected to have degree $5*(n+1) + (n+2) - n = 5n+7$, and $5n+7 = 4 *(n+2) + (n-1)$.
