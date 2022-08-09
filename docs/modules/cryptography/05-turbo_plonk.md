@@ -18,9 +18,9 @@ $$
 
 $$
 \begin{array}{l}
-    q_b(x)\cdot w_2(x) \cdot (1 - w_2(x)) = 0~~~\text{// boolean testing on the second wire}\\
-    q_b(x)\cdot w_3(x) \cdot (1 - w_3(x)) = 0~~~\text{// boolean testing on the third wire}\\
-    q_b(x)\cdot w_4(x) \cdot (1 - w_4(x)) = 0~~~\text{// boolean testing on the fourth wire}
+    q_b(X)\cdot w_2(X) \cdot (1 - w_2(X)) = 0~~~\text{// boolean testing on the second wire}\\
+    q_b(X)\cdot w_3(X) \cdot (1 - w_3(X)) = 0~~~\text{// boolean testing on the third wire}\\
+    q_b(X)\cdot w_4(X) \cdot (1 - w_4(X)) = 0~~~\text{// boolean testing on the fourth wire}
 \end{array}
 $$
 
