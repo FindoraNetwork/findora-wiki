@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Staking Guide
@@ -7,20 +7,24 @@ sidebar_position: 5
 Validators must stake a minimum of 10,000 FRA to register as a validator. Before you can stake FRA to your validator, you must first transfer FRA to the `Findora Address` (i.e. wallet address) of your validator.
 
 ## Funding
+
 ### Testnet Funding
+
 You can request Testnet FRA tokens using our Discord Bot. Please [follow this guide](/docs/guides/get_fra/faucet) to claim your free FRA Native Chain tokens.
 
-While requesting the tokens, you need to specify the `Findora Address` associated with your validator node. To locate this wallet address, run `fn show`, and get your  fra address as displayed in the screenshot below.
+While requesting the tokens, you need to specify the `Findora Address` associated with your validator node. To locate this wallet address, run `fn show`, and get your fra address as displayed in the screenshot below.
 
 ![Docusaurus](/img/validator_setup_guide/fn_show.png)
 
 ### Mainnet Funding
-Transfer FRA from an existing Findora wallet to your `Findora Address`. If you don’t have FRA tokens, you can buy from any exchange listed on [this page](https://coinmarketcap.com/currencies/findora/markets/). 
 
+Transfer FRA from an existing Findora wallet to your `Findora Address`. If you don’t have FRA tokens, you can buy from any exchange listed on [this page](https://coinmarketcap.com/currencies/findora/markets/).
 
 ## Node Operations
+
 ### fn CLI tool
-Besides node setup, the `fn` tool is also used for general validator staking operations such as staking FRA into the validator, setting the commission rate the validator charges, transferring FRA balance on the validator to another wallet address and claiming FRA rewards. 
+
+Besides node setup, the `fn` tool is also used for general validator staking operations such as staking FRA into the validator, setting the commission rate the validator charges, transferring FRA balance on the validator to another wallet address and claiming FRA rewards.
 
 To see the list of all sub-commands under `fn` use the `--help` flag as shown below:
 
@@ -53,14 +57,11 @@ OPTIONS:
     -A, --validator-td-addr <TendermintAddr>   stake FRAs to a custom validator
 ```
 
-> Other Examples:<br/>
-> `fn unstake --help` <br/>
-> `fn claim --help` <br/>
-> `fn transfer --help`
+> Other Examples:<br/> > `fn unstake --help` <br/> > `fn claim --help` <br/> > `fn transfer --help`
 
 ### Stake Initial FRA and Set Commission Rate
-After receiving FRA to your validator's `Findora Address`, you must stake a minimum of 10,000 FRA to become a validator. Only the top 100 validators (with the most FRA staked) will earn FRA rewards.
 
+After receiving FRA to your validator's `Findora Address`, you must stake a minimum of 10,000 FRA to become a validator. Only the top 100 validators (with the most FRA staked) will earn FRA rewards.
 
 > **Tip**: Before staking, wait for 100% data synchronization of your validator node, otherwise you may be charged a 'validator node offline' penatly fee.
 
@@ -91,13 +92,14 @@ fn stake -a -n $((2000 * 1000000))
 ```
 
 ### View Node Information
+
 To find information about your validator node, use the `fn show` command. Sample output is below:
 
 ![Docusaurus](/img/validator_setup_guide/fn_show_full.png)
 
 ### Claim FRA Rewards
 
-Top 100 validators will earn block rewards. If your validator is a top 100 validator, it will earn rewards which will show up in the `rewards` section on `fn show`. 
+Top 100 validators will earn block rewards. If your validator is a top 100 validator, it will earn rewards which will show up in the `rewards` section on `fn show`.
 
 ![Docusaurus](/img/validator_setup_guide/reward_balance.png)
 
@@ -105,8 +107,8 @@ If your reward balance is greater than 0, you can claim your earned rewards via 
 
 ```shell
 # fn claim -n <the amount of FRA units you want>
-# ex) 
-#   If you have a reward balance of 20 FRA (i.e. "rewards: 20000000") 
+# ex)
+#   If you have a reward balance of 20 FRA (i.e. "rewards: 20000000")
 #   and wish to claim 10 FRA (out of 20 FRA), issue the command below:
 fn claim -n $((10 * 1000000))
 ```
@@ -129,4 +131,3 @@ fn unstake -n $((900 * 1000000))
 ```shell
 fn unstake
 ```
-
