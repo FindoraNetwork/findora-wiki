@@ -4,6 +4,15 @@ sidebar_position: 2
 
 # FRC20 Token Contracts
 
+This document lists the smart contract addresses for FRC20 tokens that were bridged over from an EVM-compatible chain (like Ethereum or BNB Smart Chain) to Findora.
+
+The contract symbol's suffix (i.e. ".e", ".b", etc.)  represents which chain the token was bridged from. For example, `WBTC.e` is a `Wrapped BTC` token that originally existed on Ethereum as `WBTC`, was bridged over to Findora and now exists on Findora as `WBTC.e`.
+
+You need to import these contract addresses into Metamask to view these tokens in Metamask. Select `Import tokens -> Custom Token` in your Metamask browser extension and paste in the contract address into Metamask.
+
+![Docusaurus](/img/evm/metamask-import-token.png)
+
+
 ## FRC20 token contracts for Findora mainnet
 
 | Contract Symbol | Contract Location | Contract Address                           | Source Symbol | Source Location | Source Address                             |
