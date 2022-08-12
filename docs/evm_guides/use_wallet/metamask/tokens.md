@@ -4,18 +4,32 @@ sidebar_position: 2
 
 # FRC20 Token Contracts
 
+This document lists the smart contract addresses for FRC20 tokens that were bridged over from an EVM-compatible chain (like Ethereum or BNB Smart Chain) to Findora.
+
+The contract symbol's suffix (i.e. ".e", ".b", etc.)  represents which chain the token was bridged from. For example, `WBTC.e` is a `Wrapped BTC` token that originally existed on Ethereum as `WBTC`, was bridged over to Findora and now exists on Findora as `WBTC.e`.
+
+You need to import these contract addresses into Metamask to view these tokens in Metamask. Select `Import tokens -> Custom Token` in your Metamask browser extension and paste in the contract address into Metamask.
+
+![Docusaurus](/img/evm/metamask-import-token.png)
+
+
 ## FRC20 token contracts for Findora mainnet
 
 | Contract Symbol | Contract Location | Contract Address                           | Source Symbol | Source Location | Source Address                             |
 | --------------- | ----------------- | ------------------------------------------ | ------------- | --------------- | ------------------------------------------ |
 | FRA             | Findora           | 0x0000000000000000000000000000000000001000 | ---           | ---             | ---                                        |
 | FRA             | BSC               | 0x9c9fC8739b4532B1A9263047eFD11e416a6D8eE7 | FRA           | Findora         | 0x0000000000000000000000000000000000001000 |
+| FRA             | Ethereum          | 0x4D8C45734d2f1103054929C13D2275e5FB0ABEce | FRA           | Findora         | 0x0000000000000000000000000000000000001000 |
 | WETH.b          | Findora           | 0x008A628826E9470337e0Cd9c0C944143A83F32f3 | ETH           | BSC             | 0x2170ed0880ac9a755fd29b2688956bd959f933f8 |
 | WBNB.b          | Findora           | 0xABc979788c7089B516B8F2f1b5cEaBd2E27Fd78b | WBNB          | BSC             | 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c |
 | USDT.b          | Findora           | 0x93EDFa31D7ac69999E964DAC9c25Cd6402c75DB3 | USDT          | BSC             | 0x55d398326f99059ff775485246999027b3197955 |
 | USDC.b          | Findora           | 0xdA33eF1A7b48beBbF579eE86DFA735a9529C4950 | USDC          | BSC             | 0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d |
 | BUSD.b          | Findora           | 0xE80EB4a234f718eDc5B76Bb442653827D20Ebb2d | BUSD          | BSC             | 0xe9e7cea3dedca5984780bafc599bd69add087d56 |
 | WBTC.b          | Findora           | 0x07EfA82E00E458ca3D53f2CD5B162e520F46d911 | BTCB          | BSC             | 0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c |
+| WETH.e          | Findora           | 0xaFfAac009Af35d6069E79Ef3763A39A2BA5BF65f | WETH          | Ethereum        | 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 |
+| USDT.e          | Findora           | 0x0632baa26299C9972eD4D9AfFa3FD057A72252Ff | USDT          | Ethereum        | 0xdAC17F958D2ee523a2206206994597C13D831ec7 |
+| USDC.e          | Findora           | 0x2e8079E0fE49626AF8716fC38aDEa6799065D7f7 | USDC          | Ethereum        | 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 |
+| WBTC.e          | Findora           | 0x38f9dA0D8A84Ad841281080Ad4a2D9D89Eff3bFf | WBTC          | Ethereum        | 0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599 |
 
 ## FRC20 token contracts for Anvil testnet
 
