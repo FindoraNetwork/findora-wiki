@@ -1,0 +1,67 @@
+---
+sidebar_position: 6
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Network Settings
+
+Findora's `Smart Chain` is a EVM-compatible chain that can run all solidity code and use existing EVM tools while `Native Chain` is a UTXO-based chain with native support for confidential transfers. Both Smart and Native Chain are part of Findora and operate under one consensus.
+
+To connect to the Findora network, use the configuration settings below. Be sure to use the configuration info for the correct chain (Smart Chain or Native Chain) you wish to connect to. 
+
+These network settings are commonly used when configuring Metmask, Findora wallet, smart contract files, etc.
+
+
+<Tabs
+  defaultValue="evm"
+  values={[
+    { label: "Smart Chain (EVM)", value: "evm" },
+    { label: "Native Chain (UTXO)", value: "utxo" },
+  ]}
+>
+  <TabItem value="evm">
+    <table>
+      <tr>
+        <th></th>
+        <th>Mainnet</th>
+        <th>Anvil Testnet</th>
+      </tr>
+      <tr>
+        <th>RPC</th>
+        <td>https://rpc-mainnet.findora.org</td>
+        <td>https://prod-testnet.prod.findora.org:8545</td>
+      </tr>
+      <tr>
+        <th>Chain ID</th>
+        <td align="center">2152</td>
+        <td align="center">2153</td>
+      </tr>
+      <tr>
+        <th>Explorer</th>
+        <td>https://evm.findorascan.io</td>
+        <td>https://testnet-anvil.evm.findorascan.io</td>
+      </tr>
+    </table>
+  </TabItem>
+  <TabItem value="utxo">
+    <table>
+      <tr>
+        <th></th>
+        <th>Mainnet</th>
+        <th>Anvil Testnet</th>
+      </tr>
+      <tr>
+        <th>Node</th>
+        <td>https://prod-mainnet.prod.findora.org</td>
+        <td>https://prod-testnet.prod.findora.org</td>
+      </tr>
+      <tr>
+        <th>Explorer</th>
+        <td>https://findorascan.io</td>
+        <td>https://prod-testnet.findorascan.io</td>
+      </tr>
+    </table>
+  </TabItem>
+</Tabs>
