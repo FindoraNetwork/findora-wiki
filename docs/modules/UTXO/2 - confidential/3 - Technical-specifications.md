@@ -1,9 +1,8 @@
 # Technical Specifications
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
+## Primitives
 Let us take a deep dive into some of the concepts involving the cryptography under the hood which enables the confidential transfers.
-
-## Concepts
-
 ### Schnorr's protocol
 
 Schnorr's protocol is a zero-knowledge protocol that allows a Prover to prove that he knows the discrete logarithm between two group elements. It is instantiated with groups such as elliptic curve groups where the discrete logarithm problem is believed to be hard.
@@ -85,157 +84,154 @@ where  $\mathbf {a}_R = \mathbf{1}^n - \mathbf{a}_L$
 
 ## Proof Verification
 
-<!--- The verification of *XFR Note* data structure starts from the verify_xfr_note function which performs the verification according to the parameters and policies.
+For the verification of confidential transfer proofs, first the validity of the `XfrNote` is checked. The Notes are verified in batches to increase the efficiency. This has 2 steps:
+1. Verifying if the signatures associated with the transacton are valid
+2. Batch verifying the bodies
 
-
+<!---
+```rust
 pub fn verify_xfr_note<R: CryptoRng + RngCore>(
     prng: &mut R,
     params: &mut PublicParams,
     xfr_note: &XfrNote,
     policies: &XfrNotePoliciesRef,
 ) -> Result<()> {
-
-```
-batch_verify_xfr_notes(prng, params, &[&xfr_note], &[&policies]).c(d!())
+    batch_verify_xfr_notes(prng, params, &[&xfr_note], &[&policies]).c(d!())
 }
 ```
 -->
 
-The verification process actually happens in batches for increasing the efficiency.
 <!---
+```rust
 pub fn batch_verify_xfr_notes<R: CryptoRng + RngCore>(
     prng: &mut R,
     params: &mut PublicParams,
     notes: &[&XfrNote],
     policies: &[&XfrNotePoliciesRef],
 ) -> Result<()> {
--->
-```
-// 1. verify signature
-for xfr_note in notes {
-    verify_transfer_multisig(xfr_note).c(d!())?;
+    // 1. verify signature
+    for xfr_note in notes {
+        verify_transfer_multisig(xfr_note).c(d!())?;
+    }
+
+    // 2. batch verify bodies
+    let bodies = notes.iter().map(|note| &note.body).collect_vec();
+    batch_verify_xfr_bodies(prng, params, &bodies, policies).c(d!())
 }
-
-let bodies = notes.iter().map(|note| &note.body).collect_vec();
-batch_verify_xfr_bodies(prng, params, &bodies, policies).c(d!())
 ```
 
-The first part of the verification process begins with verifying whether all the multisignatures assocated with the transacton is correct.
-<!---
+```rust
 pub(crate) fn verify_transfer_multisig(xfr_note: &XfrNote) -> Result<()> {
--->
-```
-let mut bytes = vec![];
-xfr_note
-    .body
-    .serialize(&mut rmp_serde::Serializer::new(&mut bytes))
-    .c(d!(ZeiError::SerializationError))?;
-let pubkeys = xfr_note
-    .body
-    .inputs
-    .iter()
-    .map(|input| &input.public_key)
-    .collect_vec();
-xfr_note.multisig.verify(&pubkeys, &bytes)
+    let mut bytes = vec![];
+    xfr_note
+        .body
+        .serialize(&mut rmp_serde::Serializer::new(&mut bytes))
+        .c(d!(ZeiError::SerializationError))?;
+    let pubkeys = xfr_note
+        .body
+        .inputs
+        .iter()
+        .map(|input| &input.public_key)
+        .collect_vec();
+    xfr_note.multisig.verify(&pubkeys, &bytes)
 }
 ```
+-->
+The verification of bodies consists of
+1. Verifying the Asset Records if the amounts and asset types are correct
+2. Verifying the Asset Tracing proofs
 
-The second part of verifying the XFR Note consists of batch verifying whether the XFR bodies are correctly constructed.
 <!---
-~~pub fn batch_verify_xfr_bodies<R: CryptoRng + RngCore>( 
+```rust
+pub fn batch_verify_xfr_bodies<R: CryptoRng + RngCore>( 
     prng: &mut R,
     params: &mut PublicParams,
     bodies: &[&XfrBody],
     policies: &[&XfrNotePoliciesRef],
-) -> Result<()>  ~~
+) -> Result<()> {
+    // 1. verify amounts and asset types
+    batch_verify_xfr_body_asset_records(prng, params, bodies).c(d!())?;
+
+    // 2. verify tracing proofs
+    batch_verify_tracer_tracing_proof(prng, &params.pc_gens, bodies, policies).c(d!())
+}
+```
 -->
-```
-// 1. verify amounts and asset types
-batch_verify_xfr_body_asset_records(prng, params, bodies).c(d!())?;
+<p align="center"><img src={useBaseUrl("/img/proof_verification.jpg")} width="70%"/></p>
 
-// 2. verify tracing proofs
-batch_verify_tracer_tracing_proof(prng, &params.pc_gens, bodies, policies).c(d!())
-```
+Verifying the Asset Records, consists of the following steps:
+- Verifying the batched range proof for the confidential amounts
+- Verifying the batched Chaum-Pedersen equality proofs for the asset types
+- Verifying the batched asset mixing proofs for checking the amount sum equality for multiple assets
 
-Verifying the XFR Bodies primarily consists of 2 steps. The first step verifies whether the asset records are correctly constructed.
-
-```
+<!---
+```rust
 pub(crate) fn batch_verify_xfr_body_asset_records<R: CryptoRng + RngCore>(
     prng: &mut R,
     params: &mut PublicParams,
     bodies: &[&XfrBody],
-) -> Result<()>
-```
-This function basically processes the XFR Body and prepares for 3 different kinds of proofs. All of these proofs are performed in a batched manner. First up is the batched range proof for verifying the confidential amounts.
+) -> Result<()> {
+    // 1. Batch verify Range Proof
+    let mut transcripts = vec![Transcript::new(b"Zei Range Proof"); instances.len()];
+    let proofs: Vec<&RangeProof> =
+        instances.iter().map(|(_, _, pf)| &pf.range_proof).collect();
+    let mut commitments = vec![];
+    for (input, output, proof) in instances {
+        commitments.push(
+            extract_value_commitments(input.as_slice(), output.as_slice(), proof)
+                .c(d!())?,
+        );
+    }
+    let value_commitments = commitments.iter().map(|c| c.as_slice()).collect_vec();
+    batch_verify_ranges(
+        prng,
+        &params.bp_gens,
+        &params.pc_gens,
+        proofs.as_slice(),
+        &mut transcripts,
+        &value_commitments,
+        BULLET_PROOF_RANGE,
+    )
+    .c(d!(ZeiError::XfrVerifyConfidentialAmountError))
 
-```
-let mut transcripts = vec![Transcript::new(b"Zei Range Proof"); instances.len()];
-let proofs: Vec<&RangeProof> =
-    instances.iter().map(|(_, _, pf)| &pf.range_proof).collect();
-let mut commitments = vec![];
-for (input, output, proof) in instances {
-    commitments.push(
-        extract_value_commitments(input.as_slice(), output.as_slice(), proof)
-            .c(d!())?,
-    );
+    // 2. Verify Chaum-Pedersen batch proofs for Asset Equality
+    let mut transcript = Transcript::new(b"AssetEquality");
+    let mut proof_instances = Vec::with_capacity(instances.len());
+    for (inputs, outputs, proof) in instances {
+        let instance_commitments: Result<Vec<RistrettoPoint>> = inputs
+            .iter()
+            .chain(outputs.iter())
+            .map(|x| match x.asset_type {
+                XfrAssetType::Confidential(com) => {
+                    com.decompress().c(d!(ZeiError::ParameterError))
+                }
+                XfrAssetType::NonConfidential(asset_type) => {
+                    Ok(pc_gens.commit(asset_type.as_scalar(), Scalar::from_u32(0)))
+                }
+            })
+            .collect();
+        proof_instances.push((instance_commitments.c(d!())?, *proof));
+    }
+    chaum_pedersen_batch_verify_multiple_eq(
+        &mut transcript,
+        prng,
+        &pc_gens,
+        &proof_instances,
+    )
+    .c(d!(ZeiError::XfrVerifyConfidentialAssetError))
 }
-let value_commitments = commitments.iter().map(|c| c.as_slice()).collect_vec();
-batch_verify_ranges(
-    prng,
-    &params.bp_gens,
-    &params.pc_gens,
-    proofs.as_slice(),
-    &mut transcripts,
-    &value_commitments,
-    BULLET_PROOF_RANGE,
-)
-.c(d!(ZeiError::XfrVerifyConfidentialAmountError))
-
 ```
 
-The second part consists of verifying the confidential asset types. This step ultimately comprises of the Chaum Pedersen Equality proof of the commitment to the asset type.
-
 ```
-let mut transcript = Transcript::new(b"AssetEquality");
-let mut proof_instances = Vec::with_capacity(instances.len());
-for (inputs, outputs, proof) in instances {
-    let instance_commitments: Result<Vec<RistrettoPoint>> = inputs
-        .iter()
-        .chain(outputs.iter())
-        .map(|x| match x.asset_type {
-            XfrAssetType::Confidential(com) => {
-                com.decompress().c(d!(ZeiError::ParameterError))
-            }
-            XfrAssetType::NonConfidential(asset_type) => {
-                Ok(pc_gens.commit(asset_type.as_scalar(), Scalar::from_u32(0)))
-            }
-        })
-        .collect();
-    proof_instances.push((instance_commitments.c(d!())?, *proof));
-}
-chaum_pedersen_batch_verify_multiple_eq(
-    &mut transcript,
-    prng,
-    &pc_gens,
-    &proof_instances,
-)
-.c(d!(ZeiError::XfrVerifyConfidentialAssetError))
-```
-
-The third step consists of verifying the asset mixing proofs. This consists of both confidential asset and non-confidential assets.
-
-```
+// 3. Verify Asset mixing proofs for multiple assets
 fn batch_verify_asset_mix<R: CryptoRng + RngCore>(
     prng: &mut R,
     params: &mut PublicParams,
     bars_instances: &[(&[BlindAssetRecord], &[BlindAssetRecord], &AssetMixProof)],
-) -> Result<()> {
+) -> Result<()>
 ```
-
+-->
 
 For the equality of committed asset-typed and the amount-sum equalities for the asset-types, the Verifier's task boils down to verifying Schnorr proofs of knowledge of discrete logarithms. The proofs are batched so that the communication complexity and the verification time stay constant.
 
 To verify the range proofs, the Verifier performs a sequence of inner product checks. The Verifier uses the same hashing algorithm as the Prover to get the independent group generators in $\mathbb{G}$. This makes his runtime $\mathbf{O}(n)$.
-
-
-The Verifier's task also includes a sequence of inner product checks.
