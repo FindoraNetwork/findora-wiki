@@ -83,12 +83,26 @@ where  $\mathbf {a}_R = \mathbf{1}^n - \mathbf{a}_L$
 
 
 ## Proof Verification
+During the verification of confidential transfer at the validators' end, the validity of the `XfrNote` is checked. This is done in batches to increase the efficiency. The following is the hierarchy of the steps:
+- Verifying if the signatures associated with the transacton are valid
+- Batch verifying the bodies
+    - Verifying the Asset Records if the amounts and asset types are correct
+        - Verifying the batched range proof for the confidential amounts
+        - Verifying the batched Chaum-Pedersen equality proofs for the asset types
+        - Verifying the batched asset mixing proofs for checking the amount sum equality for multiple assets
+    - Verifying the Asset Tracing proofs
 
+<p align="center"><img src={useBaseUrl("/img/proof_verification.jpg")} width="70%"/></p>
+
+For the equality of committed asset-typed and the amount-sum equalities for the asset-types, the Verifier's task boils down to verifying Schnorr proofs of knowledge of discrete logarithms. The proofs are batched so that the communication complexity and the verification time stay constant.
+
+To verify the range proofs, the Verifier performs a sequence of inner product checks. The Verifier uses the same hashing algorithm as the Prover to get the independent group generators in $\mathbb{G}$. This makes his runtime $\mathbf{O}(n)$.
+
+<!---
 For the verification of confidential transfer proofs, first the validity of the `XfrNote` is checked. The Notes are verified in batches to increase the efficiency. This has 2 steps:
 1. Verifying if the signatures associated with the transacton are valid
 2. Batch verifying the bodies
 
-<!---
 ```rust
 pub fn verify_xfr_note<R: CryptoRng + RngCore>(
     prng: &mut R,
@@ -99,9 +113,7 @@ pub fn verify_xfr_note<R: CryptoRng + RngCore>(
     batch_verify_xfr_notes(prng, params, &[&xfr_note], &[&policies]).c(d!())
 }
 ```
--->
 
-<!---
 ```rust
 pub fn batch_verify_xfr_notes<R: CryptoRng + RngCore>(
     prng: &mut R,
@@ -136,12 +148,11 @@ pub(crate) fn verify_transfer_multisig(xfr_note: &XfrNote) -> Result<()> {
     xfr_note.multisig.verify(&pubkeys, &bytes)
 }
 ```
--->
+
 The verification of bodies consists of
 1. Verifying the Asset Records if the amounts and asset types are correct
 2. Verifying the Asset Tracing proofs
 
-<!---
 ```rust
 pub fn batch_verify_xfr_bodies<R: CryptoRng + RngCore>( 
     prng: &mut R,
@@ -156,7 +167,7 @@ pub fn batch_verify_xfr_bodies<R: CryptoRng + RngCore>(
     batch_verify_tracer_tracing_proof(prng, &params.pc_gens, bodies, policies).c(d!())
 }
 ```
--->
+
 <p align="center"><img src={useBaseUrl("/img/proof_verification.jpg")} width="70%"/></p>
 
 Verifying the Asset Records, consists of the following steps:
@@ -164,7 +175,6 @@ Verifying the Asset Records, consists of the following steps:
 - Verifying the batched Chaum-Pedersen equality proofs for the asset types
 - Verifying the batched asset mixing proofs for checking the amount sum equality for multiple assets
 
-<!---
 ```rust
 pub(crate) fn batch_verify_xfr_body_asset_records<R: CryptoRng + RngCore>(
     prng: &mut R,
@@ -231,7 +241,3 @@ fn batch_verify_asset_mix<R: CryptoRng + RngCore>(
 ) -> Result<()>
 ```
 -->
-
-For the equality of committed asset-typed and the amount-sum equalities for the asset-types, the Verifier's task boils down to verifying Schnorr proofs of knowledge of discrete logarithms. The proofs are batched so that the communication complexity and the verification time stay constant.
-
-To verify the range proofs, the Verifier performs a sequence of inner product checks. The Verifier uses the same hashing algorithm as the Prover to get the independent group generators in $\mathbb{G}$. This makes his runtime $\mathbf{O}(n)$.
