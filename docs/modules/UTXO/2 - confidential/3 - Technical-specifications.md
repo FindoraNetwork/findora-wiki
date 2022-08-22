@@ -9,6 +9,8 @@ Schnorr's protocol is a zero-knowledge protocol that allows a Prover to prove th
 
 Given commitments to pairs representing asset-types and amounts, this protocol can be used to prove that two commitments are to the same asset-type. With minor modifications, the protocol can also be used to prove that the commitments are to distinct asset types if necessary. 
 
+For a detailed explanation of the delegated Schnorr protocol, [check this page](../../cryptography/delegated_schnorr)
+
 ### Pedersen commitments
 
 The cryptographic commitments are *perfectly hiding*, which makes them distinct from encryptions. They do not contain any information that can be decrypted by someone with a key. Rather, they serve as a hidden fingerprint for the committed information, similar to how a server can send a hash of a file before sharing the file. The hash is a unique fingerprint that can be measured from the file, but the file cannot be obtained from the hash. Cryptographic commitments can only be “opened” or “unblinded” given the unique information that was committed and a secret value called the *blinding factor*. If $C$ is a commitment to a message $m$ using blinding factor $r$, then $C$ can be uniquely computed from $m$ and $r$, and the knowledge of $r$ is proof that $C$ was a commitment to $m$. In Findora’s blinded asset records, the blinding factors are shared with the new asset owner (i.e. transfer recipient) using a method similar to a Diffie-Hellman key exchange. This user derives the blinding factors from blind share and its private key corresponding to public key. The user needs these blinding factors in order to check that the decrypted contents of the record are correct (i.e. as approved by the validators) and will also need to use them to transfer ownership of the asset in a future transaction.
@@ -25,6 +27,7 @@ The range proofs are derived from a zero-knowledge proof scheme called *Bulletpr
 
 We first describe a straightforward albeit inefficient way to create a range proof. The Prover decomposes the integer representing the amount into its binary representation. He then creates commitments to each of those bits and then sends a proof attesting to the claim that each of these commitments is to a bit and that the amount is the aggregation of these bits. But this proof size is linear in the bit length of the amount, which is quite inefficient in practice. Bulletproofs is an efficient range proof which is logarithmic in the size of the amount. The core of the bulletproof protocol hinges on a technique called the *recursive inner product argument*.
 
+[Check this link](../../cryptography/bulletproofs) for details on the Bulletproofs-based mixing protocol
 
 ### Range proofs via inner product arguments
 
