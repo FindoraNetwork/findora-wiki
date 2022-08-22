@@ -7,14 +7,7 @@ Let us take a deep dive into some of the concepts involving the cryptography und
 
 Schnorr's protocol is a zero-knowledge protocol that allows a Prover to prove that he knows the discrete logarithm between two group elements. It is instantiated with groups such as elliptic curve groups where the discrete logarithm problem is believed to be hard.
 
-Given commitments to pairs representing asset-types and amounts, this protocol can be used to prove that two commitments are to the same asset-type. With minor modifications, the protocol can also be used to prove that the commitments are to distinct asset types if necessary.
-
-
-### Bulletproofs
-
-The range proofs are derived from a zero-knowledge proof scheme called *Bulletproofs*. This is an instantiation of a special class of range proofs where the sender proves in zero-knowledge (i.e. without revealing any other information about the transaction) that the masked (or committed) amount falls within a certain range. In particular, a sender can use this scheme to prove that the amount he sent is non-negative and does not exceed his balance, which is necessary to prevent double-spending on the chain. This is a *transparent* scheme, meaning it does not require any preprocessing phase or trusted setup. The security of Bulletproofs relies on the hardness of the discrete logarithm problem in elliptic curves, which is one of the oldest and most battle-tested assumptions in cryptography.
-
-We first describe a straightforward albeit inefficient way to create a range proof. The Prover decomposes the integer representing the amount into its binary representation. He then creates commitments to each of those bits and then sends a proof attesting to the claim that each of these commitments is to a bit and that the amount is the aggregation of these bits. But this proof size is linear in the bit length of the amount, which is quite inefficient in practice. Bulletproofs is an efficient range proof which is logarithmic in the size of the amount. The core of the bulletproof protocol hinges on a technique called the *recursive inner product argument*. 
+Given commitments to pairs representing asset-types and amounts, this protocol can be used to prove that two commitments are to the same asset-type. With minor modifications, the protocol can also be used to prove that the commitments are to distinct asset types if necessary. 
 
 ### Pedersen commitments
 
@@ -23,6 +16,14 @@ The cryptographic commitments are *perfectly hiding*, which makes them distinct 
 As before, let $\mathbb{G}$ denote the Ristretto group, i.e. the group of points on the Ristretto curve. Let $p$ be the order of this group. For independent group generators $g_1,g_2,h\in \mathbb{G}$ and a pair $(a,b)\in \mathbb{F}_p^2$ representing the asset type and amount, the commitment to this pair is given by $g_1^{a}g_2^{b}h^r$ where $r$ is a random element in $\mathbb{F}_p$.
 
 Findora uses the *Ristretto* group, which is a quotient group built from the elliptic curve group on Curve25519. This group has order $8p$ for the prime: $$p =2^{252} +27742317777372353535851937790883648493.$$ The Ristretto quotient group is the unique quotient group of order $p$.
+
+
+
+### Bulletproofs
+
+The range proofs are derived from a zero-knowledge proof scheme called *Bulletproofs*. This is an instantiation of a special class of range proofs where the sender proves in zero-knowledge (i.e. without revealing any other information about the transaction) that the masked (or committed) amount falls within a certain range. In particular, a sender can use this scheme to prove that the amount he sent is non-negative and does not exceed his balance, which is necessary to prevent double-spending on the chain. This is a *transparent* scheme, meaning it does not require any preprocessing phase or trusted setup. The security of Bulletproofs relies on the hardness of the discrete logarithm problem in elliptic curves, which is one of the oldest and most battle-tested assumptions in cryptography.
+
+We first describe a straightforward albeit inefficient way to create a range proof. The Prover decomposes the integer representing the amount into its binary representation. He then creates commitments to each of those bits and then sends a proof attesting to the claim that each of these commitments is to a bit and that the amount is the aggregation of these bits. But this proof size is linear in the bit length of the amount, which is quite inefficient in practice. Bulletproofs is an efficient range proof which is logarithmic in the size of the amount. The core of the bulletproof protocol hinges on a technique called the *recursive inner product argument*.
 
 
 ### Range proofs via inner product arguments
@@ -89,13 +90,13 @@ During the verification of confidential transfer at the validators' end, the val
 - Batch verifying the bodies
     - Verifying the Asset Records if the amounts and asset types are correct
         - Verifying the batched range proof for the confidential amounts
-        - Verifying the batched Chaum-Pedersen equality proofs for the asset types
+        - Verifying the delegated Schnorr proofs for the confidential asset types
         - Verifying the batched asset mixing proofs for checking the amount sum equality for multiple assets
     - Verifying the Asset Tracing proofs
 
 <p align="center"><img src={useBaseUrl("/img/proof_verification.jpg")} width="70%"/></p>
 
-For the equality of committed asset-typed and the amount-sum equalities for the asset-types, the Verifier's task boils down to verifying Schnorr proofs of knowledge of discrete logarithms. The proofs are batched so that the communication complexity and the verification time stay constant.
+For the equality of committed asset types, the Verifier's task boils down to verifying Schnorr proofs of knowledge of discrete logarithms. The proofs are batched so that the communication complexity and the verification time stay constant.
 
 To verify the range proofs, the Verifier performs a sequence of inner product checks. The Verifier uses the same hashing algorithm as the Prover to get the independent group generators in $\mathbb{G}$. This makes his runtime $\mathbf{O}(n)$.
 
@@ -173,7 +174,7 @@ pub fn batch_verify_xfr_bodies<R: CryptoRng + RngCore>(
 
 Verifying the Asset Records, consists of the following steps:
 - Verifying the batched range proof for the confidential amounts
-- Verifying the batched Chaum-Pedersen equality proofs for the asset types
+- Verifying the batched delegated Schnorr equality proofs for the asset types
 - Verifying the batched asset mixing proofs for checking the amount sum equality for multiple assets
 
 ```rust
@@ -205,7 +206,7 @@ pub(crate) fn batch_verify_xfr_body_asset_records<R: CryptoRng + RngCore>(
     )
     .c(d!(ZeiError::XfrVerifyConfidentialAmountError))
 
-    // 2. Verify Chaum-Pedersen batch proofs for Asset Equality
+    // 2. Verify delegated Schnorr proofs for Asset Equality
     let mut transcript = Transcript::new(b"AssetEquality");
     let mut proof_instances = Vec::with_capacity(instances.len());
     for (inputs, outputs, proof) in instances {

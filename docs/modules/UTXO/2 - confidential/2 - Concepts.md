@@ -54,13 +54,13 @@ pub struct BlindAssetRecord {
 
 * *Single confidential asset type, public amount:*
 
-    * A Chaum-Pedersen batch proof that shows that all the input and output commitments are for the same asset type. 
+    * A delegated Schnorr proof that shows that all the input and output commitments are for the same asset type. 
 
 * *Confidential amount, single confidential asset type:*
 
     * A Bulletproof as above.
     
-    * A Chaum-Pedersen batch proof as above.
+    * A delegated Schnorr proof as above.
 
 * *Multiple assets:*
 
