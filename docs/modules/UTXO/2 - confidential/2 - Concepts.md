@@ -3,7 +3,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## The simplified model: without tracing
 
-The confidential transfer in Findora has a comprehensive support of tracing, which enables an *asset tracer} to see information in a confidential transfer, depending on the tracing policy, the amount, the asset type, and/or the sender's identity and attributes.
+The confidential transfer in Findora has a comprehensive support of tracing, which enables an *asset tracer* to see information in a confidential transfer, depending on the tracing policy, the amount, the asset type, and/or the sender's identity and attributes.
 
 
 To get started, we focus on the simplified model where tracing is struck. This allows us to focus on Bulletproofs and Ristretto ciphertexts. 
@@ -115,7 +115,8 @@ The mixing proof uses the Bulletproofs-based mixing protocol, which is part of t
 We now describe the complete model of confidential transfer, which additionally includes asset tracing proofs and tracer memos. These two are corresponding to the tracing policies of a given asset. We now describe these three structures.
 
 
-** Asset tracing proofs ** The asset tracing proofs are used to show that the tracer memos, which encrypt information about the transaction, match what is exactly in the transaction. It consists of three parts.
+### Asset tracing proofs 
+The asset tracing proofs are used to show that the tracer memos, which encrypt information about the transaction, match what is exactly in the transaction. It consists of three parts.
 
 * *Asset type and amounts proofs:*
 
@@ -129,7 +130,8 @@ We now describe the complete model of confidential transfer, which additionally 
 
     * Similar to input identity proofs.
 
-** Tracer memos ** For each record with confidential amount or asset type, and for each tracer of this asset, there is a tracer memo that provides information about the transaction as well as identity information about the sender and the recipient. Each tracer memo consists of the following parts.
+### Tracer memos
+For each record with confidential amount or asset type, and for each tracer of this asset, there is a tracer memo that provides information about the transaction as well as identity information about the sender and the recipient. Each tracer memo consists of the following parts.
 
 * *Encryption keys:*
 

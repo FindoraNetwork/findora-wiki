@@ -24,9 +24,28 @@ As before, let $\mathbb{G}$ denote the Ristretto group, i.e. the group of points
 
 Findora uses the *Ristretto* group, which is a quotient group built from the elliptic curve group on Curve25519. This group has order $8p$ for the prime: $$p =2^{252} +27742317777372353535851937790883648493.$$ The Ristretto quotient group is the unique quotient group of order $p$.
 
+
+### Range proofs via inner product arguments
+
+Let $C_v = g^{v} h^r$ be a commitment to a value $v$. To show that $v$ lies in the range $[0,2^{n}-1]$, it suffices for the Prover to show that he knows a vector $\mathbf{a}_L = (a_0,\cdots,a_{n-1})$ such that:
+
+- $\langle \mathbf{a}_L\;,\; \mathbf{2}^n \rangle  = v$, which shows that $v = \sum_{i=0}^n a_i\cdot 2^i$
+- $\mathbf{a}_L \circ (\mathbf{1}^n - \mathbf{a}_L) = \mathbf{0}^n$, which shows that the entries of $\mathbf{a}_L$ lie in $\{0,1 \}^n$.
+
+In other words, this shows that the $n$ entries of $\mathbb{a}_L$ represent the bit decomposition of $v$.
+
+For randomly generated challenges $y, z\in \mathbb{F}_p$, it suffices to show that,
+
+$z^2 \cdot \langle \mathbf {a}_L \hspace{3pt} ,
+\hspace{3pt} \mathbf {2}^n \rangle + z \cdot \langle \mathbf {a}_L - \mathbf {1}^n - \mathbf {a}_R \hspace{3pt} ,
+\hspace{3pt} \mathbf {y}^n \rangle + \langle \mathbf {a}_L \hspace{3pt} ,
+\hspace{3pt} \mathbf {a}_R \circ \mathbf {y}^n \rangle = z^2 \cdot v \hspace{20pt}$
+
+where  $\mathbf {a}_R = \mathbf{1}^n - \mathbf{a}_L$
+
 ## Proof Generation
 
-The `XfrProofs` structure contains a zero-knowledge proof that the blinded output records are valid with respect to the blinded input records. Since the fees are denominated in the FRA token, it is necessary to prove in zero-knowledge that:
+The `XfrProofs` data structure contains a zero-knowledge proof that the blinded output records are valid with respect to the blinded input records. Since the fees are denominated in the FRA token, it is necessary to prove in zero-knowledge that:
 
 - for every asset type other than FRA, the sum of the inputs is the same as the sum of the outputs
 - the sum of the inputs corresponding to the FRA asset is the same as the sum of the outputs plus the fees for the transaction.
@@ -62,24 +81,6 @@ Given input commitments $C_1^{\mathrm{in}},\cdots, C_m^{\mathrm{in}}$ and output
 To prevent double-spends on the blockchain in tandem with maintaining confidentiality, it is necessary for the sender of a transaction to prove in zero-knowledge that the amounts committed are all non-negative. This requires a zero-knowledge range proof to convince a Verifier that the amounts are non-negative. Findora's confidential transfer is accompanied by proofs that the committed amounts lie in the range $[0, 2^{64}-1]$. These proofs are constructed using the Bulletproofs scheme.
 
 Bulletproofs are particularly suited for range proofs on small ranges: the proof for a $64$-bit range is less than 1KB and takes only milliseconds to both create and verify. Bulletproofs have a batching mode where a range proof from $m$ points is only $64\log(m)$ bytes larger than a range proof for a single point (e.g. a batch proof for 100 points is less than 500 bytes larger). Bulletproofs also have a batch verification mode where the amortized time to verify many range proofs is approximately 0.34 ms per proof.
-
-### Range proofs via inner product arguments
-
-Let $C_v = g^{v} h^r$ be a commitment to a value $v$. To show that $v$ lies in the range $[0,2^{n}-1]$, it suffices for the Prover to show that he knows a vector $\mathbf{a}_L = (a_0,\cdots,a_{n-1})$ such that:
-
-- $\langle \mathbf{a}_L\;,\; \mathbf{2}^n \rangle  = v$, which shows that $v = \sum_{i=0}^n a_i\cdot 2^i$
-- $\mathbf{a}_L \circ (\mathbf{1}^n - \mathbf{a}_L) = \mathbf{0}^n$, which shows that the entries of $\mathbf{a}_L$ lie in $\{0,1 \}^n$.
-
-In other words, this shows that the $n$ entries of $\mathbb{a}_L$ represent the bit decomposition of $v$.
-
-For randomly generated challenges $y, z\in \mathbb{F}_p$, it suffices to show that,
-
-$z^2 \cdot \langle \mathbf {a}_L \hspace{3pt} ,
-\hspace{3pt} \mathbf {2}^n \rangle + z \cdot \langle \mathbf {a}_L - \mathbf {1}^n - \mathbf {a}_R \hspace{3pt} ,
-\hspace{3pt} \mathbf {y}^n \rangle + \langle \mathbf {a}_L \hspace{3pt} ,
-\hspace{3pt} \mathbf {a}_R \circ \mathbf {y}^n \rangle = z^2 \cdot v \hspace{20pt}$
-
-where  $\mathbf {a}_R = \mathbf{1}^n - \mathbf{a}_L$
 
 
 ## Proof Verification
