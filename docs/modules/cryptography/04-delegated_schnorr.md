@@ -1,9 +1,9 @@
-# Delegated Chaum-Pedersen Protocol
+# Delegated Schnorr
 
 The Zei library implements a protocol that is specifically used to open Pedersen commitments over Ristretto inside zk-SNARK over BLS12-381. This is a new protocol that has not been documented and studied before.
 
 
-For now, we call this protocol _delegated Chaum-Pedersen_, though we believe that a better name exists. Since this protocol is special-purpose, we feel it helpful to describe the problem that this protocol wants to solve.
+For now, we call this protocol _delegated Schnorr_, though we believe that a better name exists. Since this protocol is special-purpose, we feel it helpful to describe the problem that this protocol wants to solve.
 
 
 ## Problem: lifting a Pedersen commitment to a Rescue commitment
@@ -22,7 +22,7 @@ Naively, the field simulation would require about $6\times 10^3$ simulated multi
 In our implementation, we try to reduce the number of field simulations. The approach is that, instead of doing _point simulation_ inside the zk-SNARK, we push the point operations out of zk-SNARK, in which case simulation is not needed, and we permit only a few field simulations inside the zk-SNARK, for the purposes of connecting with the point operations done externally.
 
 
-This protocol, delegated Chaum-Pedersen, describes the part that is being pushed out from zk-SNARK from the naive construction. It is an extension of the classical Chaum-pedersen protocol, with the additional change that the witness, $a, b, c, d$ below, is committed in the protocol under a randomizer $r$, using the Rescue hash function.
+This protocol, delegated Schnorr, describes the part that is being pushed out from zk-SNARK from the naive construction. It is an extension of the classical Schnorr protocol, with the additional change that the witness, $a, b, c, d$ below, is committed in the protocol under a randomizer $r$, using the Rescue hash function.
 
 ## Protocol
 
@@ -40,7 +40,7 @@ $\mathsf{Prove}(x,\gamma, y, \delta, P, Q, z) \rightarrow (\pi, w, \beta, \lambd
      * $\mathsf{compressed\_limbs}[2] := \mathsf{y\_limbs}[4] + \mathsf{y\_limbs}[5] \cdot 2^{43} + \mathsf{a\_limbs}[0] \cdot 2^{43\times 2} + \mathsf{a\_limbs}[1] \cdot 2^{43\times 3} + \mathsf{a\_limbs}[2] \cdot 2^{43\times 4}$
      * $\mathsf{compressed\_limbs}[3] := \mathsf{a\_limbs}[3] + \mathsf{a\_limbs}[4] \cdot 2^{43} + \mathsf{a\_limbs}[5] \cdot 2^{43\times 2} + \mathsf{b\_limbs}[0] \cdot 2^{43\times 3} + \mathsf{b\_limbs}[1] \cdot 2^{43\times 4}$
      * $\mathsf{compressed\_limbs}[4] := \mathsf{b\_limbs}[2] + \mathsf{b\_limbs}[3] \cdot 2^{43} + \mathsf{b\_limbs}[4] \cdot 2^{43\times 2} + \mathsf{b\_limbs}[5] \cdot 2^{43\times 3}$
-  * _This step differs from classical Chaum-Pedersen protocol._ Use a Rescue hash function $\mathsf{RescueHash}: (\mathbb{F}_q)^4\rightarrow \mathbb{F}_q$ to compute a commitment, using $r$ as the randomizer.
+  * _This step differs from classical Schnorr protocol._ Use a Rescue hash function $\mathsf{RescueHash}: (\mathbb{F}_q)^4\rightarrow \mathbb{F}_q$ to compute a commitment, using $r$ as the randomizer.
       * $\mathsf{comm} := \mathsf{RescueHash}\left(\mathsf{RescueHash}\left(\begin{array}{l}
         \mathsf{compressed\_limbs}[0],\\ \mathsf{compressed\_limbs}[1],\\
         \mathsf{compressed\_limbs}[2],\\
