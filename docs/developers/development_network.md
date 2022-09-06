@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -7,6 +7,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Development Network
+
+> **NOTE**: We recommend using the newer toolkit [**fn dev**](../development_network_ng.md), this page may be deprecated in future releases.
 
 This guide walks through how to deploy a local blockchain instance for software development and testing purposes. Alternatively, developers can also develop and test on [Anvil Testnet](../Network_Settings.mdx).
 
