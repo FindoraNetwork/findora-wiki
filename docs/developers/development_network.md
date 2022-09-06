@@ -8,7 +8,9 @@ import TabItem from '@theme/TabItem';
 
 # Development Network
 
-This guide walks through how to deploy local blockchain instance[s] for software development and testing purposes. Alternatively, developers can also develop and test on [Anvil Testnet](../Network_Settings.mdx).
+> **NOTE**: We recommend using the newer toolkit [**fn dev**](../development_network_ng.md), this page may be deprecated in future releases.
+
+This guide walks through how to deploy a local blockchain instance for software development and testing purposes. Alternatively, developers can also develop and test on [Anvil Testnet](../Network_Settings.mdx).
 
 ## 1. Prerequisites
 
@@ -35,7 +37,7 @@ go version
 ### ii) Install Rust
 https://rustup.rs/
 
-If already installed, please update to 1.63 or newer
+If already installed, please update to 1.59 or newer
 ```bash
 rustup update
 ```
@@ -75,9 +77,7 @@ cd platform && \
 make build_release
 ```
 
-Please make sure to add all below 4 binaries to your $PATH. By default, they will be copied to `~/.cargo/bin/` which should already be in your $PATH.
-
-* `fn`: The core development tool for working with a Findora blockchain.
+Please make sure to add all below 3 binaries to your $PATH. By default, they will be copied to `~/.cargo/bin/` which should already be in your $PATH.
 
 * `stt`: The tool to initialize Findora blockchain.
 
@@ -86,9 +86,65 @@ Please make sure to add all below 4 binaries to your $PATH. By default, they wil
 * `tendermint`: Tendermint consensus engine.
 
 
-## 3. Run and manage local development cluster[s]
+## 3. Install Python3 and toml-cli
 
-Check [**the documentation on github**](https://github.com/rust-util-collections/platform/blob/main/src/components/finutils/src/common/dev/README.md) for a detailed user guide.
+Findora devnet tools are written in Python3 and use `toml-cli` to manipulate configuration files. [Install Python3](https://www.python.org/downloads/) if not already installed. Also, install `toml-cli` using the command below:
+```bash
+pip3 install toml-cli
+```
+and then copy newly installed `toml` cli tool to `/usr/local/bin` to make it visiable
+```bash
+cp /Library/Python/3.x/site-packages/toml /usr/local/bin
+```
 
-## 4. Troubleshoot
 
+## 4. Run Devnet
+
+Inside your `platform` directory, execute `make devnet` in the terminal.
+
+<img src={useBaseUrl("/img/make-devnet.png")} width="100%" height="100%"/>
+
+### i) What's in devnet?
+
+Name | Description
+--- | ---
+node0 | The validator
+node1 | The fullnode
+Faucet | The key pair that holds FRA
+
+### ii) How to control devnet?
+The local blockchain can be stopped and restarted anytime during development and tests.
+
+* Stop Blockchain: `./tools/devnet/stopnodes.sh`
+
+* Restart Blockchain: `./tools/devnet/startnodes.sh`
+
+* Start Over: `make devnet` again.
+
+<img src={useBaseUrl("/img/stop-start-devnet.png")} width="40%" height="40%"/>
+
+
+## 5. Devnet URLs and Ports
+
+URL | Purpose
+--- | ---
+http://127.0.0.1 | connects to [Findora Electron Wallet](https://wallet.findora.org/)
+http://127.0.0.1:8545 | connects to Web3 HTTP
+http://127.0.0.1:8546 | connects to Web3 WebSocket
+
+
+## 6. Troubleshoot
+
+* Problem 1
+  * Error Message: 
+    * `make build_release fails with go:linkname must refer to declared function or variable`
+* Solution
+  * Update your golang.org/x/sys
+    ```bash
+      # go to platform/tools/tendermint run following to update
+      go get -u golang.org/x/sys
+  ---
+* Problem 2
+  * `.findora` file is missing
+* Solution
+  * manually add `.findora` to your home directory (i.e. directory `~`)
