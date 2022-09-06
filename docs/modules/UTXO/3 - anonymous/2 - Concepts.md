@@ -35,7 +35,6 @@ pub struct AnonKeys {
 }
 ```
 
-(Needs an update)
 ![](../../../images/bar_to_abar.jpg)
 The BAR to ABAR operation generates an ABAR along with a transaction id (called ATxoSID) which is similar to TxoSID for BAR. This operation returns the commitment which is further used as an identifier in future spend their ABARs. The Findora wallet application takes care of this part and shows the updated balance in the anonymous wallet automatically, but if CLI is used, the ownership of the ABAR can be confirmed by opening the ABAR, which is essentially opening the commitment with the Anon Keys. This opened ABAR consists of amount, asset type, axfr public key, owner memo and the merkle root value.
 
@@ -60,7 +59,6 @@ This spending of the ABAR is similar to that of an Anonymous Transfer i.e., a ze
 
 The existence and ownership of ABAR is proved with the knowledge of the secret key and the correctness of the merkle path of ABAR in the commitment tree. The network verifies the proof with the merkle root and the exact spending of the ABAR remains a secret. To ensure that there is no double spending involved, the spender creates a nullifier hash from the amount, asset type and the Anon keys, to track the spending status of ABAR. The Nullifier Hash cannot be correlated to any ABAR in the commitment tree by an external party so only the ABAR owner knows its spending status. The nullifier hash is stored in another tree (called the nullifier set) to track the common set of nullifiers, signifying all the spent ABARs in the network. The correctness of the nullifier hash is proved in zero knowledge to not allow anybody to forge a Nullifier.
 
-(Needs an update)
 ![](../../../images/abar_to_bar.jpg)
 This operation returns a new BAR with the same amount as that of the ABAR. Optionally, the amount and asset type could be made confidential while generating the new BAR. However the public key of the BAR is not anonymous anymore, hence the ABAR to BAR conversion assumes a loss in anonymity for the transfers made any further using the newly generated BAR.
 
@@ -80,7 +78,6 @@ For each new ABAR output:
 * The ABAR commitment is computed correctly
 * It is infeasible to cause the nullifier of the ABAR output to collide with the nullifier of any other ABAR
 
-(Needs an update)
 ![](../../../images/abar_transfer.jpg)
 
 ### Sequence of steps in ABAR Transfer
