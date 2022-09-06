@@ -103,7 +103,7 @@ For the equality of committed asset types, the Verifier's task boils down to ver
 
 To verify the range proofs, the Verifier performs a sequence of inner product checks. The Verifier uses the same hashing algorithm as the Prover to get the independent group generators in $\mathbb{G}$. This makes his runtime $\mathbf{O}(n)$.
 
-<!---
+<!--
 For the verification of confidential transfer proofs, first the validity of the `XfrNote` is checked. The Notes are verified in batches to increase the efficiency. This has 2 steps:
 1. Verifying if the signatures associated with the transacton are valid
 2. Batch verifying the bodies

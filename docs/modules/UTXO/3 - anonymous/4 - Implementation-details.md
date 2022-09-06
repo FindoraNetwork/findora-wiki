@@ -1,4 +1,4 @@
-# Technical Specifications -- Merge with Technical-specifications.md
+# Implementation Details
 
 ## Transparent assets to anonymous assets (AR-to-ABAR)
 

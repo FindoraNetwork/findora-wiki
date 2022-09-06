@@ -31,7 +31,6 @@ The unspent status and the owner's public key of a BAR lies on the public node a
 ```rust
 pub struct AnonKeys {
     pub spend_key: AXfrSpendKey,
-    pub view_key: AXfrViewKey,
     pub pub_key: AXfrPubKey,
 }
 ```
@@ -67,10 +66,6 @@ This operation returns a new BAR with the same amount as that of the ABAR. Optio
 
 ## Anonymous (ABAR) Transfer
 
-One goal for Findora's design is to provide anonymity with shielded or private transactions. Shielded values are carried out by ABARs and are the fundamental building blocks with which the transaction for anonymous transfers is created. For each ABAR that is validated, there is an associated ABAR commitment with a fixed position in a Merkle tree of ABAR commitments. The commitments to the output ABARs are revealed to allow them to be spent in the future. Findora uses a 3-ary Merkle tree built with the ”Snark-friendly” *Rescue* hashing algorithm for this purpose.
-
-The ABAR is also associated to a unique nullifier in order to prevent double spends. Computing the nullifier requires the associated private spending key and it is infeasible to correlate the ABAR commitment or the ABAR position to a nullifier without the knowledge of this private key. A valid unspent note, at a given point on the blockchain, is one for which the ABAR commitment has been publicly revealed prior to that point but the associated nullifier has not. This is the intuition why the nullifier is important to prevent double spending. The *nullifier set*, i.e. the set of all nullifiers revealed up to that point, is stored as a Merkle tree. Findora uses a binary sparse merkle tree built using the SHA-256 hashing algorithm for this purpose. Sparse Merkle trees allow for efficient non-membership proofs, which makes them suitable for storing the nullifier set. The nullifiers of the input ABARs are revealed to prevent them being spent again.
-
 Findora uses the increasingly popular TurboPlonk instantiated with the Kate/KZG polynomial commitment scheme as the zk-Snark that enables this mechanism. Plonk is a pairing-based Snark with a universal and updateable trusted setup whereas *TurboPlonk* is an optimization of Plonk with customized gates. While making an anonymous transfer, an ABAR record is spent and a new one is created addressed to the new owner. The spender of the ABAR presents a zero knowledge TurboPlonk proof of the existence and ownership of ABAR, that all of the following hold except with negligible probability,
 
 For each ABAR input:
@@ -87,17 +82,18 @@ For each new ABAR output:
 
 (Needs an update)
 ![](../../../images/abar_transfer.jpg)
+
 ### Sequence of steps in ABAR Transfer
 
-1. . The Receiver then generates Anon Public Key as part of Anon Keys and shares it with the Sender of the anonymous transaction.
+1. The Receiver shares the Public Key with the sender of the anonymous transaction.
 
-2. The Sender opens an ABAR which he has ownership of, and creates a new ABAR assigning the ownership to the Anon Public Key of the receiver. The asset type and the amount are hidden in an owner memo which is encrypted with the Receiver's key.
+2. The Sender opens an ABAR which they have ownership of, and creates a new ABAR assigning the ownership to the Public Key of the receiver. The asset type and the amount are hidden in an owner memo which is encrypted with the Receiver's key.
 
-3. The Sender then submits the anonymous transfer transaction to the ledger along with the zero knowledge proof for the valid spending of input ABAR (the knowledge of the secret key and the correctness of the merkle path). A non membership proof is also generated for the nullifier to prove that the ABAR is unspent.
+3. The Sender then submits the anonymous transfer transaction to the ledger along with the zero knowledge proof for the valid spending of input ABAR (the knowledge of the secret key and the correctness of the merkle path). A non-membership proof is also generated for the nullifier to prove that the ABAR is unspent.
 
 4. The ledger verifies the zero knowledge proof to confirm the valid spending of sender’s ABAR and adds the nullifier to the nullifier set, while the commitment to the new ABAR is added to the ABAR commitment tree.
 
-5. The Sender receives the confirmation of the transaction from the network in the form of a note, and shares the ABAR commitment to the receiver through any external private channel (not recorded on the ledger)
+5. Once the Sender receives the confirmation of the transaction from the network, they can share the ABAR commitment to the receiver through any external private channel (not recorded on the ledger)
 
 6. The Receiver queries the ledger for the newly owned ABAR by using the commitment shared by the sender, and gets the corresponding transaction. The transaction ID (ATxoSID) and commitment corresponding to this ABAR are stored for future spending.
 
@@ -106,7 +102,7 @@ For each new ABAR output:
 Note - Findora Wallet eliminates the need for commitment sharing and does the querying of the received ABARs automatically in the background by trail-decrypting the all new anonymous transactions periodically. The commitment, as discussed in previous sections, is only an identifier and the alternate way to identify anonymous transactions is to use the ATxoSID which is serially incremental in nature.
 
 
-<!--- ![](https://i.imgur.com/CXOqKW0.png) -->
-<!--- ![](https://i.imgur.com/0q1AvYW.png) -->
-<!--- ![](https://i.imgur.com/rYTLMKk.png) -->
-<!--- ![](https://i.imgur.com/098kKlh.png) -->
+<!--- ![](https://i.imgur.com/CXOqKW0.png)
+[](https://i.imgur.com/0q1AvYW.png)
+[](https://i.imgur.com/rYTLMKk.png)
+[](https://i.imgur.com/098kKlh.png) -->
