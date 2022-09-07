@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Development Network
 
-This guide walks through how to deploy local blockchain instance[s] for software development and testing purposes. Alternatively, developers can also develop and test on [Anvil Testnet](../Network_Settings.mdx).
+This guide walks through how to use [`fn dev`](https://github.com/FindoraNetwork/platform/blob/main/src/components/finutils/src/common/dev/README.md) to run and manage local blockchain instance[s] for software development and testing purposes. Alternatively, developers can also develop and test on [Anvil Testnet](../Network_Settings.mdx).
 
 ## 1. Prerequisites
 
@@ -70,12 +70,12 @@ brew install openssl leveldb
 Findora blockchain can run on both MacOS or Linux. The commands below will build all required binaries to start a local Findora blockchain. 
 
 ```bash
-git clone -b v0.3.19-release https://github.com/FindoraNetwork/platform && \
+git clone -b v0.3.29-release https://github.com/FindoraNetwork/platform && \
 cd platform && \
 make build_release
 ```
 
-Please make sure to add all below 4 binaries to your $PATH. By default, they will be copied to `~/.cargo/bin/` which should already be in your $PATH.
+Please make sure to add all below binaries to your $PATH. By default, they will be copied to `~/.cargo/bin/` which should already be in your $PATH.
 
 * `abcid`: Findora core protocol.
 
