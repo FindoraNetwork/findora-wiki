@@ -77,15 +77,13 @@ make build_release
 
 Please make sure to add all below 4 binaries to your $PATH. By default, they will be copied to `~/.cargo/bin/` which should already be in your $PATH.
 
-* `fn`: The core development tool for working with a Findora blockchain.
-
-* `stt`: The tool to initialize Findora blockchain.
-
 * `abcid`: Findora core protocol.
 
 * `tendermint`: Tendermint consensus engine.
 
+* `fn`: The core development tool for working with a Findora blockchain.
+
 
 ## 3. Run and manage local development cluster[s]
 
-Check [**the documentation on github**](https://github.com/FindoraNetwork/platform/blob/main/src/components/finutils/src/common/dev/README.md) for a detailed user guide.
+Please use `fn dev` to run and manage your local clusters, check [**the documentation on github**](https://github.com/FindoraNetwork/platform/blob/main/src/components/finutils/src/common/dev/README.md) for a detailed user guide.
