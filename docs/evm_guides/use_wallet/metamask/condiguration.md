@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Configure Metamask
 
-If you have used Metamask for any sort of development work on the EVM, then setting up Findora for use is as simple as can be. Simply take the network details as shown [here](/docs/network.mdx) and make use of them as Metamask requires. Let's jump right in!
+If you have used Metamask for any sort of development work on the EVM, then setting up Findora for use is as simple as can be. Simply take the network details as shown [here](/docs/network) and make use of them as Metamask requires. Let's jump right in!
 
 The first step is to install Metamask from [Metamask](https://metamask.io).
 
