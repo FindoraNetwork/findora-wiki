@@ -12,3 +12,6 @@ sidebar_position: 1
     - ex) AWS T3 t3.2xlarge
     - ex) AliCloud g6 g6.2xlarge
     - ex) GCP n2 n2-standard-8
+  
+- Software Requirements:
+  - Docker
