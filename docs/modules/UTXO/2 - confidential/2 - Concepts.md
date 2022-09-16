@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 The confidential transfer in Findora has a comprehensive support of tracing, which enables an *asset tracer* to see information in a confidential transfer, depending on the tracing policy, the amount, the asset type, and/or the sender's identity and attributes.
 
 
-To get started, we focus on the simplified model where tracing is struck. This allows us to focus on Bulletproofs and Ristretto ciphertexts. 
+To get started, we focus on the simplified model where tracing is removed. This allows us to focus on Bulletproofs and Ristretto ciphertexts. 
 
 
 ** Note (layer 1): ** A note consists of a body and a list of signatures by the senders over the body. An asset transfer is executed simply by posting a transfer note to the Findora ledger, denoted *XfrNote* for short.
