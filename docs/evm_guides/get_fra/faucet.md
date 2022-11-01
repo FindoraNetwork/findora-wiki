@@ -58,7 +58,7 @@ Example:
 !faucet fra19rtfg2g58x6jxxxxxxxxxxxxxxxxx example@gmail.com no no
 ```
 
-> Note: You can only ask for FRA tokens once evenry 24 hours, so make sure your receiving wallet address is correct.
+> Note: You can only ask for FRA tokens once every 24 hours, so make sure your receiving wallet address is correct.
 
 ### Check FRA UTXO Balance
 
