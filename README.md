@@ -1,5 +1,17 @@
 # Findora Wiki
 
+
+
+##########################################
+##### DEPRECATED DOCS. PLEASE USE THE [NEW REPO](https://github.com/FindoraNetwork/findora-wiki-docs)
+##########################################
+#
+#
+#
+#
+
+
+
 Findora Wiki is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
 ## Installation
